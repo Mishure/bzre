@@ -138,12 +138,37 @@ function PropertiesContent() {
     // Search filter
     if (filters.search) {
       const searchTerm = filters.search.toLowerCase();
-      filtered = filtered.filter(property =>
-        property.name.toLowerCase().includes(searchTerm) ||
-        property.street.toLowerCase().includes(searchTerm) ||
-        property.zone.toLowerCase().includes(searchTerm) ||
-        property.description?.toLowerCase().includes(searchTerm)
-      );
+      filtered = filtered.filter(property => {
+        // Search in basic fields
+        const matchesBasic =
+          property.name.toLowerCase().includes(searchTerm) ||
+          property.street.toLowerCase().includes(searchTerm) ||
+          property.zone.toLowerCase().includes(searchTerm) ||
+          property.description?.toLowerCase().includes(searchTerm);
+
+        // Search in features
+        let matchesFeatures = false;
+        if (property.features) {
+          try {
+            const features = typeof property.features === 'string'
+              ? JSON.parse(property.features)
+              : property.features;
+
+            if (Array.isArray(features)) {
+              matchesFeatures = features.some(feature =>
+                feature.toLowerCase().includes(searchTerm)
+              );
+            } else if (typeof features === 'object') {
+              matchesFeatures = JSON.stringify(features).toLowerCase().includes(searchTerm);
+            }
+          } catch (e) {
+            // If features can't be parsed, try string search
+            matchesFeatures = property.features.toLowerCase().includes(searchTerm);
+          }
+        }
+
+        return matchesBasic || matchesFeatures;
+      });
     }
 
     // Property type filter (only if different from URL param)
