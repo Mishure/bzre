@@ -1,0 +1,159 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("AGENT")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  properties Property[]
+  activities AdminActivity[]
+
+  @@map("admins")
+}
+
+model Property {
+  id                Int            @id @default(autoincrement())
+  name              String
+  price             Float
+  zone              String
+  comfort           String?
+  street            String
+  latitude          Float?
+  longitude         Float?
+  surface           Float
+  registrationDate  DateTime       @default(now())
+  ownerCnp          String?
+  rooms             Int
+  floor             Int?
+  totalFloors       Int?
+  position          String?
+  locality          String
+  operationType     String
+  propertyType      String
+  description       String?
+  features          String?        // JSON string
+  images            PropertyImage[]
+  status            String @default("ACTIVE")
+  featured          Boolean        @default(false)
+  views             Int            @default(0)
+  
+  // Admin relations
+  adminId           Int
+  admin             Admin          @relation(fields: [adminId], references: [id])
+  
+  // Timestamps
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  archivedAt        DateTime?
+
+  // Client inquiries
+  inquiries         ClientInquiry[]
+
+  @@map("properties")
+}
+
+model PropertyImage {
+  id         Int      @id @default(autoincrement())
+  url        String
+  alt        String?
+  isPrimary  Boolean  @default(false)
+  order      Int      @default(0)
+  propertyId Int
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@map("property_images")
+}
+
+model Agent {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  phone     String   @unique
+  email     String?  @unique
+  zone      String
+  avatar    String?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("agents")
+}
+
+model ClientInquiry {
+  id              Int             @id @default(autoincrement())
+  name            String
+  email           String
+  phone           String?
+  transactionType String
+  propertyType    String?
+  price           Float?
+  locality        String?
+  zone            String?
+  address         String?
+  rooms           Int?
+  surface         Float?
+  message         String
+  status          String   @default("NEW")
+  
+  // Relations
+  propertyId      Int?
+  property        Property?       @relation(fields: [propertyId], references: [id])
+  
+  // Timestamps
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@map("client_inquiries")
+}
+
+model ExchangeRate {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @unique
+  eurRate   Float
+  usdRate   Float
+  createdAt DateTime @default(now())
+
+  @@map("exchange_rates")
+}
+
+model AdminActivity {
+  id          Int            @id @default(autoincrement())
+  adminId     Int
+  admin       Admin          @relation(fields: [adminId], references: [id])
+  action      String
+  resource    String         // e.g., "property", "client", etc.
+  resourceId  Int?
+  description String
+  createdAt   DateTime       @default(now())
+
+  @@map("admin_activities")
+}
+
+// Note: SQLite doesn't support enums, using String instead
+// Valid values:
+// Role: "ADMIN", "AGENT", "MANAGER"  
+// OperationType: "VANZARE", "INCHIRIERE"
+// PropertyType: "APARTAMENT", "CASA", "TEREN", "SPATIU_COMERCIAL"
+// PropertyStatus: "ACTIVE", "INACTIVE", "ARCHIVED", "SOLD", "RENTED"
+// TransactionType: "CUMPARARE", "VANZARE", "INCHIRIERE"
+// InquiryStatus: "NEW", "CONTACTED", "IN_PROGRESS", "CLOSED", "SPAM"
+// ActivityAction: "CREATE", "UPDATE", "DELETE", "ARCHIVE", "RESTORE", "LOGIN", "LOGOUT"
