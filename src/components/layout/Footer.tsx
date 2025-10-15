@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <PhoneIcon className="h-5 w-5 text-primary-400" />
-                <span>+40 238 123 456</span>
+                <span>+40 773 723 654</span>
               </div>
               <div className="flex items-center space-x-2">
                 <EnvelopeIcon className="h-5 w-5 text-primary-400" />
@@ -26,7 +26,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <MapPinIcon className="h-5 w-5 text-primary-400" />
-                <span>Str. Unirii nr. 25, Buzău, Romania</span>
+                <span>Blv. Maresal Alexandru Averescu, nr.28, Buzău, Romania</span>
               </div>
             </div>
           </div>

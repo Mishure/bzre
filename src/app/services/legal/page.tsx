@@ -256,10 +256,14 @@ export default function LegalPage() {
                 />
                 <label htmlFor="termsAccepted" className="text-sm text-gray-700">
                   <span className="text-red-600">* </span>
-                  Sunt de acord cu prelucrarea datelor mele personale și cu{' '}
-                  <Link href="/terms" className="text-primary-600 hover:text-primary-700 underline">
-                    Termenii și Condițiile
-                  </Link>
+                  Sunt de acord cu prelucrarea datelor mele personale, mai sus solicitate, cu Termenii si Conditiile de Utilizare si cu Politica privind Protectia Datelor cu Caracter Personal.{' '}
+                  <a
+                    href="/termeni-si-conditii"
+                    target="_blank"
+                    className="text-primary-600 hover:text-primary-700 underline"
+                  >
+                    Citește Termeni și Condiții
+                  </a>
                 </label>
               </div>
 

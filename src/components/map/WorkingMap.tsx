@@ -143,19 +143,19 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // If we already have a valid map instance, don't reinitialize
-    if (mapInstanceRef.current) {
-      console.log('Map instance already exists, skipping initialization');
-      return;
-    }
-
-    // Prevent double initialization
-    if (initializingRef.current) {
-      console.log('Map is currently initializing, skipping');
-      return;
-    }
-
     const initMap = async () => {
+      // If we already have a valid map instance, don't reinitialize
+      if (mapInstanceRef.current) {
+        console.log('Map instance already exists, skipping initialization');
+        return;
+      }
+
+      // Prevent double initialization
+      if (initializingRef.current) {
+        console.log('Map is currently initializing, skipping');
+        return;
+      }
+
       if (!mapRef.current) return;
 
       // Mark as initializing FIRST to prevent race conditions
@@ -165,9 +165,8 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
       if ((mapRef.current as any)._leaflet_id) {
         console.log('Found existing Leaflet ID on container, cleaning up...');
         try {
-          // Try to remove the existing map if it exists
-          const L = (await import('leaflet')).default;
-          (mapRef.current as any)._leaflet_id = undefined;
+          // Remove the leaflet ID completely
+          delete (mapRef.current as any)._leaflet_id;
         } catch (e) {
           console.log('Error cleaning up existing map:', e);
         }
@@ -257,29 +256,41 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
     initMap();
 
     return () => {
+      console.log('Cleanup function called');
+      initializingRef.current = false;
+
       if (mapInstanceRef.current) {
         console.log('Cleaning up map instance');
         try {
           // Remove all markers first
           if (markersRef.current.length > 0) {
             markersRef.current.forEach(marker => {
-              mapInstanceRef.current?.removeLayer(marker);
+              try {
+                mapInstanceRef.current?.removeLayer(marker);
+              } catch (e) {
+                // Ignore errors when removing markers
+              }
             });
             markersRef.current = [];
           }
           // Remove the map instance
+          mapInstanceRef.current.off(); // Remove all event listeners
           mapInstanceRef.current.remove();
           mapInstanceRef.current = null;
         } catch (error) {
           console.error('Error during map cleanup:', error);
+          mapInstanceRef.current = null; // Force null even on error
         }
       }
       // Clean the container
       if (mapRef.current) {
-        delete (mapRef.current as any)._leaflet_id;
-        mapRef.current.innerHTML = '';
+        try {
+          delete (mapRef.current as any)._leaflet_id;
+          mapRef.current.innerHTML = '';
+        } catch (e) {
+          // Ignore cleanup errors
+        }
       }
-      initializingRef.current = false;
     };
   }, []); // Remove dependencies to prevent re-initialization
 

@@ -33,56 +33,34 @@ export default function PropertyDetailPage() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [agent] = useState<Agent>({
     name: 'Maria Popescu',
-    phone: '+40 238 123 456',
+    phone: '+40 773 723 654',
     email: 'maria.popescu@bestinvestcamimob.ro'
   });
 
-  // Mock data - replace with actual API call
+  // Fetch property from API
   useEffect(() => {
     const fetchProperty = async () => {
       setLoading(true);
-      
-      // Mock property data
-      const mockProperty: Property = {
-        id: parseInt(propertyId),
-        name: 'Apartament 3 camere, zona Centru',
-        price: 75000,
-        zone: 'Centru',
-        street: 'Strada Unirii nr. 15',
-        surface: 75,
-        rooms: 3,
-        floor: 2,
-        totalFloors: 4,
-        locality: 'Buzău',
-        operationType: 'VANZARE',
-        propertyType: 'APARTAMENT',
-        description: 'Apartament modern, complet renovat, in zona centrala a municipiului Buzău. Proprietatea se află la etajul 2 dintr-un bloc cu 4 etaje, într-o zonă foarte căutată și aproape de toate facilitățile urbane. Apartamentul beneficiază de o distribuție excelentă a spațiului și de finisaje de calitate.',
-        features: JSON.stringify([
-          'Balcon spațios',
-          'Centrală termică proprie',
-          'Parchet din lemn masiv',
-          'Aer condiționat',
-          'Bucătărie echipată',
-          'Baie cu căzi',
-          'Orientare Sud-Est',
-          'Parcare disponibilă'
-        ]),
-        createdAt: new Date().toISOString(),
-        latitude: 45.1500,
-        longitude: 26.8150,
-        images: [
-          { url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop', isPrimary: true },
-          { url: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop', isPrimary: false },
-          { url: 'https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=800&h=600&fit=crop', isPrimary: false },
-          { url: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop', isPrimary: false },
-          { url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop', isPrimary: false },
-        ],
-      };
-      
-      setTimeout(() => {
-        setProperty(mockProperty);
+      try {
+        console.log('Fetching property ID:', propertyId);
+        const response = await fetch(`/api/properties/${propertyId}`);
+
+        if (!response.ok) {
+          console.error('Failed to fetch property:', response.status);
+          setProperty(null);
+          setLoading(false);
+          return;
+        }
+
+        const data = await response.json();
+        console.log('Property data:', data);
+        setProperty(data);
+      } catch (error) {
+        console.error('Error fetching property:', error);
+        setProperty(null);
+      } finally {
         setLoading(false);
-      }, 500);
+      }
     };
 
     fetchProperty();

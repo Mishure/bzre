@@ -151,10 +151,14 @@ export default function EvaluationPage() {
                 />
                 <label htmlFor="termsAccepted" className="text-sm text-gray-700">
                   <span className="text-red-600">* </span>
-                  Sunt de acord cu prelucrarea datelor mele personale, mai sus solicitate, cu Termenii și Condițiile de Utilizare și cu Politica privind Protecția Datelor cu Caracter Personal.{' '}
-                  <Link href="/terms" className="text-primary-600 hover:text-primary-700 underline">
-                    CITEȘTE TERMENI ȘI CONDIȚII
-                  </Link>
+                  Sunt de acord cu prelucrarea datelor mele personale, mai sus solicitate, cu Termenii si Conditiile de Utilizare si cu Politica privind Protectia Datelor cu Caracter Personal.{' '}
+                  <a
+                    href="/termeni-si-conditii"
+                    target="_blank"
+                    className="text-primary-600 hover:text-primary-700 underline"
+                  >
+                    Citește Termeni și Condiții
+                  </a>
                 </label>
               </div>
 
@@ -173,8 +177,12 @@ export default function EvaluationPage() {
             {/* Agent Info */}
             <div className="mt-12 text-center border-t pt-8">
               <div className="mb-4">
-                <div className="w-32 h-32 mx-auto bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-5xl text-primary-600 font-bold">C</span>
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
+                  <img
+                    src="/imagecam.png"
+                    alt="Carmen - Agent Imobiliar"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <p className="text-gray-600 italic text-lg">

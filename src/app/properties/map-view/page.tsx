@@ -104,242 +104,31 @@ function MapViewContent() {
     }
   }, [selectedPropertyId, loading]);
 
-  // Mock data - same as before
+  // Fetch properties from API
   useEffect(() => {
     const fetchProperties = async () => {
       setLoading(true);
+      try {
+        console.log('Fetching properties from API...');
 
-      const mockProperties: Property[] = [
-        {
-          id: 1,
-          name: 'Apartament 3 camere, zona Centru',
-          price: 75000,
-          zone: 'Centru',
-          street: 'Strada Unirii nr. 15',
-          surface: 75,
-          rooms: 3,
-          floor: 2,
-          totalFloors: 4,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'APARTAMENT',
-          description: 'Apartament modern, complet renovat, in zona centrala. Aproape de toate facilitatile.',
-          features: JSON.stringify(['Balcon', 'Centrală termică', 'Parchet', 'AC']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1500,
-          longitude: 26.8150,
-          images: [{ url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 2,
-          name: 'Casa individuala, zona Micro 3',
-          price: 120000,
-          zone: 'Micro 3',
-          street: 'Strada Primaverii nr. 25',
-          surface: 120,
-          rooms: 4,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'CASA',
-          description: 'Casa individuala cu curte mare si gradina. Constructie 2010.',
-          features: JSON.stringify(['Gradina', 'Garaj', 'Terasa', 'Subsol']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1420,
-          longitude: 26.8200,
-          images: [{ url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 3,
-          name: 'Apartament 2 camere, închiriere',
-          price: 400,
-          zone: 'Micro 4',
-          street: 'Bdul Bucuresti nr. 45',
-          surface: 52,
-          rooms: 2,
-          floor: 1,
-          totalFloors: 10,
-          locality: 'Buzău',
-          operationType: 'INCHIRIERE',
-          propertyType: 'APARTAMENT',
-          description: 'Apartament mobilat si utilat complet, gata de mutat.',
-          features: JSON.stringify(['Mobilat', 'Utilat', 'AC', 'Internet']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1380,
-          longitude: 26.8080,
-          images: [{ url: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 4,
-          name: 'Teren constructii, zona Sud',
-          price: 45000,
-          zone: 'Sud',
-          street: 'Strada Constructorilor',
-          surface: 800,
-          rooms: 0,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'TEREN',
-          description: 'Teren pentru constructii rezidentiale, toate utilitatile.',
-          features: JSON.stringify(['Utilitati', 'Front 20m', 'Certificat urbanism']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1300,
-          longitude: 26.8100,
-          images: [{ url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 5,
-          name: 'Spațiu comercial, zona Unirii',
-          price: 1200,
-          zone: 'Unirii',
-          street: 'Piața Unirii nr. 8',
-          surface: 80,
-          rooms: 0,
-          locality: 'Buzău',
-          operationType: 'INCHIRIERE',
-          propertyType: 'SPATIU_COMERCIAL',
-          description: 'Spațiu comercial in zona cu trafic intens, ideal pentru magazin.',
-          features: JSON.stringify(['Vitrina mare', 'Depozit', 'WC', 'Parcare']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1480,
-          longitude: 26.8120,
-          images: [{ url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 6,
-          name: 'Apartament 4 camere, zona Victoriei',
-          price: 95000,
-          zone: 'Victoriei',
-          street: 'Strada Victoriei nr. 33',
-          surface: 90,
-          rooms: 4,
-          floor: 3,
-          totalFloors: 5,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'APARTAMENT',
-          description: 'Apartament spatios cu vedere la parc.',
-          features: JSON.stringify(['Balcon mare', 'Parcare', 'Centrală', 'Lift']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1520,
-          longitude: 26.8180,
-          images: [{ url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 7,
-          name: 'Casa cu etaj, zona Nord',
-          price: 150000,
-          zone: 'Nord',
-          street: 'Strada Nordului nr. 12',
-          surface: 140,
-          rooms: 5,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'CASA',
-          description: 'Casa moderna cu gradina mare si garaj dublu.',
-          features: JSON.stringify(['Gradina 500mp', 'Garaj dublu', 'Terasa', 'Pivnita']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1550,
-          longitude: 26.8130,
-          images: [{ url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 8,
-          name: 'Studio, inchiriere zona Micro 5',
-          price: 300,
-          zone: 'Micro 5',
-          street: 'Strada Micro 5 nr. 8',
-          surface: 35,
-          rooms: 1,
-          floor: 2,
-          totalFloors: 4,
-          locality: 'Buzău',
-          operationType: 'INCHIRIERE',
-          propertyType: 'APARTAMENT',
-          description: 'Studio modern, complet mobilat.',
-          features: JSON.stringify(['Mobilat complet', 'AC', 'Internet', 'Parcare']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1350,
-          longitude: 26.8220,
-          images: [{ url: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 9,
-          name: 'Teren agricol, zona Est',
-          price: 25000,
-          zone: 'Est',
-          street: 'Drumul Estului km 2',
-          surface: 5000,
-          rooms: 0,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'TEREN',
-          description: 'Teren agricol cu acces la drum, ideal pentru agricultura.',
-          features: JSON.stringify(['5000mp', 'Acces drum', 'Sol fertil', 'Investitie']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1400,
-          longitude: 26.8300,
-          images: [{ url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 10,
-          name: 'Apartament 3 camere, zona Dorobanti',
-          price: 85000,
-          zone: 'Dorobanti',
-          street: 'Strada Dorobanti nr. 44',
-          surface: 80,
-          rooms: 3,
-          floor: 1,
-          totalFloors: 4,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'APARTAMENT',
-          description: 'Apartament la parter cu curte privata.',
-          features: JSON.stringify(['Curte privata', 'Renovat recent', 'Centrală', 'Parcare']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1440,
-          longitude: 26.8090,
-          images: [{ url: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 11,
-          name: 'Birou de inchiriat, zona Centru',
-          price: 800,
-          zone: 'Centru',
-          street: 'Strada Independentei nr. 22',
-          surface: 60,
-          rooms: 0,
-          locality: 'Buzău',
-          operationType: 'INCHIRIERE',
-          propertyType: 'SPATIU_COMERCIAL',
-          description: 'Spatiu de birou modern in cladire noua.',
-          features: JSON.stringify(['Cladire noua', 'AC', 'Internet', 'Parcare', 'Lift']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1490,
-          longitude: 26.8140,
-          images: [{ url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-        {
-          id: 12,
-          name: 'Casa de vacanta, zona Marginal',
-          price: 75000,
-          zone: 'Marginal',
-          street: 'Aleea Marginal nr. 5',
-          surface: 100,
-          rooms: 3,
-          locality: 'Buzău',
-          operationType: 'VANZARE',
-          propertyType: 'CASA',
-          description: 'Casa de vacanta cu gradina si foisor.',
-          features: JSON.stringify(['Gradina', 'Foisor', 'Liniste', 'Aer curat']),
-          createdAt: new Date().toISOString(),
-          latitude: 45.1320,
-          longitude: 26.8050,
-          images: [{ url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop', isPrimary: true }],
-        },
-      ];
-      
-      setProperties(mockProperties);
-      setLoading(false);
+        // Build query parameters
+        const params = new URLSearchParams();
+        params.set('limit', '100'); // Get more properties for map view
+        params.set('status', 'ACTIVE');
+
+        const response = await fetch(`/api/properties?${params.toString()}`);
+        const data = await response.json();
+
+        console.log('API Response:', data);
+        console.log('Properties loaded:', data.properties?.length || 0);
+
+        setProperties(data.properties || []);
+      } catch (error) {
+        console.error('Error fetching properties:', error);
+        setProperties([]);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchProperties();
@@ -349,44 +138,83 @@ function MapViewContent() {
   useEffect(() => {
     let filtered = [...properties];
 
+    console.log('Filtering properties, total:', properties.length);
+
     // Check for search from URL params
     const urlSearch = searchParams.get('search');
     const searchTerm = (filters.search || urlSearch || '').toLowerCase();
-    
+
     if (searchTerm) {
-      filtered = filtered.filter(property => 
-        property.name.toLowerCase().includes(searchTerm) ||
-        property.street.toLowerCase().includes(searchTerm) ||
-        property.zone.toLowerCase().includes(searchTerm) ||
-        property.description?.toLowerCase().includes(searchTerm)
-      );
+      console.log('Searching for:', searchTerm);
+      filtered = filtered.filter(property => {
+        // Search in basic fields
+        const matchesBasic =
+          property.name.toLowerCase().includes(searchTerm) ||
+          property.street.toLowerCase().includes(searchTerm) ||
+          property.zone.toLowerCase().includes(searchTerm) ||
+          property.description?.toLowerCase().includes(searchTerm);
+
+        // Search in features
+        let matchesFeatures = false;
+        if (property.features) {
+          try {
+            const features = typeof property.features === 'string'
+              ? JSON.parse(property.features)
+              : property.features;
+
+            if (Array.isArray(features)) {
+              matchesFeatures = features.some(feature =>
+                feature.toLowerCase().includes(searchTerm)
+              );
+              if (matchesFeatures) {
+                console.log('Found in features:', property.name, 'features:', features);
+              }
+            } else if (typeof features === 'object') {
+              matchesFeatures = JSON.stringify(features).toLowerCase().includes(searchTerm);
+            }
+          } catch (e) {
+            matchesFeatures = property.features.toLowerCase().includes(searchTerm);
+          }
+        }
+
+        return matchesBasic || matchesFeatures;
+      });
+      console.log('After search filter:', filtered.length);
     }
 
     if (filters.propertyType) {
       filtered = filtered.filter(property => property.propertyType === filters.propertyType);
+      console.log('After property type filter:', filtered.length);
     }
     if (filters.operationType) {
       filtered = filtered.filter(property => property.operationType === filters.operationType);
+      console.log('After operation type filter:', filtered.length);
     }
     if (filters.zone) {
       filtered = filtered.filter(property => property.zone === filters.zone);
+      console.log('After zone filter:', filtered.length);
     }
     if (filters.minPrice) {
       filtered = filtered.filter(property => property.price >= parseInt(filters.minPrice));
+      console.log('After min price filter:', filtered.length);
     }
     if (filters.maxPrice) {
       filtered = filtered.filter(property => property.price <= parseInt(filters.maxPrice));
+      console.log('After max price filter:', filtered.length);
     }
     if (filters.minRooms) {
       filtered = filtered.filter(property => property.rooms >= parseInt(filters.minRooms));
+      console.log('After min rooms filter:', filtered.length);
     }
     if (filters.maxRooms) {
       filtered = filtered.filter(property => property.rooms <= parseInt(filters.maxRooms));
+      console.log('After max rooms filter:', filtered.length);
     }
 
+    console.log('Final filtered count:', filtered.length);
     setFilteredProperties(filtered);
     setVisibleProperties(filtered); // Initially show all filtered properties
-  }, [properties, filters]);
+  }, [properties, filters, searchParams]);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ro-RO', {

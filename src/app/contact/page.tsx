@@ -11,7 +11,8 @@ export default function ContactPage() {
     subject: 'general',
     message: ''
   });
-  
+
+  const [gdprConsent, setGdprConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
@@ -37,6 +38,7 @@ export default function ContactPage() {
           subject: 'general',
           message: ''
         });
+        setGdprConsent(false);
       } else {
         setSubmitMessage('A apărut o eroare. Vă rugăm să încercați din nou.');
       }
@@ -146,10 +148,32 @@ export default function ContactPage() {
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   ></textarea>
                 </div>
-                
+
+                <div className="mt-6">
+                  <label className="flex items-start">
+                    <input
+                      type="checkbox"
+                      checked={gdprConsent}
+                      onChange={(e) => setGdprConsent(e.target.checked)}
+                      className="mt-1 mr-3 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                      required
+                    />
+                    <span className="text-sm text-gray-700">
+                      Sunt de acord cu prelucrarea datelor mele personale, mai sus solicitate, cu Termenii si Conditiile de Utilizare si cu Politica privind Protectia Datelor cu Caracter Personal.{' '}
+                      <a
+                        href="/termeni-si-conditii"
+                        target="_blank"
+                        className="text-primary-600 hover:text-primary-700 underline"
+                      >
+                        Citește Termeni și Condiții
+                      </a>
+                    </span>
+                  </label>
+                </div>
+
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !gdprConsent}
                   className="mt-6 w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Se trimite...' : 'Trimite mesajul'}
@@ -167,7 +191,7 @@ export default function ContactPage() {
                   <MapPinIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Adresă</p>
-                    <p className="text-gray-600">Bulevardul Unirii Nr. 12</p>
+                    <p className="text-gray-600">Blv. Maresal Alexandru Averescu, nr.28</p>
                     <p className="text-gray-600">Buzău, România</p>
                   </div>
                 </div>
@@ -176,8 +200,7 @@ export default function ContactPage() {
                   <PhoneIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Telefon</p>
-                    <p className="text-gray-600">+40 238 123 456</p>
-                    <p className="text-gray-600">+40 738 123 456</p>
+                    <p className="text-gray-600">+40 773 723 654</p>
                   </div>
                 </div>
                 
@@ -210,7 +233,7 @@ export default function ContactPage() {
                 Dorești să vezi o proprietate? Contactează-ne pentru a programa o vizionare la momentul potrivit pentru tine.
               </p>
               <a
-                href="tel:+40238123456"
+                href="tel:+40773723654"
                 className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
               >
                 <PhoneIcon className="h-5 w-5 mr-2" />

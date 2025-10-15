@@ -15,16 +15,18 @@ export default function CommissionsPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    termsAccepted: false
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
@@ -39,7 +41,8 @@ export default function CommissionsPage() {
       setFormData({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        termsAccepted: false
       });
     }, 1000);
   };
@@ -349,9 +352,33 @@ export default function CommissionsPage() {
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
                   />
+
+                  <div className="flex items-start space-x-3">
+                    <input
+                      type="checkbox"
+                      id="termsAccepted"
+                      name="termsAccepted"
+                      checked={formData.termsAccepted}
+                      onChange={handleChange}
+                      required
+                      className="mt-1 h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                    />
+                    <label htmlFor="termsAccepted" className="text-sm text-gray-700">
+                      <span className="text-red-600">* </span>
+                      Sunt de acord cu prelucrarea datelor mele personale, mai sus solicitate, cu Termenii si Conditiile de Utilizare si cu Politica privind Protectia Datelor cu Caracter Personal.{' '}
+                      <a
+                        href="/termeni-si-conditii"
+                        target="_blank"
+                        className="text-primary-600 hover:text-primary-700 underline"
+                      >
+                        Citește Termeni și Condiții
+                      </a>
+                    </label>
+                  </div>
+
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !formData.termsAccepted}
                     className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Se trimite...' : 'Trimite'}
@@ -377,8 +404,12 @@ export default function CommissionsPage() {
             {/* Agent Info */}
             <div className="mt-8 text-center border-t pt-8">
               <div className="mb-4">
-                <div className="w-32 h-32 mx-auto bg-primary-100 rounded-full flex items-center justify-center">
-                  <span className="text-5xl text-primary-600 font-bold">C</span>
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden">
+                  <img
+                    src="/imagecam.png"
+                    alt="Carmen - Agent Imobiliar"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <p className="text-gray-600 italic text-lg">
