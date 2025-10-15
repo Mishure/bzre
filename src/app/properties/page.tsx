@@ -138,6 +138,8 @@ function PropertiesContent() {
     // Search filter
     if (filters.search) {
       const searchTerm = filters.search.toLowerCase();
+      console.log('Searching for:', searchTerm, 'in', properties.length, 'properties');
+
       filtered = filtered.filter(property => {
         // Search in basic fields
         const matchesBasic =
@@ -158,6 +160,9 @@ function PropertiesContent() {
               matchesFeatures = features.some(feature =>
                 feature.toLowerCase().includes(searchTerm)
               );
+              if (matchesFeatures) {
+                console.log('✓ Found in features:', property.name, 'features:', features);
+              }
             } else if (typeof features === 'object') {
               matchesFeatures = JSON.stringify(features).toLowerCase().includes(searchTerm);
             }
@@ -167,8 +172,11 @@ function PropertiesContent() {
           }
         }
 
-        return matchesBasic || matchesFeatures;
+        const matches = matchesBasic || matchesFeatures;
+        return matches;
       });
+
+      console.log('Filter results:', filtered.length, 'properties match');
     }
 
     // Property type filter (only if different from URL param)
