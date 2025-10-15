@@ -148,15 +148,18 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
     if (initializingRef.current) {
       return;
     }
-    
+
     const initMap = async () => {
       if (!mapRef.current) return;
-      
-      // Check if container already has a map
+
+      // Clean up any existing map instance on the container
       if ((mapRef.current as any)._leaflet_id) {
-        return;
+        console.log('Found existing Leaflet ID, cleaning up container...');
+        delete (mapRef.current as any)._leaflet_id;
+        // Clear the container's HTML to ensure a clean slate
+        mapRef.current.innerHTML = '';
       }
-      
+
       initializingRef.current = true;
       
       try {
@@ -243,8 +246,25 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
     return () => {
       if (mapInstanceRef.current) {
         console.log('Cleaning up map instance');
-        mapInstanceRef.current.remove();
-        mapInstanceRef.current = null;
+        try {
+          // Remove all markers first
+          if (markersRef.current.length > 0) {
+            markersRef.current.forEach(marker => {
+              mapInstanceRef.current?.removeLayer(marker);
+            });
+            markersRef.current = [];
+          }
+          // Remove the map instance
+          mapInstanceRef.current.remove();
+          mapInstanceRef.current = null;
+        } catch (error) {
+          console.error('Error during map cleanup:', error);
+        }
+      }
+      // Clean the container
+      if (mapRef.current) {
+        delete (mapRef.current as any)._leaflet_id;
+        mapRef.current.innerHTML = '';
       }
       initializingRef.current = false;
     };
