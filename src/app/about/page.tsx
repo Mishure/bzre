@@ -4,7 +4,7 @@ import { CheckCircleIcon, UsersIcon, HomeIcon, StarIcon } from '@heroicons/react
 
 export default function AboutPage() {
   const stats = [
-    { label: 'Ani de experiență', value: '15+' },
+    { label: 'Ani de experiență', value: '20+' },
     { label: 'Proprietăți vândute', value: '500+' },
     { label: 'Clienți mulțumiți', value: '1000+' },
     { label: 'Agenți profesioniști', value: '10' }
@@ -83,8 +83,8 @@ export default function AboutPage() {
                 Povestea noastră
               </h2>
               <p className="text-gray-600 mb-4">
-                Fondată în 2009, BESTINVEST CAMIMOB s-a născut din dorința de a oferi servicii imobiliare 
-                de calitate superioară în județul Buzău. De-a lungul anilor, am crescut organic, 
+                Fondată în 2005, BESTINVEST CAMIMOB s-a născut din dorința de a oferi servicii imobiliare
+                de calitate superioară în județul Buzău. De-a lungul anilor, am crescut organic,
                 construind relații solide cu clienții noștri și câștigând încrederea comunității locale.
               </p>
               <p className="text-gray-600 mb-4">
@@ -98,10 +98,14 @@ export default function AboutPage() {
                 visurile imobiliare ale clienților noștri.
               </p>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-primary-700 opacity-20"></div>
-              <div className="relative h-full flex items-center justify-center bg-gray-100">
-                <HomeIcon className="h-32 w-32 text-primary-600 opacity-50" />
+            <div className="flex items-center justify-center">
+              <div className="relative w-96 h-96 rounded-full overflow-hidden shadow-xl border-4 border-primary-600">
+                <Image
+                  src="/images/profile.png"
+                  alt="BESTINVEST CAMIMOB Profile"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           </div>
