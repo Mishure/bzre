@@ -168,7 +168,9 @@ function PropertiesContent() {
             }
           } catch (e) {
             // If features can't be parsed, try string search
-            matchesFeatures = property.features.toLowerCase().includes(searchTerm);
+            matchesFeatures = typeof property.features === 'string'
+              ? property.features.toLowerCase().includes(searchTerm)
+              : false;
           }
         }
 

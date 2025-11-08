@@ -173,7 +173,9 @@ function MapViewContent() {
               matchesFeatures = JSON.stringify(features).toLowerCase().includes(searchTerm);
             }
           } catch (e) {
-            matchesFeatures = property.features.toLowerCase().includes(searchTerm);
+            matchesFeatures = typeof property.features === 'string'
+              ? property.features.toLowerCase().includes(searchTerm)
+              : false;
           }
         }
 

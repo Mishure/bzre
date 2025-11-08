@@ -219,9 +219,6 @@ export default function PropertyMap({
           style={{ height: '100%', width: '100%' }}
           className="z-0"
           zoomControl={true}
-          zoomControlOptions={{
-            position: 'topright'
-          }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
