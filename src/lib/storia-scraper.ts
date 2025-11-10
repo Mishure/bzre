@@ -216,11 +216,19 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
 
       // Extract property type and operation type from breadcrumbs or URL
       const breadcrumbs = getTexts('[data-cy="breadcrumb-item"]')
-      const propertyType = breadcrumbs.find(b =>
-        b.toLowerCase().includes('apartament') ||
-        b.toLowerCase().includes('casa') ||
-        b.toLowerCase().includes('teren')
-      ) || 'Apartament'
+      // Search for property type in order of specificity (most specific first)
+      // This prevents "Apartamente" category from overriding specific "Casa" or "Teren" types
+      let propertyType = breadcrumbs.find(b => b.toLowerCase().includes('teren'))
+      if (!propertyType) {
+        propertyType = breadcrumbs.find(b =>
+          b.toLowerCase().includes('casa') ||
+          b.toLowerCase().includes('casă')
+        )
+      }
+      if (!propertyType) {
+        propertyType = breadcrumbs.find(b => b.toLowerCase().includes('apartament'))
+      }
+      propertyType = propertyType || 'Apartament'
 
       // Try to extract operation type from multiple sources
       let operationType = breadcrumbs.find(b =>
