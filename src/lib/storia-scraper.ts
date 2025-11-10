@@ -217,7 +217,7 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
 
       // Extract property type and operation type from breadcrumbs or URL
       const breadcrumbs = getTexts('[data-cy="breadcrumb-item"]')
-      console.log('Breadcrumbs found:', breadcrumbs)
+      console.log('Breadcrumbs found:', JSON.stringify(breadcrumbs))
 
       // Search for property type in order of specificity (most specific first)
       // This prevents "Apartamente" category from overriding specific "Casa" or "Teren" types
@@ -231,8 +231,25 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
       if (!propertyType) {
         propertyType = breadcrumbs.find(b => b.toLowerCase().includes('apartament'))
       }
+
+      // If breadcrumbs didn't find anything, try meta title as fallback
+      if (!propertyType && metaTitle) {
+        console.log('Breadcrumbs empty, checking meta title:', metaTitle)
+        const titleLower = metaTitle.toLowerCase()
+        if (titleLower.includes('teren')) {
+          propertyType = 'Teren'
+          console.log('Detected "teren" from meta title')
+        } else if (titleLower.includes('casa') || titleLower.includes('casă')) {
+          propertyType = 'Casa'
+          console.log('Detected "casa" from meta title')
+        } else if (titleLower.includes('apartament')) {
+          propertyType = 'Apartament'
+          console.log('Detected "apartament" from meta title')
+        }
+      }
+
       propertyType = propertyType || 'Apartament'
-      console.log('Extracted propertyType from breadcrumbs:', propertyType)
+      console.log('Final extracted propertyType:', propertyType)
 
       // Try to extract operation type from multiple sources
       let operationType = breadcrumbs.find(b =>
