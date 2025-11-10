@@ -63,10 +63,11 @@ function extractStoriaId(url: string): string {
 
 function mapPropertyType(storiaType: string): string {
   const type = storiaType.toLowerCase()
-  if (type.includes('apartament')) return 'APARTAMENT'
-  if (type.includes('casa') || type.includes('casă')) return 'CASA'
+  // Check in order of specificity (most specific first)
   if (type.includes('teren')) return 'TEREN'
-  if (type.includes('comercial') || type.includes('spatiu')) return 'SPATIU_COMERCIAL'
+  if (type.includes('casa') || type.includes('casă')) return 'CASA'
+  if (type.includes('comercial') || type.includes('spatiu') || type.includes('spațiu')) return 'SPATIU_COMERCIAL'
+  if (type.includes('apartament')) return 'APARTAMENT'
   return 'APARTAMENT'
 }
 
