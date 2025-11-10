@@ -36,15 +36,15 @@ model Property {
   name              String
   price             Float
   currency          String         @default("RON") // RON or EUR
-  zone              String
+  zone              String?        // Made optional
   comfort           String?
-  street            String
+  street            String?        // Made optional
   latitude          Float?
   longitude         Float?
   surface           Float
   registrationDate  DateTime       @default(now())
   ownerCnp          String?
-  rooms             Int
+  rooms             Int?           // Made optional (not applicable for land)
   floor             Int?
   totalFloors       Int?
   position          String?

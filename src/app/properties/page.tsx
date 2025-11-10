@@ -512,7 +512,12 @@ function PropertiesContent() {
                         <span>{property.street}, {property.zone}</span>
                       </div>
                       <div className="flex items-center justify-between text-sm text-gray-600">
-                        <span>{property.rooms > 0 ? `${property.rooms} camere` : 'Teren/Spațiu'}</span>
+                        <span>
+                          {property.propertyType === 'TEREN' || property.propertyType === 'SPATIU_COMERCIAL'
+                            ? (property.propertyType === 'TEREN' ? 'Teren' : 'Spațiu comercial')
+                            : (property.rooms && property.rooms > 0 ? `${property.rooms} camere` : 'Proprietate')
+                          }
+                        </span>
                         <span>{property.surface} m²</span>
                       </div>
                     </div>
