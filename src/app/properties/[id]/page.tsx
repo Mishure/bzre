@@ -69,7 +69,7 @@ export default function PropertyDetailPage() {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ro-RO', {
       style: 'currency',
-      currency: 'EUR'
+      currency: 'RON'
     }).format(price);
   };
 
