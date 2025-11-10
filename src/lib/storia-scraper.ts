@@ -217,6 +217,8 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
 
       // Extract property type and operation type from breadcrumbs or URL
       const breadcrumbs = getTexts('[data-cy="breadcrumb-item"]')
+      console.log('Breadcrumbs found:', breadcrumbs)
+
       // Search for property type in order of specificity (most specific first)
       // This prevents "Apartamente" category from overriding specific "Casa" or "Teren" types
       let propertyType = breadcrumbs.find(b => b.toLowerCase().includes('teren'))
@@ -230,6 +232,7 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
         propertyType = breadcrumbs.find(b => b.toLowerCase().includes('apartament'))
       }
       propertyType = propertyType || 'Apartament'
+      console.log('Extracted propertyType from breadcrumbs:', propertyType)
 
       // Try to extract operation type from multiple sources
       let operationType = breadcrumbs.find(b =>
@@ -747,11 +750,15 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
     })
 
     // Map the data to our format
+    console.log('Before mapPropertyType:', propertyData.propertyType)
+    const finalPropertyType = mapPropertyType(propertyData.propertyType)
+    console.log('After mapPropertyType:', finalPropertyType)
+
     const mappedData: StoriaPropertyData = {
       title: propertyData.title,
       price: propertyData.price,
       currency: propertyData.currency || 'RON',
-      propertyType: mapPropertyType(propertyData.propertyType),
+      propertyType: finalPropertyType,
       operationType: mapOperationType(propertyData.operationType),
       locality: propertyData.locality || 'Buzau',
       zone: propertyData.zone,
