@@ -126,15 +126,15 @@ export default function PropertySubmissionPage() {
         throw new Error('Failed to submit property')
       }
 
-      toast.success('Mulțumim! Cererea dumneavoastră a fost trimisă cu succes. Vă vom contacta în curând!')
+      toast.success('Cererea a fost trimisă cu succes!')
       reset()
       setImages([])
       setImagePreviews([])
 
-      // Redirect after 2 seconds
+      // Redirect to success page
       setTimeout(() => {
-        router.push('/')
-      }, 2000)
+        router.push('/listeaza-proprietate/success')
+      }, 1000)
     } catch (error) {
       console.error('Error submitting property:', error)
       toast.error('A apărut o eroare. Vă rugăm încercați din nou.')
