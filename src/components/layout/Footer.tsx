@@ -83,8 +83,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/properties/add" className="text-gray-300 hover:text-primary-400 transition-colors">
-                  Adaugă proprietate
+                <Link href="/listeaza-proprietate" className="text-gray-300 hover:text-primary-400 transition-colors">
+                  Listează-ți proprietatea
                 </Link>
               </li>
               <li>

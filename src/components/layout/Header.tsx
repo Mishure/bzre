@@ -108,10 +108,10 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link
-              href="/properties/add"
+              href="/listeaza-proprietate"
               className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
             >
-              Adauga proprietate
+              Listează-ți Proprietatea
             </Link>
           </div>
 
@@ -164,11 +164,11 @@ export default function Header() {
               </div>
             ))}
             <Link
-              href="/properties/add"
+              href="/listeaza-proprietate"
               className="block w-full bg-primary-600 text-white text-center px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium mt-4"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Adauga proprietate
+              Listează-ți Proprietatea
             </Link>
           </div>
         )}

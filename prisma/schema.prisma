@@ -24,8 +24,9 @@ model Admin {
   updatedAt DateTime @updatedAt
 
   // Relations
-  properties Property[]
-  activities AdminActivity[]
+  properties          Property[]
+  activities          AdminActivity[]
+  propertySubmissions PropertySubmission[]
 
   @@map("admins")
 }
@@ -149,12 +150,59 @@ model AdminActivity {
   @@map("admin_activities")
 }
 
+model PropertySubmission {
+  id              Int      @id @default(autoincrement())
+
+  // Owner contact info
+  ownerName       String
+  phone           String
+  email           String
+
+  // Property details
+  propertyType    String
+  operationType   String
+
+  // Location
+  locality        String
+  zone            String
+  address         String
+
+  // Specifications
+  surface         Float
+  rooms           Int?
+  floor           Int?
+  totalFloors     Int?
+
+  // Pricing
+  estimatedPrice  Float
+
+  // Additional info
+  description     String
+  features        String?
+
+  // Status tracking
+  status          String   @default("NEW")  // NEW, CONTACTED, EVALUATED, LISTED, REJECTED
+
+  // Admin handling
+  assignedToId    Int?
+  assignedTo      Admin?   @relation(fields: [assignedToId], references: [id])
+  notes           String?  // Internal notes from admin
+
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  contactedAt     DateTime?
+
+  @@map("property_submissions")
+}
+
 // Note: SQLite doesn't support enums, using String instead
 // Valid values:
-// Role: "ADMIN", "AGENT", "MANAGER"  
+// Role: "ADMIN", "AGENT", "MANAGER"
 // OperationType: "VANZARE", "INCHIRIERE"
 // PropertyType: "APARTAMENT", "CASA", "TEREN", "SPATIU_COMERCIAL"
 // PropertyStatus: "ACTIVE", "INACTIVE", "ARCHIVED", "SOLD", "RENTED"
 // TransactionType: "CUMPARARE", "VANZARE", "INCHIRIERE"
 // InquiryStatus: "NEW", "CONTACTED", "IN_PROGRESS", "CLOSED", "SPAM"
 // ActivityAction: "CREATE", "UPDATE", "DELETE", "ARCHIVE", "RESTORE", "LOGIN", "LOGOUT"
+// SubmissionStatus: "NEW", "CONTACTED", "EVALUATED", "LISTED", "REJECTED"

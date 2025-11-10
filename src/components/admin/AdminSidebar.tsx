@@ -15,7 +15,8 @@ import {
   ArchiveBoxIcon,
   EnvelopeIcon,
   Bars3Icon,
-  XMarkIcon
+  XMarkIcon,
+  DocumentTextIcon
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -32,6 +33,7 @@ const navigation = [
     { name: 'Arhivate', href: '/admin/properties?status=ARCHIVED' },
   ]},
   { name: 'Solicitări clienți', href: '/admin/inquiries', icon: EnvelopeIcon },
+  { name: 'Cereri de Listare', href: '/admin/submissions', icon: DocumentTextIcon },
   { name: 'Agenți', href: '/admin/agents', icon: UsersIcon },
   { name: 'Statistici', href: '/admin/statistics', icon: ChartBarIcon },
   { name: 'Setări', href: '/admin/settings', icon: CogIcon },
