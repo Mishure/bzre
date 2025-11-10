@@ -10,29 +10,29 @@ Add the following variables for **Production, Preview, and Development** environ
 
 | Variable | Value |
 |----------|-------|
-| `DATABASE_URL` | `postgresql://postgres.lrywxojospwerllzjifz:khYSSEej8tXsERBp@aws-1-eu-central-1.pooler.supabase.com:6543/postgres?pgbouncer=true` |
-| `DIRECT_URL` | `postgresql://postgres.lrywxojospwerllzjifz:khYSSEej8tXsERBp@aws-1-eu-central-1.pooler.supabase.com:5432/postgres?sslmode=require` |
+| `DATABASE_URL` | Get from Supabase: Dashboard > Settings > Database > Connection pooling |
+| `DIRECT_URL` | Get from Supabase: Dashboard > Settings > Database > Connection string (Direct connection) |
 
 ### NextAuth
 
 | Variable | Value |
 |----------|-------|
-| `NEXTAUTH_URL` | **Replace with your Vercel URL** (e.g., `https://buzau-realestate.vercel.app`) |
-| `NEXTAUTH_SECRET` | `dWPjciG3tPeYlch3ndEw17qJfC4+2sfMciYe6gFiQEE=` |
+| `NEXTAUTH_URL` | **Replace with your Vercel URL** (e.g., `https://your-app.vercel.app`) |
+| `NEXTAUTH_SECRET` | Generate with: `openssl rand -base64 32` |
 
 ### Admin Credentials
 
 | Variable | Value |
 |----------|-------|
-| `ADMIN_EMAIL` | `admin@bestinvestcamimob.ro` |
-| `ADMIN_PASSWORD` | `Admin123!` |
+| `ADMIN_EMAIL` | Your admin email |
+| `ADMIN_PASSWORD` | Your secure admin password |
 
 ### Supabase (Optional)
 
 | Variable | Value |
 |----------|-------|
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://lrywxojospwerllzjifz.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Get from Supabase Dashboard > Settings > API |
+| `NEXT_PUBLIC_SUPABASE_URL` | Get from Supabase: Dashboard > Settings > API |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Get from Supabase: Dashboard > Settings > API (anon/public key) |
 
 ## Quick Copy Format
 
