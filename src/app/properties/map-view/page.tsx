@@ -218,10 +218,10 @@ function MapViewContent() {
     setVisibleProperties(filtered); // Initially show all filtered properties
   }, [properties, filters, searchParams]);
 
-  const formatPrice = (price: number) => {
+  const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
       style: 'currency',
-      currency: 'RON'
+      currency: currency
     }).format(price);
   };
 

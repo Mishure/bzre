@@ -75,6 +75,7 @@ export async function POST(request: NextRequest) {
           data: {
             name: storiaData.title,
             price: storiaData.price,
+            currency: storiaData.currency,
             zone: storiaData.zone,
             street: storiaData.street || '',
             latitude: storiaData.latitude,

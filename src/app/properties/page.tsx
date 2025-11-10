@@ -223,10 +223,10 @@ function PropertiesContent() {
     setFilteredProperties(filtered);
   }, [properties, filters, searchParams]);
 
-  const formatPrice = (price: number) => {
+  const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
       style: 'currency',
-      currency: 'RON'
+      currency: currency
     }).format(price);
   };
 
@@ -503,7 +503,7 @@ function PropertiesContent() {
                     </div>
 
                     <p className="text-2xl font-bold text-primary-600 mb-3">
-                      {formatPrice(property.price)}
+                      {formatPrice(property.price, property.currency || 'RON')}
                     </p>
 
                     <div className="space-y-2 mb-4">

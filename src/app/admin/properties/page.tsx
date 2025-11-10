@@ -108,10 +108,10 @@ export default async function AdminProperties({
     );
   };
 
-  const formatPrice = (price: number) => {
+  const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
       style: 'currency',
-      currency: 'RON'
+      currency: currency
     }).format(price);
   };
 
@@ -271,7 +271,7 @@ export default async function AdminProperties({
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">
-                      {formatPrice(property.price)}
+                      {formatPrice(property.price, property.currency || 'RON')}
                     </div>
                     <div className="text-sm text-gray-500">
                       {property.surface} m²

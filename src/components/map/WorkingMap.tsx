@@ -82,7 +82,7 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
           <div style="min-width: 200px; font-family: system-ui;">
             <h3 style="font-weight: bold; margin-bottom: 8px; font-size: 14px;">${property.name}</h3>
             <div style="color: #059669; font-weight: bold; margin-bottom: 4px;">
-              ${new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'RON' }).format(property.price)}
+              ${new Intl.NumberFormat('ro-RO', { style: 'currency', currency: property.currency || 'RON' }).format(property.price)}
             </div>
             <div style="color: #6b7280; font-size: 12px; margin-bottom: 2px;">${property.street}</div>
             <div style="color: #6b7280; font-size: 12px; margin-bottom: 8px;">${property.zone}</div>

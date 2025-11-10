@@ -3,6 +3,7 @@ import puppeteer, { Browser, Page } from 'puppeteer'
 export interface StoriaPropertyData {
   title: string
   price: number
+  currency: string // EUR or RON
   propertyType: string // APARTAMENT, CASA, TEREN, SPATIU_COMERCIAL
   operationType: string // VANZARE, INCHIRIERE
   locality: string
@@ -184,17 +185,34 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
         title = getText('h1') || getText('[data-cy="ad.top-information.title"]')
       }
 
-      // Extract price
+      // Extract price and currency
       let price = 0
+      let currency = 'RON' // Default to RON
+
       if (jsonData?.offers?.price) {
         price = parseFloat(jsonData.offers.price)
+        // Try to get currency from JSON-LD
+        if (jsonData?.offers?.priceCurrency) {
+          currency = jsonData.offers.priceCurrency === 'EUR' ? 'EUR' : 'RON'
+        }
       } else {
         const priceText = getText('[data-cy="ad.top-information.price"]') ||
                          getText('[aria-label*="Preț"]') ||
                          getText('strong[class*="price"]')
         const priceMatch = priceText.match(/[\d\s.]+/)
         price = priceMatch ? parseFloat(priceMatch[0].replace(/[\s.]/g, '')) : 0
+
+        // Extract currency from price text (look for EUR, € or RON, lei)
+        if (priceText.includes('EUR') || priceText.includes('€')) {
+          currency = 'EUR'
+          console.log('Detected EUR currency from price text')
+        } else if (priceText.includes('RON') || priceText.includes('lei')) {
+          currency = 'RON'
+          console.log('Detected RON currency from price text')
+        }
       }
+
+      console.log('Extracted price:', price, currency)
 
       // Extract property type and operation type from breadcrumbs or URL
       const breadcrumbs = getTexts('[data-cy="breadcrumb-item"]')
@@ -676,6 +694,7 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
       const result = {
         title,
         price,
+        currency,
         propertyType,
         operationType,
         locality,
@@ -701,7 +720,7 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
 
       console.log('=== FINAL EXTRACTED DATA ===')
       console.log('Title:', title)
-      console.log('Price:', price)
+      console.log('Price:', price, currency)
       console.log('Surface:', surface, 'm²')
       console.log('Rooms:', rooms)
       console.log('Floor:', floor)
@@ -722,6 +741,7 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
     const mappedData: StoriaPropertyData = {
       title: propertyData.title,
       price: propertyData.price,
+      currency: propertyData.currency || 'RON',
       propertyType: mapPropertyType(propertyData.propertyType),
       operationType: mapOperationType(propertyData.operationType),
       locality: propertyData.locality || 'Buzau',

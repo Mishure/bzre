@@ -66,10 +66,10 @@ export default function PropertyDetailPage() {
     fetchProperty();
   }, [propertyId]);
 
-  const formatPrice = (price: number) => {
+  const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
       style: 'currency',
-      currency: 'RON'
+      currency: currency
     }).format(price);
   };
 
@@ -231,7 +231,7 @@ export default function PropertyDetailPage() {
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold text-primary-600 mb-1">
-                      {formatPrice(property.price)}
+                      {formatPrice(property.price, property.currency || 'RON')}
                     </div>
                     <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium text-white ${
                       property.operationType === 'VANZARE' ? 'bg-green-600' : 'bg-blue-600'
@@ -356,7 +356,7 @@ export default function PropertyDetailPage() {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Preț/m²:</span>
-                  <span className="font-medium">{formatPrice(Math.round(property.price / property.surface))}/m²</span>
+                  <span className="font-medium">{formatPrice(Math.round(property.price / property.surface), property.currency || 'RON')}/m²</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Zonă:</span>

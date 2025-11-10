@@ -2,6 +2,7 @@ export interface Property {
   id: number;
   name: string;
   price: number;
+  currency?: string; // EUR or RON
   zone: string;
   comfort?: string;
   street: string;

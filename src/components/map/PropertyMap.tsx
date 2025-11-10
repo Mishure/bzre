@@ -197,10 +197,10 @@ export default function PropertyMap({
     geocodeProperties();
   }, [properties]);
   
-  const formatPrice = (price: number) => {
+  const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
       style: 'currency',
-      currency: 'RON',
+      currency: currency,
     }).format(price);
   };
   
@@ -242,7 +242,7 @@ export default function PropertyMap({
                 <div className="min-w-[200px]">
                   <h3 className="font-semibold text-gray-900 mb-2">{property.name}</h3>
                   <div className="space-y-1 text-sm">
-                    <p className="text-green-600 font-bold">{formatPrice(property.price)}</p>
+                    <p className="text-green-600 font-bold">{formatPrice(property.price, property.currency || 'RON')}</p>
                     <p className="text-gray-600">{property.street}</p>
                     <p className="text-gray-600">{property.zone}</p>
                     <div className="flex justify-between">
