@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS property_submissions (
     -- Additional info
     description TEXT NOT NULL,
     features TEXT,
+    images TEXT,
 
     -- Status tracking
     status TEXT NOT NULL DEFAULT 'NEW',

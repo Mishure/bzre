@@ -22,6 +22,7 @@ type PropertySubmission = {
   estimatedPrice: number
   description: string
   features: string | null
+  images: string | null
   status: string
   assignedTo: {
     id: number
@@ -194,6 +195,9 @@ export default function PropertySubmissionsPage() {
                     Proprietate
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Imagini
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Locație
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -232,6 +236,27 @@ export default function PropertySubmissionsPage() {
                           {submission.surface} mp {submission.rooms ? `• ${submission.rooms} camere` : ''}
                         </div>
                       </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {submission.images ? (
+                        <div className="flex gap-1">
+                          {JSON.parse(submission.images).slice(0, 3).map((imageUrl: string, idx: number) => (
+                            <img
+                              key={idx}
+                              src={imageUrl}
+                              alt={`Property ${idx + 1}`}
+                              className="h-12 w-12 object-cover rounded border"
+                            />
+                          ))}
+                          {JSON.parse(submission.images).length > 3 && (
+                            <div className="h-12 w-12 rounded border bg-gray-100 flex items-center justify-center text-xs text-gray-600">
+                              +{JSON.parse(submission.images).length - 3}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="text-xs text-gray-400">Fără imagini</span>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">{submission.locality}</div>

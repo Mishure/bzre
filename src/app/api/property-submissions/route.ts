@@ -1,80 +1,93 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { z } from 'zod'
-
-const propertySubmissionSchema = z.object({
-  ownerName: z.string().min(2),
-  phone: z.string().min(10),
-  email: z.string().email(),
-  propertyType: z.enum(['APARTAMENT', 'CASA', 'TEREN', 'SPATIU_COMERCIAL']),
-  operationType: z.enum(['VANZARE', 'INCHIRIERE']),
-  locality: z.string().min(2),
-  zone: z.string().min(2),
-  address: z.string().min(5),
-  surface: z.string(),
-  rooms: z.string().optional(),
-  floor: z.string().optional(),
-  totalFloors: z.string().optional(),
-  estimatedPrice: z.string(),
-  description: z.string().min(20),
-  features: z.string().optional(),
-})
+import { uploadPropertySubmissionImage } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
+    const formData = await request.formData()
 
-    // Validate request body
-    const validatedData = propertySubmissionSchema.parse(body)
+    // Extract form fields
+    const ownerName = formData.get('ownerName') as string
+    const phone = formData.get('phone') as string
+    const email = formData.get('email') as string
+    const propertyType = formData.get('propertyType') as string
+    const operationType = formData.get('operationType') as string
+    const locality = formData.get('locality') as string
+    const zone = formData.get('zone') as string
+    const address = formData.get('address') as string
+    const surface = formData.get('surface') as string
+    const rooms = formData.get('rooms') as string
+    const floor = formData.get('floor') as string
+    const totalFloors = formData.get('totalFloors') as string
+    const estimatedPrice = formData.get('estimatedPrice') as string
+    const description = formData.get('description') as string
+    const features = formData.get('features') as string
+    const imageCount = parseInt(formData.get('imageCount') as string || '0')
 
-    // Convert string numbers to actual numbers
+    // Create submission first to get ID
     const submission = await prisma.propertySubmission.create({
       data: {
-        ownerName: validatedData.ownerName,
-        phone: validatedData.phone,
-        email: validatedData.email,
-        propertyType: validatedData.propertyType,
-        operationType: validatedData.operationType,
-        locality: validatedData.locality,
-        zone: validatedData.zone,
-        address: validatedData.address,
-        surface: parseFloat(validatedData.surface),
-        rooms: validatedData.rooms ? parseInt(validatedData.rooms) : null,
-        floor: validatedData.floor ? parseInt(validatedData.floor) : null,
-        totalFloors: validatedData.totalFloors ? parseInt(validatedData.totalFloors) : null,
-        estimatedPrice: parseFloat(validatedData.estimatedPrice),
-        description: validatedData.description,
-        features: validatedData.features || null,
+        ownerName,
+        phone,
+        email,
+        propertyType,
+        operationType,
+        locality,
+        zone,
+        address,
+        surface: parseFloat(surface),
+        rooms: rooms ? parseInt(rooms) : null,
+        floor: floor ? parseInt(floor) : null,
+        totalFloors: totalFloors ? parseInt(totalFloors) : null,
+        estimatedPrice: parseFloat(estimatedPrice),
+        description,
+        features: features || null,
         status: 'NEW',
+        images: null, // Will update after uploading images
       },
     })
+
+    // Upload images if any
+    const imageUrls: string[] = []
+    if (imageCount > 0) {
+      for (let i = 0; i < imageCount; i++) {
+        const imageFile = formData.get(`image_${i}`) as File
+        if (imageFile) {
+          const imageUrl = await uploadPropertySubmissionImage(imageFile, submission.id, i)
+          if (imageUrl) {
+            imageUrls.push(imageUrl)
+          }
+        }
+      }
+
+      // Update submission with image URLs
+      if (imageUrls.length > 0) {
+        await prisma.propertySubmission.update({
+          where: { id: submission.id },
+          data: {
+            images: JSON.stringify(imageUrls),
+          },
+        })
+      }
+    }
 
     return NextResponse.json(
       {
         success: true,
         message: 'Property submission received successfully',
         submissionId: submission.id,
+        imagesUploaded: imageUrls.length,
       },
       { status: 201 }
     )
   } catch (error) {
     console.error('Error creating property submission:', error)
 
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Invalid form data',
-          errors: error.errors,
-        },
-        { status: 400 }
-      )
-    }
-
     return NextResponse.json(
       {
         success: false,
         message: 'Failed to submit property',
+        error: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     )

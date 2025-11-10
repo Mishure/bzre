@@ -179,6 +179,7 @@ model PropertySubmission {
   // Additional info
   description     String
   features        String?
+  images          String?  // JSON array of image URLs
 
   // Status tracking
   status          String   @default("NEW")  // NEW, CONTACTED, EVALUATED, LISTED, REJECTED

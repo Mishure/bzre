@@ -43,6 +43,8 @@ type PropertySubmissionForm = z.infer<typeof propertySubmissionSchema>
 export default function PropertySubmissionPage() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [images, setImages] = useState<File[]>([])
+  const [imagePreviews, setImagePreviews] = useState<string[]>([])
 
   const {
     register,
@@ -53,16 +55,71 @@ export default function PropertySubmissionPage() {
     resolver: zodResolver(propertySubmissionSchema),
   })
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files) return
+
+    const fileArray = Array.from(files)
+
+    // Limit to 10 images
+    if (images.length + fileArray.length > 10) {
+      toast.error('Poți încărca maxim 10 imagini')
+      return
+    }
+
+    // Validate file size (max 5MB per image)
+    const invalidFiles = fileArray.filter(file => file.size > 5 * 1024 * 1024)
+    if (invalidFiles.length > 0) {
+      toast.error('Fiecare imagine trebuie să fie mai mică de 5MB')
+      return
+    }
+
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+    const invalidTypes = fileArray.filter(file => !validTypes.includes(file.type))
+    if (invalidTypes.length > 0) {
+      toast.error('Doar imagini JPG, PNG sau WebP sunt acceptate')
+      return
+    }
+
+    // Create previews
+    fileArray.forEach(file => {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImagePreviews(prev => [...prev, reader.result as string])
+      }
+      reader.readAsDataURL(file)
+    })
+
+    setImages(prev => [...prev, ...fileArray])
+  }
+
+  const removeImage = (index: number) => {
+    setImages(prev => prev.filter((_, i) => i !== index))
+    setImagePreviews(prev => prev.filter((_, i) => i !== index))
+  }
+
   const onSubmit = async (data: PropertySubmissionForm) => {
     setIsSubmitting(true)
 
     try {
+      // Create FormData to send files
+      const formData = new FormData()
+
+      // Add all form fields
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value as string)
+      })
+
+      // Add images
+      images.forEach((image, index) => {
+        formData.append(`image_${index}`, image)
+      })
+      formData.append('imageCount', images.length.toString())
+
       const response = await fetch('/api/property-submissions', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        body: formData, // Send FormData instead of JSON
       })
 
       if (!response.ok) {
@@ -71,6 +128,8 @@ export default function PropertySubmissionPage() {
 
       toast.success('Mulțumim! Cererea dumneavoastră a fost trimisă cu succes. Vă vom contacta în curând!')
       reset()
+      setImages([])
+      setImagePreviews([])
 
       // Redirect after 2 seconds
       setTimeout(() => {
@@ -386,6 +445,94 @@ export default function PropertySubmissionPage() {
                     Separați cu virgulă diferitele dotări
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Images Upload Section */}
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b">
+                Imagini Proprietate
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Adaugă imagini (maxim 10 imagini, maxim 5MB fiecare)
+                  </label>
+                  <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-primary-500 transition-colors">
+                    <div className="space-y-1 text-center">
+                      <svg
+                        className="mx-auto h-12 w-12 text-gray-400"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 48 48"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                          strokeWidth={2}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <div className="flex text-sm text-gray-600">
+                        <label
+                          htmlFor="file-upload"
+                          className="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500"
+                        >
+                          <span>Încarcă imagini</span>
+                          <input
+                            id="file-upload"
+                            name="file-upload"
+                            type="file"
+                            accept="image/jpeg,image/jpg,image/png,image/webp"
+                            multiple
+                            className="sr-only"
+                            onChange={handleImageChange}
+                          />
+                        </label>
+                        <p className="pl-1">sau trage și plasează</p>
+                      </div>
+                      <p className="text-xs text-gray-500">PNG, JPG, WebP până la 5MB</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Image Previews */}
+                {imagePreviews.length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">
+                      Imagini selectate ({imagePreviews.length}/10)
+                    </p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {imagePreviews.map((preview, index) => (
+                        <div key={index} className="relative group">
+                          <img
+                            src={preview}
+                            alt={`Preview ${index + 1}`}
+                            className="h-32 w-full object-cover rounded-lg border-2 border-gray-200"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeImage(index)}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600"
+                          >
+                            <svg
+                              className="h-5 w-5"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
