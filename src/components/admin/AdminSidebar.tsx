@@ -16,7 +16,8 @@ import {
   EnvelopeIcon,
   Bars3Icon,
   XMarkIcon,
-  DocumentTextIcon
+  DocumentTextIcon,
+  ArrowDownTrayIcon
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -32,6 +33,7 @@ const navigation = [
     { name: 'Spații comerciale', href: '/admin/properties?type=SPATIU_COMERCIAL' },
     { name: 'Arhivate', href: '/admin/properties?status=ARCHIVED' },
   ]},
+  { name: 'Import Storia', href: '/admin/import', icon: ArrowDownTrayIcon },
   { name: 'Solicitări clienți', href: '/admin/inquiries', icon: EnvelopeIcon },
   { name: 'Cereri de Listare', href: '/admin/submissions', icon: DocumentTextIcon },
   { name: 'Agenți', href: '/admin/agents', icon: UsersIcon },

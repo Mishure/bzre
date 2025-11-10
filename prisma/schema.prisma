@@ -52,6 +52,13 @@ model Property {
   propertyType      String
   description       String?
   features          String?        // JSON string
+  heating           String?        // Încălzire
+  condition         String?        // Stare
+  availableFrom     String?        // Liber de la
+  deposit           String?        // Garanție
+  buildingType      String?        // Tip clădire
+  buildingMaterial  String?        // Material construcție
+  yearBuilt         Int?           // An construcție
   images            PropertyImage[]
   status            String @default("ACTIVE")
   featured          Boolean        @default(false)

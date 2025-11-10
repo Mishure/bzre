@@ -3,12 +3,10 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import PropertiesFilter from '@/components/admin/PropertiesFilter';
+import PropertyActions from '@/components/admin/PropertyActions';
 import {
   PlusIcon,
-  EyeIcon,
-  PencilIcon,
   ArchiveBoxIcon,
-  TrashIcon,
   BuildingOfficeIcon,
   HomeIcon,
   ChartBarIcon
@@ -279,9 +277,12 @@ export default async function AdminProperties({
                       {property.surface} m²
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <div>{property.zone}</div>
-                    <div className="text-xs">{property.locality}</div>
+                  <td className="px-6 py-4 text-sm text-gray-500">
+                    <div className="font-medium text-gray-900">{property.street || property.zone || '-'}</div>
+                    {property.zone && property.street !== property.zone && (
+                      <div className="text-xs text-gray-500">{property.zone}</div>
+                    )}
+                    <div className="text-xs text-gray-400">{property.locality}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {getStatusBadge(property.status as PropertyStatus)}
@@ -289,19 +290,8 @@ export default async function AdminProperties({
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {property._count.inquiries} solicitări
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                    <button className="text-primary-600 hover:text-primary-900">
-                      <EyeIcon className="h-4 w-4" />
-                    </button>
-                    <button className="text-gray-600 hover:text-gray-900">
-                      <PencilIcon className="h-4 w-4" />
-                    </button>
-                    <button className="text-yellow-600 hover:text-yellow-900">
-                      <ArchiveBoxIcon className="h-4 w-4" />
-                    </button>
-                    <button className="text-red-600 hover:text-red-900">
-                      <TrashIcon className="h-4 w-4" />
-                    </button>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <PropertyActions propertyId={property.id} propertyName={property.name} />
                   </td>
                 </tr>
               ))}

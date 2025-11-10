@@ -163,20 +163,21 @@ export default function WorkingMap({ properties, height = '100%', onPropertyClic
 
       // Clean up any existing map instance on the container
       if ((mapRef.current as any)._leaflet_id) {
-        console.log('Found existing Leaflet ID on container, cleaning up...');
-        try {
-          // Remove the leaflet ID completely
-          delete (mapRef.current as any)._leaflet_id;
-        } catch (e) {
-          console.log('Error cleaning up existing map:', e);
-        }
-        // Clear the container's HTML to ensure a clean slate
-        mapRef.current.innerHTML = '';
+        console.log('Found existing Leaflet ID on container, aborting initialization');
+        initializingRef.current = false;
+        return;
       }
-      
+
       try {
         // Dynamically import Leaflet to avoid SSR issues
         const L = (await import('leaflet')).default;
+
+        // Double-check right before creating the map - this catches race conditions
+        if ((mapRef.current as any)._leaflet_id) {
+          console.log('Container already has Leaflet ID, aborting');
+          initializingRef.current = false;
+          return;
+        }
 
         // Load CSS
         const link = document.createElement('link');

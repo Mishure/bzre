@@ -1,9 +1,15 @@
+import SessionProvider from '@/components/admin/SessionProvider'
+import ToasterProvider from '@/components/admin/ToasterProvider'
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // For the login page, render without layout
-  // The actual auth check happens in individual pages
-  return <>{children}</>;
+  return (
+    <SessionProvider>
+      <ToasterProvider />
+      {children}
+    </SessionProvider>
+  );
 }
