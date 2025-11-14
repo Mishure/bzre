@@ -52,6 +52,8 @@ export async function sendContactFormNotification(data: ContactFormEmail) {
       'buy': 'Cumpărare',
       'sell': 'Vânzare',
       'rent': 'Închiriere',
+      'evaluation': 'Evaluare Proprietate',
+      'general': 'Informații Generale',
     };
 
     const subjectText = data.subject ? subjectMap[data.subject] || 'General' : 'General';
