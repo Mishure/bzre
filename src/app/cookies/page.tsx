@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { CookieIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon } from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Politica de Cookie-uri | BESTINVEST CAMIMOB',
@@ -20,7 +20,7 @@ export default function CookiesPage() {
         <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
           <div className="flex items-center justify-center mb-6">
             <div className="bg-primary-100 rounded-full p-4">
-              <CookieIcon className="h-12 w-12 text-primary-600" />
+              <DocumentTextIcon className="h-12 w-12 text-primary-600" />
             </div>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 text-center mb-4">
