@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import InquiryStatusDropdown from '@/components/admin/InquiryStatusDropdown';
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -253,20 +254,10 @@ export default async function InquiriesPage() {
                     {formatDate(inquiry.createdAt)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
-                    <select
-                      defaultValue={inquiry.status}
-                      onChange={async (e) => {
-                        // TODO: Implement status update
-                        console.log('Update status to:', e.target.value);
-                      }}
-                      className="text-sm border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
-                    >
-                      <option value="NEW">Nouă</option>
-                      <option value="CONTACTED">Contactat</option>
-                      <option value="IN_PROGRESS">În progres</option>
-                      <option value="CLOSED">Închisă</option>
-                      <option value="SPAM">Spam</option>
-                    </select>
+                    <InquiryStatusDropdown
+                      inquiryId={inquiry.id}
+                      currentStatus={inquiry.status}
+                    />
                   </td>
                 </tr>
               ))}
