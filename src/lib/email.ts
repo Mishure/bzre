@@ -3,13 +3,9 @@ import { Resend } from 'resend';
 // Initialize Resend with API key from environment
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// TEMPORARY FOR TESTING: Using mariantiu@yahoo.com (your Resend account email)
-// After domain verification, change back to: contact@bestinvestcamimob.ro
-const ADMIN_EMAIL = 'mariantiu@yahoo.com';
-
-// Using Resend's onboarding domain for testing - works immediately without verification
-// For production: verify camimob.ro domain in Resend and change to 'noreply@camimob.ro'
-const FROM_EMAIL = 'onboarding@resend.dev';
+// Production email configuration - Domain verified in Resend
+const ADMIN_EMAIL = 'contact@bestinvestcamimob.ro';
+const FROM_EMAIL = 'noreply@camimob.ro';
 
 interface ContactFormEmail {
   name: string;
