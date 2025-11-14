@@ -266,18 +266,24 @@ export function parseSearchQuery(query: string): ParsedSearch {
 
 export function buildSearchParams(parsed: ParsedSearch): URLSearchParams {
   const params = new URLSearchParams();
-  
-  if (parsed.propertyType) params.append('propertyType', parsed.propertyType);
+
+  if (parsed.propertyType) params.append('type', parsed.propertyType);
   if (parsed.operation) params.append('operation', parsed.operation);
   if (parsed.zone) params.append('zone', parsed.zone);
-  if (parsed.rooms) params.append('rooms', parsed.rooms);
+
+  // Use minRooms and maxRooms instead of rooms for exact matching
+  if (parsed.rooms) {
+    params.append('minRooms', parsed.rooms);
+    params.append('maxRooms', parsed.rooms);
+  }
+
   if (parsed.minPrice) params.append('minPrice', parsed.minPrice);
   if (parsed.maxPrice) params.append('maxPrice', parsed.maxPrice);
-  
+
   // Add keywords as search param if any remain
   if (parsed.keywords.length > 0) {
     params.append('search', parsed.keywords.join(' '));
   }
-  
+
   return params;
 }

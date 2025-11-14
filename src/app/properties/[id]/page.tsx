@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { 
   ArrowLeftIcon,
   HeartIcon,
@@ -139,11 +140,19 @@ export default function PropertyDetailPage() {
   return (
     <div className="min-h-screen pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
+        {/* Breadcrumbs */}
+        <Breadcrumbs
+          items={[
+            { label: 'Proprietăți', href: '/properties' },
+            { label: property.name },
+          ]}
+        />
+
         {/* Back Button */}
         <div className="mb-6">
-          <Link 
-            href="/properties" 
+          <Link
+            href="/properties"
             className="inline-flex items-center text-gray-600 hover:text-gray-900"
           >
             <ArrowLeftIcon className="h-4 w-4 mr-2" />
@@ -156,10 +165,10 @@ export default function PropertyDetailPage() {
           {property.images && property.images.length > 0 && (
             <>
               <img
-                src={typeof property.images[currentImageIndex] === 'string' 
-                  ? property.images[currentImageIndex] 
+                src={typeof property.images[currentImageIndex] === 'string'
+                  ? property.images[currentImageIndex]
                   : property.images[currentImageIndex]?.url}
-                alt={property.name}
+                alt={`${property.name} - Imagine ${currentImageIndex + 1} din ${property.images.length} - ${property.propertyType} ${property.operationType === 'VANZARE' ? 'de vânzare' : 'de închiriat'} în ${property.zone}, ${property.locality}`}
                 className="w-full h-full object-cover"
               />
               

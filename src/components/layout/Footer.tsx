@@ -78,7 +78,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/management" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link href="/services/exclusivity" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Administrare proprietăți
                 </Link>
               </li>
@@ -104,7 +104,7 @@ export default function Footer() {
             <Link href="/privacy" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
               Politica de confidențialitate
             </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
+            <Link href="/termeni-si-conditii" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
               Termeni și condiții
             </Link>
             <Link href="/cookies" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">

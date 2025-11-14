@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost', 'bestinvest-buzau.vercel.app'],
+    domains: ['localhost', 'bestinvest-buzau.vercel.app', 'www.camimob.ro', 'camimob.ro'],
     formats: ['image/webp', 'image/avif'],
   },
   experimental: {

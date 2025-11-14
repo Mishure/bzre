@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { uploadPropertySubmissionImage } from '@/lib/supabase'
+import { sendPropertySubmissionNotification } from '@/lib/email'
 
 export async function POST(request: NextRequest) {
   try {
@@ -70,6 +71,26 @@ export async function POST(request: NextRequest) {
         })
       }
     }
+
+    // Send email notification to admin
+    await sendPropertySubmissionNotification({
+      ownerName,
+      phone,
+      email,
+      propertyType,
+      operationType,
+      locality,
+      zone,
+      address,
+      surface: parseFloat(surface),
+      rooms: rooms ? parseInt(rooms) : undefined,
+      floor: floor ? parseInt(floor) : undefined,
+      totalFloors: totalFloors ? parseInt(totalFloors) : undefined,
+      estimatedPrice: parseFloat(estimatedPrice),
+      description,
+      features: features || undefined,
+      submissionId: submission.id,
+    });
 
     return NextResponse.json(
       {

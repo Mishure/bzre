@@ -28,17 +28,36 @@ export default function EvaluationPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/services', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          serviceName: 'evaluation',
+          serviceNameDisplay: 'Evaluare Gratuită Imobil',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       setSubmitted(true);
-      setIsSubmitting(false);
       setFormData({
         name: '',
         email: '',
         message: '',
         termsAccepted: false
       });
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('A apărut o eroare. Vă rugăm să încercați din nou.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

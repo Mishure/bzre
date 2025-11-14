@@ -469,10 +469,10 @@ function PropertiesContent() {
                   {/* Property Image */}
                   <div className="relative h-48">
                     <img
-                      src={typeof property.images?.[0] === 'string' 
-                        ? property.images[0] 
+                      src={typeof property.images?.[0] === 'string'
+                        ? property.images[0]
                         : property.images?.[0]?.url || '/api/placeholder/400/300'}
-                      alt={property.name}
+                      alt={`${property.name} - ${property.propertyType} ${property.operationType === 'VANZARE' ? 'de vânzare' : 'de închiriat'} în ${property.zone || property.locality}, ${property.rooms ? property.rooms + ' camere, ' : ''}${property.surface} mp`}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-3 left-3">

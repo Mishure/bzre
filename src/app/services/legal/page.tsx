@@ -35,10 +35,24 @@ export default function LegalPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/services', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          serviceName: 'legal',
+          serviceNameDisplay: 'Consiliere Juridică',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       setSubmitted(true);
-      setIsSubmitting(false);
       setFormData({
         name: '',
         email: '',
@@ -46,7 +60,12 @@ export default function LegalPage() {
         message: '',
         termsAccepted: false
       });
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('A apărut o eroare. Vă rugăm să încercați din nou.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
