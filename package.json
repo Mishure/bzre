@@ -13,7 +13,8 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
     "db:reset": "prisma migrate reset --force && npm run db:seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "admin:change-password": "tsx scripts/change-admin-password.ts"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
