@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   MagnifyingGlassIcon, 
   MapIcon, 
@@ -36,26 +37,27 @@ interface FilterState {
   maxSurface: string;
 }
 
-const propertyTypes = [
-  { id: 'APARTAMENT', name: 'Apartamente' },
-  { id: 'CASA', name: 'Case' },
-  { id: 'TEREN', name: 'Terenuri' },
-  { id: 'SPATIU_COMERCIAL', name: 'Spații comerciale' },
-];
-
-const operations = [
-  { id: 'VANZARE', name: 'Vânzare' },
-  { id: 'INCHIRIERE', name: 'Închiriere' },
-];
-
 const zones = [
-  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6', 
-  'Unirii', 'Dorobanti', 'Bdul Bucuresti', 'Victoriei', 
+  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6',
+  'Unirii', 'Dorobanti', 'Bdul Bucuresti', 'Victoriei',
   'Nord', 'Sud', 'Est', 'Vest', 'Marginal', 'Zona Industriala'
 ];
 
 function PropertiesContent() {
+  const { t } = useLanguage();
   const searchParams = useSearchParams();
+
+  const propertyTypes = [
+    { id: 'APARTAMENT', name: t('propertyTypes.APARTAMENT') },
+    { id: 'CASA', name: t('propertyTypes.CASA') },
+    { id: 'TEREN', name: t('propertyTypes.TEREN') },
+    { id: 'SPATIU_COMERCIAL', name: t('propertyTypes.SPATIU_COMERCIAL') },
+  ];
+
+  const operations = [
+    { id: 'VANZARE', name: t('operations.VANZARE') },
+    { id: 'INCHIRIERE', name: t('operations.INCHIRIERE') },
+  ];
   const [properties, setProperties] = useState<Property[]>([]);
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
@@ -291,17 +293,17 @@ function PropertiesContent() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Proprietăți disponibile</h1>
-            <p className="mt-2 text-gray-600">{filteredProperties.length} proprietăți găsite</p>
+            <h1 className="text-3xl font-bold text-gray-900">{t('properties.availableProperties')}</h1>
+            <p className="mt-2 text-gray-600">{filteredProperties.length} {t('properties.propertiesFound')}</p>
           </div>
-          
+
           <div className="mt-4 md:mt-0 flex items-center space-x-4">
             <button
               onClick={() => setShowFilters(!showFilters)}
               className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               <FunnelIcon className="h-5 w-5" />
-              <span>Filtre</span>
+              <span>{t('properties.filters')}</span>
             </button>
             
             <div className="flex border border-gray-300 rounded-lg">
@@ -326,12 +328,12 @@ function PropertiesContent() {
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Căutare</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.search')}</label>
                 <div className="relative">
                   <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Nume, zonă, stradă..."
+                    placeholder={t('properties.searchPlaceholder')}
                     value={filters.search}
                     onChange={(e) => handleFilterChange('search', e.target.value)}
                     className="pl-10 w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
@@ -340,13 +342,13 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tip proprietate</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.propertyType')}</label>
                 <select
                   value={filters.propertyType}
                   onChange={(e) => handleFilterChange('propertyType', e.target.value)}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
-                  <option value="">Toate tipurile</option>
+                  <option value="">{t('properties.allTypes')}</option>
                   {propertyTypes.map(type => (
                     <option key={type.id} value={type.id}>{type.name}</option>
                   ))}
@@ -354,13 +356,13 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Operație</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.operation')}</label>
                 <select
                   value={filters.operationType}
                   onChange={(e) => handleFilterChange('operationType', e.target.value)}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
-                  <option value="">Toate</option>
+                  <option value="">{t('properties.all')}</option>
                   {operations.map(op => (
                     <option key={op.id} value={op.id}>{op.name}</option>
                   ))}
@@ -368,13 +370,13 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Zonă</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.zone')}</label>
                 <select
                   value={filters.zone}
                   onChange={(e) => handleFilterChange('zone', e.target.value)}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
-                  <option value="">Toate zonele</option>
+                  <option value="">{t('properties.allZones')}</option>
                   {zones.map(zone => (
                     <option key={zone} value={zone}>{zone}</option>
                   ))}
@@ -382,7 +384,7 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Preț min (€)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.minPrice')}</label>
                 <input
                   type="number"
                   placeholder="0"
@@ -393,7 +395,7 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Preț max (€)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.maxPrice')}</label>
                 <input
                   type="number"
                   placeholder="1000000"
@@ -404,7 +406,7 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Camere min</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.minRooms')}</label>
                 <input
                   type="number"
                   placeholder="1"
@@ -415,7 +417,7 @@ function PropertiesContent() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Suprafață min (m²)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">{t('properties.minSurface')}</label>
                 <input
                   type="number"
                   placeholder="30"
@@ -425,13 +427,13 @@ function PropertiesContent() {
                 />
               </div>
             </div>
-            
+
             <div className="flex justify-end">
               <button
                 onClick={clearFilters}
                 className="text-gray-600 hover:text-gray-800 text-sm"
               >
-                Șterge toate filtrele
+                {t('properties.clearAllFilters')}
               </button>
             </div>
           </div>
@@ -479,7 +481,7 @@ function PropertiesContent() {
                       <span className={`px-2 py-1 rounded-full text-xs font-medium text-white ${
                         property.operationType === 'VANZARE' ? 'bg-green-600' : 'bg-blue-600'
                       }`}>
-                        {property.operationType === 'VANZARE' ? 'De vânzare' : 'De închiriat'}
+                        {property.operationType === 'VANZARE' ? t('properties.forSale') : t('properties.forRent')}
                       </span>
                     </div>
                     <button
@@ -514,8 +516,8 @@ function PropertiesContent() {
                       <div className="flex items-center justify-between text-sm text-gray-600">
                         <span>
                           {property.propertyType === 'TEREN' || property.propertyType === 'SPATIU_COMERCIAL'
-                            ? (property.propertyType === 'TEREN' ? 'Teren' : 'Spațiu comercial')
-                            : (property.rooms && property.rooms > 0 ? `${property.rooms} camere` : 'Proprietate')
+                            ? (property.propertyType === 'TEREN' ? t('properties.land2') : t('properties.commercialSpace'))
+                            : (property.rooms && property.rooms > 0 ? `${property.rooms} ${t('properties.rooms')}` : t('properties.property'))
                           }
                         </span>
                         <span>{property.surface} m²</span>
@@ -536,7 +538,7 @@ function PropertiesContent() {
                           ))}
                           {features.length > 3 && (
                             <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                              +{features.length - 3} altele
+                              +{features.length - 3} {t('properties.more')}
                             </span>
                           )}
                         </div>
@@ -549,12 +551,12 @@ function PropertiesContent() {
                         href={`/properties/${property.id}`}
                         className="flex-1 bg-primary-600 text-white text-center py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors"
                       >
-                        Vezi detalii
+                        {t('properties.viewDetails')}
                       </Link>
                       <Link
                         href={`/properties/map-view?propertyId=${property.id}`}
                         className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                        title="Vezi pe hartă"
+                        title={t('properties.viewOnMap')}
                       >
                         <EyeIcon className="h-5 w-5 text-gray-600" />
                       </Link>
@@ -570,16 +572,16 @@ function PropertiesContent() {
         {!loading && filteredProperties.length === 0 && (
           <div className="text-center py-12">
             <HomeIcon className="mx-auto h-12 w-12 text-gray-400" />
-            <h3 className="mt-2 text-sm font-medium text-gray-900">Nu s-au găsit proprietăți</h3>
+            <h3 className="mt-2 text-sm font-medium text-gray-900">{t('properties.noPropertiesFound')}</h3>
             <p className="mt-1 text-sm text-gray-500">
-              Încercați să modificați filtrele sau să căutați ceva diferit.
+              {t('properties.noPropertiesMessage')}
             </p>
             <div className="mt-6">
               <button
                 onClick={clearFilters}
                 className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700"
               >
-                Șterge toate filtrele
+                {t('properties.clearAllFilters')}
               </button>
             </div>
           </div>
