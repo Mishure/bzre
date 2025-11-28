@@ -28,7 +28,7 @@ export default function PropertyStructuredData({ property }: PropertyStructuredD
         streetAddress: translatedStreet || property.street,
         addressLocality: property.locality || 'Buzău',
         addressRegion: 'Buzău',
-        postalCode: property.postalCode || '',
+        postalCode: '',
         addressCountry: 'RO'
       },
       geo: property.latitude && property.longitude ? {
