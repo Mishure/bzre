@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import CookieSettingsButton from '@/components/CookieSettingsButton';
 
 export default function Footer() {
   return (
@@ -100,7 +101,7 @@ export default function Footer() {
           <div className="text-gray-400 text-sm">
             © {new Date().getFullYear()} BESTINVEST CAMIMOB. Toate drepturile rezervate.
           </div>
-          <div className="flex space-x-4 mt-4 md:mt-0">
+          <div className="flex flex-wrap gap-4 mt-4 md:mt-0 items-center justify-center md:justify-end">
             <Link href="/privacy" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
               Politica de confidențialitate
             </Link>
@@ -110,6 +111,7 @@ export default function Footer() {
             <Link href="/cookies" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
               Cookies
             </Link>
+            <CookieSettingsButton />
           </div>
         </div>
       </div>
