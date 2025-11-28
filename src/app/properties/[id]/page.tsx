@@ -33,9 +33,9 @@ export default function PropertyDetailPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
   const [agent] = useState<Agent>({
-    name: 'Maria Popescu',
+    name: 'Carmen Tiu',
     phone: '+40 773 723 654',
-    email: 'maria.popescu@bestinvestcamimob.ro'
+    email: 'contact@bestinvestcamimob.ro'
   });
 
   // Fetch property from API
@@ -353,8 +353,9 @@ export default function PropertyDetailPage() {
                 </a>
               </div>
 
-              <div className="mt-4 pt-4 border-t text-xs text-gray-500">
-                <p>Agent autorizat ANI • Licența #12345</p>
+              <div className="mt-4 pt-4 border-t text-xs text-gray-500 text-center">
+                <p>agent autorizat ANCPI</p>
+                <p className="mt-1">Licența #1798</p>
               </div>
             </div>
 
