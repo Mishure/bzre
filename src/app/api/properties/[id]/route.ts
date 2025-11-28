@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { translateProperty } from '@/lib/serverTranslation'
 
 export async function GET(
   request: Request,
@@ -17,6 +18,10 @@ export async function GET(
         { status: 400 }
       )
     }
+
+    // Get language from query params
+    const { searchParams } = new URL(request.url)
+    const lang = (searchParams.get('lang') || 'ro') as 'en' | 'ro'
 
     // Fetch property with images
     const property = await prisma.property.findUnique({
@@ -37,7 +42,16 @@ export async function GET(
       )
     }
 
-    return NextResponse.json(property)
+    // Server-side translation for SEO
+    const translatedProperty = await translateProperty(
+      {
+        ...property,
+        images: property.images.map(img => img.url)
+      },
+      lang
+    )
+
+    return NextResponse.json(translatedProperty)
 
   } catch (error) {
     console.error('Error fetching property:', error)

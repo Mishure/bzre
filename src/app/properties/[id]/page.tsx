@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { 
+import { useLanguage } from '@/contexts/LanguageContext';
+import {
   ArrowLeftIcon,
   HeartIcon,
   ShareIcon,
@@ -28,14 +29,15 @@ interface Agent {
 export default function PropertyDetailPage() {
   const params = useParams();
   const propertyId = params.id as string;
+  const { t, language } = useLanguage();
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
   const [agent] = useState<Agent>({
-    name: 'Maria Popescu',
+    name: 'Carmen Tiu',
     phone: '+40 773 723 654',
-    email: 'maria.popescu@bestinvestcamimob.ro'
+    email: 'carmen.tiu@bestinvestcamimob.ro'
   });
 
   // Fetch property from API
@@ -44,7 +46,7 @@ export default function PropertyDetailPage() {
       setLoading(true);
       try {
         console.log('Fetching property ID:', propertyId);
-        const response = await fetch(`/api/properties/${propertyId}`);
+        const response = await fetch(`/api/properties/${propertyId}?lang=${language}`);
 
         if (!response.ok) {
           console.error('Failed to fetch property:', response.status);
@@ -65,7 +67,7 @@ export default function PropertyDetailPage() {
     };
 
     fetchProperty();
-  }, [propertyId]);
+  }, [propertyId, language]);
 
   const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
@@ -125,9 +127,9 @@ export default function PropertyDetailPage() {
       <div className="min-h-screen pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Proprietatea nu a fost găsită</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('propertyDetail.propertyNotFound')}</h1>
             <Link href="/properties" className="text-primary-600 hover:text-primary-700">
-              ← Înapoi la proprietăți
+              ← {t('propertyDetail.backToProperties')}
             </Link>
           </div>
         </div>
@@ -144,7 +146,7 @@ export default function PropertyDetailPage() {
         {/* Breadcrumbs */}
         <Breadcrumbs
           items={[
-            { label: 'Proprietăți', href: '/properties' },
+            { label: t('nav.properties'), href: '/properties' },
             { label: property.name },
           ]}
         />
@@ -156,7 +158,7 @@ export default function PropertyDetailPage() {
             className="inline-flex items-center text-gray-600 hover:text-gray-900"
           >
             <ArrowLeftIcon className="h-4 w-4 mr-2" />
-            Înapoi la proprietăți
+            {t('propertyDetail.backToProperties')}
           </Link>
         </div>
 
@@ -245,7 +247,7 @@ export default function PropertyDetailPage() {
                     <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium text-white ${
                       property.operationType === 'VANZARE' ? 'bg-green-600' : 'bg-blue-600'
                     }`}>
-                      {property.operationType === 'VANZARE' ? 'De vânzare' : 'De închiriat'}
+                      {property.operationType === 'VANZARE' ? t('propertyDetail.forSale') : t('propertyDetail.forRent')}
                     </span>
                   </div>
                 </div>
@@ -254,22 +256,22 @@ export default function PropertyDetailPage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <div className="text-2xl font-bold text-gray-900">{property.rooms}</div>
-                    <div className="text-sm text-gray-600">Camere</div>
+                    <div className="text-sm text-gray-600">{t('propertyDetail.rooms')}</div>
                   </div>
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <div className="text-2xl font-bold text-gray-900">{property.surface}</div>
-                    <div className="text-sm text-gray-600">m²</div>
+                    <div className="text-sm text-gray-600">{t('propertyDetail.surface')}</div>
                   </div>
                   {property.floor && (
                     <div className="text-center p-3 bg-gray-50 rounded-lg">
                       <div className="text-2xl font-bold text-gray-900">{property.floor}</div>
-                      <div className="text-sm text-gray-600">Etaj</div>
+                      <div className="text-sm text-gray-600">{t('propertyDetail.floor')}</div>
                     </div>
                   )}
                   {property.totalFloors && (
                     <div className="text-center p-3 bg-gray-50 rounded-lg">
                       <div className="text-2xl font-bold text-gray-900">{property.totalFloors}</div>
-                      <div className="text-sm text-gray-600">Etaje total</div>
+                      <div className="text-sm text-gray-600">{t('propertyDetail.totalFloors')}</div>
                     </div>
                   )}
                 </div>
@@ -277,14 +279,14 @@ export default function PropertyDetailPage() {
 
               {/* Description */}
               <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">Descriere</h2>
+                <h2 className="text-xl font-semibold text-gray-900 mb-3">{t('propertyDetail.description')}</h2>
                 <p className="text-gray-700 leading-relaxed">{property.description}</p>
               </div>
 
               {/* Features */}
               {features.length > 0 && (
                 <div className="mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3">Caracteristici</h2>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3">{t('propertyDetail.features')}</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {features.map((feature: string, index: number) => (
                       <div key={index} className="flex items-center">
@@ -300,16 +302,16 @@ export default function PropertyDetailPage() {
               <div className="border-t pt-6">
                 <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
                   <div>
-                    <span className="font-medium">Tip proprietate:</span> {property.propertyType.replace('_', ' ')}
+                    <span className="font-medium">{t('propertyDetail.propertyType')}:</span> {property.propertyType.replace('_', ' ')}
                   </div>
                   <div>
-                    <span className="font-medium">ID proprietate:</span> #{property.id}
+                    <span className="font-medium">{t('propertyDetail.propertyId')}:</span> #{property.id}
                   </div>
                   <div>
-                    <span className="font-medium">Publicat:</span> {new Date(property.createdAt).toLocaleDateString('ro-RO')}
+                    <span className="font-medium">{t('propertyDetail.published')}:</span> {new Date(property.createdAt).toLocaleDateString(language === 'ro' ? 'ro-RO' : 'en-US')}
                   </div>
                   <div>
-                    <span className="font-medium">Vizualizări:</span> {Math.floor(Math.random() * 100) + 50}
+                    <span className="font-medium">{t('propertyDetail.views')}:</span> {Math.floor(Math.random() * 100) + 50}
                   </div>
                 </div>
               </div>
@@ -321,8 +323,8 @@ export default function PropertyDetailPage() {
             
             {/* Agent Card */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Agent imobiliar</h2>
-              
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('propertyDetail.realEstateAgent')}</h2>
+
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
                   <span className="text-primary-600 font-semibold">
@@ -331,48 +333,49 @@ export default function PropertyDetailPage() {
                 </div>
                 <div className="ml-3">
                   <div className="font-medium text-gray-900">{agent.name}</div>
-                  <div className="text-sm text-gray-500">Agent specializat zona {property.zone}</div>
+                  <div className="text-sm text-gray-500">{t('propertyDetail.specializedAgent')} {property.zone}</div>
                 </div>
               </div>
 
               <div className="space-y-3">
-                <a 
+                <a
                   href={`tel:${agent.phone}`}
                   className="flex items-center justify-center w-full bg-primary-600 text-white py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors"
                 >
                   <PhoneIcon className="h-5 w-5 mr-2" />
-                  Sună acum
+                  {t('propertyDetail.callNow')}
                 </a>
-                
-                <a 
-                  href={`mailto:${agent.email}?subject=Interesat de ${property.name}&body=Bună ziua,%0D%0A%0D%0ASunt interesat de proprietatea "${property.name}" (ID: ${property.id}).%0D%0A%0D%0AVă rog să mă contactați pentru mai multe detalii.%0D%0A%0D%0AMultumesc!`}
+
+                <a
+                  href={`mailto:${agent.email}?subject=${t('propertyDetail.emailSubject')} ${property.name}&body=${t('propertyDetail.emailBody').replace('{name}', property.name).replace('{id}', property.id.toString())}`}
                   className="flex items-center justify-center w-full border border-primary-600 text-primary-600 py-3 px-4 rounded-lg hover:bg-primary-50 transition-colors"
                 >
                   <EnvelopeIcon className="h-5 w-5 mr-2" />
-                  Trimite email
+                  {t('propertyDetail.sendEmail')}
                 </a>
               </div>
 
-              <div className="mt-4 pt-4 border-t text-xs text-gray-500">
-                <p>Agent autorizat ANI • Licența #12345</p>
+              <div className="mt-4 pt-4 border-t text-xs text-gray-500 text-center">
+                <p>{t('propertyDetail.authorizedAgent')}</p>
+                <p className="mt-1">{t('propertyDetail.license')}</p>
               </div>
             </div>
 
             {/* Quick Stats */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Statistici rapide</h2>
-              
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('propertyDetail.quickStats')}</h2>
+
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Preț/m²:</span>
+                  <span className="text-gray-600">{t('propertyDetail.pricePerSqm')}:</span>
                   <span className="font-medium">{formatPrice(Math.round(property.price / property.surface), property.currency || 'RON')}/m²</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Zonă:</span>
+                  <span className="text-gray-600">{t('propertyDetail.zone')}:</span>
                   <span className="font-medium">{property.zone}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Tip:</span>
+                  <span className="text-gray-600">{t('propertyDetail.type')}:</span>
                   <span className="font-medium">{property.propertyType.replace('_', ' ')}</span>
                 </div>
               </div>
@@ -380,19 +383,19 @@ export default function PropertyDetailPage() {
               <div className="mt-4 pt-4 border-t">
                 <button className="flex items-center justify-center w-full text-primary-600 hover:text-primary-700">
                   <EyeIcon className="h-4 w-4 mr-2" />
-                  Vezi proprietăți similare
+                  {t('propertyDetail.viewSimilar')}
                 </button>
               </div>
             </div>
 
             {/* Map Placeholder */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Locația</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('propertyDetail.location')}</h2>
               <div className="bg-gray-100 h-40 rounded-lg flex items-center justify-center mb-4">
                 <div className="text-center text-gray-500">
                   <MapPinIcon className="h-8 w-8 mx-auto mb-2" />
-                  <p className="text-sm">Harta interactivă</p>
-                  <p className="text-xs">Disponibilă după instalarea pachetelor</p>
+                  <p className="text-sm">{t('propertyDetail.interactiveMap')}</p>
+                  <p className="text-xs">{t('propertyDetail.availableAfterInstall')}</p>
                 </div>
               </div>
               <Link
@@ -400,7 +403,7 @@ export default function PropertyDetailPage() {
                 className="flex items-center justify-center w-full bg-primary-600 text-white py-3 px-4 rounded-lg hover:bg-primary-700 transition-colors"
               >
                 <MapPinIcon className="h-5 w-5 mr-2" />
-                Vezi locația pe hartă
+                {t('propertyDetail.viewOnMap')}
               </Link>
             </div>
           </div>
