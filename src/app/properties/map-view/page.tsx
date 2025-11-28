@@ -265,6 +265,11 @@ function MapViewContent() {
   };
 
   const handleMapBoundsChange = (bounds: any) => {
+    // If a specific property is selected, don't filter by bounds
+    if (selectedPropertyId) {
+      return;
+    }
+
     // Use requestAnimationFrame to defer this expensive operation
     requestAnimationFrame(() => {
       // Filter properties that are within the current map bounds
