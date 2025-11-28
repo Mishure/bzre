@@ -1,7 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost', 'bestinvest-buzau.vercel.app', 'www.camimob.ro', 'camimob.ro'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'bestinvest-buzau.vercel.app',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.camimob.ro',
+      },
+      {
+        protocol: 'https',
+        hostname: 'camimob.ro',
+      },
+    ],
     formats: ['image/webp', 'image/avif'],
   },
   experimental: {
