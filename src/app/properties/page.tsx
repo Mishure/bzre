@@ -4,18 +4,15 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { 
-  MagnifyingGlassIcon, 
-  MapIcon, 
+import {
+  MagnifyingGlassIcon,
+  MapIcon,
   ListBulletIcon,
   FunnelIcon,
-  HeartIcon,
-  EyeIcon,
-  HomeIcon,
-  CurrencyEuroIcon
+  HomeIcon
 } from '@heroicons/react/24/outline';
-import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import dynamic from 'next/dynamic';
+import PropertyCard from '@/components/PropertyCard';
 
 const DynamicPropertyMap = dynamic(() => import('@/components/map/PropertyMap').then(mod => ({ default: mod.DynamicPropertyMap })), {
   ssr: false,
@@ -224,23 +221,6 @@ function PropertiesContent() {
 
     setFilteredProperties(filtered);
   }, [properties, filters, searchParams]);
-
-  const formatPrice = (price: number, currency: string = 'RON') => {
-    return new Intl.NumberFormat('ro-RO', {
-      style: 'currency',
-      currency: currency
-    }).format(price);
-  };
-
-  const getFeatures = (featuresJson?: string | string[]) => {
-    if (!featuresJson) return [];
-    if (Array.isArray(featuresJson)) return featuresJson;
-    try {
-      return JSON.parse(featuresJson);
-    } catch {
-      return [];
-    }
-  };
 
   const toggleFavorite = (propertyId: number) => {
     setFavorites(prev => 
@@ -462,109 +442,14 @@ function PropertiesContent() {
         {/* List View */}
         {viewMode === 'list' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white">
-            {filteredProperties.map((property) => {
-              const features = getFeatures(property.features);
-              const isFavorite = favorites.includes(property.id);
-              
-              return (
-                <div key={property.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  {/* Property Image */}
-                  <div className="relative h-48">
-                    <img
-                      src={typeof property.images?.[0] === 'string'
-                        ? property.images[0]
-                        : property.images?.[0]?.url || '/api/placeholder/400/300'}
-                      alt={`${property.name} - ${property.propertyType} ${property.operationType === 'VANZARE' ? 'de vânzare' : 'de închiriat'} în ${property.zone || property.locality}, ${property.rooms ? property.rooms + ' camere, ' : ''}${property.surface} mp`}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium text-white ${
-                        property.operationType === 'VANZARE' ? 'bg-green-600' : 'bg-blue-600'
-                      }`}>
-                        {property.operationType === 'VANZARE' ? t('properties.forSale') : t('properties.forRent')}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => toggleFavorite(property.id)}
-                      className="absolute top-3 right-3 p-1 bg-white rounded-full shadow-md hover:bg-gray-100"
-                    >
-                      {isFavorite ? (
-                        <HeartSolidIcon className="h-5 w-5 text-red-500" />
-                      ) : (
-                        <HeartIcon className="h-5 w-5 text-gray-600" />
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Property Info */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">
-                        {property.name}
-                      </h3>
-                    </div>
-
-                    <p className="text-2xl font-bold text-primary-600 mb-3">
-                      {formatPrice(property.price, property.currency || 'RON')}
-                    </p>
-
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-center text-sm text-gray-600">
-                        <HomeIcon className="h-4 w-4 mr-2" />
-                        <span>{property.street}, {property.zone}</span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm text-gray-600">
-                        <span>
-                          {property.propertyType === 'TEREN' || property.propertyType === 'SPATIU_COMERCIAL'
-                            ? (property.propertyType === 'TEREN' ? t('properties.land2') : t('properties.commercialSpace'))
-                            : (property.rooms && property.rooms > 0 ? `${property.rooms} ${t('properties.rooms')}` : t('properties.property'))
-                          }
-                        </span>
-                        <span>{property.surface} m²</span>
-                      </div>
-                    </div>
-
-                    {/* Features */}
-                    {features.length > 0 && (
-                      <div className="mb-4">
-                        <div className="flex flex-wrap gap-1">
-                          {features.slice(0, 3).map((feature: string, index: number) => (
-                            <span
-                              key={index}
-                              className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
-                            >
-                              {feature}
-                            </span>
-                          ))}
-                          {features.length > 3 && (
-                            <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                              +{features.length - 3} {t('properties.more')}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Actions */}
-                    <div className="flex space-x-2">
-                      <Link
-                        href={`/properties/${property.id}`}
-                        className="flex-1 bg-primary-600 text-white text-center py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors"
-                      >
-                        {t('properties.viewDetails')}
-                      </Link>
-                      <Link
-                        href={`/properties/map-view?propertyId=${property.id}`}
-                        className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                        title={t('properties.viewOnMap')}
-                      >
-                        <EyeIcon className="h-5 w-5 text-gray-600" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {filteredProperties.map((property) => (
+              <PropertyCard
+                key={property.id}
+                property={property}
+                isFavorite={favorites.includes(property.id)}
+                onToggleFavorite={toggleFavorite}
+              />
+            ))}
           </div>
         )}
 
