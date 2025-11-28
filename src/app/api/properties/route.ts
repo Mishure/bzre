@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { withRetry } from '@/lib/db-retry';
 
 export async function GET(request: NextRequest) {
   try {
@@ -44,21 +45,23 @@ export async function GET(request: NextRequest) {
       }
     }
     
-    const [properties, totalCount] = await Promise.all([
-      prisma.property.findMany({
-        where,
-        include: {
-          images: {
-            where: { isPrimary: true },
-            take: 1
-          }
-        },
-        orderBy: { createdAt: 'desc' },
-        skip,
-        take: limit
-      }),
-      prisma.property.count({ where })
-    ]);
+    const [properties, totalCount] = await withRetry(async () =>
+      Promise.all([
+        prisma.property.findMany({
+          where,
+          include: {
+            images: {
+              where: { isPrimary: true },
+              take: 1
+            }
+          },
+          orderBy: { createdAt: 'desc' },
+          skip,
+          take: limit
+        }),
+        prisma.property.count({ where })
+      ])
+    );
     
     return NextResponse.json({
       properties,
@@ -91,53 +94,59 @@ export async function POST(request: NextRequest) {
     
     const body = await request.json();
     
-    const property = await prisma.property.create({
-      data: {
-        name: body.name,
-        price: body.price,
-        zone: body.zone,
-        comfort: body.comfort,
-        street: body.street,
-        latitude: body.latitude,
-        longitude: body.longitude,
-        surface: body.surface,
-        ownerCnp: body.ownerCnp,
-        rooms: body.rooms,
-        floor: body.floor,
-        totalFloors: body.totalFloors,
-        position: body.position,
-        locality: body.locality,
-        operationType: body.operationType,
-        propertyType: body.propertyType,
-        description: body.description,
-        features: body.features ? JSON.stringify(body.features) : null,
-        status: body.status || 'ACTIVE',
-        featured: body.featured || false,
-        adminId: (session.user as any).id
-      }
-    });
+    const property = await withRetry(async () =>
+      prisma.property.create({
+        data: {
+          name: body.name,
+          price: body.price,
+          zone: body.zone,
+          comfort: body.comfort,
+          street: body.street,
+          latitude: body.latitude,
+          longitude: body.longitude,
+          surface: body.surface,
+          ownerCnp: body.ownerCnp,
+          rooms: body.rooms,
+          floor: body.floor,
+          totalFloors: body.totalFloors,
+          position: body.position,
+          locality: body.locality,
+          operationType: body.operationType,
+          propertyType: body.propertyType,
+          description: body.description,
+          features: body.features ? JSON.stringify(body.features) : null,
+          status: body.status || 'ACTIVE',
+          featured: body.featured || false,
+          adminId: (session.user as any).id
+        }
+      })
+    );
     
     if (body.images && Array.isArray(body.images)) {
-      await prisma.propertyImage.createMany({
-        data: body.images.map((img: any, index: number) => ({
-          url: img.url,
-          alt: img.alt,
-          isPrimary: index === 0,
-          order: index,
-          propertyId: property.id
-        }))
-      });
+      await withRetry(async () =>
+        prisma.propertyImage.createMany({
+          data: body.images.map((img: any, index: number) => ({
+            url: img.url,
+            alt: img.alt,
+            isPrimary: index === 0,
+            order: index,
+            propertyId: property.id
+          }))
+        })
+      );
     }
-    
-    await prisma.adminActivity.create({
-      data: {
-        adminId: (session.user as any).id,
-        action: 'CREATE',
-        resource: 'property',
-        resourceId: property.id,
-        description: `Created property: ${property.name}`
-      }
-    });
+
+    await withRetry(async () =>
+      prisma.adminActivity.create({
+        data: {
+          adminId: (session.user as any).id,
+          action: 'CREATE',
+          resource: 'property',
+          resourceId: property.id,
+          description: `Created property: ${property.name}`
+        }
+      })
+    );
     
     return NextResponse.json(property, { status: 201 });
   } catch (error) {

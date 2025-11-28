@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { withRetry } from '@/lib/db-retry'
 
 export async function GET(
   request: Request,
@@ -19,16 +20,18 @@ export async function GET(
     }
 
     // Fetch property with images
-    const property = await prisma.property.findUnique({
-      where: { id: propertyId },
-      include: {
-        images: {
-          orderBy: {
-            order: 'asc'
+    const property = await withRetry(async () =>
+      prisma.property.findUnique({
+        where: { id: propertyId },
+        include: {
+          images: {
+            orderBy: {
+              order: 'asc'
+            }
           }
         }
-      }
-    })
+      })
+    )
 
     if (!property) {
       return NextResponse.json(
@@ -73,9 +76,11 @@ export async function DELETE(
     }
 
     // Check if property exists
-    const property = await prisma.property.findUnique({
-      where: { id: propertyId }
-    })
+    const property = await withRetry(async () =>
+      prisma.property.findUnique({
+        where: { id: propertyId }
+      })
+    )
 
     if (!property) {
       return NextResponse.json(
@@ -85,14 +90,18 @@ export async function DELETE(
     }
 
     // Delete related images first
-    await prisma.propertyImage.deleteMany({
-      where: { propertyId }
-    })
+    await withRetry(async () =>
+      prisma.propertyImage.deleteMany({
+        where: { propertyId }
+      })
+    )
 
     // Delete the property
-    await prisma.property.delete({
-      where: { id: propertyId }
-    })
+    await withRetry(async () =>
+      prisma.property.delete({
+        where: { id: propertyId }
+      })
+    )
 
     return NextResponse.json({
       success: true,
@@ -175,10 +184,12 @@ export async function PATCH(
     }
 
     // Update the property
-    const updatedProperty = await prisma.property.update({
-      where: { id: propertyId },
-      data: updateData
-    })
+    const updatedProperty = await withRetry(async () =>
+      prisma.property.update({
+        where: { id: propertyId },
+        data: updateData
+      })
+    )
 
     return NextResponse.json({
       success: true,
