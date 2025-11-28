@@ -231,5 +231,26 @@
     "aboutDescription": "Peste 20 de ani de experiență în domeniul imobiliar din Buzău. Echipă profesionistă, transparență totală și servicii complete pentru tranzacții sigure.",
     "contactTitle": "Contact BESTINVEST CAMIMOB - Agenție Imobiliară Buzău",
     "contactDescription": "Contactează-ne pentru consultanță gratuită. Suntem aici să te ajutăm să găsești proprietatea perfectă în Buzău și împrejurimi."
+  },
+  "mapView": {
+    "loadingMap": "Se încarcă harta...",
+    "searchPlaceholder": "Ex: 2 camere centru, garsoniera sub 30000 euro, casa Brosteni...",
+    "allOperations": "Toate",
+    "propertyType": "Tip proprietate",
+    "moreFilters": "Mai multe filtre",
+    "minPrice": "Preț min (€)",
+    "maxPrice": "Preț max (€)",
+    "minRooms": "Camere min",
+    "allZones": "Toate zonele",
+    "availableProperties": "Proprietăți disponibile",
+    "results": "rezultate",
+    "rooms": "cam",
+    "view": "Vezi",
+    "noPropertiesInArea": "Nu există proprietăți în zona afișată",
+    "modifyFilters": "Modificați filtrele sau măriți harta",
+    "previous": "Anterior",
+    "page": "Pagina",
+    "of": "din",
+    "next": "Următor"
   }
 }

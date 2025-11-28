@@ -3,8 +3,8 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  MagnifyingGlassIcon, 
+import {
+  MagnifyingGlassIcon,
   FunnelIcon,
   HeartIcon,
   EyeIcon,
@@ -16,6 +16,7 @@ import {
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import dynamic from 'next/dynamic';
 import { parseSearchQuery } from '@/lib/searchParser';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const DynamicPropertyMap = dynamic(() => import('@/components/map/WorkingMap'), {
   ssr: false,
@@ -23,7 +24,7 @@ const DynamicPropertyMap = dynamic(() => import('@/components/map/WorkingMap'), 
     <div className="h-full bg-gray-100 flex items-center justify-center">
       <div className="text-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
-        <p className="mt-2 text-gray-600">Se încarcă harta...</p>
+        <p className="mt-2 text-gray-600">Loading map...</p>
       </div>
     </div>
   )
@@ -44,27 +45,28 @@ interface FilterState {
   maxSurface: string;
 }
 
-const propertyTypes = [
-  { id: 'APARTAMENT', name: 'Apartamente' },
-  { id: 'CASA', name: 'Case' },
-  { id: 'TEREN', name: 'Terenuri' },
-  { id: 'SPATIU_COMERCIAL', name: 'Spații comerciale' },
-];
-
-const operations = [
-  { id: 'VANZARE', name: 'Vânzare' },
-  { id: 'INCHIRIERE', name: 'Închiriere' },
-];
-
 const zones = [
-  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6', 
-  'Unirii', 'Dorobanti', 'Bdul Bucuresti', 'Victoriei', 
+  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6',
+  'Unirii', 'Dorobanti', 'Bdul Bucuresti', 'Victoriei',
   'Nord', 'Sud', 'Est', 'Vest', 'Marginal', 'Zona Industriala'
 ];
 
 function MapViewContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { t, language } = useLanguage();
+
+  const propertyTypes = [
+    { id: 'APARTAMENT', name: t('propertyTypes.APARTAMENT') },
+    { id: 'CASA', name: t('propertyTypes.CASA') },
+    { id: 'TEREN', name: t('propertyTypes.TEREN') },
+    { id: 'SPATIU_COMERCIAL', name: t('propertyTypes.SPATIU_COMERCIAL') },
+  ];
+
+  const operations = [
+    { id: 'VANZARE', name: t('operations.VANZARE') },
+    { id: 'INCHIRIERE', name: t('operations.INCHIRIERE') },
+  ];
   const [quickSearch, setQuickSearch] = useState('');
   const [properties, setProperties] = useState<Property[]>([]);
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
@@ -115,6 +117,7 @@ function MapViewContent() {
         const params = new URLSearchParams();
         params.set('limit', '100'); // Get more properties for map view
         params.set('status', 'ACTIVE');
+        params.set('lang', language); // Server-side translation for SEO
 
         const response = await fetch(`/api/properties?${params.toString()}`);
         const data = await response.json();
@@ -132,7 +135,7 @@ function MapViewContent() {
     };
 
     fetchProperties();
-  }, []);
+  }, [language]);
 
   // Filter properties based on current filters
   useEffect(() => {
@@ -310,7 +313,7 @@ function MapViewContent() {
                 <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Ex: 2 camere centru, garsoniera sub 30000 euro, casa Brosteni..."
+                  placeholder={t('mapView.searchPlaceholder')}
                   value={quickSearch}
                   onChange={(e) => setQuickSearch(e.target.value)}
                   onKeyPress={(e) => {
@@ -331,13 +334,13 @@ function MapViewContent() {
                   className="pl-10 w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-gray-900"
                 />
               </div>
-              
+
               <select
                 value={filters.operationType}
                 onChange={(e) => handleFilterChange('operationType', e.target.value)}
                 className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-gray-900"
               >
-                <option value="">Toate</option>
+                <option value="">{t('mapView.allOperations')}</option>
                 {operations.map(op => (
                   <option key={op.id} value={op.id}>{op.name}</option>
                 ))}
@@ -348,7 +351,7 @@ function MapViewContent() {
                 onChange={(e) => handleFilterChange('propertyType', e.target.value)}
                 className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white text-gray-900"
               >
-                <option value="">Tip proprietate</option>
+                <option value="">{t('mapView.propertyType')}</option>
                 {propertyTypes.map(type => (
                   <option key={type.id} value={type.id}>{type.name}</option>
                 ))}
@@ -359,7 +362,7 @@ function MapViewContent() {
                 className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center space-x-2 bg-white text-gray-700"
               >
                 <FunnelIcon className="h-4 w-4" />
-                <span>Mai multe filtre</span>
+                <span>{t('mapView.moreFilters')}</span>
               </button>
             </div>
 
@@ -368,21 +371,21 @@ function MapViewContent() {
               <div className="mt-4 grid grid-cols-4 gap-4 pt-4 border-t border-gray-200">
                 <input
                   type="number"
-                  placeholder="Preț min (€)"
+                  placeholder={t('mapView.minPrice')}
                   value={filters.minPrice}
                   onChange={(e) => handleFilterChange('minPrice', e.target.value)}
                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 />
                 <input
                   type="number"
-                  placeholder="Preț max (€)"
+                  placeholder={t('mapView.maxPrice')}
                   value={filters.maxPrice}
                   onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 />
                 <input
                   type="number"
-                  placeholder="Camere min"
+                  placeholder={t('mapView.minRooms')}
                   value={filters.minRooms}
                   onChange={(e) => handleFilterChange('minRooms', e.target.value)}
                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
@@ -392,7 +395,7 @@ function MapViewContent() {
                   onChange={(e) => handleFilterChange('zone', e.target.value)}
                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
-                  <option value="">Toate zonele</option>
+                  <option value="">{t('mapView.allZones')}</option>
                   {zones.map(zone => (
                     <option key={zone} value={zone}>{zone}</option>
                   ))}
@@ -403,7 +406,7 @@ function MapViewContent() {
         </div>
 
         {/* Map */}
-        <DynamicPropertyMap 
+        <DynamicPropertyMap
           properties={filteredProperties}
           height="100%"
           onPropertyClick={handlePropertyClick}
@@ -415,8 +418,8 @@ function MapViewContent() {
       {/* Property List Sidebar - Right Side */}
       <div className="w-96 bg-white border-l border-gray-200 flex flex-col">
         <div className="p-4 border-b bg-white">
-          <h2 className="text-lg font-semibold text-gray-900">Proprietăți disponibile</h2>
-          <p className="text-sm text-gray-600">{visibleProperties.length} rezultate</p>
+          <h2 className="text-lg font-semibold text-gray-900">{t('mapView.availableProperties')}</h2>
+          <p className="text-sm text-gray-600">{visibleProperties.length} {t('mapView.results')}</p>
         </div>
 
         {/* Properties List */}
@@ -480,7 +483,7 @@ function MapViewContent() {
                     </div>
                     <div className="flex items-center justify-between text-xs text-gray-500 mt-1">
                       <div>
-                        {property.rooms > 0 && <span>{property.rooms} cam</span>}
+                        {property.rooms > 0 && <span>{property.rooms} {t('mapView.rooms')}</span>}
                         {property.rooms > 0 && <span className="mx-1">•</span>}
                         <span>{property.surface} m²</span>
                       </div>
@@ -489,7 +492,7 @@ function MapViewContent() {
                         onClick={(e) => e.stopPropagation()}
                         className="text-primary-600 hover:text-primary-700 font-medium"
                       >
-                        Vezi
+                        {t('mapView.view')}
                       </Link>
                     </div>
                   </div>
@@ -502,8 +505,8 @@ function MapViewContent() {
           {visibleProperties.length === 0 && !loading && (
             <div className="p-8 text-center">
               <HomeIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600">Nu există proprietăți în zona afișată</p>
-              <p className="text-sm text-gray-500 mt-1">Modificați filtrele sau măriți harta</p>
+              <p className="text-gray-600">{t('mapView.noPropertiesInArea')}</p>
+              <p className="text-sm text-gray-500 mt-1">{t('mapView.modifyFilters')}</p>
             </div>
           )}
         </div>
@@ -518,19 +521,19 @@ function MapViewContent() {
                 className="flex items-center px-3 py-2 text-sm border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 bg-white text-gray-700"
               >
                 <ChevronLeftIcon className="h-4 w-4 mr-1" />
-                Anterior
+                {t('mapView.previous')}
               </button>
-              
+
               <span className="text-sm font-medium text-gray-800 px-2">
-                Pagina {currentPage} din {Math.ceil(visibleProperties.length / itemsPerPage)}
+                {t('mapView.page')} {currentPage} {t('mapView.of')} {Math.ceil(visibleProperties.length / itemsPerPage)}
               </span>
-              
+
               <button
                 onClick={() => setCurrentPage(prev => Math.min(Math.ceil(visibleProperties.length / itemsPerPage), prev + 1))}
                 disabled={currentPage === Math.ceil(visibleProperties.length / itemsPerPage)}
                 className="flex items-center px-3 py-2 text-sm border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 bg-white text-gray-700"
               >
-                Următor
+                {t('mapView.next')}
                 <ChevronRightIcon className="h-4 w-4 ml-1" />
               </button>
             </div>

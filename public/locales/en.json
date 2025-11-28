@@ -231,5 +231,26 @@
     "aboutDescription": "Over 20 years of experience in Buzau real estate market. Professional team, total transparency and complete services for safe transactions.",
     "contactTitle": "Contact BESTINVEST CAMIMOB - Real Estate Agency Buzau",
     "contactDescription": "Contact us for free consultation. We are here to help you find the perfect property in Buzau and surroundings."
+  },
+  "mapView": {
+    "loadingMap": "Loading map...",
+    "searchPlaceholder": "Ex: 2 rooms downtown, studio under 30000 euros, house Brosteni...",
+    "allOperations": "All",
+    "propertyType": "Property Type",
+    "moreFilters": "More filters",
+    "minPrice": "Min Price (€)",
+    "maxPrice": "Max Price (€)",
+    "minRooms": "Min Rooms",
+    "allZones": "All zones",
+    "availableProperties": "Available Properties",
+    "results": "results",
+    "rooms": "rooms",
+    "view": "View",
+    "noPropertiesInArea": "No properties in the displayed area",
+    "modifyFilters": "Modify filters or zoom out the map",
+    "previous": "Previous",
+    "page": "Page",
+    "of": "of",
+    "next": "Next"
   }
 }
