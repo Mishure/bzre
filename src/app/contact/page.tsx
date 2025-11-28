@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import { MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,7 +32,7 @@ export default function ContactPage() {
       });
       
       if (response.ok) {
-        setSubmitMessage('Mesajul a fost trimis cu succes! Vă vom contacta în curând.');
+        setSubmitMessage(t('contact.successMessage'));
         setFormData({
           name: '',
           email: '',
@@ -40,10 +42,10 @@ export default function ContactPage() {
         });
         setGdprConsent(false);
       } else {
-        setSubmitMessage('A apărut o eroare. Vă rugăm să încercați din nou.');
+        setSubmitMessage(t('contact.errorMessage'));
       }
     } catch (error) {
-      setSubmitMessage('A apărut o eroare. Vă rugăm să încercați din nou.');
+      setSubmitMessage(t('contact.errorMessage'));
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setSubmitMessage(''), 5000);
@@ -54,9 +56,9 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-primary-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-center">Contactează-ne</h1>
+          <h1 className="text-4xl font-bold text-center">{t('contact.title')}</h1>
           <p className="text-xl text-center mt-4 opacity-90">
-            Suntem aici să te ajutăm să găsești proprietatea perfectă
+            {t('contact.subtitle')}
           </p>
         </div>
       </div>
@@ -65,7 +67,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-semibold mb-6">Trimite-ne un mesaj</h2>
+              <h2 className="text-2xl font-semibold mb-6">{t('contact.sendMessage')}</h2>
               
               {submitMessage && (
                 <div className={`mb-6 p-4 rounded-md ${submitMessage.includes('succes') ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
@@ -77,7 +79,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Nume complet *
+                      {t('contact.fullName')}
                     </label>
                     <input
                       type="text"
@@ -88,10 +90,10 @@ export default function ContactPage() {
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
+                      {t('contact.emailLabel')}
                     </label>
                     <input
                       type="email"
@@ -102,10 +104,10 @@ export default function ContactPage() {
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Telefon
+                      {t('contact.phoneLabel')}
                     </label>
                     <input
                       type="tel"
@@ -115,10 +117,10 @@ export default function ContactPage() {
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                      Subiect
+                      {t('contact.subject')}
                     </label>
                     <select
                       id="subject"
@@ -126,18 +128,18 @@ export default function ContactPage() {
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     >
-                      <option value="general">Informații generale</option>
-                      <option value="buy">Doresc să cumpăr</option>
-                      <option value="sell">Doresc să vând</option>
-                      <option value="rent">Doresc să închiriez</option>
-                      <option value="evaluation">Evaluare proprietate</option>
+                      <option value="general">{t('contact.subjectGeneral')}</option>
+                      <option value="buy">{t('contact.subjectBuy')}</option>
+                      <option value="sell">{t('contact.subjectSell')}</option>
+                      <option value="rent">{t('contact.subjectRent')}</option>
+                      <option value="evaluation">{t('contact.subjectEvaluation')}</option>
                     </select>
                   </div>
                 </div>
                 
                 <div className="mt-6">
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Mesaj *
+                    {t('contact.message')}
                   </label>
                   <textarea
                     id="message"
@@ -159,13 +161,13 @@ export default function ContactPage() {
                       required
                     />
                     <span className="text-sm text-gray-700">
-                      Sunt de acord cu prelucrarea datelor mele personale, mai sus solicitate, cu Termenii si Conditiile de Utilizare si cu Politica privind Protectia Datelor cu Caracter Personal.{' '}
+                      {t('contact.gdprConsent')}{' '}
                       <a
                         href="/termeni-si-conditii"
                         target="_blank"
                         className="text-primary-600 hover:text-primary-700 underline"
                       >
-                        Citește Termeni și Condiții
+                        {t('contact.readTerms')}
                       </a>
                     </span>
                   </label>
@@ -176,7 +178,7 @@ export default function ContactPage() {
                   disabled={isSubmitting || !gdprConsent}
                   className="mt-6 w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Se trimite...' : 'Trimite mesajul'}
+                  {isSubmitting ? t('contact.sending') : t('contact.sendButton')}
                 </button>
               </form>
             </div>
@@ -184,42 +186,42 @@ export default function ContactPage() {
           
           <div>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-              <h2 className="text-2xl font-semibold mb-6">Informații de contact</h2>
-              
+              <h2 className="text-2xl font-semibold mb-6">{t('contact.contactInfo')}</h2>
+
               <div className="space-y-4">
                 <div className="flex items-start">
                   <MapPinIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Adresă</p>
+                    <p className="font-medium">{t('contact.address')}</p>
                     <p className="text-gray-600">Blv. Maresal Alexandru Averescu, nr.28</p>
                     <p className="text-gray-600">Buzău, România</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <PhoneIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Telefon</p>
+                    <p className="font-medium">{t('contact.phone')}</p>
                     <p className="text-gray-600">+40 773 723 654</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <EnvelopeIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Email</p>
+                    <p className="font-medium">{t('contact.email')}</p>
                     <p className="text-gray-600">contact@bestinvestcamimob.ro</p>
                     <p className="text-gray-600">info@bestinvestcamimob.ro</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <ClockIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Program de lucru</p>
-                    <p className="text-gray-600">Luni - Vineri: 09:00 - 18:00</p>
-                    <p className="text-gray-600">Sâmbătă: 10:00 - 14:00</p>
-                    <p className="text-gray-600">Duminică: Închis</p>
+                    <p className="font-medium">{t('contact.officeHours')}</p>
+                    <p className="text-gray-600">{t('contact.mondayFriday')}</p>
+                    <p className="text-gray-600">{t('contact.saturday')}</p>
+                    <p className="text-gray-600">{t('contact.sunday')}</p>
                   </div>
                 </div>
               </div>
@@ -227,17 +229,17 @@ export default function ContactPage() {
             
             <div className="bg-primary-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-primary-900 mb-3">
-                Programează o vizionare
+                {t('contact.scheduleViewing')}
               </h3>
               <p className="text-primary-700 mb-4">
-                Dorești să vezi o proprietate? Contactează-ne pentru a programa o vizionare la momentul potrivit pentru tine.
+                {t('contact.scheduleViewingText')}
               </p>
               <a
                 href="tel:+40773723654"
                 className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
               >
                 <PhoneIcon className="h-5 w-5 mr-2" />
-                Sună acum
+                {t('contact.callNow')}
               </a>
             </div>
           </div>

@@ -97,13 +97,13 @@ export default function HomePage() {
               </summary>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Tip proprietate</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('home.propertyType')}</label>
                 <select
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
                   value={searchFilters.propertyType}
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, propertyType: e.target.value }))}
                 >
-                  <option value="">Toate tipurile</option>
+                  <option value="">{t('home.allTypes')}</option>
                   {propertyTypes.map((type) => (
                     <option key={type.id} value={type.id}>{type.name}</option>
                   ))}
@@ -111,13 +111,13 @@ export default function HomePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Operație</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('home.operation')}</label>
                 <select
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
                   value={searchFilters.operation}
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, operation: e.target.value }))}
                 >
-                  <option value="">Vânzare sau închiriere</option>
+                  <option value="">{t('home.saleOrRent')}</option>
                   {operations.map((op) => (
                     <option key={op.id} value={op.id}>{op.name}</option>
                   ))}
@@ -125,13 +125,13 @@ export default function HomePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Zona</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('home.zone')}</label>
                 <select
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
                   value={searchFilters.zone}
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, zone: e.target.value }))}
                 >
-                  <option value="">Toate zonele</option>
+                  <option value="">{t('home.allZones')}</option>
                   {zones.map((zone) => (
                     <option key={zone} value={zone}>{zone}</option>
                   ))}
@@ -139,10 +139,10 @@ export default function HomePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Preț minim (€)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('home.minPrice')}</label>
                 <input
                   type="number"
-                  placeholder="0"
+                  placeholder={t('home.minPricePlaceholder')}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
                   value={searchFilters.minPrice}
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, minPrice: e.target.value }))}
@@ -150,10 +150,10 @@ export default function HomePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Preț maxim (€)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('home.maxPrice')}</label>
                 <input
                   type="number"
-                  placeholder="1000000"
+                  placeholder={t('home.maxPricePlaceholder')}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
                   value={searchFilters.maxPrice}
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, maxPrice: e.target.value }))}
@@ -161,17 +161,17 @@ export default function HomePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Număr camere</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('home.rooms')}</label>
                 <select
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
                   value={searchFilters.rooms}
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, rooms: e.target.value }))}
                 >
-                  <option value="">Orice</option>
-                  <option value="1">1 cameră</option>
-                  <option value="2">2 camere</option>
-                  <option value="3">3 camere</option>
-                  <option value="4">4+ camere</option>
+                  <option value="">{t('home.any')}</option>
+                  <option value="1">{t('home.room1')}</option>
+                  <option value="2">{t('home.rooms2')}</option>
+                  <option value="3">{t('home.rooms3')}</option>
+                  <option value="4">{t('home.rooms4plus')}</option>
                 </select>
               </div>
               </div>
@@ -181,7 +181,7 @@ export default function HomePage() {
                 className="w-full bg-primary-600 text-white py-4 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold text-lg flex items-center justify-center space-x-2"
               >
                 <MagnifyingGlassIcon className="h-5 w-5" />
-                <span>Caută cu filtre avansate</span>
+                <span>{t('home.advancedSearchButton')}</span>
               </button>
             </details>
           </div>
@@ -193,10 +193,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Tipuri de proprietăți
+              {t('home.propertyTypesTitle')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explorează gama noastră variată de proprietăți disponibile în Buzău
+              {t('home.propertyTypesSubtitle')}
             </p>
           </div>
 
@@ -209,7 +209,7 @@ export default function HomePage() {
               >
                 <type.icon className="h-16 w-16 text-primary-600 mx-auto mb-4 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{type.name}</h3>
-                <p className="text-gray-600">Vezi ofertele disponibile</p>
+                <p className="text-gray-600">{t('home.viewAvailableOffers')}</p>
               </Link>
             ))}
           </div>
@@ -221,7 +221,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              De ce să alegi BESTINVEST CAMIMOB?
+              {t('home.whyChooseTitle')}
             </h2>
           </div>
 
@@ -230,9 +230,9 @@ export default function HomePage() {
               <div className="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <MapPinIcon className="h-10 w-10 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Expertiză locală</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('home.localExpertise')}</h3>
               <p className="text-gray-600">
-                Cunoaștem piața imobiliară din Buzău în detaliu și te ghidăm către cele mai bune oferte.
+                {t('home.localExpertiseDesc')}
               </p>
             </div>
 
@@ -240,9 +240,9 @@ export default function HomePage() {
               <div className="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <CurrencyEuroIcon className="h-10 w-10 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Prețuri transparente</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('home.transparentPrices')}</h3>
               <p className="text-gray-600">
-                Nu avem costuri ascunse. Toate taxele și comisioanele sunt clare de la început.
+                {t('home.transparentPricesDesc')}
               </p>
             </div>
 
@@ -250,9 +250,9 @@ export default function HomePage() {
               <div className="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <HomeIcon className="h-10 w-10 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Servicii complete</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('home.completeServices')}</h3>
               <p className="text-gray-600">
-                De la evaluare și consultanță până la finalizarea tranzacției, te sprijinim pas cu pas.
+                {t('home.completeServicesDesc')}
               </p>
             </div>
           </div>
@@ -263,29 +263,29 @@ export default function HomePage() {
       <section className="py-20 bg-primary-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Vrei să-ți vinzi sau să-ți închiriezi proprietatea?
+            {t('home.ctaTitle')}
           </h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Beneficiază de expertiza noastră și obține cel mai bun preț pentru proprietatea ta.
+            {t('home.ctaSubtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/listeaza-proprietate"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors"
             >
-              Listează proprietatea
+              {t('home.listProperty')}
             </Link>
             <Link
               href="/services/evaluation"
               className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              Evaluare gratuită
+              {t('home.freeEvaluation')}
             </Link>
             <Link
               href="/contact"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors"
             >
-              Contactează-ne
+              {t('home.contactUs')}
             </Link>
           </div>
         </div>

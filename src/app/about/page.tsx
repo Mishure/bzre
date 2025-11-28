@@ -1,61 +1,65 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircleIcon, UsersIcon, HomeIcon, StarIcon } from '@heroicons/react/24/outline';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutPage() {
+  const { t } = useLanguage();
   const stats = [
-    { label: 'Ani de experiență', value: '20+' },
-    { label: 'Proprietăți vândute', value: '500+' },
-    { label: 'Clienți mulțumiți', value: '1000+' },
-    { label: 'Agenți profesioniști', value: '10' }
+    { label: t('about.yearsExperience'), value: '20+' },
+    { label: t('about.propertiesSold'), value: '500+' },
+    { label: t('about.satisfiedClients'), value: '1000+' },
+    { label: t('about.professionalAgents'), value: '10' }
   ];
-  
+
   const values = [
     {
       icon: CheckCircleIcon,
-      title: 'Transparență totală',
-      description: 'Oferim informații clare și complete despre fiecare proprietate, fără costuri ascunse.'
+      title: t('about.totalTransparency'),
+      description: t('about.totalTransparencyDesc')
     },
     {
       icon: UsersIcon,
-      title: 'Orientare către client',
-      description: 'Punem nevoile clienților pe primul loc și oferim soluții personalizate pentru fiecare.'
+      title: t('about.clientOriented'),
+      description: t('about.clientOrientedDesc')
     },
     {
       icon: HomeIcon,
-      title: 'Expertiză locală',
-      description: 'Cunoaștem în detaliu piața imobiliară din Buzău și vă ghidăm către cele mai bune decizii.'
+      title: t('about.localExpertise'),
+      description: t('about.localExpertiseDesc')
     },
     {
       icon: StarIcon,
-      title: 'Servicii premium',
-      description: 'Oferim consultanță completă, de la evaluare până la finalizarea tranzacției.'
+      title: t('about.premiumServices'),
+      description: t('about.premiumServicesDesc')
     }
   ];
-  
+
   const team = [
     {
       name: 'Alexandru Popescu',
-      role: 'Director General',
-      description: 'Cu peste 20 de ani de experiență în domeniul imobiliar.',
+      role: t('about.directorGeneral'),
+      description: t('about.teamMember1Desc'),
       image: '/images/team/alexandru.jpg'
     },
     {
       name: 'Maria Ionescu',
-      role: 'Manager Vânzări',
-      description: 'Specialist în proprietăți rezidențiale și comerciale.',
+      role: t('about.salesManager'),
+      description: t('about.teamMember2Desc'),
       image: '/images/team/maria.jpg'
     },
     {
       name: 'Andrei Dumitrescu',
-      role: 'Consultant Senior',
-      description: 'Expert în evaluări imobiliare și investiții.',
+      role: t('about.seniorConsultant'),
+      description: t('about.teamMember3Desc'),
       image: '/images/team/andrei.jpg'
     },
     {
       name: 'Elena Popa',
-      role: 'Agent Imobiliar',
-      description: 'Dedicată găsirii casei perfecte pentru fiecare client.',
+      role: t('about.realEstateAgent'),
+      description: t('about.teamMember4Desc'),
       image: '/images/team/elena.jpg'
     }
   ];
@@ -66,10 +70,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              Despre BESTINVEST CAMIMOB
+              {t('about.title')}
             </h1>
             <p className="text-xl lg:text-2xl opacity-90 max-w-3xl mx-auto">
-              Partenerul tău de încredere în tranzacțiile imobiliare din Buzău și împrejurimi
+              {t('about.subtitle')}
             </p>
           </div>
         </div>
@@ -80,22 +84,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Povestea noastră
+                {t('about.ourStory')}
               </h2>
               <p className="text-gray-600 mb-4">
-                Fondată în 2005, BESTINVEST CAMIMOB s-a născut din dorința de a oferi servicii imobiliare
-                de calitate superioară în județul Buzău. De-a lungul anilor, am crescut organic,
-                construind relații solide cu clienții noștri și câștigând încrederea comunității locale.
+                {t('about.ourStoryP1')}
               </p>
               <p className="text-gray-600 mb-4">
-                Misiunea noastră este simplă: să facem procesul de cumpărare, vânzare sau închiriere 
-                a unei proprietăți cât mai simplu și plăcut posibil. Ne mândrim cu abordarea noastră 
-                personalizată și atenția la detalii care ne diferențiază de competiție.
+                {t('about.ourStoryP2')}
               </p>
               <p className="text-gray-600">
-                Astăzi, suntem una dintre cele mai respectate agenții imobiliare din regiune, 
-                cu o echipă dedicată de profesioniști care lucrează neobosit pentru a îndeplini 
-                visurile imobiliare ale clienților noștri.
+                {t('about.ourStoryP3')}
               </p>
             </div>
             <div className="flex items-center justify-center">
@@ -116,10 +114,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Cifre care vorbesc
+              {t('about.numbersSpeakTitle')}
             </h2>
             <p className="text-xl text-gray-600">
-              Rezultatele noastre demonstrează angajamentul față de excelență
+              {t('about.numbersSpeakSubtitle')}
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -139,10 +137,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Valorile noastre
+              {t('about.ourValues')}
             </h2>
             <p className="text-xl text-gray-600">
-              Principiile care ne ghidează în fiecare zi
+              {t('about.ourValuesSubtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -163,10 +161,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Echipa noastră
+              {t('about.ourTeam')}
             </h2>
             <p className="text-xl text-gray-600">
-              Profesioniști dedicați succesului tău
+              {t('about.ourTeamSubtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
