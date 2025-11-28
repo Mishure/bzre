@@ -140,6 +140,12 @@ function MapViewContent() {
 
     console.log('Filtering properties, total:', properties.length);
 
+    // Filter by specific propertyId if provided
+    if (selectedPropertyId) {
+      filtered = filtered.filter(property => property.id === selectedPropertyId);
+      console.log('Filtering by propertyId:', selectedPropertyId, 'found:', filtered.length);
+    }
+
     // Check for search from URL params
     const urlSearch = searchParams.get('search');
     const searchTerm = (filters.search || urlSearch || '').toLowerCase();
@@ -216,7 +222,7 @@ function MapViewContent() {
     console.log('Final filtered count:', filtered.length);
     setFilteredProperties(filtered);
     setVisibleProperties(filtered); // Initially show all filtered properties
-  }, [properties, filters, searchParams]);
+  }, [properties, filters, searchParams, selectedPropertyId]);
 
   const formatPrice = (price: number, currency: string = 'RON') => {
     return new Intl.NumberFormat('ro-RO', {
