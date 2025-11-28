@@ -379,10 +379,13 @@ export default function PropertyDetailPage() {
               </div>
 
               <div className="mt-4 pt-4 border-t">
-                <button className="flex items-center justify-center w-full text-primary-600 hover:text-primary-700">
+                <Link
+                  href={`/properties?type=${property.propertyType}&operation=${property.operationType}`}
+                  className="flex items-center justify-center w-full text-primary-600 hover:text-primary-700 transition-colors"
+                >
                   <EyeIcon className="h-4 w-4 mr-2" />
                   Vezi proprietăți similare
-                </button>
+                </Link>
               </div>
             </div>
 
