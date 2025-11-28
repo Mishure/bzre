@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { CookieConsentProvider } from '@/contexts/CookieConsentContext';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import LanguageMetadata from '@/components/LanguageMetadata';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,6 +59,7 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <LanguageProvider>
           <CookieConsentProvider>
+            <LanguageMetadata />
             <Toaster
               position="top-right"
               toastOptions={{

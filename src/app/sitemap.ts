@@ -3,82 +3,33 @@ import { prisma } from '@/lib/prisma';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.camimob.ro';
+  const languages = ['ro', 'en'];
 
-  // Static pages
+  // Helper function to create multilingual page entries
+  const createMultilingualEntry = (path: string, priority: number, changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never') => {
+    return languages.map(lang => ({
+      url: `${baseUrl}${path}${lang === 'ro' ? '' : `?lang=${lang}`}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+    }));
+  };
+
+  // Static pages with multilingual support
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/properties`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/properties/map-view`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/listeaza-proprietate`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/termeni-si-conditii`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+    ...createMultilingualEntry('', 1, 'daily'), // Home page
+    ...createMultilingualEntry('/about', 0.8, 'monthly'),
+    ...createMultilingualEntry('/contact', 0.8, 'monthly'),
+    ...createMultilingualEntry('/properties', 0.9, 'daily'),
+    ...createMultilingualEntry('/properties/map-view', 0.9, 'daily'),
+    ...createMultilingualEntry('/listeaza-proprietate', 0.7, 'monthly'),
+    ...createMultilingualEntry('/termeni-si-conditii', 0.3, 'yearly'),
     // Services pages
-    {
-      url: `${baseUrl}/services/evaluation`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/services/exclusivity`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/services/consulting`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/services/legal`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/services/commissions`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
+    ...createMultilingualEntry('/services/evaluation', 0.7, 'monthly'),
+    ...createMultilingualEntry('/services/exclusivity', 0.7, 'monthly'),
+    ...createMultilingualEntry('/services/consulting', 0.7, 'monthly'),
+    ...createMultilingualEntry('/services/legal', 0.7, 'monthly'),
+    ...createMultilingualEntry('/services/commissions', 0.7, 'monthly'),
   ];
 
   // Fetch all active properties from database
@@ -100,12 +51,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     });
 
-    propertyPages = properties.map((property) => ({
-      url: `${baseUrl}/properties/${property.id}`,
-      lastModified: property.updatedAt,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    }));
+    // Create multilingual entries for each property
+    propertyPages = properties.flatMap((property) =>
+      languages.map(lang => ({
+        url: `${baseUrl}/properties/${property.id}${lang === 'ro' ? '' : `?lang=${lang}`}`,
+        lastModified: property.updatedAt,
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      }))
+    );
   } catch (error) {
     console.error('Error fetching properties for sitemap:', error);
     // Return static pages even if database fetch fails

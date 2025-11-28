@@ -205,6 +205,20 @@ model PropertySubmission {
   @@map("property_submissions")
 }
 
+model TranslationCache {
+  id            Int      @id @default(autoincrement())
+  sourceText    String   @db.Text
+  sourceLang    String   // "ro"
+  targetLang    String   // "en"
+  translatedText String  @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([sourceText, sourceLang, targetLang], name: "translation_unique")
+  @@index([sourceLang, targetLang])
+  @@map("translation_cache")
+}
+
 // Note: SQLite doesn't support enums, using String instead
 // Valid values:
 // Role: "ADMIN", "AGENT", "MANAGER"

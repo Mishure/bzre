@@ -2,15 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { translateProperties } from '@/lib/serverTranslation';
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    
+
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     const skip = (page - 1) * limit;
-    
+
     const type = searchParams.get('type');
     const operation = searchParams.get('operation');
     const zone = searchParams.get('zone');
@@ -19,7 +20,8 @@ export async function GET(request: NextRequest) {
     const rooms = searchParams.get('rooms');
     const featured = searchParams.get('featured');
     const status = searchParams.get('status') || 'ACTIVE';
-    
+    const lang = (searchParams.get('lang') || 'ro') as 'en' | 'ro';
+
     const where: any = {
       status
     };
@@ -29,13 +31,13 @@ export async function GET(request: NextRequest) {
     if (operation) where.operationType = operation.toUpperCase();
     if (zone) where.zone = zone;
     if (featured === 'true') where.featured = true;
-    
+
     if (minPrice || maxPrice) {
       where.price = {};
       if (minPrice) where.price.gte = parseFloat(minPrice);
       if (maxPrice) where.price.lte = parseFloat(maxPrice);
     }
-    
+
     if (rooms) {
       if (rooms === '4') {
         where.rooms = { gte: 4 };
@@ -43,7 +45,7 @@ export async function GET(request: NextRequest) {
         where.rooms = parseInt(rooms);
       }
     }
-    
+
     const [properties, totalCount] = await Promise.all([
       prisma.property.findMany({
         where,
@@ -59,9 +61,18 @@ export async function GET(request: NextRequest) {
       }),
       prisma.property.count({ where })
     ]);
-    
+
+    // Server-side translation for SEO
+    const translatedProperties = await translateProperties(
+      properties.map(p => ({
+        ...p,
+        images: p.images.map(img => img.url)
+      })),
+      lang
+    );
+
     return NextResponse.json({
-      properties,
+      properties: translatedProperties,
       pagination: {
         currentPage: page,
         totalPages: Math.ceil(totalCount / limit),

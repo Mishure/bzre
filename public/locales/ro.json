@@ -221,5 +221,15 @@
   "language": {
     "romanian": "Română",
     "english": "English"
+  },
+  "seo": {
+    "homeTitle": "BESTINVEST CAMIMOB - Agenție Imobiliară Buzău | Apartamente, Case, Terenuri",
+    "homeDescription": "Agenție imobiliară de încredere în Buzău. Apartamente, case, terenuri și spații comerciale de vânzare și închiriere. Tranzacții sigure și consultanță profesională.",
+    "propertiesTitle": "Proprietăți de Vânzare și Închiriere în Buzău | BESTINVEST CAMIMOB",
+    "propertiesDescription": "Descoperă cele mai bune proprietăți din Buzău: apartamente, case, terenuri și spații comerciale. Filtrează după preț, zonă și caracteristici.",
+    "aboutTitle": "Despre BESTINVEST CAMIMOB - Agenție Imobiliară Buzău",
+    "aboutDescription": "Peste 20 de ani de experiență în domeniul imobiliar din Buzău. Echipă profesionistă, transparență totală și servicii complete pentru tranzacții sigure.",
+    "contactTitle": "Contact BESTINVEST CAMIMOB - Agenție Imobiliară Buzău",
+    "contactDescription": "Contactează-ne pentru consultanță gratuită. Suntem aici să te ajutăm să găsești proprietatea perfectă în Buzău și împrejurimi."
   }
 }

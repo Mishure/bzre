@@ -41,7 +41,7 @@ const zones = [
 ];
 
 function PropertiesContent() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const searchParams = useSearchParams();
 
   const propertyTypes = [
@@ -101,6 +101,7 @@ function PropertiesContent() {
         const params = new URLSearchParams();
         params.set('limit', '100'); // Get more properties for public view
         params.set('status', 'ACTIVE'); // Only show active properties
+        params.set('lang', language); // Server-side translation for SEO
 
         const type = searchParams.get('type');
         const operation = searchParams.get('operation');
@@ -127,7 +128,7 @@ function PropertiesContent() {
     };
 
     fetchProperties();
-  }, [searchParams]);
+  }, [searchParams, language]);
 
   // Apply client-side filters (in addition to URL params already sent to API)
   useEffect(() => {

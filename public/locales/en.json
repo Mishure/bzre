@@ -221,5 +221,15 @@
   "language": {
     "romanian": "Română",
     "english": "English"
+  },
+  "seo": {
+    "homeTitle": "BESTINVEST CAMIMOB - Real Estate Agency Buzau | Apartments, Houses, Land",
+    "homeDescription": "Trusted real estate agency in Buzau, Romania. Apartments, houses, land and commercial spaces for sale and rent. Safe transactions and professional advice.",
+    "propertiesTitle": "Properties for Sale and Rent in Buzau | BESTINVEST CAMIMOB",
+    "propertiesDescription": "Discover the best properties in Buzau: apartments, houses, land and commercial spaces. Filter by price, location and features.",
+    "aboutTitle": "About BESTINVEST CAMIMOB - Real Estate Agency Buzau",
+    "aboutDescription": "Over 20 years of experience in Buzau real estate market. Professional team, total transparency and complete services for safe transactions.",
+    "contactTitle": "Contact BESTINVEST CAMIMOB - Real Estate Agency Buzau",
+    "contactDescription": "Contact us for free consultation. We are here to help you find the perfect property in Buzau and surroundings."
   }
 }
