@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from 'react-hot-toast';
 import { CookieConsentProvider } from '@/contexts/CookieConsentContext';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,32 +56,34 @@ export default function RootLayout({
   return (
     <html lang="ro">
       <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <CookieConsentProvider>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              success: {
-                style: {
-                  background: '#10b981',
-                  color: '#fff',
+        <LanguageProvider>
+          <CookieConsentProvider>
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                success: {
+                  style: {
+                    background: '#10b981',
+                    color: '#fff',
+                  },
                 },
-              },
-              error: {
-                style: {
-                  background: '#ef4444',
-                  color: '#fff',
+                error: {
+                  style: {
+                    background: '#ef4444',
+                    color: '#fff',
+                  },
                 },
-              },
-            }}
-          />
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-          <CookieConsentBanner />
-        </CookieConsentProvider>
+              }}
+            />
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+            <CookieConsentBanner />
+          </CookieConsentProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

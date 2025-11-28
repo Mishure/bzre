@@ -5,18 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { MagnifyingGlassIcon, MapPinIcon, CurrencyEuroIcon, HomeIcon, BuildingOfficeIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import { parseSearchQuery, buildSearchParams } from '@/lib/searchParser';
-
-const propertyTypes = [
-  { id: 'APARTAMENT', name: 'Apartamente', icon: BuildingOfficeIcon },
-  { id: 'CASA', name: 'Case', icon: HomeIcon },
-  { id: 'TEREN', name: 'Terenuri', icon: ChartBarIcon },
-  { id: 'SPATIU_COMERCIAL', name: 'Spații comerciale', icon: BuildingOfficeIcon },
-];
-
-const operations = [
-  { id: 'VANZARE', name: 'Vânzare' },
-  { id: 'INCHIRIERE', name: 'Închiriere' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const zones = [
   'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6', 'Unirii', 'Dorobanti', 'Bdul Bucuresti',
@@ -25,6 +14,19 @@ const zones = [
 
 export default function HomePage() {
   const router = useRouter();
+  const { t } = useLanguage();
+
+  const propertyTypes = [
+    { id: 'APARTAMENT', name: t('propertyTypes.APARTAMENT'), icon: BuildingOfficeIcon },
+    { id: 'CASA', name: t('propertyTypes.CASA'), icon: HomeIcon },
+    { id: 'TEREN', name: t('propertyTypes.TEREN'), icon: ChartBarIcon },
+    { id: 'SPATIU_COMERCIAL', name: t('propertyTypes.SPATIU_COMERCIAL'), icon: BuildingOfficeIcon },
+  ];
+
+  const operations = [
+    { id: 'VANZARE', name: t('operations.VANZARE') },
+    { id: 'INCHIRIERE', name: t('operations.INCHIRIERE') },
+  ];
   const [quickSearch, setQuickSearch] = useState('');
   const [searchFilters, setSearchFilters] = useState({
     propertyType: '',
@@ -58,12 +60,9 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 animate-fade-in">
-              Găsește-ți <span className="text-yellow-300">casa visurilor</span> în Buzău
-            </h1>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 animate-fade-in" dangerouslySetInnerHTML={{ __html: t('home.heroTitle').replace('<span>', '<span class="text-yellow-300">') }}></h1>
             <p className="text-xl lg:text-2xl mb-8 opacity-90 max-w-3xl mx-auto animate-slide-up">
-              Agentia imobiliară BESTINVEST CAMIMOB îți oferă cele mai bune proprietăți din Buzău și împrejurimi. 
-              Tranzacții sigure, consiliere profesională.
+              {t('home.heroSubtitle')}
             </p>
           </div>
 
@@ -73,7 +72,7 @@ export default function HomePage() {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Exemplu: garsoniera micro 14, 2 camere Brosteni, casa sub 100000 euro..."
+                  placeholder={t('home.searchPlaceholder')}
                   value={quickSearch}
                   onChange={(e) => setQuickSearch(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleQuickSearch()}
@@ -84,17 +83,17 @@ export default function HomePage() {
                   onClick={handleQuickSearch}
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-semibold"
                 >
-                  Caută
+                  {t('home.searchButton')}
                 </button>
               </div>
               <p className="text-sm text-gray-500 mt-2">
-                Încearcă: "garsoniera centru", "2 camere sub 50000", "casa cu 4 camere", "teren zona industriala"
+                {t('home.searchSuggestions')}
               </p>
             </div>
             
             <details className="group">
               <summary className="cursor-pointer text-primary-600 hover:text-primary-700 font-medium mb-4">
-                Căutare avansată ▼
+                {t('home.advancedSearch')}
               </summary>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               <div>

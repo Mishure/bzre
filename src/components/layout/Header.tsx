@@ -3,32 +3,35 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Bars3Icon, XMarkIcon, HomeIcon, PhoneIcon } from '@heroicons/react/24/outline';
-
-const navigation = [
-  { name: 'Acasa', href: '/', icon: HomeIcon },
-  { name: 'Proprietati', href: '/properties/map-view', submenu: [
-    { name: 'Apartamente de vanzare', href: '/properties?type=APARTAMENT&operation=VANZARE' },
-    { name: 'Apartamente de inchiriat', href: '/properties?type=APARTAMENT&operation=INCHIRIERE' },
-    { name: 'Case de vanzare', href: '/properties?type=CASA&operation=VANZARE' },
-    { name: 'Case de inchiriat', href: '/properties?type=CASA&operation=INCHIRIERE' },
-    { name: 'Terenuri', href: '/properties?type=TEREN' },
-    { name: 'Spatii comerciale', href: '/properties?type=SPATIU_COMERCIAL' },
-  ]},
-  { name: 'Servicii', href: '/services', submenu: [
-    { name: 'Evaluare proprietate', href: '/services/evaluation' },
-    { name: 'Consultanta', href: '/services/consulting' },
-    { name: 'Consiliere juridica', href: '/services/legal' },
-    { name: 'Exclusivitate', href: '/services/exclusivity' },
-    { name: 'Comisioane', href: '/services/commissions' },
-  ]},
-  { name: 'Despre noi', href: '/about' },
-  { name: 'Contact', href: '/contact', icon: PhoneIcon },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Header() {
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const navigation = [
+    { name: t('nav.home'), href: '/', icon: HomeIcon },
+    { name: t('nav.properties'), href: '/properties/map-view', submenu: [
+      { name: t('properties.apartmentsSale'), href: '/properties?type=APARTAMENT&operation=VANZARE' },
+      { name: t('properties.apartmentsRent'), href: '/properties?type=APARTAMENT&operation=INCHIRIERE' },
+      { name: t('properties.housesSale'), href: '/properties?type=CASA&operation=VANZARE' },
+      { name: t('properties.housesRent'), href: '/properties?type=CASA&operation=INCHIRIERE' },
+      { name: t('properties.land'), href: '/properties?type=TEREN' },
+      { name: t('properties.commercial'), href: '/properties?type=SPATIU_COMERCIAL' },
+    ]},
+    { name: t('nav.services'), href: '/services', submenu: [
+      { name: t('services.evaluation'), href: '/services/evaluation' },
+      { name: t('services.consulting'), href: '/services/consulting' },
+      { name: t('services.legal'), href: '/services/legal' },
+      { name: t('services.exclusivity'), href: '/services/exclusivity' },
+      { name: t('services.commissions'), href: '/services/commissions' },
+    ]},
+    { name: t('nav.about'), href: '/about' },
+    { name: t('nav.contact'), href: '/contact', icon: PhoneIcon },
+  ];
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -105,14 +108,15 @@ export default function Header() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Button & Language Switcher */}
+          <div className="hidden md:flex items-center space-x-3">
             <Link
               href="/listeaza-proprietate"
               className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
             >
-              Listează-ți Proprietatea
+              {t('nav.listProperty')}
             </Link>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -168,8 +172,11 @@ export default function Header() {
               className="block w-full bg-primary-600 text-white text-center px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium mt-4"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Listează-ți Proprietatea
+              {t('nav.listProperty')}
             </Link>
+            <div className="mt-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         )}
       </nav>
