@@ -37,3 +37,6 @@ next-env.d.ts
 .vscode/
 .idea/
 .env.production
+
+# Database exports
+data-export/

@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
@@ -13,69 +10,61 @@ datasource db {
 }
 
 model Admin {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String   @unique
-  password  String
-  name      String
-  role      String   @default("AGENT")
-  active    Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  properties          Property[]
+  id                  Int                  @id @default(autoincrement())
+  username            String               @unique
+  email               String               @unique
+  password            String
+  name                String
+  role                String               @default("AGENT")
+  active              Boolean              @default(true)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
   activities          AdminActivity[]
+  properties          Property[]
   propertySubmissions PropertySubmission[]
 
   @@map("admins")
 }
 
 model Property {
-  id                Int            @id @default(autoincrement())
-  name              String
-  price             Float
-  currency          String         @default("RON") // RON or EUR
-  zone              String?        // Made optional
-  comfort           String?
-  street            String?        // Made optional
-  latitude          Float?
-  longitude         Float?
-  surface           Float
-  registrationDate  DateTime       @default(now())
-  ownerCnp          String?
-  rooms             Int?           // Made optional (not applicable for land)
-  floor             Int?
-  totalFloors       Int?
-  position          String?
-  locality          String
-  operationType     String
-  propertyType      String
-  description       String?
-  features          String?        // JSON string
-  heating           String?        // Încălzire
-  condition         String?        // Stare
-  availableFrom     String?        // Liber de la
-  deposit           String?        // Garanție
-  buildingType      String?        // Tip clădire
-  buildingMaterial  String?        // Material construcție
-  yearBuilt         Int?           // An construcție
-  images            PropertyImage[]
-  status            String @default("ACTIVE")
-  featured          Boolean        @default(false)
-  views             Int            @default(0)
-  
-  // Admin relations
-  adminId           Int
-  admin             Admin          @relation(fields: [adminId], references: [id])
-  
-  // Timestamps
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @updatedAt
-  archivedAt        DateTime?
-
-  // Client inquiries
-  inquiries         ClientInquiry[]
+  id               Int             @id @default(autoincrement())
+  name             String
+  price            Float
+  zone             String?
+  comfort          String?
+  street           String?
+  latitude         Float?
+  longitude        Float?
+  surface          Float
+  registrationDate DateTime        @default(now())
+  ownerCnp         String?
+  rooms            Int?
+  floor            Int?
+  totalFloors      Int?
+  position         String?
+  locality         String
+  operationType    String
+  propertyType     String
+  description      String?
+  features         String?
+  status           String          @default("ACTIVE")
+  featured         Boolean         @default(false)
+  views            Int             @default(0)
+  adminId          Int
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  archivedAt       DateTime?
+  heating          String?
+  condition        String?
+  availableFrom    String?
+  deposit          String?
+  buildingType     String?
+  buildingMaterial String?
+  yearBuilt        Int?
+  currency         String          @default("RON")
+  inquiries        ClientInquiry[]
+  admin            Admin           @relation(fields: [adminId], references: [id])
+  images           PropertyImage[]
 
   @@map("properties")
 }
@@ -87,8 +76,8 @@ model PropertyImage {
   isPrimary  Boolean  @default(false)
   order      Int      @default(0)
   propertyId Int
-  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   createdAt  DateTime @default(now())
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 
   @@map("property_images")
 }
@@ -109,7 +98,7 @@ model Agent {
 }
 
 model ClientInquiry {
-  id              Int             @id @default(autoincrement())
+  id              Int       @id @default(autoincrement())
   name            String
   email           String
   phone           String?
@@ -122,15 +111,11 @@ model ClientInquiry {
   rooms           Int?
   surface         Float?
   message         String
-  status          String   @default("NEW")
-  
-  // Relations
+  status          String    @default("NEW")
   propertyId      Int?
-  property        Property?       @relation(fields: [propertyId], references: [id])
-  
-  // Timestamps
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  property        Property? @relation(fields: [propertyId], references: [id])
 
   @@map("client_inquiries")
 }
@@ -146,72 +131,43 @@ model ExchangeRate {
 }
 
 model AdminActivity {
-  id          Int            @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   adminId     Int
-  admin       Admin          @relation(fields: [adminId], references: [id])
   action      String
-  resource    String         // e.g., "property", "client", etc.
+  resource    String
   resourceId  Int?
   description String
-  createdAt   DateTime       @default(now())
+  createdAt   DateTime @default(now())
+  admin       Admin    @relation(fields: [adminId], references: [id])
 
   @@map("admin_activities")
 }
 
 model PropertySubmission {
-  id              Int      @id @default(autoincrement())
-
-  // Owner contact info
-  ownerName       String
-  phone           String
-  email           String
-
-  // Property details
-  propertyType    String
-  operationType   String
-
-  // Location
-  locality        String
-  zone            String
-  address         String
-
-  // Specifications
-  surface         Float
-  rooms           Int?
-  floor           Int?
-  totalFloors     Int?
-
-  // Pricing
-  estimatedPrice  Float
-
-  // Additional info
-  description     String
-  features        String?
-  images          String?  // JSON array of image URLs
-
-  // Status tracking
-  status          String   @default("NEW")  // NEW, CONTACTED, EVALUATED, LISTED, REJECTED
-
-  // Admin handling
-  assignedToId    Int?
-  assignedTo      Admin?   @relation(fields: [assignedToId], references: [id])
-  notes           String?  // Internal notes from admin
-
-  // Timestamps
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  contactedAt     DateTime?
+  id             Int       @id @default(autoincrement())
+  ownerName      String
+  phone          String
+  email          String
+  propertyType   String
+  operationType  String
+  locality       String
+  zone           String
+  address        String
+  surface        Float
+  rooms          Int?
+  floor          Int?
+  totalFloors    Int?
+  estimatedPrice Float
+  description    String
+  features       String?
+  images         String?
+  status         String    @default("NEW")
+  assignedToId   Int?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  contactedAt    DateTime?
+  assignedTo     Admin?    @relation(fields: [assignedToId], references: [id])
 
   @@map("property_submissions")
 }
-
-// Note: SQLite doesn't support enums, using String instead
-// Valid values:
-// Role: "ADMIN", "AGENT", "MANAGER"
-// OperationType: "VANZARE", "INCHIRIERE"
-// PropertyType: "APARTAMENT", "CASA", "TEREN", "SPATIU_COMERCIAL"
-// PropertyStatus: "ACTIVE", "INACTIVE", "ARCHIVED", "SOLD", "RENTED"
-// TransactionType: "CUMPARARE", "VANZARE", "INCHIRIERE"
-// InquiryStatus: "NEW", "CONTACTED", "IN_PROGRESS", "CLOSED", "SPAM"
-// ActivityAction: "CREATE", "UPDATE", "DELETE", "ARCHIVE", "RESTORE", "LOGIN", "LOGOUT"
-// SubmissionStatus: "NEW", "CONTACTED", "EVALUATED", "LISTED", "REJECTED"
