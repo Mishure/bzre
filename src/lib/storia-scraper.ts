@@ -46,9 +46,9 @@ async function getBrowser(): Promise<Browser> {
 
       browser = await puppeteerCore.launch({
         args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
+        defaultViewport: { width: 1920, height: 1080 },
         executablePath,
-        headless: chromium.headless,
+        headless: true,
       })
     } else {
       // Development: use local puppeteer
@@ -62,7 +62,7 @@ async function getBrowser(): Promise<Browser> {
           '--disable-accelerated-2d-canvas',
           '--disable-gpu',
         ],
-      })
+      }) as unknown as Browser
     }
   }
   return browser
