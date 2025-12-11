@@ -1,4 +1,5 @@
-import puppeteer, { Browser, Page } from 'puppeteer'
+import puppeteerCore, { Browser, Page } from 'puppeteer-core'
+import chromium from '@sparticuz/chromium-min'
 
 export interface StoriaPropertyData {
   title: string
@@ -32,18 +33,37 @@ export interface StoriaPropertyData {
 
 let browser: Browser | null = null
 
+// Remote Chromium URL for serverless environments
+const CHROMIUM_URL = 'https://github.com/nicholaskoerfer/chromium/releases/download/v132.0.0/chromium-v132.0.0-pack.tar'
+
 async function getBrowser(): Promise<Browser> {
   if (!browser) {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-accelerated-2d-canvas',
-        '--disable-gpu',
-      ],
-    })
+    const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1'
+
+    if (isProduction) {
+      // Production: use chromium-min with remote executable
+      const executablePath = await chromium.executablePath(CHROMIUM_URL)
+
+      browser = await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath,
+        headless: chromium.headless,
+      })
+    } else {
+      // Development: use local puppeteer
+      const puppeteer = await import('puppeteer')
+      browser = await puppeteer.default.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--disable-gpu',
+        ],
+      })
+    }
   }
   return browser
 }
@@ -104,11 +124,17 @@ export async function scrapeStoriaProperty(url: string): Promise<StoriaPropertyD
     // Wait for content to load
     await page.waitForSelector('h1', { timeout: 10000 })
 
-    // Save HTML for debugging
-    const html = await page.content()
-    const fs = require('fs')
-    fs.writeFileSync('/tmp/storia-page.html', html)
-    console.log('Saved page HTML to /tmp/storia-page.html')
+    // Save HTML for debugging (only in development)
+    if (process.env.NODE_ENV !== 'production') {
+      try {
+        const html = await page.content()
+        const fs = require('fs')
+        fs.writeFileSync('/tmp/storia-page.html', html)
+        console.log('Saved page HTML to /tmp/storia-page.html')
+      } catch (e) {
+        console.log('Could not save debug HTML')
+      }
+    }
 
     // Extract data using page.evaluate
     const propertyData = await page.evaluate(() => {
