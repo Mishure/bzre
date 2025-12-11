@@ -42,10 +42,12 @@ export async function POST(request: NextRequest) {
 
     for (const url of urls) {
       try {
-        console.log(`Scraping Storia property: ${url}`)
+        console.log(`[Import] Starting scrape for: ${url}`)
+        console.log(`[Import] Environment: ${process.env.NODE_ENV}, Vercel: ${process.env.VERCEL}`)
 
         // Scrape the property data from Storia
         const storiaData = await scrapeStoriaProperty(url)
+        console.log(`[Import] Scrape completed successfully`)
 
         console.log(`Scraped data:`, {
           title: storiaData.title,
@@ -143,10 +145,14 @@ export async function POST(request: NextRequest) {
         await new Promise(resolve => setTimeout(resolve, 1000))
 
       } catch (error) {
-        console.error(`Error importing ${url}:`, error)
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+        const errorStack = error instanceof Error ? error.stack : ''
+        console.error(`[Import] Error importing ${url}:`, errorMessage)
+        console.error(`[Import] Stack:`, errorStack)
         errors.push({
           url,
-          error: error instanceof Error ? error.message : 'Unknown error'
+          error: errorMessage,
+          stack: errorStack
         })
       }
     }

@@ -39,17 +39,22 @@ const CHROMIUM_URL = 'https://github.com/nicholaskoerfer/chromium/releases/downl
 async function getBrowser(): Promise<Browser> {
   if (!browser) {
     const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1'
+    console.log(`[Browser] isProduction: ${isProduction}, NODE_ENV: ${process.env.NODE_ENV}, VERCEL: ${process.env.VERCEL}`)
 
     if (isProduction) {
       // Production: use chromium-min with remote executable
+      console.log(`[Browser] Getting Chromium executable path from: ${CHROMIUM_URL}`)
       const executablePath = await chromium.executablePath(CHROMIUM_URL)
+      console.log(`[Browser] Chromium executable path: ${executablePath}`)
 
+      console.log(`[Browser] Launching browser with args:`, chromium.args)
       browser = await puppeteerCore.launch({
         args: chromium.args,
         defaultViewport: { width: 1920, height: 1080 },
         executablePath,
         headless: true,
       })
+      console.log(`[Browser] Browser launched successfully in production mode`)
     } else {
       // Development: use local puppeteer
       const puppeteer = await import('puppeteer')

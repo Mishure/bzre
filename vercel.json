@@ -1,8 +1,12 @@
 {
   "functions": {
-    "src/app/api/import-storia/route.ts": {
-      "maxDuration": 60,
-      "memory": 1024
+    "app/api/import-storia/route.ts": {
+      "maxDuration": 120,
+      "memory": 3008
+    },
+    "api/import-storia/route.ts": {
+      "maxDuration": 120,
+      "memory": 3008
     }
   }
 }
