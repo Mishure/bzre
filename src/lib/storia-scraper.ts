@@ -34,7 +34,8 @@ export interface StoriaPropertyData {
 let browser: Browser | null = null
 
 // Remote Chromium URL for serverless environments
-const CHROMIUM_URL = 'https://github.com/nicholaskoerfer/chromium/releases/download/v132.0.0/chromium-v132.0.0-pack.tar'
+// Using the official Sparticuz chromium release compatible with chromium-min v131
+const CHROMIUM_URL = 'https://github.com/Sparticuz/chromium/releases/download/v131.0.0/chromium-v131.0.0-pack.tar'
 
 async function getBrowser(): Promise<Browser> {
   if (!browser) {
