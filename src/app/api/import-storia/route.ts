@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { prisma } from '@/lib/prisma'
 import { scrapeStoriaProperty, closeBrowser } from '@/lib/storia-scraper'
-import { downloadAndUploadMultipleImages } from '@/lib/supabase'
+import { downloadAndUploadMultipleImages } from '@/lib/blob-storage'
 
 export async function POST(request: NextRequest) {
   try {
