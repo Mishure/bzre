@@ -28,14 +28,22 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // Send email notification to admin
-    await sendContactFormNotification({
-      name: body.name,
-      email: body.email,
-      phone: body.phone,
-      subject: body.subject,
-      message: body.message,
-    });
+    // Send email notification to admin (don't block on failure)
+    try {
+      const emailResult = await sendContactFormNotification({
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+        subject: body.subject,
+        message: body.message,
+      });
+
+      if (!emailResult.success) {
+        console.error('Email notification failed but inquiry saved:', emailResult.error);
+      }
+    } catch (emailError) {
+      console.error('Email notification error but inquiry saved:', emailError);
+    }
 
     return NextResponse.json({
       message: 'Contact form submitted successfully',
