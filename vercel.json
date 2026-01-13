@@ -1,9 +1,6 @@
 {
   "functions": {
-    "app/api/import-storia/route.ts": {
-      "maxDuration": 60
-    },
-    "api/import-storia/route.ts": {
+    "src/app/api/import-storia/route.ts": {
       "maxDuration": 60
     }
   }
