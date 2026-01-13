@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
         phone: body.phone || null,
         transactionType: body.subject === 'buy' ? 'CUMPARARE' :
                         body.subject === 'sell' ? 'VANZARE' :
-                        body.subject === 'rent' ? 'INCHIRIERE' : 'CUMPARARE',
+                        body.subject === 'rent' ? 'INCHIRIERE' :
+                        body.subject === 'evaluation' ? 'EVALUARE' :
+                        body.subject === 'general' ? 'INFORMAȚII' : 'INFORMAȚII',
         message: body.message,
         status: 'NEW'
       }
