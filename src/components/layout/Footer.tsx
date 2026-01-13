@@ -23,7 +23,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <EnvelopeIcon className="h-5 w-5 text-primary-400" />
-                <span>contact@bestinvestcamimob.ro</span>
+                <span>contact@camimob.ro</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPinIcon className="h-5 w-5 text-primary-400" />

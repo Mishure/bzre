@@ -35,28 +35,28 @@ export default function AboutPage() {
   
   const team = [
     {
-      name: 'Alexandru Popescu',
+      name: 'Carmen Otilia',
       role: 'Director General',
       description: 'Cu peste 20 de ani de experiență în domeniul imobiliar.',
-      image: '/images/team/alexandru.jpg'
+      image: '/images/team/carmen.jpg'
     },
     {
-      name: 'Maria Ionescu',
+      name: 'Carmen Otilia',
       role: 'Manager Vânzări',
       description: 'Specialist în proprietăți rezidențiale și comerciale.',
-      image: '/images/team/maria.jpg'
+      image: '/images/team/carmen.jpg'
     },
     {
-      name: 'Andrei Dumitrescu',
+      name: 'Marian T',
       role: 'Consultant Senior',
       description: 'Expert în evaluări imobiliare și investiții.',
-      image: '/images/team/andrei.jpg'
+      image: '/images/team/marian.jpg'
     },
     {
-      name: 'Elena Popa',
+      name: 'Carmen Otilia',
       role: 'Agent Imobiliar',
       description: 'Dedicată găsirii casei perfecte pentru fiecare client.',
-      image: '/images/team/elena.jpg'
+      image: '/images/team/carmen.jpg'
     }
   ];
 

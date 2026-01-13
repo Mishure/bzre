@@ -208,8 +208,7 @@ export default function ContactPage() {
                   <EnvelopeIcon className="h-6 w-6 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-gray-600">contact@bestinvestcamimob.ro</p>
-                    <p className="text-gray-600">info@bestinvestcamimob.ro</p>
+                    <p className="text-gray-600">contact@camimob.ro</p>
                   </div>
                 </div>
                 
