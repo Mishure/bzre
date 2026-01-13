@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 async function setAdminPassword() {
   try {
-    const adminEmail = 'admin@bestinvestcamimob.ro';
+    const adminEmail = 'contact@camimob.ro';
 
     // SCHIMBĂ PAROLA AICI (minim 8 caractere)
     const NEW_PASSWORD = 'YOUR_SECURE_PASSWORD_HERE';

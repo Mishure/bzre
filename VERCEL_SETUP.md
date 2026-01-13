@@ -43,7 +43,7 @@ You can also copy from `.env.production` file and paste directly into Vercel.
 1. **After deployment**, update `NEXTAUTH_URL` with your actual Vercel URL
 2. All variables should be added to **Production**, **Preview**, and **Development** environments
 3. The database is already seeded with an admin user - you can login with:
-   - Email: `admin@bestinvestcamimob.ro`
+   - Email: `contact@camimob.ro`
    - Password: `Admin123!`
 
 ## Redeploy

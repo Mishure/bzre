@@ -10,11 +10,11 @@ async function main() {
   const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin123!', 12)
   
   const admin = await prisma.admin.upsert({
-    where: { email: process.env.ADMIN_EMAIL || 'admin@bestinvestcamimob.ro' },
+    where: { email: process.env.ADMIN_EMAIL || 'contact@camimob.ro' },
     update: {},
     create: {
       username: 'admin',
-      email: process.env.ADMIN_EMAIL || 'admin@bestinvestcamimob.ro',
+      email: process.env.ADMIN_EMAIL || 'contact@camimob.ro',
       password: hashedPassword,
       name: 'Administrator',
       role: 'ADMIN',
@@ -33,7 +33,7 @@ async function main() {
         firstName: 'Maria',
         lastName: 'Popescu',
         phone: '+40238123456',
-        email: 'maria.popescu@bestinvestcamimob.ro',
+        email: 'contact@camimob.ro',
         zone: 'Centru',
         active: true,
       },
@@ -45,7 +45,7 @@ async function main() {
         firstName: 'Ion',
         lastName: 'Georgescu',
         phone: '+40238123457',
-        email: 'ion.georgescu@bestinvestcamimob.ro',
+        email: 'contact@camimob.ro',
         zone: 'Micro 3',
         active: true,
       },

@@ -71,7 +71,7 @@ export default function AdminLoginForm() {
                 type="email"
                 required
                 className="appearance-none rounded-lg relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10"
-                placeholder="admin@bestinvestcamimob.ro"
+                placeholder="contact@camimob.ro"
                 value={formData.email}
                 onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
               />

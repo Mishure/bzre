@@ -18,8 +18,8 @@ async function changeAdminPassword() {
     console.log('\n🔐 Schimbare Parolă Administrator\n');
 
     // Get admin email
-    const email = await question('Email admin (default: admin@bestinvestcamimob.ro): ');
-    const adminEmail = email.trim() || 'admin@bestinvestcamimob.ro';
+    const email = await question('Email admin (default: contact@camimob.ro): ');
+    const adminEmail = email.trim() || 'contact@camimob.ro';
 
     // Check if admin exists
     const admin = await prisma.admin.findUnique({

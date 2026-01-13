@@ -17,7 +17,7 @@ async function main() {
 
     const admin = await prisma.admin.create({
       data: {
-        email: 'admin@bestinvestcamimob.ro',
+        email: 'contact@camimob.ro',
         username: 'admin',
         name: 'Administrator',
         password: hashedPassword,
