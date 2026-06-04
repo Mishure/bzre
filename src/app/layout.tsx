@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,8 +9,10 @@ import { CookieConsentProvider } from '@/contexts/CookieConsentContext';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
 
 const inter = Inter({ subsets: ["latin"] });
+const GA_MEASUREMENT_ID = "G-CWDL7D7DW7";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.camimob.ro"),
   title: "BESTINVEST CAMIMOB - Agentie Imobiliara Buzau",
   description: "Agentie imobiliara moderna din Buzau. Oferte de calitate pentru apartamente, case, terenuri si spatii comerciale. Tranzactii sigure. Gaseste-ti casa visurilor cu cei mai buni agenti imobiliari din Buzau.",
   keywords: "agentii imobiliare Buzau, anunturi imobiliare Buzau, proprietati Buzau, apartamente de vanzare Buzau, apartamente de inchiriat Buzau, case de vanzare Buzau, terenuri de vanzare Buzau, spatii comerciale Buzau, imobiliare Buzau centru, imobiliare Buzau Micro 3, imobiliare Buzau Micro 4, garsoniere Buzau, apartamente 2 camere Buzau, apartamente 3 camere Buzau, case Buzau, agentie imobiliara profesionista Buzau, evaluare proprietate Buzau, consultanta imobiliara Buzau, BESTINVEST CAMIMOB, CAMIMOB, agent imobiliar Buzau, tranzactii imobiliare Buzau, imobile Buzau",
@@ -54,6 +57,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ro">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <CookieConsentProvider>
           <Toaster
