@@ -54,7 +54,7 @@ export async function fetchSeoProperties(
     currency: (p as { currency?: string }).currency,
     zone: p.zone || "",
     comfort: p.comfort || undefined,
-    street: p.street,
+    street: p.street ?? "",
     surface: p.surface,
     rooms: p.rooms ?? 0,
     floor: p.floor ?? undefined,
@@ -353,7 +353,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
     sections: [
       {
         heading: "Caracteristicile cartierului Micro 14",
-        body: "Cartierele „Micro" din Buzău sunt zone rezidențiale dezvoltate sistematic în perioada comunistă, cu blocuri de panouri prefabricate organizate în ansambluri compacte, cu spații verzi între blocuri, locuri de joacă pentru copii, școli, grădinițe și mici centre comerciale incluse în plan. Micro 14, ca toate cartierele similare, oferă o densitate moderată, o infrastructură matură și o comunitate de locatari relativ stabilă. Pentru cumpărători este o zonă predictibilă: știi ce primești în ce privește tipologia apartamentelor, ce facilități ai în jur, ce profil au vecinii și ce dezvoltare se așteaptă în următorii ani.",
+        body: "Cartierele „Micro” din Buzău sunt zone rezidențiale dezvoltate sistematic în perioada comunistă, cu blocuri de panouri prefabricate organizate în ansambluri compacte, cu spații verzi între blocuri, locuri de joacă pentru copii, școli, grădinițe și mici centre comerciale incluse în plan. Micro 14, ca toate cartierele similare, oferă o densitate moderată, o infrastructură matură și o comunitate de locatari relativ stabilă. Pentru cumpărători este o zonă predictibilă: știi ce primești în ce privește tipologia apartamentelor, ce facilități ai în jur, ce profil au vecinii și ce dezvoltare se așteaptă în următorii ani.",
       },
       {
         heading: "Oferta de apartamente",
@@ -361,7 +361,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         heading: "Cui i se potrivește Micro 14",
-        body: "Micro 14 este o opțiune potrivită pentru: 1) Tineri la prima locuință, care vor un apartament accesibil într-un cartier liniștit, cu acces normal la oraș; 2) Familii cu copii mici, atrase de școlile și grădinițele apropiate, de spațiile verzi și de comunitatea consolidată; 3) Cumpărători în vârstă, care fac downsize și își doresc un cartier cu vecini stabili și magazine de proximitate; 4) Investitori care vor randament — chiriile din Micro 14 sunt sub media orașului ca valoare absolută, dar la prețul de achiziție mai mic, yieldul procentual rămâne competitiv (7-9% brut anual). Nu este zonă pentru cumpărătorii care vor să fie în „buricul orașului" — dar este perfectă pentru cei care prioritizează raportul preț-confort.",
+        body: "Micro 14 este o opțiune potrivită pentru: 1) Tineri la prima locuință, care vor un apartament accesibil într-un cartier liniștit, cu acces normal la oraș; 2) Familii cu copii mici, atrase de școlile și grădinițele apropiate, de spațiile verzi și de comunitatea consolidată; 3) Cumpărători în vârstă, care fac downsize și își doresc un cartier cu vecini stabili și magazine de proximitate; 4) Investitori care vor randament — chiriile din Micro 14 sunt sub media orașului ca valoare absolută, dar la prețul de achiziție mai mic, yieldul procentual rămâne competitiv (7-9% brut anual). Nu este zonă pentru cumpărătorii care vor să fie în „buricul orașului” — dar este perfectă pentru cei care prioritizează raportul preț-confort.",
       },
       {
         heading: "Cum te ajută CAMIMOB în Micro 14",
