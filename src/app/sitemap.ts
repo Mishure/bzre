@@ -1,8 +1,16 @@
 import { MetadataRoute } from 'next';
 import { prisma } from '@/lib/prisma';
+import { SEO_PAGES } from '@/lib/seoPages';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.camimob.ro';
+
+  const seoLandingPages: MetadataRoute.Sitemap = SEO_PAGES.map((p) => ({
+    url: `${baseUrl}/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 0.85,
+  }));
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -111,5 +119,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Return static pages even if database fetch fails
   }
 
-  return [...staticPages, ...propertyPages];
+  return [...staticPages, ...seoLandingPages, ...propertyPages];
 }

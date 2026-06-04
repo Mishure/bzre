@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import CookieSettingsButton from '@/components/CookieSettingsButton';
+import { SEO_PAGES } from '@/lib/seoPages';
 
 export default function Footer() {
   return (
@@ -95,6 +96,22 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <h3 className="text-lg font-semibold mb-4">Caută în Buzău</h3>
+          <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2 text-sm">
+            {SEO_PAGES.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/${p.slug}`}
+                  className="text-gray-300 hover:text-primary-400 transition-colors"
+                >
+                  {p.breadcrumbLabel}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
