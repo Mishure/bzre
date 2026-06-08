@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeftIcon, PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import toast, { Toaster } from 'react-hot-toast';
+import { generateSeoName } from '@/lib/seoName';
 
 export default function AddPropertyPage() {
   const router = useRouter();
@@ -141,14 +142,40 @@ export default function AddPropertyPage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Nume proprietate *
               </label>
-              <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                placeholder="ex: Apartament 3 camere, zona Centru"
-              />
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  placeholder="ex: Apartament 3 camere de vânzare în Centru, Buzău – 65 mp"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const surface = parseFloat(formData.surface);
+                    const rooms = formData.rooms ? parseInt(formData.rooms) : null;
+                    if (!surface || !formData.propertyType || !formData.operationType) {
+                      alert("Completează mai întâi: tip, operație, suprafață (și camere dacă e cazul).");
+                      return;
+                    }
+                    const seo = generateSeoName({
+                      propertyType: formData.propertyType,
+                      operationType: formData.operationType,
+                      rooms,
+                      zone: formData.zone,
+                      locality: formData.locality,
+                      surface,
+                    });
+                    setFormData({ ...formData, name: seo });
+                  }}
+                  className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm whitespace-nowrap"
+                  title="Generează titlu SEO din celelalte câmpuri"
+                >
+                  Generează titlu SEO
+                </button>
+              </div>
             </div>
 
             <div>

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { generateSeoName } from '@/lib/seoName'
 
 interface Property {
   id: number
@@ -114,14 +115,43 @@ export default function PropertyEditForm({ property }: { property: Property }) {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Nume proprietate *
               </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const surface = parseFloat(String(formData.surface))
+                    const roomsRaw = formData.rooms
+                    const rooms = roomsRaw !== undefined && roomsRaw !== null && String(roomsRaw) !== ''
+                      ? parseInt(String(roomsRaw))
+                      : null
+                    if (!surface || !formData.propertyType || !formData.operationType) {
+                      alert('Completează mai întâi: tip, operație, suprafață (și camere dacă e cazul).')
+                      return
+                    }
+                    const seo = generateSeoName({
+                      propertyType: formData.propertyType,
+                      operationType: formData.operationType,
+                      rooms,
+                      zone: formData.zone,
+                      locality: formData.locality,
+                      surface,
+                    })
+                    setFormData({ ...formData, name: seo })
+                  }}
+                  className="px-3 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 text-sm whitespace-nowrap"
+                  title="Generează titlu SEO din celelalte câmpuri"
+                >
+                  Generează SEO
+                </button>
+              </div>
             </div>
 
             <div>
