@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { prisma } from '@/lib/prisma'
 import { scrapeStoriaProperty, closeBrowser } from '@/lib/storia-scraper'
 import { downloadAndUploadMultipleImages } from '@/lib/blob-storage'
+import { generateSeoName } from '@/lib/seoName'
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,11 +56,23 @@ export async function POST(request: NextRequest) {
           imageCount: storiaData.imageUrls.length
         })
 
-        // Check if property already exists (by Storia ID)
+        // Generate SEO-friendly name from scraped data
+        const seoName = generateSeoName({
+          propertyType: storiaData.propertyType,
+          operationType: storiaData.operationType,
+          rooms: storiaData.rooms,
+          zone: storiaData.zone,
+          locality: storiaData.locality,
+          surface: storiaData.surface,
+        })
+
+        // Check if property already exists (match by surface + price + locality —
+        // resilient to title rewrites)
         const existingProperty = await prisma.property.findFirst({
           where: {
-            name: storiaData.title,
             price: storiaData.price,
+            surface: storiaData.surface,
+            locality: storiaData.locality,
           }
         })
 
@@ -75,7 +88,7 @@ export async function POST(request: NextRequest) {
         // Create the property first
         const property = await prisma.property.create({
           data: {
-            name: storiaData.title,
+            name: seoName,
             price: storiaData.price,
             currency: storiaData.currency,
             zone: storiaData.zone,
