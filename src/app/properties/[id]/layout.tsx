@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 import PropertyJsonLd from '@/components/PropertyJsonLd';
+import { generateSeoMetaDescription } from '@/lib/seoDescription';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -63,10 +64,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const propertyTypeName = propertyTypeMap[property.propertyType] || property.propertyType;
     const operationName = operationTypeMap[property.operationType] || property.operationType;
 
-    const title = `${property.name} - ${priceFormatted} | BESTINVEST CAMIMOB`;
-    const description = property.description
-      ? property.description.substring(0, 155) + (property.description.length > 155 ? '...' : '')
-      : `${propertyTypeName} ${operationName} în ${property.locality}, ${property.zone}. Suprafață ${property.surface} mp${property.rooms ? `, ${property.rooms} camere` : ''}. Preț: ${priceFormatted}.`;
+    const title = `${property.name} – ${priceFormatted} | BESTINVEST CAMIMOB`;
+    const description = generateSeoMetaDescription({
+      propertyType: property.propertyType,
+      operationType: property.operationType,
+      rooms: property.rooms,
+      zone: property.zone,
+      locality: property.locality,
+      surface: property.surface,
+      price: property.price,
+      currency: property.currency,
+    });
 
     const imageUrl = property.images[0]?.url || 'https://www.camimob.ro/imagecam.png';
 
