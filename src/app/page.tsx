@@ -23,6 +23,20 @@ const zones = [
   'Victoriei', 'Nord', 'Sud', 'Est', 'Vest', 'Marginal', 'Zona Industriala'
 ];
 
+// Linkuri interne către paginile SEO (landing pages). Sursa de adevăr a
+// conținutului este `src/lib/seoPages.ts`; aici păstrăm doar slug + anchor text
+// ca să nu importăm modulul (care depinde de Prisma) în acest client component.
+const seoLandingLinks = [
+  { slug: 'apartamente-de-vanzare-buzau', label: 'Apartamente de vânzare în Buzău' },
+  { slug: 'apartamente-2-camere-buzau', label: 'Apartamente 2 camere Buzău' },
+  { slug: 'apartamente-3-camere-buzau', label: 'Apartamente 3 camere Buzău' },
+  { slug: 'garsoniere-buzau', label: 'Garsoniere de vânzare Buzău' },
+  { slug: 'case-de-vanzare-buzau', label: 'Case de vânzare în Buzău' },
+  { slug: 'apartamente-brosteni-buzau', label: 'Apartamente cartier Broșteni' },
+  { slug: 'apartamente-micro-14-buzau', label: 'Apartamente Micro 14' },
+  { slug: 'apartamente-unirii-buzau', label: 'Apartamente zona Unirii' },
+];
+
 export default function HomePage() {
   const router = useRouter();
   const [quickSearch, setQuickSearch] = useState('');
@@ -211,6 +225,38 @@ export default function HomePage() {
                 <type.icon className="h-16 w-16 text-primary-600 mx-auto mb-4 group-hover:scale-110 transition-transform" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{type.name}</h3>
                 <p className="text-gray-600">Vezi ofertele disponibile</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Landing Pages — internal links with descriptive anchor text */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Caută după categorie în Buzău
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Ghiduri complete și oferte actualizate pentru fiecare tip de
+              proprietate și cartier din Buzău
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {seoLandingLinks.map((link) => (
+              <Link
+                key={link.slug}
+                href={`/${link.slug}`}
+                className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 hover:border-primary-400 hover:bg-primary-50 transition-colors group"
+              >
+                <span className="font-medium text-gray-900 group-hover:text-primary-700">
+                  {link.label}
+                </span>
+                <span className="text-primary-600 group-hover:translate-x-1 transition-transform" aria-hidden="true">
+                  →
+                </span>
               </Link>
             ))}
           </div>

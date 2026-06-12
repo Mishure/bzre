@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { Toaster } from 'react-hot-toast';
 import { CookieConsentProvider } from '@/contexts/CookieConsentContext';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
+import OrganizationJsonLd from '@/components/OrganizationJsonLd';
 
 const inter = Inter({ subsets: ["latin"] });
 const GA_MEASUREMENT_ID = "G-CWDL7D7DW7";
@@ -70,6 +71,7 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
+        <OrganizationJsonLd />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <CookieConsentProvider>
