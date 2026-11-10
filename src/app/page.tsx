@@ -24,6 +24,7 @@ const operations = [
 // ca să nu importăm modulul (care depinde de Prisma) în acest client component.
 const seoLandingLinks = [
   { slug: 'apartamente-de-vanzare-buzau', label: 'Apartamente de vânzare în Buzău' },
+  { slug: 'apartamente-de-inchiriat-buzau', label: 'Apartamente de închiriat în Buzău' },
   { slug: 'apartamente-2-camere-buzau', label: 'Apartamente 2 camere Buzău' },
   { slug: 'apartamente-3-camere-buzau', label: 'Apartamente 3 camere Buzău' },
   { slug: 'garsoniere-buzau', label: 'Garsoniere de vânzare Buzău' },

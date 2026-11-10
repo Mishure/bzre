@@ -131,6 +131,49 @@ export const SEO_PAGES: SeoPageConfig[] = [
     filter: { propertyType: "APARTAMENT", operationType: "VANZARE" },
   },
   {
+    slug: "apartamente-de-inchiriat-buzau",
+    title: "Apartamente de închiriat în Buzău | CAMIMOB",
+    description:
+      "Apartamente de închiriat în Buzău: garsoniere și apartamente cu 2 camere în Centru, Micro 3, Broșteni, Crâng, Orizont și Unirii Sud. Contracte corecte, proprietari verificați. BESTINVEST CAMIMOB.",
+    h1: "Apartamente de închiriat în Buzău",
+    breadcrumbLabel: "Apartamente de închiriat",
+    intro:
+      "Cauți o locuință de închiriat în Buzău? Pe această pagină găsești apartamentele disponibile acum în portofoliul CAMIMOB — garsoniere și apartamente cu 2 camere, în zone precum Centru, Micro 3, Broșteni, Crâng, Orizont și Unirii Sud. Fiecare ofertă este verificată de echipa noastră: proprietar real, acte în regulă, chirie stabilită corect față de piața locală. Te ajutăm de la prima vizionare până la semnarea contractului și predarea cheilor, fără surprize pe parcurs.",
+    sections: [
+      {
+        heading: "Cât costă o chirie în Buzău",
+        body: "Chiriile din Buzău rămân semnificativ mai accesibile decât în Brașov, Constanța sau București, iar oferta se concentrează pe garsoniere și apartamente cu 2 camere — exact segmentul cu cea mai mare cerere. În portofoliul nostru actual, chiriile pentru apartamente se situează în intervalul 1.400–2.300 lei pe lună, iar ofertele cotate în euro între 350 și 400 EUR lunar. Diferențele vin din zonă, suprafață, etaj, nivelul de mobilare și starea apartamentului: un apartament recent renovat și mobilat complet în Centru se închiriază la capătul superior al intervalului, în timp ce o garsonieră nemobilată într-un cartier semicentral pleacă de la minim. La chirie se adaugă de regulă întreținerea și utilitățile, care iarna pot cântări serios într-un bloc fără reabilitare termică — întreabă întotdeauna cât au fost facturile în ultimul sezon rece, nu doar cât este chiria.",
+      },
+      {
+        heading: "Ce verifici înainte să semnezi contractul",
+        body: "Un contract de închiriere bun previne aproape toate conflictele ulterioare. Înainte să semnezi, clarifică în scris: durata contractului și condițiile de prelungire; valoarea garanției și, foarte important, în ce situații se reține și în cât timp se restituie; cine plătește întreținerea, cine utilitățile și cine eventualele reparații; dacă sunt permise animale de companie; dacă ai dreptul să faci modificări (găuri în perete, schimbat mobilier). Fă obligatoriu un proces-verbal de predare-primire cu inventarul mobilierului și al electrocasnicelor, plus fotografii datate ale stării apartamentului — este singura protecție reală a garanției tale. Notează indexul contoarelor de apă, gaz și curent în ziua mutării și cere ultima dovadă de plată a întreținerii, ca să nu moștenești datoriile fostului chiriaș la asociație. Verifică și cine este efectiv proprietarul: cere extrasul de carte funciară, nu te baza pe declarații.",
+      },
+      {
+        heading: "Obligațiile proprietarului și ale chiriașului",
+        body: "Proprietarul datorează un apartament în stare de folosință, cu instalații funcționale, și răspunde de reparațiile majore — centrală, instalație electrică, țevi, acoperiș, tocărie. Are obligația să încheie contract scris și să își declare veniturile din chirie la ANAF; regimul fiscal și termenele se schimbă periodic, așa că recomandăm confirmarea cu un contabil înainte de prima declarație. Chiriașul răspunde de întreținerea curentă, de plata la timp a chiriei și a utilităților, și de folosirea apartamentului potrivit destinației de locuință. Pentru ambele părți, o asigurare facultativă a locuinței costă puțin și acoperă exact scenariile care generează cele mai urâte dispute: inundarea vecinului de la parter, un scurtcircuit, un geam spart. Dacă închiriezi pentru o firmă sau ai nevoie de contract înregistrat pentru viză, spune-ne de la început — documentația diferă.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB la închiriere",
+        body: "Lucrăm în Buzău de ani de zile și cunoaștem proprietarii, blocurile și nivelul real al chiriilor din fiecare cartier. Pentru chiriași, asta înseamnă că îți arătăm doar apartamente care există, la prețul anunțat, cu proprietar dispus să semneze contract — fără anunțuri-momeală și fără vizionări pierdute. Organizăm vizionările grupat, în intervalul orar care îți convine, și negociem în locul tău acolo unde chiria este peste piață. Pentru proprietari, selectăm chiriași serioși, verificăm capacitatea de plată, redactăm contractul și procesul-verbal de predare, și rămânem punct de contact pe durata închirierii. Comisionul este transparent, comunicat înainte de orice vizionare. Contactează-ne și îți pregătim o listă personalizată cu apartamentele de închiriat care se potrivesc bugetului și zonei tale.",
+      },
+    ],
+    faq: [
+      {
+        q: "Cât este chiria medie pentru un apartament în Buzău?",
+        a: "În portofoliul nostru actual, apartamentele de închiriat se încadrează între 1.400 și 2.300 lei pe lună, iar cele cotate în euro între 350 și 400 EUR. Prețul final depinde de zonă, suprafață, etaj și gradul de mobilare. Întreținerea și utilitățile se plătesc de regulă separat.",
+      },
+      {
+        q: "Ce garanție se cere la închiriere?",
+        a: "Practica uzuală în Buzău este o garanție egală cu o chirie lunară, plătită la semnarea contractului și restituită la final dacă apartamentul este predat în starea din procesul-verbal. Unii proprietari cer și prima lună în avans. Condițiile exacte de reținere trebuie scrise în contract.",
+      },
+      {
+        q: "Pe ce perioadă se încheie contractul de închiriere?",
+        a: "Cel mai frecvent pe 12 luni, cu posibilitate de prelungire. Se pot încheia și contracte mai scurte, dar proprietarii preferă durata de un an pentru stabilitate. Verifică întotdeauna clauza de reziliere anticipată și termenul de preaviz — de obicei 30 de zile.",
+      },
+    ],
+    filter: { propertyType: "APARTAMENT", operationType: "INCHIRIERE" },
+  },
+  {
     slug: "apartamente-2-camere-buzau",
     title: "Apartamente 2 camere de vânzare în Buzău | CAMIMOB",
     description:
