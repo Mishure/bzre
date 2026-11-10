@@ -10,7 +10,18 @@ export type SeoFilter = {
   operationType?: "VANZARE" | "INCHIRIERE";
   rooms?: number;
   roomsGte?: number;
+  /** Substring match against the normalized `zone`. For city quarters. */
   zoneNormalized?: string;
+  /**
+   * Match if ANY of these terms appears in the normalized `zone` OR the
+   * normalized `locality`.
+   *
+   * Needed for the commune pages, where the page name and the stored value
+   * differ: the Mărăcineni listings carry "Potoceni" and the Merei ones
+   * carry "Lipia" — the village, not the commune. Checking both columns also
+   * covers listings where only one of the two was filled in.
+   */
+  placeNormalizedAny?: string[];
 };
 
 export type SeoSection = { heading: string; body: string };
@@ -94,6 +105,15 @@ export async function fetchSeoProperties(
       normalizeText(p.zone).includes(filter.zoneNormalized!)
     );
   }
+
+  if (filter.placeNormalizedAny?.length) {
+    const terms = filter.placeNormalizedAny;
+    return mapped.filter((p) => {
+      const haystack = `${normalizeText(p.zone)} ${normalizeText(p.locality)}`;
+      return terms.some((t) => haystack.includes(t));
+    });
+  }
+
   return mapped;
 }
 
@@ -398,6 +418,53 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
     ],
     filter: { propertyType: "CASA", operationType: "VANZARE" },
+  },
+  {
+    slug: "terenuri-de-vanzare-buzau",
+    title: "Terenuri de vânzare în Buzău și județ | CAMIMOB",
+    description:
+      "Terenuri de vânzare în Buzău și în județ: intravilan pentru construcție, loturi în oraș și în comunele din jur. Acte verificate, intabulare confirmată. CAMIMOB.",
+    h1: "Terenuri de vânzare în Buzău și județ",
+    breadcrumbLabel: "Terenuri de vânzare",
+    intro:
+      "Cauți un teren de vânzare în Buzău sau în județ? Pe această pagină găsești loturile active din portofoliul CAMIMOB — atât terenuri în interiorul orașului, cât și în comunele din jur. La teren, diferența dintre o achiziție bună și o problemă de ani de zile stă aproape exclusiv în acte și în regimul urbanistic, nu în preț. De aceea verificăm fiecare lot înainte să îl publicăm: intabulare, suprafață reală față de cea din acte, categorie de folosință și posibilitatea efectivă de a construi.",
+    sections: [
+      {
+        heading: "Intravilan sau extravilan: diferența care decide totul",
+        body: "Este prima întrebare pe care trebuie să o pui, înainte de preț. Terenul intravilan este situat în interiorul limitelor administrative construibile ale localității și poți ridica pe el o locuință, conform PUZ-ului și PUG-ului în vigoare. Terenul extravilan este în afara acestor limite, are de regulă categoria de folosință agricolă, iar construcția necesită mai întâi scoaterea din circuitul agricol și schimbarea categoriei de folosință — o procedură care durează, costă și nu este garantată. Diferența de preț pe metru pătrat între cele două poate fi de câteva ori, și exact de aceea apar anunțurile care prezintă un extravilan ieftin ca pe o oportunitate de construcție. Dacă intenția ta este să construiești o casă, cere din start extrasul de carte funciară și certificatul de urbanism: ele îți spun fără echivoc ce ai voie să faci pe lotul respectiv.",
+      },
+      {
+        heading: "Ce verifici obligatoriu la un teren",
+        body: "Lista este scurtă, dar fiecare punct de pe ea a cauzat deja probleme cuiva. Intabularea: terenul trebuie să fie înscris în cartea funciară, cu suprafața măsurată, nu doar cu cea declarată — diferențele între suprafața reală și cea din acte sunt frecvente la terenurile moștenite. Regimul juridic: verifică să nu existe ipoteci, litigii, servituți de trecere sau drepturi ale unor terți. Certificatul de urbanism: îți spune procentul de ocupare a terenului, coeficientul de utilizare, regimul maxim de înălțime și retragerile obligatorii — adică exact cât și cum poți construi. Utilitățile: existența și distanța până la racordurile de apă, canalizare, gaz și electricitate; un lot ieftin la 300 de metri de cel mai apropiat branșament poate deveni cel mai scump din zonă. Accesul: drum de acces în proprietate sau servitute legal constituită, nu o înțelegere verbală cu vecinul. Și, pentru Buzău în special, întreabă despre nivelul apei freatice și despre riscul de inundații în zonele joase din apropierea râului.",
+      },
+      {
+        heading: "Terenuri în oraș versus în comunele din jur",
+        body: "În interiorul municipiului, loturile disponibile sunt de regulă mici și scumpe pe metru pătrat, dar vin cu utilități la poartă, drum asfaltat și toate avantajele locuirii urbane. Sunt potrivite pentru o casă pe un lot compact sau pentru o investiție. În comunele limitrofe — Mărăcineni, Merei, Vernești, Săpoca, Pietroasele și celelalte — raportul se inversează: obții suprafețe de câteva ori mai mari la un preț total comparabil, cu aer mai curat și liniște, dar trebuie să calculezi realist naveta, starea drumului, iluminatul public, distanța până la școală și, cel mai important, costul racordării la utilități. Pentru multe familii compromisul merită; pentru altele, nu. Spune-ne cum arată ziua ta obișnuită și îți spunem deschis dacă un lot din afara orașului îți folosește sau îți va complica viața.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB la achiziția unui teren",
+        body: "Tranzacțiile cu teren sunt cele în care greșelile se descoperă cel mai târziu și se repară cel mai greu — de obicei abia când mergi să scoți autorizația de construire. Verificăm, înainte să îți recomandăm un lot: extrasul de carte funciară actualizat, concordanța între suprafața măsurată și cea din acte, certificatul de urbanism și ce permite el efectiv, categoria de folosință, existența litigiilor sau a servituților, accesul la drum și situația utilităților. Lucrăm cu o rețea de avocați, evaluatori autorizați și topografi pentru cazurile care cer verificare tehnică. Dacă vinzi un teren, te ajutăm să pregătești documentația corect de la început, ceea ce scurtează semnificativ timpul până la notar. Contactează-ne pentru o consultație gratuită.",
+      },
+    ],
+    faq: [
+      {
+        q: "Care este diferența dintre teren intravilan și extravilan?",
+        a: "Intravilanul este situat în interiorul limitelor construibile ale localității și permite ridicarea unei locuințe conform PUZ-ului în vigoare. Extravilanul este în afara acestor limite, de regulă cu categorie de folosință agricolă, iar construcția necesită scoaterea din circuitul agricol și schimbarea categoriei de folosință. Pentru o casă, terenul trebuie să fie obligatoriu intravilan.",
+      },
+      {
+        q: "Ce documente trebuie să cer înainte să cumpăr un teren?",
+        a: "Extras de carte funciară actualizat, documentația cadastrală cu suprafața măsurată, certificat de urbanism, certificat fiscal și dovada că nu există ipoteci, litigii sau servituți. Certificatul de urbanism este cel care îți spune concret ce și cât poți construi.",
+      },
+      {
+        q: "Pot lua credit pentru cumpărarea unui teren?",
+        a: "Băncile finanțează mai greu achiziția de teren decât pe cea de locuință, iar avansul cerut este în general mai mare. Există credite pentru construcție care includ și terenul, cu condiția ca lotul să fie intravilan, intabulat și cu certificat de urbanism favorabil. Discută cu noi situația ta concretă înainte să faci o ofertă.",
+      },
+      {
+        q: "Cât costă racordarea la utilități pentru un teren fără branșamente?",
+        a: "Depinde decisiv de distanța până la rețelele existente și de tipul utilității. Este cheltuiala cel mai frecvent subestimată la achiziția unui teren ieftin din afara orașului și poate depăși diferența de preț față de un lot cu utilități la poartă. Cere informații de la operatorii locali înainte de a semna, nu după.",
+      },
+    ],
+    filter: { propertyType: "TEREN", operationType: "VANZARE" },
   },
   {
     slug: "apartamente-brosteni-buzau",
@@ -854,18 +921,14 @@ export const SEO_PAGES: SeoPageConfig[] = [
     keepIndexableWhenEmpty: true,
   },
   {
-    // Deliberately type-agnostic, unlike the other zone pages: the Dorobanți 2
-    // stock is a house, an apartment and a plot of land. An APARTAMENT filter
-    // would hide two of three, and the plot would appear nowhere on the site —
-    // there is no land category page.
-    slug: "imobiliare-dorobanti-2-buzau",
-    title: "Imobiliare în Dorobanți 2, Buzău: apartamente, case, terenuri | CAMIMOB",
+    slug: "apartamente-dorobanti-2-buzau",
+    title: "Apartamente în Dorobanți 2, Buzău | CAMIMOB",
     description:
-      "Apartamente, case și terenuri de vânzare în Dorobanți 2, Buzău. Zonă liniștită din estul orașului, lângă Parcul Marghiloman, Școala Nr. 7 în apropiere. Oferte CAMIMOB.",
-    h1: "Imobiliare în cartierul Dorobanți 2, Buzău",
-    breadcrumbLabel: "Imobiliare Dorobanți 2",
+      "Apartamente de vânzare și de închiriat în Dorobanți 2, Buzău. Zonă liniștită din estul orașului, lângă Parcul Marghiloman, Școala Nr. 7 în apropiere. Oferte CAMIMOB.",
+    h1: "Apartamente în cartierul Dorobanți 2, Buzău",
+    breadcrumbLabel: "Apartamente Dorobanți 2",
     intro:
-      "Dorobanți 2 este o zonă rezidențială liniștită și bine conturată din partea de est a Buzăului, aflată în continuarea cartierului Dorobanți 1 — cele două sunt delimitate parțial de strada Dorobanți — și învecinată cu cartierul Broșteni și cu zona industrială de est. Pe această pagină găsești tot ce avem activ în Dorobanți 2: apartamente, case și terenuri. Este unul dintre cartierele în care stocul nostru este mixt, așa că pagina le listează pe toate, nu doar apartamentele.",
+      "Dorobanți 2 este o zonă rezidențială liniștită și bine conturată din partea de est a Buzăului, aflată în continuarea cartierului Dorobanți 1 — cele două sunt delimitate parțial de strada Dorobanți — și învecinată cu cartierul Broșteni și cu zona industrială de est. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Dorobanți 2. Dacă te interesează o casă cu curte în aceeași zonă, avem o pagină separată pentru case în Dorobanți 2.",
     sections: [
       {
         heading: "Despre cartierul Dorobanți 2",
@@ -885,14 +948,10 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         heading: "Cum te ajută CAMIMOB în Dorobanți 2",
-        body: "Fiind un cartier cu tipologii mixte — blocuri, case cu curte, terenuri — Dorobanți 2 cere o evaluare diferită pentru fiecare tip de proprietate. Pentru un apartament verificăm blocul, asociația și reabilitarea termică. Pentru o casă, actele cadastrale, fundația, acoperișul, instalațiile și utilitățile. Pentru un teren, regimul juridic, intabularea, suprafața reală față de cea din acte, posibilitatea de a construi conform PUZ-ului și racordurile disponibile. Consultanții CAMIMOB acoperă toate trei și îți spun deschis ce riscuri are fiecare opțiune. Contactează-ne pentru o consultație gratuită și o listă personalizată cu ce avem acum în Dorobanți 2.",
+        body: "Dorobanți 2 este un cartier în care poziția exactă a blocului schimbă sensibil valoarea: distanța față de strada Dorobanți, apropierea de zona industrială de est, expunerea la zgomot și circumscripția școlară. Consultanții CAMIMOB cunosc blocurile din zonă, starea lor de reabilitare termică și prețurile la care s-au încheiat efectiv tranzacțiile. Verificăm actele, documentația asociației de proprietari și starea reală a apartamentului, organizăm vizionările eficient și te asistăm la negociere, la evaluarea pentru bancă și la notar. Dacă ești proprietar de apartament în Dorobanți 2 și vrei să vinzi sau să închiriezi, contactează-ne pentru o evaluare realistă.",
       },
     ],
     faq: [
-      {
-        q: "Ce tipuri de proprietăți găsesc în Dorobanți 2?",
-        a: "Zona are stoc mixt: apartamente în blocuri, case cu curte și terenuri. De aceea această pagină le listează pe toate, în loc să filtreze doar apartamentele — este unul dintre puținele cartiere din interiorul orașului unde găsești toate trei tipologiile.",
-      },
       {
         q: "Ce școli sunt în Dorobanți 2?",
         a: "Școala Gimnazială Nr. 7, pe strada Privighetorilor, la granița cu Broșteni, este unitatea de care aparțin majoritatea copiilor din cartier. Grădinița cu Program Prelungit Nr. 4 este în imediata vecinătate. Liceul Tehnologic „Henri Coandă”, pe strada Horticolei, acoperă nivelul liceal tehnic.",
@@ -905,8 +964,68 @@ export const SEO_PAGES: SeoPageConfig[] = [
         q: "Ce linii de autobuz trec prin Dorobanți 2?",
         a: "Liniile Trans Bus 1, 5, 5B, 6, 6B și 8, prin stațiile de pe strada Dorobanți și strada Horticolei. Linia 1 este circulară și leagă cartierul de BIG și Kaufland Sud; linia 8 traversează orașul de la est la vest. Stații: Dorobanți 2, Broșteni (intersecție), Horticolei, Complex Dorobanți.",
       },
+      {
+        q: "Găsesc și case sau terenuri în Dorobanți 2?",
+        a: "Da. Dorobanți 2 este unul dintre puținele cartiere din interiorul orașului cu toate trei tipologiile. Casele au pagina lor dedicată, iar terenurile apar pe pagina de terenuri de vânzare.",
+      },
     ],
     filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "dorobanti 2",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "case-dorobanti-2-buzau",
+    title: "Case de vânzare în Dorobanți 2, Buzău | CAMIMOB",
+    description:
+      "Case de vânzare în Dorobanți 2, Buzău. Zonă liniștită din estul orașului, lângă Parcul Marghiloman, Școala Nr. 7 în apropiere. Case cu curte în oraș. Oferte CAMIMOB.",
+    h1: "Case de vânzare în Dorobanți 2, Buzău",
+    breadcrumbLabel: "Case Dorobanți 2",
+    intro:
+      "Dorobanți 2 este unul dintre puținele cartiere din interiorul Buzăului unde găsești case cu curte alături de blocuri. Zona este liniștită și bine conturată, în partea de est a orașului, în continuarea cartierului Dorobanți 1, învecinată cu Broșteni și cu zona industrială de est. Pe această pagină găsești casele active din portofoliul CAMIMOB în Dorobanți 2 — locuințe la curte, cu utilități urbane și cu Parcul Marghiloman la câteva minute de mers pe jos.",
+    sections: [
+      {
+        heading: "O casă cu curte, fără să ieși din oraș",
+        body: "Majoritatea celor care vor o casă cu curte în zona Buzăului ajung să se uite în comunele limitrofe — Mărăcineni, Merei, Vernești — și acceptă naveta ca preț al spațiului. Dorobanți 2 este una dintre puținele zone care oferă compromisul invers: locuință la curte, dar în interiorul municipiului, cu utilități urbane la poartă, drum asfaltat, transport în comun la câteva minute și școala în cartier. Nu plătești racordări scumpe, nu depinzi de mașină pentru fiecare drum, iar copilul merge pe jos la școală. În schimb, curțile sunt în general mai mici decât la o casă de comună, iar prețul pe metru pătrat este mai mare. Pentru familiile care vor spațiu fără să renunțe la oraș, este exact echilibrul căutat — și motivul pentru care casele de aici se vând repede.",
+      },
+      {
+        heading: "Școli și grădinițe în zonă",
+        body: "Școala Gimnazială Nr. 7 este unitatea școlară principală de care aparțin majoritatea copiilor din Dorobanți 2. Deși administrativ este poziționată la granița dintre Broșteni și Dorobanți, pe strada Privighetorilor, este școala la care sunt arondați copiii din cartier. Grădinița cu Program Prelungit Nr. 4 se află în imediata vecinătate și este foarte accesibilă pentru părinții din zonă. Pentru nivelul liceal, Liceul Tehnologic „Henri Coandă”, situat puțin mai la sud-est, pe strada Horticolei, deservește zona de est cu profiluri tehnice și profesionale. La o casă, verifică explicit circumscripția adresei — granițele administrative trec prin zonă și pot diferi de la o stradă la alta.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "Dacă ai propria curte, nevoia de spațiu verde public scade — dar rămâne relevantă pentru plimbări și sport. Cel mai important punct de atracție verde din vecinătate este Parcul Marghiloman, la doar câteva minute de mers pe jos spre sud: un spațiu istoric superb, cu alei largi, Lacul cu nuferi și Centrul Cultural din Vila Albatros. Parcul Tineretului, situat puțin mai la nord, în dreptul cartierului Broșteni, este ușor accesibil pentru activități sportive, piste de biciclete sau role. Două parcuri mari, în două direcții, ambele pe jos — ceea ce o casă din comună nu îți oferă.",
+      },
+      {
+        heading: "Transport și acces",
+        body: "Dorobanți 2 este bine conectat atât cu Gara CFR, cât și cu zona comercială din sud și cu bulevardele centrale, prin stațiile de pe strada Dorobanți și strada Horticolei. Linia 1 (C.I.T. – BIG – RAM – Gară – Dorobanți – Kaufland Sud) leagă cartierul direct de marile zone comerciale și de centru. Liniile 5 și 5B tranzitează strada Horticolei spre Podul Marghiloman. Liniile 6 și 6B fac traseul Gara CFR – axa Dorobanți – localitățile limitrofe. Linia 8 asigură o diagonală completă prin oraș, de la est la vest. Stațiile de referință sunt Dorobanți 2, Broșteni (intersecție), Horticolei și Complex Dorobanți. Pentru o casă, verifică concret distanța pe jos de la adresă până la cea mai apropiată stație — la locuințele la curte aceasta variază mai mult decât la blocuri.",
+      },
+      {
+        heading: "Ce verifici la o casă în Dorobanți 2",
+        body: "La o casă, lista de verificări este mult mai lungă decât la un apartament. Cere actele cadastrale și extrasul de carte funciară și confirmă că atât terenul, cât și construcția sunt corect intabulate, fără diferențe între suprafața reală și cea din acte. Verifică fundația și structura — igrasie, fisuri în pereți, dale lăsate. Întreabă când a fost refăcut ultima dată acoperișul, pentru că o înlocuire completă costă semnificativ. Cere evaluarea unui specialist pentru instalația electrică, obligatoriu la casele mai vechi. Confirmă racordurile la apă, canalizare, gaz și electricitate, inclusiv dacă este nevoie de trifazic. Verifică sistemul de încălzire și costul lunar real iarna — o casă neizolată se încălzește de câteva ori mai scump decât un apartament de aceeași suprafață utilă. Uită-te la starea străzii, la iluminatul public și, pentru zonele joase, la nivelul apei freatice. Consultanții CAMIMOB îți pun la dispoziție o rețea de avocați, evaluatori autorizați și ingineri constructori pentru o verificare tehnică înainte de antecontract.",
+      },
+    ],
+    faq: [
+      {
+        q: "Se găsesc case cu curte în interiorul Buzăului?",
+        a: "Da, iar Dorobanți 2 este una dintre puținele zone care le oferă. Avantajul față de o casă din comună: utilități urbane la poartă, drum asfaltat, transport în comun la câteva minute și școala în cartier. Compromisul: curți în general mai mici și preț pe metru pătrat mai mare.",
+      },
+      {
+        q: "Ce școli sunt aproape de casele din Dorobanți 2?",
+        a: "Școala Gimnazială Nr. 7, pe strada Privighetorilor, la granița cu Broșteni. Grădinița cu Program Prelungit Nr. 4 este în imediata vecinătate, iar Liceul Tehnologic „Henri Coandă” se află pe strada Horticolei. Verifică circumscripția exactă a adresei, pentru că granițele trec prin zonă.",
+      },
+      {
+        q: "Cât costă întreținerea unei case în zonă?",
+        a: "Depinde decisiv de izolație, de sursa de încălzire și de vechimea construcției. O casă neizolată se încălzește de câteva ori mai scump decât un apartament cu aceeași suprafață utilă. Cere vânzătorului facturile din lunile de iarnă înainte să faci o ofertă — este cea mai utilă informație pe care o poți obține.",
+      },
+      {
+        q: "Găsesc și apartamente sau terenuri în Dorobanți 2?",
+        a: "Da. Apartamentele au pagina lor dedicată pentru Dorobanți 2, iar terenurile apar pe pagina de terenuri de vânzare. Zona este una dintre puținele din oraș cu toate trei tipologiile.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
       zoneNormalized: "dorobanti 2",
     },
     keepIndexableWhenEmpty: true,
@@ -1077,6 +1196,255 @@ export const SEO_PAGES: SeoPageConfig[] = [
     filter: {
       propertyType: "APARTAMENT",
       zoneNormalized: "micro 5",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "case-orizont-buzau",
+    title: "Case și vile în Cartierul Orizont, Buzău | CAMIMOB",
+    description:
+      "Case și vile de vânzare în Cartierul Orizont, Buzău. Cel mai modern ansamblu rezidențial al orașului, grădiniță în incintă, stația Orizont la intrare. Oferte CAMIMOB.",
+    h1: "Case și vile în Cartierul Orizont, Buzău",
+    breadcrumbLabel: "Case Orizont",
+    intro:
+      "Cartierul Orizont este cel mai modern ansamblu rezidențial nou al Buzăului, format din vile și blocuri cu regim mic de înălțime, situat la ieșirea din oraș spre nord, în direcția Râmnicu Sărat și Focșani, în prelungirea zonei Unirii Nord. Pe această pagină găsești casele și vilele active din portofoliul CAMIMOB în Orizont. Fiind un cartier tânăr, cu rotație lentă, ofertele apar rar — lasă-ne criteriile tale și te anunțăm când intră una.",
+    sections: [
+      {
+        heading: "O vilă într-un cartier proiectat, nu acumulat",
+        body: "Diferența dintre o vilă în Orizont și o casă într-un cartier vechi din Buzău nu stă doar în anul construcției. Orizont a fost proiectat ca ansamblu: trotuare largi, spații verzi proprii, locuri de joacă amenajate pentru copiii rezidenților, organizare care ține cont de pietoni și de parcare. Într-un cartier care s-a construit stradă cu stradă, de-a lungul deceniilor, aceste lucruri lipsesc din start. Pentru cumpărător, consecințele practice sunt concrete: finisaje și instalații noi, izolație făcută la standardele actuale, costuri de întreținere mici, vecini cu profil similar — în general familii tinere. Compromisul este poziția la marginea orașului și dependența parțială de facilitățile din Unirii Nord pentru comerț și servicii. În schimb, ai ceva ce în interiorul orașului nu mai găsești: o locuință nouă, cu curte, într-un cartier curat.",
+      },
+      {
+        heading: "Școli și grădinițe",
+        body: "Grădinița cu Program Prelungit Nr. 1 este o unitate de învățământ preșcolar de stat, modernă, construită recent chiar în incinta Cartierului Orizont, special pentru a deservi familiile tinere de aici. Este un avantaj rar pentru un ansamblu nou — de obicei grădinița vine mult după ce se vând locuințele. Pentru nivelul gimnazial, Școala Gimnazială „George Emil Palade” — fosta Școală Nr. 15 — este unitatea la care sunt arondați copiii din cartier, situată la câteva minute distanță, spre Unirii Nord. Școala Gimnazială Nr. 11, puțin mai la sud-est, pe strada Teilor, este o altă opțiune majoră folosită de părinții din cartier și cea mai mare școală din județ. Pe scurt: grădinița în incintă, școala la câteva minute, fără drum pe arterele aglomerate.",
+      },
+      {
+        heading: "Spații verzi și promenadă",
+        body: "La o vilă ai propria curte, dar spațiile comune contează în continuare — mai ales dacă ai copii. Cartierul a fost proiectat cu spații verzi proprii, trotuare largi și locuri de joacă moderne, ferite de traficul greu de pe drumul european, un detaliu important având în vedere poziția la ieșirea din oraș. Pentru promenadă, de-a lungul bulevardului principal reabilitat există aliniamentul verde amenajat recent pe Șoseaua Nordului. Pentru o ieșire mai consistentă, Parcul Tineretului se află la o distanță relativ scurtă cu mașina sau bicicleta, coborând spre Broșteni, și oferă acces la lac, piste de role și terenuri de sport.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Cartierul are avantajul de a fi situat chiar pe axa principală de transport nord-sud a orașului, iar stația principală Orizont se află la intrarea în cartier. Linia 1 (C.I.T. – BIG – RAM – Gara CFR – Dorobanți – Kaufland Sud) ajunge până în zona comercială din nord, în proximitatea cartierului. Linia 2 (Sărata Monteoru / Gura Sărății – Autogara Marghiloman) tranzitează stația Orizont. Linia 22 (Gara CFR – Orizont – Fulga) asigură legătura directă cu Gara CFR prin Bulevardul Unirii. Cel mai important: toate liniile metropolitane din nord — 23, 24, 25, 26, 27 și 28 — opresc obligatoriu în stația Orizont în drumul spre Mărăcineni, Săpoca sau Cernătești, ceea ce îți dă o frecvență excelentă a curselor către centru, în special spre stația RAM. Chiar dacă locuiești la marginea orașului, ai mai multe autobuze pe oră decât în unele cartiere centrale — un argument real dacă ai un adolescent care circulă singur.",
+      },
+      {
+        heading: "Ce verifici la o casă în ansamblu nou",
+        body: "Întrebările care contează la o vilă într-un cartier nou sunt complet diferite de cele pentru o casă veche. În loc de fundație, acoperiș și instalații la final de viață, întrebi despre: stadiul lucrărilor și recepția la terminarea lucrărilor; actele de proprietate și intabularea, inclusiv pentru teren; ce intră exact în prețul anunțat și ce se plătește separat — finisaje, bucătărie, amenajare curte, loc de parcare; cum este organizată administrarea ansamblului și care sunt costurile lunare reale; ce garanții oferă dezvoltatorul și pe ce durată; cum sunt rezolvate utilitățile și dacă racordurile sunt finalizate sau promise. Cere documentația tehnică și certificatul energetic. Consultanții CAMIMOB verifică aceste aspecte înainte să îți recomandăm o ofertă și te asistăm la negociere, la evaluarea pentru bancă și la notar.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce fel de case are Cartierul Orizont?",
+        a: "Vile și locuințe în ansamblu nou, alături de blocuri cu regim mic de înălțime. Cartierul a fost dezvoltat de la zero, cu trotuare largi, spații verzi proprii și locuri de joacă proiectate pentru rezidenți.",
+      },
+      {
+        q: "Există grădiniță și școală pentru copiii din Orizont?",
+        a: "Grădinița cu Program Prelungit Nr. 1 este construită recent chiar în incinta cartierului. Pentru gimnaziu, copiii sunt arondați la Școala „George Emil Palade” (fosta Nr. 15), la câteva minute spre Unirii Nord; o altă opțiune folosită este Școala Nr. 11, pe strada Teilor.",
+      },
+      {
+        q: "De ce sunt puține oferte de case în Orizont?",
+        a: "Este un cartier tânăr, cu număr limitat de locuințe și rotație lentă — proprietarii s-au mutat recent și vând rar. Lasă-ne criteriile tale prin formularul de contact și te anunțăm când intră o ofertă, de multe ori înainte de publicarea anunțului.",
+      },
+      {
+        q: "Cum ajung din Orizont în centru fără mașină?",
+        a: "Stația principală Orizont, la intrarea în cartier, este deservită de liniile 1, 2 și 22, plus toate liniile metropolitane din nord (23–28), care opresc obligatoriu aici. Frecvența este foarte bună, iar linia 22 duce direct la Gara CFR prin Bulevardul Unirii.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
+      zoneNormalized: "orizont",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    // Commune pages: the stored value is the village, not the commune, so
+    // these match on either (see SeoFilter.placeNormalizedAny).
+    slug: "case-maracineni-buzau",
+    title: "Case de vânzare în Mărăcineni, Buzău | CAMIMOB",
+    description:
+      "Case de vânzare în comuna Mărăcineni, județul Buzău, inclusiv satul Potoceni. Prima comună la nord de oraș, pe drumul spre Râmnicu Sărat. Oferte CAMIMOB.",
+    h1: "Case de vânzare în Mărăcineni, Buzău",
+    breadcrumbLabel: "Case Mărăcineni",
+    intro:
+      "Mărăcineni este prima comună la nord de Buzău, pe direcția Râmnicu Sărat, și cea mai căutată de buzoienii care vor o casă cu curte fără să renunțe la oraș. Pe această pagină găsești casele active din portofoliul CAMIMOB din comuna Mărăcineni, inclusiv din satul Potoceni. Distanța mică până în oraș și liniile metropolitane care leagă comuna de centru fac din Mărăcineni opțiunea cu cea mai scurtă navetă din tot județul.",
+    sections: [
+      {
+        heading: "De ce Mărăcineni este prima opțiune pentru o casă la marginea Buzăului",
+        body: "Argumentul este simplu și greu de combătut: este cea mai apropiată comună de oraș pe direcția nordică, iar naveta este de ordinul minutelor, nu al zecilor de minute. Pentru o familie care lucrează în Buzău dar vrea curte, grădină și liniște, Mărăcineni oferă compromisul cel mai echilibrat din județ. Obții suprafețe de teren de câteva ori mai mari decât ce ai primi în oraș la un buget comparabil, aer mai curat și un ritm de viață diferit, fără să-ți transformi fiecare zi de lucru într-o expediție. Satul Potoceni face parte din comună și are propriul caracter rezidențial, cu loturi generoase. Exact din cauza acestei cereri, prețurile din Mărăcineni sunt cele mai ridicate dintre comunele limitrofe — dar rămân mult sub nivelul unei case echivalente în interiorul municipiului.",
+      },
+      {
+        heading: "Transport și legătura cu orașul",
+        body: "Mărăcineni este deservită de liniile metropolitane Trans Bus care pornesc din Buzău — autobuzele care urcă pe Bulevardul Unirii Nord spre nord opresc în comună, iar frecvența este bună tocmai pentru că mai multe trasee o tranzitează în drumul lor spre Săpoca, Cernătești și celelalte localități din nord-estul județului. În oraș, aceste linii au stații în punctele cheie, inclusiv în zona centrală. Practic, chiar dacă nu ai mașină sau ai una singură în familie, legătura cu orașul este asigurată pentru școală, serviciu sau cumpărături. Pentru cine vine cu mașina, accesul se face pe artera principală spre Râmnicu Sărat, fără să traversezi orașul.",
+      },
+      {
+        heading: "Ce verifici la o casă în comună",
+        body: "La o casă de comună, verificările care contează cel mai mult sunt cele legate de acte și de utilități, nu de finisaje. Cere extrasul de carte funciară și documentația cadastrală și confirmă că atât terenul, cât și construcția sunt intabulate, cu suprafața măsurată — la proprietățile moștenite din mediul rural, diferențele față de acte sunt frecvente. Verifică obligatoriu categoria de folosință și dacă terenul este intravilan. Întreabă concret despre utilități: există racord la rețeaua de apă sau doar puț propriu? Canalizare la rețea sau fosă septică? Gaz la poartă sau încălzire pe lemne și peleți? Fiecare răspuns schimbă atât costul lunar, cât și valoarea de revânzare. Verifică drumul de acces — asfaltat, pietruit sau de pământ — și cum arată iarna. Și, foarte important pentru zona Buzăului, întreabă despre nivelul apei freatice și despre riscul de inundații. Consultanții CAMIMOB verifică toate acestea și lucrează cu avocați și topografi pentru cazurile care cer clarificări.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Mărăcineni",
+        body: "Tranzacțiile din mediul rural au particularități pe care o agenție urbană le ratează frecvent: moșteniri nefinalizate, succesiuni cu mai mulți proprietari, construcții fără autorizație care trebuie intrate în legalitate, diferențe între suprafața din acte și cea reală, drumuri de acces fără servitute constituită legal. Le cunoaștem și le verificăm înainte să îți recomandăm o proprietate. Te ajutăm cu vizionări organizate eficient — ceea ce contează mult când proprietățile sunt dispersate — cu negocierea, cu documentația notarială și, dacă este cazul, cu evaluarea pentru bancă. Dacă ai o casă de vânzare în Mărăcineni sau Potoceni, spune-ne: este cea mai căutată comună din jurul Buzăului, iar cererea depășește constant oferta.",
+      },
+    ],
+    faq: [
+      {
+        q: "Cât de departe este Mărăcineni de Buzău?",
+        a: "Este prima comună la nord de oraș, pe direcția Râmnicu Sărat — naveta se măsoară în minute. Exact această proximitate o face cea mai căutată comună din jurul Buzăului și explică de ce prețurile sunt mai ridicate decât în comunele mai îndepărtate.",
+      },
+      {
+        q: "Satul Potoceni face parte din comuna Mărăcineni?",
+        a: "Da, Potoceni aparține comunei Mărăcineni, iar ofertele din sat apar pe această pagină. Are caracter rezidențial, cu loturi generoase.",
+      },
+      {
+        q: "Cum ajung din Mărăcineni în Buzău fără mașină?",
+        a: "Comuna este deservită de liniile metropolitane Trans Bus care urcă pe Bulevardul Unirii Nord. Mai multe trasee o tranzitează în drumul spre Săpoca și Cernătești, deci frecvența este bună, iar în oraș aceste linii au stații în punctele cheie, inclusiv în zona centrală.",
+      },
+      {
+        q: "Ce trebuie verificat în plus la o casă de comună?",
+        a: "Intabularea terenului și a construcției, categoria de folosință și regimul intravilan, utilitățile (apă la rețea sau puț, canalizare sau fosă, gaz la poartă sau nu), drumul de acces și servitutea legală, plus nivelul apei freatice și riscul de inundații. Utilitățile sunt cheltuiala cel mai frecvent subestimată.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
+      placeNormalizedAny: ["maracineni", "potoceni"],
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "case-merei-buzau",
+    title: "Case de vânzare în Merei, Buzău | CAMIMOB",
+    description:
+      "Case de vânzare în comuna Merei, județul Buzău, inclusiv satul Lipia. Zonă de dealuri și vii la sud-vest de oraș, pe drumul spre Sărata Monteoru. Oferte CAMIMOB.",
+    h1: "Case de vânzare în Merei, Buzău",
+    breadcrumbLabel: "Case Merei",
+    intro:
+      "Merei este o comună din județul Buzău situată la sud-vest de oraș, în zona de dealuri și vii, pe direcția Sărata Monteoru. Pe această pagină găsești casele active din portofoliul CAMIMOB din comuna Merei, inclusiv din satul Lipia. Este zona pentru cine caută o casă cu teren generos, într-un cadru natural, la o distanță rezonabilă de Buzău.",
+    sections: [
+      {
+        heading: "Comuna Merei și satul Lipia",
+        body: "Merei se află la sud-vest de Buzău, în zona de tranziție dintre câmpie și dealurile subcarpatice — o parte din comună este tradițional viticolă, ceea ce dă zonei un peisaj și un caracter diferite de comunele de câmpie din jurul orașului. Satul Lipia face parte din comună și concentrează o parte importantă a ofertei rezidențiale. Pentru cumpărători, profilul este clar: cauți o casă cu teren generos, într-un cadru natural, la un preț pe care în interiorul orașului nu l-ai găsi pentru nimic comparabil. Comuna este și punctul de acces spre Sărata Monteoru, stațiunea balneară cunoscută pentru apele sărate și nămolul terapeutic — un element care contează pentru unii cumpărători, fie din motive personale, fie ca potențial de închiriere sezonieră.",
+      },
+      {
+        heading: "Transport și acces",
+        body: "Legătura cu Buzăul se face pe direcția sud-vest, iar comuna este deservită de traseele Trans Bus care circulă spre Sărata Monteoru și Gura Sărății — linia 2 face acest traseu și ajunge în oraș până la Autogara Marghiloman, tranzitând zona centrală și stația RAM. Pentru cine merge cu mașina, distanța este mai mare decât la Mărăcineni, dar drumul este pe o arteră principală. Important de verificat concret pentru fiecare proprietate: distanța de la casă până la cea mai apropiată stație și starea drumului de la artera principală până la poartă — în comunele de deal, diferența dintre o stradă asfaltată și una pietruită se simte foarte mult iarna.",
+      },
+      {
+        heading: "Ce verifici la o casă în Merei sau Lipia",
+        body: "Cere extrasul de carte funciară și documentația cadastrală și confirmă că terenul și construcția sunt intabulate, cu suprafața măsurată, nu doar declarată — în mediul rural, la proprietățile moștenite, diferențele sunt frecvente. Verifică obligatoriu categoria de folosință a terenului și dacă este intravilan, mai ales dacă intenționezi să extinzi sau să construiești o anexă. Clarifică situația utilităților: apă la rețea sau puț propriu, canalizare sau fosă septică, gaz la poartă sau încălzire pe lemne. Pentru zona de deal, verifică suplimentar stabilitatea terenului și istoricul de alunecări în zonă — este o întrebare pe care puțini cumpărători o pun și care poate conta decisiv. Verifică drumul de acces și servitutea de trecere, constituită legal, nu pe bază de înțelegere verbală cu vecinii. Și cere evaluarea unui specialist pentru structură și instalația electrică la casele mai vechi.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Merei",
+        body: "În mediul rural, cele mai multe tranzacții se blochează din cauza actelor, nu a prețului: moșteniri nefinalizate, succesiuni cu mai mulți proprietari, construcții ridicate fără autorizație, suprafețe care nu corespund, drumuri de acces fără servitute legală. Verificăm aceste aspecte înainte să îți recomandăm o proprietate, și lucrăm cu avocați și topografi pentru cazurile care cer clarificări. Te ajutăm cu vizionări organizate eficient — esențial când proprietățile sunt dispersate pe mai multe sate — cu negocierea și cu toată documentația până la notar. Dacă ai o casă de vânzare în Merei sau Lipia, contactează-ne pentru o evaluare realistă: zonele de deal din jurul Buzăului au o cerere stabilă, mai ales din partea cumpărătorilor care caută a doua casă.",
+      },
+    ],
+    faq: [
+      {
+        q: "Satul Lipia face parte din comuna Merei?",
+        a: "Da, Lipia aparține comunei Merei, iar ofertele din sat apar pe această pagină. Lipia concentrează o parte importantă a ofertei rezidențiale din comună.",
+      },
+      {
+        q: "Cât de departe este Merei de Buzău?",
+        a: "Comuna se află la sud-vest de oraș, pe direcția Sărata Monteoru. Distanța este mai mare decât la Mărăcineni, dar drumul se face pe o arteră principală. Linia 2 Trans Bus deservește traseul spre Sărata Monteoru și Gura Sărății și ajunge în oraș până la Autogara Marghiloman.",
+      },
+      {
+        q: "Ce verific în plus la o casă în zona de deal?",
+        a: "Pe lângă verificările obișnuite pentru o casă de comună — intabulare, categorie de folosință, utilități, drum de acces cu servitute legală — în zona de deal merită să întrebi despre stabilitatea terenului și despre istoricul de alunecări în zonă. Este o întrebare pe care puțini cumpărători o pun.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
+      placeNormalizedAny: ["merei", "lipia"],
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "case-pietroasele-buzau",
+    title: "Case de vânzare în Pietroasele, Buzău | CAMIMOB",
+    description:
+      "Case de vânzare în comuna Pietroasele, județul Buzău. Zonă viticolă istorică, la poalele dealurilor, celebră pentru tezaurul „Cloșca cu puii de aur”. Oferte CAMIMOB.",
+    h1: "Case de vânzare în Pietroasele, Buzău",
+    breadcrumbLabel: "Case Pietroasele",
+    intro:
+      "Pietroasele este una dintre cele mai cunoscute comune viticole ale județului Buzău, situată la poalele dealurilor, într-o zonă cu tradiție în cultura viței de vie și cu o istorie care o face celebră în toată România. Pe această pagină găsești casele active din portofoliul CAMIMOB din comuna Pietroasele, inclusiv din satele aparținătoare. Este zona pentru cine caută teren generos, peisaj de dealuri și un preț pe metru pătrat pe care nicio zonă urbană nu îl poate egala.",
+    sections: [
+      {
+        heading: "Comuna Pietroasele: vie, dealuri și istorie",
+        body: "Pietroasele este legată de două lucruri în memoria colectivă: via și tezaurul. Zona are o tradiție viticolă veche, cu plantații pe terasele dealurilor și cu o stație de cercetare viticolă recunoscută, iar numele comunei este cunoscut în toată România datorită tezaurului de la Pietroasa — „Cloșca cu puii de aur” — una dintre cele mai importante descoperiri arheologice din țară. Pentru un cumpărător, contextul contează practic, nu doar sentimental: zona are peisaj, are identitate și are un potențial turistic care susține pe termen lung valoarea proprietăților, în special pentru case cu teren care s-ar putea transforma într-o pensiune sau într-o a doua locuință. Prețurile rămân însă printre cele mai accesibile din județ pentru o casă cu curte mare.",
+      },
+      {
+        heading: "Cui i se potrivește o casă în Pietroasele",
+        body: "În primul rând celor care caută o a doua casă sau o casă de vacanță la o distanță rezonabilă de Buzău, cu teren suficient pentru grădină, livadă sau chiar câteva rânduri de viță. Apoi celor care vor să se mute definitiv din oraș și lucrează de acasă sau au program flexibil — naveta zilnică spre Buzău este posibilă, dar mai lungă decât din comunele limitrofe, așa că merită calculată realist. Și celor care iau în calcul un proiect: pensiune, agroturism, mică producție. Nu este zona potrivită pentru cine depinde de naveta zilnică cu transportul în comun sau are nevoie de acces rapid la spital și la școli urbane. Fii realist cu privire la acest punct înainte de a cumpăra — este cea mai frecventă cauză de regret la achizițiile din mediul rural îndepărtat.",
+      },
+      {
+        heading: "Ce verifici la o casă în Pietroasele",
+        body: "Verificările standard pentru mediul rural rămân esențiale: extras de carte funciară actualizat și documentație cadastrală, cu confirmarea că terenul și construcția sunt intabulate și că suprafața măsurată corespunde actelor; categoria de folosință și regimul intravilan; situația succesiunii, dacă proprietatea este moștenită. Pentru utilități, întrebările concrete sunt: apă la rețea sau puț propriu, canalizare sau fosă septică, gaz la poartă sau încălzire pe lemne, și dacă branșamentul electric suportă ce intenționezi să faci. Pentru zona de deal, verifică stabilitatea terenului și istoricul de alunecări. Dacă terenul include plantație de viță, clarifică starea plantației, vârsta ei și eventualele obligații sau subvenții asociate. Verifică drumul de acces, servitutea legală de trecere și cum arată drumul iarna. Consultanții CAMIMOB verifică aceste aspecte și lucrează cu avocați și topografi unde este nevoie.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Pietroasele",
+        body: "Proprietățile din mediul rural cer o verificare juridică mai atentă decât un apartament de oraș, iar în zonele viticole apar și particularități legate de terenul agricol și de plantații. Verificăm actele, situația succesiunii, concordanța suprafețelor și regimul juridic al terenului înainte să îți recomandăm o proprietate. Organizăm vizionările grupat, ca să nu faci mai multe drumuri, și îți spunem deschis ce este realist să aștepți de la o casă dintr-o comună aflată la această distanță de oraș. Te asistăm la negociere și la toată documentația notarială. Dacă ai o casă sau un teren de vânzare în Pietroasele, contactează-ne: zona are o cerere constantă din partea cumpărătorilor care caută a doua locuință sau un proiect turistic.",
+      },
+    ],
+    faq: [
+      {
+        q: "De ce este cunoscută comuna Pietroasele?",
+        a: "Pentru tradiția viticolă — plantații pe terasele dealurilor și o stație de cercetare viticolă recunoscută — și pentru tezaurul de la Pietroasa, „Cloșca cu puii de aur”, una dintre cele mai importante descoperiri arheologice din România.",
+      },
+      {
+        q: "Se poate face naveta zilnică din Pietroasele la Buzău?",
+        a: "Este posibil, dar distanța este mai mare decât din comunele limitrofe, iar transportul în comun este mai puțin frecvent. Calculează realist naveta înainte de a cumpăra — este cea mai frecventă cauză de regret la achizițiile din mediul rural mai îndepărtat.",
+      },
+      {
+        q: "Ce verific dacă terenul include plantație de viță?",
+        a: "Starea și vârsta plantației, suprafața efectivă plantată, categoria de folosință a terenului și eventualele obligații sau subvenții asociate. Cere documentele relevante înainte să faci o ofertă.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
+      placeNormalizedAny: ["pietroasele", "pietroasa", "saranga"],
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "case-magura-buzau",
+    title: "Case de vânzare în Măgura, Buzău | CAMIMOB",
+    description:
+      "Case de vânzare în comuna Măgura, județul Buzău. Zonă de dealuri lângă Ciuta și Tabăra de Sculptură, la ieșirea spre Vernești și Valea Buzăului. Oferte CAMIMOB.",
+    h1: "Case de vânzare în Măgura, Buzău",
+    breadcrumbLabel: "Case Măgura",
+    intro:
+      "Măgura este o comună din județul Buzău situată în zona de dealuri, pe direcția Valea Buzăului, cunoscută pentru peisajul său și pentru Tabăra de Sculptură de la Măgura, una dintre cele mai mari expoziții de sculptură în aer liber din Europa. Pe această pagină găsești casele active din portofoliul CAMIMOB din comuna Măgura. Este zona pentru cine caută liniște, teren generos și un cadru natural remarcabil.",
+    sections: [
+      {
+        heading: "Comuna Măgura și împrejurimile",
+        body: "Măgura se află în zona de dealuri a județului Buzău, pe direcția Valea Buzăului, într-un peisaj care o face una dintre comunele cu cel mai mare potențial turistic din zonă. Tabăra de Sculptură de la Măgura, amenajată în anii '70 în apropierea Mănăstirii Ciolanu, adună sute de lucrări monumentale în aer liber și este un punct de atracție cunoscut în toată țara. Pentru un cumpărător, asta înseamnă două lucruri: un cadru de locuit cu adevărat deosebit și un potențial real de valorificare turistică, pentru cine se gândește la o pensiune sau la o casă de vacanță pe care o închiriază sezonier. Prețurile pentru case cu teren sunt mult sub nivelul urban, iar suprafețele de teren depășesc de obicei cu mult ce ai putea obține în oraș.",
+      },
+      {
+        heading: "Cui i se potrivește",
+        body: "Celor care caută o casă de vacanță sau o a doua locuință într-un cadru natural, la o distanță rezonabilă de Buzău. Celor care se mută definitiv și au program flexibil sau lucrează de acasă — naveta zilnică este posibilă cu mașina, dar nu o recomandăm ca soluție permanentă pentru un program fix de birou. Celor interesați de un proiect turistic, dată fiind apropierea de Tabăra de Sculptură și de Mănăstirea Ciolanu. Și celor care caută liniște reală, nu doar relativă: aici diferența față de oraș nu este de grad, este de natură. Nu este zona potrivită dacă depinzi de transportul în comun pentru naveta zilnică sau ai nevoie de acces rapid la spital și la școli urbane — fii realist cu aceste aspecte înainte de a semna.",
+      },
+      {
+        heading: "Ce verifici la o casă în Măgura",
+        body: "Verificările pentru mediul rural de deal se aplică integral. Extras de carte funciară actualizat și documentație cadastrală, cu confirmarea că terenul și construcția sunt intabulate și că suprafața măsurată corespunde actelor — la proprietățile moștenite diferențele sunt frecvente. Categoria de folosință și regimul intravilan, esențiale dacă vrei să extinzi sau să construiești. Situația succesiunii, dacă proprietatea vine din moștenire. Pentru utilități, întrebările sunt concrete: apă la rețea sau puț propriu, canalizare sau fosă septică, gaz la poartă sau încălzire pe lemne, și ce putere suportă branșamentul electric. Pentru zona de deal, verifică stabilitatea terenului și istoricul de alunecări — într-o comună cu relief, aceasta este verificarea cea mai importantă și cea mai des omisă. Verifică drumul de acces, servitutea legală de trecere și, foarte practic, cum se circulă iarna. Cere evaluarea unui specialist pentru structură și instalația electrică la casele mai vechi.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Măgura",
+        body: "Achizițiile din comunele de deal sunt cele în care verificarea juridică și cea tehnică contează cel mai mult, iar greșelile se descoperă cel mai târziu. Verificăm actele, succesiunea, concordanța suprafețelor, regimul juridic al terenului și accesul, și lucrăm cu avocați, topografi și ingineri constructori pentru cazurile care cer clarificări. Organizăm vizionările grupat, ca să nu faci drumuri repetate, și îți spunem deschis ce este realist să aștepți — inclusiv despre navetă și despre costurile de întreținere iarna, care într-o casă de deal neizolată pot surprinde neplăcut. Dacă ai o casă sau un teren de vânzare în Măgura, contactează-ne: zona are cerere din partea cumpărătorilor care caută casă de vacanță sau un proiect turistic.",
+      },
+    ],
+    faq: [
+      {
+        q: "De ce este cunoscută comuna Măgura?",
+        a: "Pentru Tabăra de Sculptură de la Măgura, amenajată în anii '70 în apropierea Mănăstirii Ciolanu — una dintre cele mai mari expoziții de sculptură în aer liber din Europa, cu sute de lucrări monumentale — și pentru peisajul de dealuri din zona Văii Buzăului.",
+      },
+      {
+        q: "Se poate face naveta zilnică din Măgura la Buzău?",
+        a: "Cu mașina este posibil, dar nu o recomandăm ca soluție permanentă pentru un program fix de birou. Transportul în comun este mai rar decât în comunele limitrofe orașului. Zona se potrivește mai bine celor cu program flexibil sau care lucrează de acasă.",
+      },
+      {
+        q: "Ce verific în plus la o casă în zonă de deal?",
+        a: "Stabilitatea terenului și istoricul de alunecări — într-o comună cu relief este verificarea cea mai importantă și cea mai des omisă. Apoi drumul de acces, servitutea legală de trecere și cum se circulă iarna. Plus verificările obișnuite: intabulare, categorie de folosință, utilități, succesiune.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
+      placeNormalizedAny: ["magura"],
     },
     keepIndexableWhenEmpty: true,
   },

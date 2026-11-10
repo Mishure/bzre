@@ -19,6 +19,16 @@ const nextConfig = {
         destination: '/apartamente-unirii-sud-buzau',
         permanent: true,
       },
+      {
+        // /imobiliare-dorobanti-2-buzau was split by property type into
+        // apartamente- and case-dorobanti-2-buzau. It was live only briefly,
+        // but redirect rather than 404 in case it was already crawled.
+        // Apartments get the redirect because that is the higher-volume
+        // query shape for a city quarter.
+        source: '/imobiliare-dorobanti-2-buzau',
+        destination: '/apartamente-dorobanti-2-buzau',
+        permanent: true,
+      },
     ];
   },
 }

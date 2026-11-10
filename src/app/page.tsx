@@ -30,11 +30,12 @@ const seoLandingLinks = [
   { slug: 'garsoniere-buzau', label: 'Garsoniere de vânzare Buzău' },
   { slug: 'garsoniere-de-inchiriat-buzau', label: 'Garsoniere de închiriat Buzău' },
   { slug: 'case-de-vanzare-buzau', label: 'Case de vânzare în Buzău' },
+  { slug: 'terenuri-de-vanzare-buzau', label: 'Terenuri de vânzare în Buzău' },
   { slug: 'apartamente-centru-buzau', label: 'Apartamente în Centrul Buzăului' },
   { slug: 'apartamente-brosteni-buzau', label: 'Apartamente cartier Broșteni' },
   { slug: 'apartamente-crang-buzau', label: 'Apartamente zona Crâng' },
   { slug: 'apartamente-dorobanti-1-buzau', label: 'Apartamente Dorobanți 1' },
-  { slug: 'imobiliare-dorobanti-2-buzau', label: 'Imobiliare Dorobanți 2' },
+  { slug: 'apartamente-dorobanti-2-buzau', label: 'Apartamente Dorobanți 2' },
   { slug: 'apartamente-micro-3-buzau', label: 'Apartamente Micro 3' },
   { slug: 'apartamente-micro-5-buzau', label: 'Apartamente Micro 5' },
   { slug: 'apartamente-micro-14-buzau', label: 'Apartamente Micro 14' },
@@ -42,6 +43,12 @@ const seoLandingLinks = [
   { slug: 'apartamente-unirii-nord-buzau', label: 'Apartamente Unirii Nord' },
   { slug: 'apartamente-unirii-sud-buzau', label: 'Apartamente Unirii Sud' },
   { slug: 'case-23-august-buzau', label: 'Case zona 23 August' },
+  { slug: 'case-dorobanti-2-buzau', label: 'Case Dorobanți 2' },
+  { slug: 'case-orizont-buzau', label: 'Case și vile Cartierul Orizont' },
+  { slug: 'case-maracineni-buzau', label: 'Case în Mărăcineni' },
+  { slug: 'case-merei-buzau', label: 'Case în Merei' },
+  { slug: 'case-pietroasele-buzau', label: 'Case în Pietroasele' },
+  { slug: 'case-magura-buzau', label: 'Case în Măgura' },
 ];
 
 export default function HomePage() {
