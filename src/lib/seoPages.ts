@@ -684,6 +684,124 @@ export const SEO_PAGES: SeoPageConfig[] = [
     },
     keepIndexableWhenEmpty: true,
   },
+  {
+    slug: "apartamente-micro-3-buzau",
+    title: "Apartamente în Micro 3, Buzău | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în Micro 3, Buzău. Creșă, trei grădinițe și Școala „Episcop Dionisie Romano” în cartier, acces rapid la gară. Oferte CAMIMOB.",
+    h1: "Apartamente în cartierul Micro 3, Buzău",
+    breadcrumbLabel: "Apartamente Micro 3",
+    intro:
+      "Micro 3 este o zonă rezidențială bine închegată din partea central-nordică a Buzăului, delimitată parțial de Bulevardul Gării, strada Pietroasele și strada Bucegi, în apropierea Secției 1 de Poliție. Are acces facil atât spre gară, cât și spre centru. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Micro 3, de vânzare și de închiriat. Dacă ai copii mici, Micro 3 merită o privire atentă: densitatea de creșe și grădinițe din cartier este printre cele mai bune din oraș.",
+    sections: [
+      {
+        heading: "Despre cartierul Micro 3",
+        body: "Micro 3 ocupă o poziție privilegiată în partea central-nordică a orașului: delimitat parțial de Bulevardul Gării, strada Pietroasele și strada Bucegi, la câteva minute de gară și foarte aproape de centru. Este un cartier compact și bine închegat, dezvoltat sistematic, cu blocuri organizate în ansambluri și spații verzi între ele. Proximitatea Secției 1 de Poliție este un detaliu pe care mulți cumpărători îl apreciază, mai ales familiile. Apartamentele sunt predominant clasice, decomandate sau semidecomandate, cu tipologii de la garsoniere la 3 camere. Avantajul principal față de cartierele „Micro” din vestul orașului este distanța mult mai mică până în centru și până la gară — fără să plătești prima de preț a locuirii în zona centrală propriu-zisă.",
+      },
+      {
+        heading: "Școli, grădinițe și creșă în zonă",
+        body: "Aici Micro 3 se detașează clar. Școala Gimnazială „Episcop Dionisie Romano”, pe strada Bistriței nr. 31, este principala școală gimnazială care deservește direct cartierul. Liceul Agricol „Dr. Constantin Angelescu”, pe strada Crizantemelor nr. 17, este un liceu tehnologic cu tradiție în Buzău, aflat la marginea cartierului. Pentru copiii mici, oferta este neobișnuit de bogată: Creșa Nr. 1 pe strada Pietroasele nr. 9 — o unitate de educație timpurie esențială pentru familiile tinere — plus trei grădinițe cu program prelungit, toate în cartier: GPP „Boboceii” pe strada Pietroasele nr. 12, GPP „Căsuța Fermecată” pe strada Bucegi nr. 9 și GPP Nr. 3 pe strada Bistriței nr. 12. Practic, de la creșă până la liceu, totul este la distanță de mers pe jos. Pentru un părinte care lucrează, a avea trei grădinițe cu program prelungit de ales în propriul cartier este un avantaj concret, nu o formulă de marketing — reduce drastic riscul de a nu prinde loc.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "În interiorul cartierului se află părculețul de pe strada Pietroasele, cunoscut și ca Parc 1: o mică zonă verde amenajată modern între blocuri, dotată cu echipamente de joacă sigure pentru copii și cu bănci. Este genul de spațiu pe care îl folosești zilnic, nu doar în weekend. Pentru ieșirile mai consistente, Parcul Tineretului — deși aparține tehnic zonei vecine Broșteni — are intrarea la o distanță foarte scurtă și este destinația principală de weekend a locuitorilor din Micro 3: parc masiv, cu lac, terenuri de sport și alei mari. Combinația este foarte practică: loc de joacă sub fereastră pentru zilele de lucru, parc mare la câteva minute pentru weekend.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Datorită așezării între Bulevardul Gării, strada Pietroasele și arterele mari care duc spre Unirii sau Broșteni, Micro 3 este excelent conectat de rețeaua Trans Bus Buzău. Liniile 5 și 5B (Micro 14 – Bulevardul Gării – Horticolei / Pod Marghiloman) dau conexiune rapidă cu vestul și estul orașului. Liniile 6 și 6B fac traseul Gara CFR – Micro 3 – Gară și continuă spre comunele adiacente. Linia 8 (Gară – Dorobanți – Broșteni – Spiru Haret – Micro 14) colectează călătorii din zonele învecinate. Linia 10 face traseul Bazalt – Crâng – Kaufland Sud – Micro 3 / Poliție – Gară, deci acoperă atât parcul, cât și hipermarketul. Se adaugă traseele metropolitane — liniile 11, 13 și 22 — care trec pe Bulevardul Gării și strada Pietroasele și fac legătura cu localitățile limitrofe, printre care Vadu Pașii și Fulga. Stațiile de referință în sau lângă cartier sunt Micro 3 (Poliție), Pietroasele, Bucegi și Gara CFR.",
+      },
+      {
+        heading: "Cui i se potrivește Micro 3",
+        body: "Familiilor cu copii mici, în primul rând — creșa și cele trei grădinițe cu program prelungit din cartier sunt un argument pe care puține zone din Buzău îl pot egala. Celor care fac naveta cu trenul sau călătoresc frecvent, pentru distanța mică până la gară. Tinerilor care lucrează în centru și vor să ajungă pe jos sau cu o singură stație de autobuz, fără să plătească prețul unui apartament central. Și investitorilor: cererea de chirii este susținută exact de aceste două categorii, iar prețul de achiziție rămâne sub nivelul zonei centrale. Dacă prioritatea ta este liniștea absolută și verdele din jurul blocului, Crângul sau Broșteni te vor satisface mai mult; dacă prioritatea este poziția și infrastructura pentru copii, Micro 3 este alegerea logică.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Micro 3",
+        body: "Consultanții CAMIMOB cunosc blocurile din Micro 3, starea lor de reabilitare termică și prețurile la care s-au încheiat efectiv tranzacțiile în zonă. Dacă ai copii, te ajutăm să verifici circumscripția școlară a blocului care te interesează înainte să semnezi — în Micro 3, unde sunt mai multe unități școlare bune, strada contează. Verificăm actele, starea apartamentului și documentația asociației de proprietari, organizăm vizionările eficient și te asistăm la negociere, la evaluarea pentru bancă și la notar. Contactează-ne pentru o consultație gratuită și îți pregătim o listă personalizată cu ofertele din Micro 3 aflate acum în portofoliul nostru.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce școli și grădinițe sunt în Micro 3?",
+        a: "Școala Gimnazială „Episcop Dionisie Romano” (str. Bistriței nr. 31) este principala școală a cartierului, iar Liceul Agricol „Dr. Constantin Angelescu” (str. Crizantemelor nr. 17) se află la marginea zonei. Pentru copiii mici: Creșa Nr. 1 (str. Pietroasele nr. 9) și trei grădinițe cu program prelungit — „Boboceii” (str. Pietroasele nr. 12), „Căsuța Fermecată” (str. Bucegi nr. 9) și GPP Nr. 3 (str. Bistriței nr. 12).",
+      },
+      {
+        q: "Ce linii de autobuz deservesc Micro 3?",
+        a: "Liniile Trans Bus 5, 5B, 6, 6B, 8 și 10, plus traseele metropolitane 11, 13 și 22 care trec pe Bulevardul Gării și strada Pietroasele spre Vadu Pașii și Fulga. Stațiile de referință sunt Micro 3 (Poliție), Pietroasele, Bucegi și Gara CFR.",
+      },
+      {
+        q: "Ce spații verzi are Micro 3?",
+        a: "În cartier se află părculețul de pe strada Pietroasele (Parc 1), amenajat modern, cu echipamente de joacă sigure și bănci. Parcul Tineretului, cu lac, terenuri de sport și alei mari, are intrarea la distanță foarte scurtă, deși aparține tehnic zonei vecine Broșteni.",
+      },
+      {
+        q: "Cât de aproape este Micro 3 de gară și de centru?",
+        a: "Cartierul este delimitat parțial de Bulevardul Gării, deci gara este la câteva minute. Centrul este de asemenea foarte aproape, accesibil pe jos sau cu o singură stație de autobuz — unul dintre principalele avantaje ale zonei față de cartierele „Micro” din vestul orașului.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "micro 3",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "apartamente-centru-buzau",
+    title: "Apartamente în Centrul Buzăului | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în Centrul Buzăului, în jurul Pieței Daciei și Bulevardului Bălcescu. Colegiile „B.P. Hasdeu” și „Mihai Eminescu” la câțiva pași. Oferte CAMIMOB.",
+    h1: "Apartamente în Centrul Buzăului",
+    breadcrumbLabel: "Apartamente Centru",
+    intro:
+      "Zona centrală a Buzăului, axată în jurul Pieței Daciei, străzii Cuza Vodă și Bulevardului Nicolae Bălcescu, este inima administrativă, culturală și istorică a orașului. Este și cea mai densă în instituții de învățământ de prestigiu și în monumente istorice. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Centru, de vânzare și de închiriat. Dacă pui preț pe școli de top la distanță de mers pe jos și pe o viață urbană fără mașină, aici este zona ta.",
+    sections: [
+      {
+        heading: "Despre zona centrală a Buzăului",
+        body: "Centrul Buzăului se organizează în jurul Pieței Daciei, al străzii Cuza Vodă și al Bulevardului Nicolae Bălcescu, cu străzile adiacente care îi dau densitatea. Aici sunt concentrate instituțiile administrative, viața culturală și patrimoniul istoric al orașului. Pentru cine locuiește în Centru, consecința practică este că aproape totul se face pe jos: instituții, bănci, piață, restaurante, școli, spectacole. Apartamentele acoperă un spectru larg, de la cele din blocuri interbelice și clădiri cu istorie, până la blocurile din anii '70-'80 ridicate pe arterele principale. Prețul pe metru pătrat este cel mai ridicat din oraș — dar și cel mai stabil: Centrul este zona care își păstrează valoarea cel mai bine în orice condiții de piață, pur și simplu pentru că oferta nu se poate extinde.",
+      },
+      {
+        heading: "Școli, licee și grădinițe de prestigiu",
+        body: "Acesta este argumentul decisiv al Centrului și motivul principal pentru care prețurile se mențin. Zona concentrează unele dintre cele mai renumite unități de învățământ din întreg județul. Colegiul Național „B.P. Hasdeu”, pe Bulevardul Gării, chiar la granița cu zona centrală, este liceul de elită al orașului. Colegiul Național „Mihai Eminescu”, pe strada Independenței, este o altă instituție de top, cu rezultate remarcabile. Școala Gimnazială „Căpitan Aviator Mircea T. Bădulescu” (Școala Nr. 1), pe Bulevardul Nicolae Bălcescu, este una dintre cele mai căutate școli gimnaziale din Buzău. Școala Gimnazială „Dionisie Romano”, pe strada Episcopiei, se află în imediata apropiere a centrului istoric. Pentru preșcolari: Grădinița cu Program Prelungit „Crai Nou”, pe strada Unirii, și Grădinița cu Program Prelungit Nr. 1 — ambele foarte apreciate de părinții care lucrează în zona centrală. Un copil poate parcurge, pe jos, tot traseul de la grădiniță la un colegiu național. Puține orașe din România oferă asta într-un perimetru atât de mic.",
+      },
+      {
+        heading: "Parcuri, promenadă și spații publice",
+        body: "Centrul nu are un parc masiv în interiorul său, dar compensează cu spații publice de calitate. Piața Daciei, Centrul Civic, a fost recent modernizată complet ca zonă pietonală urbană, cu fântâni arteziene decorative, bănci, texturi de granit și spații deschise pentru evenimente — este acum locul în care orașul se adună. Bulevardul Nicolae Bălcescu este o adevărată axă verde: un bulevard istoric cu trotuare largi, umbrit de o splendidă perdea de tei bătrâni, ideal pentru promenadă. Părculețul de la Catedrala Episcopală (Sfântul Sava) este o oază liniștită de verdeață în jurul complexului bisericesc istoric. Iar pentru o ieșire adevărată în natură: intrarea pe Bulevardul Bălcescu pornește direct din Centru și duce în linie dreaptă, după o plimbare de 15-20 de minute la umbra teilor, direct în Parcul Crâng. Practic, cel mai mare parc al orașului este la o plimbare, nu la un drum cu mașina.",
+      },
+      {
+        heading: "Transport în comun: nodul principal al orașului",
+        body: "Centrul este nodul principal de tranzit al municipiului — aproape toate liniile urbane converg sau trec prin stațiile centrale majore, cum sunt RAM, Piața Centrală, Hasdeu sau Catedrală. Linia 1 face ruta C.I.T. – BIG – ACR – RAM – Piața Centrală – Gară – Dorobanți – Kaufland Sud. Linia 2 vine din Sărata Monteoru, tranzitează Centrul și RAM, și continuă spre Autogara Marghiloman. Linia 3 merge Dedeman – Piața Centrală – Centrul de Recoltare. Liniile 4 și 4B fac Rond Stadion – RAM – Gară. Liniile 5 și 5B pornesc din Micro 14 și tranzitează zona adiacentă a bulevardelor centrale spre Horticolei. Linia 8 face Gară – Dorobanți – Broșteni – Catedrală – Spiru Haret – Micro 14. Linia 10 merge Bazalt – Crâng – Piața Centrală – Gară. În plus, toate traseele metropolitane, liniile 23 până la 28, au stații în punctele cheie din Centru — în special RAM și Episcopie — pentru a prelua fluxul de călători spre Mărăcineni, Săpoca și Valea Slănicului. Din Centru ajungi oriunde în oraș fără schimbare de autobuz.",
+      },
+      {
+        heading: "Cui i se potrivește Centrul",
+        body: "Familiilor care își aleg locuința în funcție de școală — aici ai „B.P. Hasdeu”, „Mihai Eminescu” și Școala Nr. 1 la distanță de mers pe jos, iar asta schimbă complet logistica unei zile de lucru. Tinerilor profesioniști care lucrează în zona administrativă și nu vor să depindă de mașină. Celor care prețuiesc viața urbană: cafenele, restaurante, evenimente în Piața Daciei, promenadă pe Bălcescu. Și investitorilor cu orizont lung: Centrul are cea mai mică volatilitate de preț din oraș și cea mai constantă cerere de chirii, inclusiv din partea profesioniștilor relocați. Compromisurile sunt reale și trebuie spuse: prețul pe metru pătrat este cel mai mare din Buzău, parcarea este cea mai dificilă, iar unele clădiri vechi au nevoie de investiții în instalații. Dacă vrei maximum de metri pătrați pe buget, Micro 3, Broșteni sau Micro 14 îți dau mult mai mult.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Centru",
+        body: "În zona centrală, diferențele dintre două apartamente aparent similare pot fi uriașe: anul și tipul construcției, starea instalațiilor, regimul juridic al clădirii, existența unui loc de parcare, nivelul de zgomot de la stradă, dar și circumscripția școlară exactă. Consultanții CAMIMOB cunosc clădirile din Centru și îți spun deschis care poziții merită prețul cerut și care nu. Verificăm cu atenție specială actele — în centrul istoric pot apărea situații juridice mai complicate decât într-un bloc standard — și te asistăm cu un specialist juridic dacă este nevoie. Dacă ai copii, confirmăm circumscripția înainte de antecontract. Te ajutăm la negociere, la evaluarea pentru bancă și la notar. Dacă ești proprietar de apartament în Centru și vrei să vinzi sau să închiriezi, spune-ne: este zona cu cea mai constantă cerere din portofoliul nostru.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce școli și licee sunt în Centrul Buzăului?",
+        a: "Colegiul Național „B.P. Hasdeu” (Bd. Gării, la granița cu centrul) este liceul de elită al orașului, iar Colegiul Național „Mihai Eminescu” (str. Independenței) este o altă instituție de top. Gimnazial: Școala „Căpitan Aviator Mircea T. Bădulescu” (Nr. 1) pe Bd. Nicolae Bălcescu și Școala „Dionisie Romano” pe str. Episcopiei. Grădinițe: GPP „Crai Nou” pe str. Unirii și GPP Nr. 1.",
+      },
+      {
+        q: "Cât durează din Centru până în Parcul Crâng?",
+        a: "15-20 de minute de plimbare. Intrarea pe Bulevardul Bălcescu pornește direct din Centru și duce în linie dreaptă până în parc, la umbra teilor bătrâni de pe bulevard.",
+      },
+      {
+        q: "Ce linii de autobuz trec prin Centru?",
+        a: "Practic toate. Centrul este nodul principal de tranzit: liniile 1, 2, 3, 4, 4B, 5, 5B, 8 și 10, plus toate traseele metropolitane (23–28), care au stații în punctele cheie — în special RAM și Episcopie. Stațiile centrale majore sunt RAM, Piața Centrală, Hasdeu și Catedrală.",
+      },
+      {
+        q: "De ce sunt apartamentele din Centru mai scumpe?",
+        a: "Pentru trei motive care se cumulează: concentrarea de școli și licee de prestigiu, accesul pe jos la tot ce ai nevoie zilnic, și faptul că oferta nu se poate extinde — nu se mai construiește în perimetrul central. Exact de aceea Centrul este și zona care își păstrează cel mai bine valoarea în timp.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "centru",
+    },
+    keepIndexableWhenEmpty: true,
+  },
 ];
 
 export function getSeoPageBySlug(slug: string): SeoPageConfig | undefined {
