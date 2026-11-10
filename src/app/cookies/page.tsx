@@ -5,6 +5,9 @@ import { DocumentTextIcon } from '@heroicons/react/24/outline';
 export const metadata: Metadata = {
   title: 'Politica de Cookie-uri | BESTINVEST CAMIMOB',
   description: 'Politica de utilizare a cookie-urilor pe site-ul BESTINVEST CAMIMOB - Agenție Imobiliară Buzău. Aflați cum folosim cookie-urile și cum le puteți gestiona.',
+  alternates: {
+    canonical: '/cookies',
+  },
   robots: {
     index: true,
     follow: true,

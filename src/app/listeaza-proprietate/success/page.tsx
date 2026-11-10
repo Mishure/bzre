@@ -1,4 +1,17 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Cerere trimisă | BESTINVEST CAMIMOB',
+  alternates: {
+    canonical: '/listeaza-proprietate/success',
+  },
+  // Post-submit confirmation page — no SEO value, keep it out of the index.
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
 
 export default function SubmissionSuccessPage() {
   return (

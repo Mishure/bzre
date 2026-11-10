@@ -1,6 +1,16 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircleIcon, UsersIcon, HomeIcon, StarIcon } from '@heroicons/react/24/outline';
+
+export const metadata: Metadata = {
+  title: 'Despre noi | BESTINVEST CAMIMOB - Agenție Imobiliară Buzău',
+  description:
+    'Despre BESTINVEST CAMIMOB, agenție imobiliară din Buzău cu peste 20 de ani de experiență în tranzacții cu apartamente, case, terenuri și spații comerciale.',
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function AboutPage() {
   const stats = [

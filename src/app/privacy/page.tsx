@@ -5,6 +5,9 @@ import { ShieldCheckIcon } from '@heroicons/react/24/outline';
 export const metadata: Metadata = {
   title: 'Politica de Confidențialitate | BESTINVEST CAMIMOB',
   description: 'Politica de confidențialitate și protecția datelor personale pentru serviciile BESTINVEST CAMIMOB - Agenție Imobiliară Buzău.',
+  alternates: {
+    canonical: '/privacy',
+  },
   robots: {
     index: true,
     follow: true,
