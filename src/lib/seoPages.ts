@@ -25,6 +25,17 @@ export type SeoPageConfig = {
   faq: { q: string; a: string }[];
   filter: SeoFilter;
   breadcrumbLabel: string;
+  /**
+   * Keep the page indexable and in the sitemap even with zero offers.
+   *
+   * Set on the per-neighbourhood pages. A zone has slow stock rotation, so
+   * going empty for a while is normal rather than a sign the page is
+   * worthless — and the copy carries standalone local value (park, schools,
+   * bus lines) plus a "leave us your criteria" call to action that only
+   * works if Google can still surface it. Category pages keep the default
+   * behaviour: empty means noindex.
+   */
+  keepIndexableWhenEmpty?: boolean;
 };
 
 export function normalizeText(s: string | null | undefined): string {
@@ -434,6 +445,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       operationType: "VANZARE",
       zoneNormalized: "brosteni",
     },
+    keepIndexableWhenEmpty: true,
   },
   {
     slug: "apartamente-micro-14-buzau",
@@ -481,6 +493,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       operationType: "VANZARE",
       zoneNormalized: "micro 14",
     },
+    keepIndexableWhenEmpty: true,
   },
   {
     slug: "apartamente-unirii-buzau",
@@ -528,6 +541,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       operationType: "VANZARE",
       zoneNormalized: "unirii",
     },
+    keepIndexableWhenEmpty: true,
   },
   {
     // No operationType: the Crâng stock is currently all rentals, but the
@@ -535,47 +549,60 @@ export const SEO_PAGES: SeoPageConfig[] = [
     slug: "apartamente-crang-buzau",
     title: "Apartamente în zona Crâng, Buzău | CAMIMOB",
     description:
-      "Apartamente de vânzare și de închiriat în zona Crâng, Buzău — lângă Parcul Crâng, cea mai mare zonă verde a orașului. Vezi ofertele active CAMIMOB.",
+      "Apartamente de vânzare și de închiriat în zona Crâng, Buzău — lângă Parcul Crâng, cu lac, pădure de stejar și alei de promenadă. Școala Gimnazială Nr. 2 în zonă, 8 linii de autobuz. Ofertele active CAMIMOB.",
     h1: "Apartamente în zona Crâng, Buzău",
     breadcrumbLabel: "Apartamente zona Crâng",
     intro:
-      "Zona Crâng este, pentru mulți buzoieni, cel mai plăcut loc de locuit din oraș — și motivul este la câțiva pași: Parcul Crâng, cea mai mare zonă verde a Buzăului. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în zona Crâng, de vânzare și de închiriat. Dacă pui preț pe liniște, aer curat și pe posibilitatea de a ajunge în parc pe jos în câteva minute, aceasta este zona pe care merită să o urmărești.",
+      "Zona Crâng este, pentru mulți buzoieni, cel mai plăcut loc de locuit din oraș — și motivul este la câțiva pași: Parcul Crâng, cea mai mare și mai importantă zonă verde a Buzăului. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în zona Crâng, de vânzare și de închiriat. Dacă pui preț pe liniște, aer curat și pe posibilitatea de a ajunge în parc pe jos în câteva minute, aceasta este zona pe care merită să o urmărești.",
     sections: [
       {
-        heading: "Ce face zona Crâng diferită",
-        body: "Majoritatea cartierelor Buzăului se definesc prin tipul de blocuri sau prin distanța față de centru. Crângul se definește prin parc. Parcul Crâng este cea mai extinsă zonă verde a orașului, o pădure-parc cu alei, copaci maturi și spațiu real de plimbare — nu un petic de iarbă între blocuri. Pentru cine locuiește în apropiere, asta schimbă viața de zi cu zi: alergare dimineața fără să urci în mașină, plimbat copilul sau câinele în câteva minute, aer sensibil mai bun decât pe arterele aglomerate, și verdeață la fereastră în loc de beton. Vara, diferența de temperatură față de zonele dens construite se simte. Este genul de avantaj care nu apare în tabelul cu suprafețe și prețuri, dar care contează cel mai mult după ce te muți.",
+        heading: "Parcul Crâng și zona de agrement",
+        body: "Majoritatea cartierelor Buzăului se definesc prin tipul de blocuri sau prin distanța față de centru. Crângul se definește prin parc. Parcul Crâng este cel mai mare și mai important parc al orașului: o pădure de esență tare, cu stejari maturi, lac, alei de promenadă, zone de agrement și locuri de joacă pentru copii. Nu este un petic de iarbă între blocuri, ci o pădure-parc în care poți merge o oră fără să te întorci pe aceeași alee. Imediat adiacent se află Complexul de Agrement și Stadionul Municipal, ceea ce adaugă zonei o componentă sportivă pe care nu o găsești în alte cartiere. Pentru cine locuiește aici, asta schimbă viața de zi cu zi: alergare dimineața fără să urci în mașină, plimbat copilul la locul de joacă în câteva minute, aer sensibil mai bun decât pe arterele aglomerate. Vara, diferența de temperatură față de zonele dens construite se simte pe pielea ta.",
       },
       {
-        heading: "Cui i se potrivește",
-        body: "Zona Crâng atrage în primul rând familii cu copii mici, pentru care accesul la un spațiu verde sigur, fără trafic, înseamnă mai mult decât un metru pătrat în plus în apartament. Apoi, persoane active — alergători, cicliști, oameni care își petrec dimineața sau serile în parc. Și cumpărători ori chiriași mai în vârstă, care caută liniște și aer bun fără să iasă din oraș. Nu este zona pentru cine vrea să fie în mijlocul agitației comerciale sau are nevoie să ajungă pe jos la instituțiile din centru în două minute. Dacă prioritatea ta este centralitatea absolută, uită-te mai bine la Centru sau la zona Unirii. Dacă prioritatea este calitatea vieții de zi cu zi, Crângul este greu de egalat în Buzău.",
+        heading: "Școli și unități de învățământ în apropiere",
+        body: "Pentru familiile cu copii, zona acoperă toate ciclurile de învățământ fără navetă lungă. Școala Gimnazială Nr. 2 este chiar în zona Crâng, pe strada Crâng — cel mai apropiat gimnaziu, accesibil pe jos din majoritatea blocurilor din perimetru. Școala Gimnazială Nr. 15 se află relativ aproape, înspre zona ACR și Bariera Ploiești. La nivel liceal, Liceul cu Program Sportiv (LPS) Micro 14 este în apropierea capătului de traseu din zonă — o combinație firească pentru copiii care fac sport, dat fiind Complexul de Agrement și Stadionul Municipal la câțiva pași. Mai există Liceul Tehnologic „Constantin Nenițescu” și alte unități școlare pe arterele învecinate. Practic, un copil poate parcurge gimnaziul și liceul fără să schimbe cartierul — un argument care cântărește greu la decizia de cumpărare și pe care puține zone din Buzău îl pot susține.",
+      },
+      {
+        heading: "Transport în comun: liniile care deservesc zona",
+        body: "În stația Parcul Crâng și pe arterele care delimitează sau traversează zona opresc opt linii Trans Bus Buzău, ceea ce face Crângul mult mai bine conectat decât sugerează poziția lui liniștită. Liniile 4 (Gara Tohăneni – Stadion – Somet) și 4B (Gara Tohăneni – CIT Buzău – Somet) leagă zona de gară și de platforma industrială. Liniile 5 și 5B (Horticolei – Carrefour / CIT Buzău – Micro 14) și linia 10 (Bazalt – Liceul C. Nenițescu – Romcarbon – Rond – Crâng – Kaufland Sud) acoperă cumpărăturile mari. Linia 14 (Micro 14 – Filatură – Spitalul Județean – Crâng – LIDL – ACR – Piața Dorobanți – Liceul 1) este poate cea mai utilă dintre toate, pentru că dă legătură directă cu Spitalul Județean și cu Piața Dorobanți. Se adaugă liniile 7B (Micro 14 – Bld. Spiru Haret – Gara Tohăneni), 8 (Gara CFR – Bazar – Micro 14) și 12 / 12B (LPS Micro 14 – Gara CFR – Bentu). Concluzia practică: din Crâng ajungi fără mașină la gară, la spital, la piață și la hipermarketuri.",
+      },
+      {
+        heading: "Cui i se potrivește zona Crâng",
+        body: "Zona atrage în primul rând familii cu copii, pentru combinația rară de spațiu verde sigur, locuri de joacă și școli la distanță de mers pe jos. Apoi persoanele active — alergători, cicliști, cei care folosesc Complexul de Agrement și stadionul. Și cumpărători sau chiriași mai în vârstă, care caută liniște, aer bun și acces direct cu autobuzul la Spitalul Județean, fără să iasă din oraș. Nu este zona pentru cine vrea să fie în mijlocul agitației comerciale sau are nevoie să ajungă pe jos la instituțiile din centru în două minute; pentru centralitate absolută, uită-te mai bine la Centru sau la zona Unirii. Dar dacă prioritatea este calitatea vieții de zi cu zi, Crângul este greu de egalat în Buzău.",
       },
       {
         heading: "Ce ofertă există în zonă",
-        body: "Crângul este o zonă cu stoc limitat: numărul de apartamente este mic în comparație cu cartierele Micro sau cu Broșteni, pur și simplu pentru că suprafața construită din apropierea parcului este restrânsă. Consecința practică este că ofertele apar rar și se ocupă repede, mai ales cele de închiriere. Apartamentele disponibile sunt predominant cu una sau două camere, cu suprafețe moderate, în blocuri de locuințe clasice. Dacă zona te interesează serios, cel mai eficient nu este să reîncarci paginile de anunțuri, ci să ne lași criteriile tale — te contactăm în momentul în care intră o ofertă în Crâng, de multe ori înainte să apară public. Numărul de oferte afișat mai sus este în timp real: dacă vezi zero, înseamnă că stocul este momentan epuizat, nu că zona nu este acoperită de noi.",
+        body: "Crângul are stoc limitat: numărul de apartamente este mic în comparație cu cartierele Micro sau cu Broșteni, pur și simplu pentru că suprafața construită din apropierea parcului este restrânsă. Consecința practică este că ofertele apar rar și se ocupă repede, mai ales cele de închiriere. Apartamentele disponibile sunt predominant cu una sau două camere, cu suprafețe moderate, în blocuri de locuințe clasice. Dacă zona te interesează serios, cel mai eficient nu este să reîncarci paginile de anunțuri, ci să ne lași criteriile tale — te contactăm în momentul în care intră o ofertă în Crâng, de multe ori înainte să apară public. Numărul de oferte afișat mai sus este în timp real: dacă vezi zero, înseamnă că stocul este momentan epuizat, nu că zona nu este acoperită de noi.",
       },
       {
         heading: "Cum te ajută CAMIMOB în zona Crâng",
-        body: "Într-o zonă cu puține apartamente și cerere constantă, avantajul real este informația timpurie. Consultanții CAMIMOB cunoscem blocurile din apropierea parcului, proprietarii care închiriază recurent și prețurile la care s-au încheiat efectiv tranzacțiile — nu doar cele cerute în anunțuri. Te ajutăm cu verificarea actelor și a stării apartamentului, cu negocierea, cu redactarea contractului (la închiriere, inclusiv procesul-verbal de predare cu inventar) și cu asistența la notar în cazul unei achiziții. Dacă ești proprietar de apartament în Crâng și vrei să vinzi sau să închiriezi, spune-ne: avem deja o listă de clienți care așteaptă exact această zonă. Contactează-ne pentru o consultație gratuită.",
+        body: "Într-o zonă cu puține apartamente și cerere constantă, avantajul real este informația timpurie. Consultanții CAMIMOB cunosc blocurile din apropierea parcului, proprietarii care închiriază recurent și prețurile la care s-au încheiat efectiv tranzacțiile — nu doar cele cerute în anunțuri. Te ajutăm cu verificarea actelor și a stării apartamentului, cu negocierea, cu redactarea contractului (la închiriere, inclusiv procesul-verbal de predare cu inventar) și cu asistența la notar în cazul unei achiziții. Dacă ești proprietar de apartament în Crâng și vrei să vinzi sau să închiriezi, spune-ne: avem deja o listă de clienți care așteaptă exact această zonă. Contactează-ne pentru o consultație gratuită.",
       },
     ],
     faq: [
       {
-        q: "Cât de aproape de Parcul Crâng sunt apartamentele din zonă?",
-        a: "Depinde de bloc, dar în general la câteva minute de mers pe jos. Tocmai această proximitate definește zona și explică de ce ofertele se ocupă rapid. Pentru fiecare apartament în discuție îți spunem exact distanța până la intrarea în parc.",
+        q: "Ce școli sunt în zona Crâng?",
+        a: "Școala Gimnazială Nr. 2 este chiar în zonă, pe strada Crâng. Școala Gimnazială Nr. 15 se află relativ aproape, înspre ACR și Bariera Ploiești. La liceu: Liceul cu Program Sportiv (LPS) Micro 14, în apropierea capătului de traseu din zonă, și Liceul Tehnologic „Constantin Nenițescu”, plus alte unități pe arterele învecinate.",
+      },
+      {
+        q: "Ce linii de autobuz opresc în zona Crâng?",
+        a: "În stația Parcul Crâng și pe arterele învecinate opresc liniile Trans Bus Buzău 4, 4B, 5, 5B, 7B, 8, 10, 12, 12B și 14. Cea mai utilă pentru viața de zi cu zi este linia 14, care face legătura directă cu Spitalul Județean și cu Piața Dorobanți. Linia 10 duce la Kaufland Sud, iar liniile 5 și 5B la Carrefour.",
+      },
+      {
+        q: "Ce facilități are Parcul Crâng?",
+        a: "Este cel mai mare parc al Buzăului: pădure de esență tare cu stejari maturi, lac, alei de promenadă, zone de agrement și locuri de joacă pentru copii. Imediat adiacent se află Complexul de Agrement și Stadionul Municipal.",
       },
       {
         q: "De ce sunt atât de puține oferte în zona Crâng?",
-        a: "Pentru că suprafața construită din apropierea parcului este limitată, deci numărul total de apartamente este mic. Nu este o problemă de acoperire din partea noastră — este pur și simplu un cartier cu stoc restrâns și rotație redusă.",
-      },
-      {
-        q: "Pot fi anunțat când apare o ofertă în Crâng?",
-        a: "Da, și pentru această zonă este cea mai bună strategie. Lasă-ne criteriile tale prin formularul de contact și te sunăm când intră o proprietate potrivită, de multe ori înainte de publicarea anunțului.",
+        a: "Pentru că suprafața construită din apropierea parcului este limitată, deci numărul total de apartamente este mic și rotația lentă. Nu este o problemă de acoperire din partea noastră. Lasă-ne criteriile tale prin formularul de contact și te sunăm când intră o proprietate potrivită, de multe ori înainte de publicarea anunțului.",
       },
     ],
     filter: {
       propertyType: "APARTAMENT",
       zoneNormalized: "crang",
     },
+    keepIndexableWhenEmpty: true,
   },
 ];
 
@@ -604,16 +631,19 @@ export async function countSeoProperties(
 /**
  * Shared metadata for the SEO landing pages.
  *
- * A landing page with zero matching offers is nothing but templated copy —
- * Google reports exactly those as "crawled, currently not indexed". We mark
- * them `noindex, follow` so they stay out of the index (and out of the
- * sitemap, see app/sitemap.ts) until the zone or category has real stock,
- * at which point they become indexable again on their own.
+ * A category landing page with zero matching offers is nothing but templated
+ * copy — Google reports exactly those as "crawled, currently not indexed".
+ * We mark them `noindex, follow` so they stay out of the index (and out of
+ * the sitemap, see app/sitemap.ts) until the category has real stock, at
+ * which point they become indexable again on their own.
+ *
+ * Pages flagged `keepIndexableWhenEmpty` opt out of that — see the field's
+ * documentation on SeoPageConfig.
  */
 export async function buildSeoPageMetadata(slug: string): Promise<Metadata> {
   const config = getSeoPageBySlug(slug)!;
   const count = await countSeoProperties(config.filter);
-  const isEmpty = count === 0;
+  const isEmpty = count === 0 && !config.keepIndexableWhenEmpty;
 
   return {
     title: config.title,
@@ -630,3 +660,6 @@ export async function buildSeoPageMetadata(slug: string): Promise<Metadata> {
     },
   };
 }
+
+
+
