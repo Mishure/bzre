@@ -103,7 +103,13 @@ const ZONE_MAPPINGS: Record<string, string> = {
   // Other zones
   'centru': 'Centru',
   'center': 'Centru',
-  'unirii': 'Unirii',
+  // Longer keys win (the loop sorts by length), so "unirii sud" is matched
+  // before any shorter alias. Plain 'unirii' is intentionally not mapped:
+  // no listing carries that bare zone, and an exact-match filter on it
+  // would return nothing — left unmapped, the word falls through to the
+  // free-text search, which matches both Nord and Sud.
+  'unirii nord': 'Unirii Nord',
+  'unirii sud': 'Unirii Sud',
   'dorobanti': 'Dorobanti',
   'dorobanți': 'Dorobanti',
   'dorobanți 1': 'Dorobanti 1',

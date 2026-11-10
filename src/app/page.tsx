@@ -33,7 +33,8 @@ const seoLandingLinks = [
   { slug: 'apartamente-brosteni-buzau', label: 'Apartamente cartier Broșteni' },
   { slug: 'apartamente-crang-buzau', label: 'Apartamente zona Crâng' },
   { slug: 'apartamente-micro-14-buzau', label: 'Apartamente Micro 14' },
-  { slug: 'apartamente-unirii-buzau', label: 'Apartamente zona Unirii' },
+  { slug: 'apartamente-unirii-nord-buzau', label: 'Apartamente Unirii Nord' },
+  { slug: 'apartamente-unirii-sud-buzau', label: 'Apartamente Unirii Sud' },
 ];
 
 export default function HomePage() {

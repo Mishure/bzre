@@ -20,7 +20,10 @@ export const BUZAU_ZONES = [
   'Micro 3',
   'Micro 5',
   'Micro 14',
-  'Unirii',
+  // Plain 'Unirii' deliberately absent: the bulevard is split into Unirii
+  // Nord and Unirii Sud, each with its own landing page. A listing saved as
+  // just 'Unirii' would appear on neither.
+  'Unirii Nord',
   'Unirii Sud',
   'Dorobanti',
   'Dorobanti 1',

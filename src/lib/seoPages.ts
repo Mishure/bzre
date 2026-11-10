@@ -403,46 +403,53 @@ export const SEO_PAGES: SeoPageConfig[] = [
     slug: "apartamente-brosteni-buzau",
     title: "Apartamente în cartierul Broșteni, Buzău | CAMIMOB",
     description:
-      "Apartamente de vânzare în cartierul Broșteni, Buzău. Zonă rezidențială echilibrată, prețuri accesibile, acces facil spre Centru. Vezi ofertele CAMIMOB.",
+      "Apartamente de vânzare și de închiriat în cartierul Broșteni, Buzău. Lângă Parcul Tineretului și Parcul Marghiloman, Școala Gimnazială Nr. 7 în zonă, nod major de transport. Ofertele CAMIMOB.",
     h1: "Apartamente în cartierul Broșteni, Buzău",
     breadcrumbLabel: "Apartamente Broșteni",
     intro:
-      "Cartierul Broșteni este una dintre cele mai stabile zone rezidențiale din Buzău: prețuri accesibile, raport calitate/preț favorabil, infrastructură matură și conexiuni bune cu restul orașului. Pe această pagină găsești ofertele active CAMIMOB pentru apartamente în Broșteni — garsoniere, 2 camere, 3 camere — în blocuri reabilitate sau cu potențial de renovare.",
+      "Broșteni este o zonă rezidențială bine conectată din partea de nord-est a Buzăului, învecinată direct cu cartierul Dorobanți și cu acces rapid către cele mai mari parcuri ale orașului. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Broșteni, de vânzare și de închiriat — garsoniere, 2 și 3 camere, în blocuri reabilitate sau cu potențial de renovare. Dacă vrei preț accesibil fără să renunți la școli bune și la transport în comun, Broșteni este una dintre cele mai echilibrate opțiuni din oraș.",
     sections: [
       {
         heading: "Despre cartierul Broșteni",
-        body: "Broșteni este un cartier rezidențial al Buzăului care îmbină blocurile clasice din anii '70-'80 cu zone de case individuale și curți. Este apreciat de cumpărători pentru raportul echilibrat dintre preț și calitatea vieții: este suficient de aproape de Centru pentru ca naveta zilnică să fie scurtă, dar suficient de departe încât traficul și agitația să nu se simtă în interiorul cartierului. Densitatea populației este moderată, infrastructura (magazine, farmacii, școli, grădinițe) este completă și consolidată în timp, iar transportul în comun acoperă zona cu legături directe spre toate punctele importante ale orașului.",
+        body: "Broșteni se află în partea de nord-est a Buzăului și îmbină blocurile clasice din anii '70-'80 cu zone de case individuale și curți. Vecinătatea directă cu Dorobanți îi dă acces la infrastructura ambelor cartiere, iar poziția față de centru este aproape ideală: suficient de aproape ca naveta zilnică să fie scurtă, suficient de departe ca traficul și agitația să nu se simtă în interiorul cartierului. Densitatea populației este moderată, infrastructura de proximitate (magazine, farmacii, școli, grădinițe) este completă și consolidată în timp. Apartamentele din Broșteni se tranzacționează în general sub prețul mediu al orașului pentru caracteristici similare, ceea ce face zona atractivă atât pentru tineri la prima cumpărare, cât și pentru investitorii care urmăresc randament din chirii.",
       },
       {
-        heading: "Tipurile de apartamente disponibile în Broșteni",
-        body: "Oferta de apartamente din Broșteni este variată. Predomină apartamentele decomandate și semidecomandate din blocurile construite în anii '70-'80, cu suprafețe între 28 mp (garsoniere) și 80 mp (3 camere). În ultimii ani, multe blocuri au beneficiat de programe de reabilitare termică, ceea ce a îmbunătățit semnificativ confortul interior și a redus facturile de încălzire iarna. Există și câteva blocuri mai noi, construite după 2010, cu finisaje moderne, parcare proprie și un design contemporan. Apartamentele din Broșteni se vând în general la 5-15% sub prețul mediu al pieței în Buzău pentru caracteristici similare, ceea ce face zona atractivă pentru tineri la prima cumpărare și pentru investitorii care vor randament din chirii.",
+        heading: "Școli și grădinițe în zonă",
+        body: "Pentru familiile cu copii, Broșteni acoperă toate ciclurile fără navetă lungă. Școala Gimnazială Nr. 7 este principala unitate de învățământ gimnazial din zonă, situată chiar la granița dintre Broșteni și Dorobanți, pe strada Privighetorilor. Grădinița cu Program Prelungit Nr. 4 se află în proximitate și deservește copiii din cartier. La doar câteva minute spre zona centrală și Bulevardul Bălcescu se ajunge la Colegiul Național „Mihai Eminescu” și la Școala Gimnazială „Căpitan Aviator Mircea T. Bădulescu” (Nr. 1) — două dintre unitățile cele mai căutate din Buzău. Combinația este rară: gimnaziu de cartier la câțiva pași, plus acces rapid la un colegiu național de top fără să schimbi orașul sau să depinzi de mașină.",
       },
       {
-        heading: "Avantajele zonei Broșteni",
-        body: "Cel mai important avantaj al Broștenilor este combinația dintre preț accesibil și acces bun la oraș. Pentru o familie cu copii, zona oferă mai multe școli generale și grădinițe la distanță de mers pe jos, plus parcuri și spații verzi care nu lipsesc din apropierea blocurilor. Pentru cei care lucrează în Centru, drumul cu mașina durează 5-10 minute în afara orelor de vârf, iar cu autobuzul aproximativ 15 minute. Pentru investitorii care vor să închirieze, Broșteni atrage chiriași stabili — angajați cu venituri medii, familii tinere, profesori, asistente medicale, oameni care preferă o zonă liniștită fără primă a centralității. Yield-ul brut anual din chirii în Broșteni este competitiv: 8-10% pentru o garsonieră, 7-9% pentru un apartament cu 2 camere.",
+        heading: "Parcuri și spații verzi",
+        body: "În interiorul cartierului găsești în principal părculețe de joacă între blocuri și alei verzi. Avantajul real al Broștenilor este însă proximitatea directă cu două dintre cele mai mari și moderne parcuri ale Buzăului. Parcul Tineretului este extrem de aproape: o zonă imensă de relaxare cu lac amenajat, terenuri de sport (tenis, baschet), piste de biciclete și o zonă modernă de skateboarding — practic tot ce îți trebuie pentru o viață activă, la câteva minute de casă. Puțin mai la sud-est se află Parcul Marghiloman, împreună cu Complexul Cultural Marghiloman: un parc istoric superb, cu lac cu nuferi și locuri de joacă amenajate, ideal pentru plimbări lungi de weekend. Pentru o familie cu copii, a avea ambele parcuri la îndemână este un argument pe care puține cartiere din Buzău îl pot egala.",
+      },
+      {
+        heading: "Transport în comun: un nod major al orașului",
+        body: "Broșteni este o adevărată placă turnantă pentru transportul local — stația Broșteni este tranzitată de un număr foarte mare de linii Trans Bus Buzău. Linia 8 face traseul Gară – Dorobanți – Broșteni – Spiru Haret – Spitalul Județean – Micro 14, deci îți dă legătură directă atât cu gara, cât și cu spitalul. Liniile 11 și 11B (Gara CFR – Broșteni – Vadu Pașii / Curtici), 13 și 13B (Gara CFR – Broșteni – Stăncești) și 22 (Gara CFR – Broșteni – Fulga) leagă cartierul de gară și de localitățile din jur. Se adaugă linia 2 (Sărata Monteoru / Gura Sărății – Autogara Marghiloman) și linia 3 (Dedeman – Centrul de Recoltare). În plus, liniile metropolitane 23, 24, 25, 26, 27 și 28 pornesc din zona Gării CFR, tranzitează Broșteni și continuă spre comunele din nord-estul județului — Mărăcineni, Săpoca, Cernătești, Beceni, Scorțoasa. Pentru cine face naveta dinspre aceste comune, Broșteni este cel mai logic cartier în care să se mute.",
       },
       {
         heading: "Sfaturi pentru cumpărarea unui apartament în Broșteni",
-        body: "Înainte să cumperi în Broșteni, verifică obligatoriu starea de reabilitare termică a blocului — caută blocuri cu fațadă recent reabilitată, cu izolație exterioară completă; vei plăti cu 5-10% mai mult la achiziție, dar vei recupera prin facturile mult mai mici la iarnă. Verifică și starea acoperișului blocului și a instalațiilor comune (lift, instalație electrică pe scara blocului). Întreabă vecinii și consultă procesele verbale ale asociației de proprietari — vei afla rapid dacă există probleme structurale sau datorii. Pentru apartamentele de la parter, atenție la igrasie sau infiltrații; pentru cele de la ultimul etaj, atenție la acoperiș. Consultanții CAMIMOB cunosc fiecare bloc din Broșteni și te pot orienta spre opțiunile cu cel mai bun raport preț-calitate fără surprize ulterioare.",
+        body: "Înainte să cumperi, verifică obligatoriu starea de reabilitare termică a blocului — caută fațade recent reabilitate, cu izolație exterioară completă. Vei plăti puțin mai mult la achiziție, dar recuperezi prin facturile mult mai mici la iarnă. Verifică și starea acoperișului și a instalațiilor comune (lift, instalație electrică pe scară). Consultă procesele verbale ale asociației de proprietari: afli rapid dacă există datorii sau lucrări planificate. Pentru apartamentele de la parter, atenție la igrasie și infiltrații; pentru cele de la ultimul etaj, atenție la acoperiș. Dacă ai copii, verifică circumscripția școlară exactă a blocului care te interesează înainte de a semna — granița dintre Broșteni și Dorobanți trece prin zonă și poate schimba școala de care aparțineți. Consultanții CAMIMOB cunosc fiecare bloc din Broșteni și te pot orienta spre opțiunile cu cel mai bun raport preț-calitate.",
       },
     ],
     faq: [
       {
+        q: "Ce școli sunt în cartierul Broșteni?",
+        a: "Școala Gimnazială Nr. 7 este principala unitate gimnazială, pe strada Privighetorilor, la granița cu Dorobanți. Grădinița cu Program Prelungit Nr. 4 este în proximitate. La câteva minute spre centru și Bulevardul Bălcescu se află Colegiul Național „Mihai Eminescu” și Școala Gimnazială „Căpitan Aviator Mircea T. Bădulescu” (Nr. 1).",
+      },
+      {
+        q: "Ce parcuri sunt aproape de Broșteni?",
+        a: "Parcul Tineretului este extrem de aproape, cu lac amenajat, terenuri de tenis și baschet, piste de biciclete și zonă de skateboarding. Puțin mai la sud-est se află Parcul Marghiloman și Complexul Cultural Marghiloman, un parc istoric cu lac cu nuferi și locuri de joacă.",
+      },
+      {
+        q: "Ce linii de autobuz trec prin Broșteni?",
+        a: "Stația Broșteni este tranzitată de liniile Trans Bus 2, 3, 8, 11, 11B, 13, 13B și 22, plus liniile metropolitane 23–28 care continuă spre Mărăcineni, Săpoca, Cernătești, Beceni și Scorțoasa. Linia 8 dă legătură directă cu gara și cu Spitalul Județean.",
+      },
+      {
         q: "Sunt mai ieftine apartamentele din Broșteni decât în Centru?",
-        a: "Da, cu aproximativ 10-20% sub prețul mediu al Centrului Buzău pentru un apartament cu caracteristici similare (suprafață, an, confort).",
-      },
-      {
-        q: "Există școli și grădinițe în Broșteni?",
-        a: "Da, cartierul are mai multe școli generale și grădinițe accesibile pe jos din majoritatea blocurilor. Liceele sunt accesibile cu transportul în comun.",
-      },
-      {
-        q: "Cât durează din Broșteni până în Centrul Buzăului?",
-        a: "Cu mașina, în afara orelor de vârf, 5-10 minute. Cu autobuzul, aproximativ 15 minute. Cu bicicleta, 15-20 minute.",
+        a: "Da, apartamentele din Broșteni se tranzacționează în general sub prețul Centrului pentru caracteristici similare (suprafață, an de construcție, confort). Exact această diferență, combinată cu accesul bun la școli și transport, face zona atractivă pentru prima cumpărare și pentru investiție.",
       },
     ],
     filter: {
       propertyType: "APARTAMENT",
-      operationType: "VANZARE",
       zoneNormalized: "brosteni",
     },
     keepIndexableWhenEmpty: true,
@@ -451,95 +458,168 @@ export const SEO_PAGES: SeoPageConfig[] = [
     slug: "apartamente-micro-14-buzau",
     title: "Apartamente în Micro 14, Buzău | CAMIMOB",
     description:
-      "Apartamente de vânzare în cartierul Micro 14, Buzău. Zonă rezidențială cu blocuri reabilitate, școli, magazine în apropiere. Oferte CAMIMOB.",
+      "Apartamente de vânzare și de închiriat în Micro 14, Buzău. Școala „Sfântul Apostol Andrei” și LPS „Iolanda Balaș Soter” în cartier, Parcul Crâng la câteva minute, capăt de linie pentru 7 trasee Trans Bus. Oferte CAMIMOB.",
     h1: "Apartamente în cartierul Micro 14, Buzău",
     breadcrumbLabel: "Apartamente Micro 14",
     intro:
-      "Cartierul Micro 14 este una dintre zonele rezidențiale ale Buzăului, cu blocuri de locuințe construite în deceniile trecute, parțial reabilitate termic în programele recente. Pe această pagină găsești ofertele active CAMIMOB pentru apartamente în Micro 14 — garsoniere, 2 camere, 3 camere — la prețuri competitive față de zonele centrale.",
+      "Micro 14 este unul dintre cele mai populate cartiere ale Buzăului, situat în partea de vest a orașului, în prelungirea Bulevardului Stadionului și în vecinătatea platformei industriale. Este foarte bine deservit atât de rețeaua școlară, cât și de transportul în comun — este capăt de linie major, cu legături directe spre aproape orice punct strategic din oraș. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Micro 14, de vânzare și de închiriat, la prețuri competitive față de zonele centrale.",
     sections: [
       {
         heading: "Caracteristicile cartierului Micro 14",
-        body: "Cartierele „Micro” din Buzău sunt zone rezidențiale dezvoltate sistematic în perioada comunistă, cu blocuri de panouri prefabricate organizate în ansambluri compacte, cu spații verzi între blocuri, locuri de joacă pentru copii, școli, grădinițe și mici centre comerciale incluse în plan. Micro 14, ca toate cartierele similare, oferă o densitate moderată, o infrastructură matură și o comunitate de locatari relativ stabilă. Pentru cumpărători este o zonă predictibilă: știi ce primești în ce privește tipologia apartamentelor, ce facilități ai în jur, ce profil au vecinii și ce dezvoltare se așteaptă în următorii ani.",
+        body: "Micro 14 se află în partea de vest a Buzăului, în prelungirea Bulevardului Stadionului, în vecinătatea platformei industriale și a Șoselei Spătarului. Ca toate cartierele „Micro”, a fost dezvoltat sistematic, cu blocuri organizate în ansambluri compacte, spații verzi între blocuri, locuri de joacă, școli, grădinițe și mici centre comerciale incluse în plan de la început. Pentru cumpărători este o zonă predictibilă: știi ce primești în privința tipologiei apartamentelor și ce facilități ai în jur. Apartamentele sunt predominant clasice — decomandate sau semidecomandate, confort 1 sau 2, cu suprafețe între 28 mp (garsoniere) și 78 mp (3 camere). Multe blocuri au beneficiat de reabilitare termică, ceea ce a îmbunătățit confortul iarna; un apartament în bloc reabilitat se vinde cu o primă mică, dar economia la întreținere se recuperează în câteva ierni. Fiind unul dintre cele mai populate cartiere, lichiditatea la revânzare este bună.",
       },
       {
-        heading: "Oferta de apartamente",
-        body: "Apartamentele din Micro 14 sunt predominant clasice: decomandate sau semidecomandate, confort 1 sau 2, cu suprafețe între 28 mp (garsoniere) și 78 mp (apartamente cu 3 camere). Multe dintre blocuri au beneficiat de reabilitare termică în ultimii ani, ceea ce a îmbunătățit semnificativ confortul iarna și a redus pierderea de căldură. Apartamentele dintr-un bloc reabilitat se vând cu o primă de 3-5% față de cele din bloc nereabilitat, dar economia la întreținere se recuperează în 2-3 ierni. Prețurile în Micro 14 sunt în general accesibile — sub mediana orașului — ceea ce face zona ideală pentru bugete medii, tineri la prima cumpărare și investitori cu yield bun din chirii.",
+        heading: "Școli și grădinițe în cartier",
+        body: "Rețeaua școlară este unul dintre cele mai puternice argumente ale cartierului. Școala Gimnazială „Sfântul Apostol Andrei” (fosta Școală Nr. 12) este o instituție de referință, localizată chiar în inima cartierului, cunoscută pentru rezultatele bune și pentru clasele de tip Step by Step. Liceul cu Program Sportiv „Iolanda Balaș Soter” (LPS), pe Aleea Școlilor, este o unitate complexă ce cuprinde învățământ primar, gimnazial și liceal cu profil sportiv — un copil poate parcurge, practic, tot traseul școlar în același campus. Grădinița cu Program Prelungit „Cei Șapte Pitici”, pe Aleea Bujorului, este una dintre cele mai solicitate din oraș, recunoscută pentru curtea generoasă și programele educative. În imediata proximitate, înspre zona industrială și Bazalt, se află unități de învățământ liceal tehnologic, precum Liceul Tehnologic „Meserii și Servicii”. Pentru o familie cu copii, Micro 14 oferă o acoperire completă, de la grădiniță la liceu, fără navetă.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "În interiorul cartierului, ca în toate zonele de tip „Micro”, spațiul verde vine sub forma părculețelor și mini-zonelor de joacă amenajate între blocuri — de exemplu părculețul de lângă blocul 40 sau spațiile modernizate din zonele pietonale interioare. Marele avantaj este însă Parcul Crâng: deși aparține tehnic zonei vecine, se află la doar câteva minute de mers pe jos sau o stație de autobuz prin Bulevardul Stadionului, și este principala zonă de promenadă folosită efectiv de locuitorii din Micro 14. Practic, ai cel mai mare parc al orașului la dispoziție fără să plătești prima de preț a locuirii chiar lângă el — un compromis foarte bun pentru bugete medii.",
+      },
+      {
+        heading: "Transport în comun: capăt de linie major",
+        body: "Micro 14 este capăt de linie pentru o parte importantă a rețelei Trans Bus Buzău, ceea ce înseamnă autobuze care pleacă de la început de traseu — cu loc pe scaun și cu frecvență bună. Liniile 5 și 5B leagă cartierul de Horticolei și de Podul Marghiloman. Liniile 7 și 7B merg spre Gara Tohăneni. Linia 8 face traseul Micro 14 – Spitalul Județean – Spiru Haret – Broșteni – Dorobanți – Gară, deci acoperă într-un singur autobuz spitalul, cartierele din nord-est și gara. Liniile 12 și 12B (Micro 14 – Gara CFR – Bentu) și 13 și 13B (Micro 14 – Gara CFR – Stăncești) dau legătură cu gara și cu localitățile învecinate. Linia 28 continuă spre Mărăcineni, Cernătești, Beceni și Scorțoasa, iar linia 122 deservește Șoseaua Spătarului. Pentru cine lucrează pe platforma industrială sau face naveta din comunele din nord-est, Micro 14 este cartierul cu cel mai bun raport între preț și timp de deplasare.",
       },
       {
         heading: "Cui i se potrivește Micro 14",
-        body: "Micro 14 este o opțiune potrivită pentru: 1) Tineri la prima locuință, care vor un apartament accesibil într-un cartier liniștit, cu acces normal la oraș; 2) Familii cu copii mici, atrase de școlile și grădinițele apropiate, de spațiile verzi și de comunitatea consolidată; 3) Cumpărători în vârstă, care fac downsize și își doresc un cartier cu vecini stabili și magazine de proximitate; 4) Investitori care vor randament — chiriile din Micro 14 sunt sub media orașului ca valoare absolută, dar la prețul de achiziție mai mic, yieldul procentual rămâne competitiv (7-9% brut anual). Nu este zonă pentru cumpărătorii care vor să fie în „buricul orașului” — dar este perfectă pentru cei care prioritizează raportul preț-confort.",
+        body: "Micro 14 se potrivește tinerilor la prima locuință, care vor un apartament accesibil într-un cartier cu toate facilitățile la îndemână. Familiilor cu copii, pentru rețeaua școlară densă — „Sfântul Apostol Andrei”, LPS „Iolanda Balaș Soter” și „Cei Șapte Pitici” sunt toate în cartier. Celor care lucrează pe platforma industrială din vest, pentru distanța scurtă. Cumpărătorilor în vârstă care fac downsize și vor vecini stabili, magazine de proximitate și acces direct cu autobuzul la Spitalul Județean. Și investitorilor: prețul de achiziție este sub mediana orașului, iar cererea de chirii este constantă tocmai datorită școlilor și a apropierii de zona industrială. Nu este cartierul pentru cine vrea să fie în buricul orașului — dar este cel mai bun raport preț-confort-facilități din Buzău.",
       },
       {
         heading: "Cum te ajută CAMIMOB în Micro 14",
-        body: "Consultanții CAMIMOB cunosc fiecare bloc din Micro 14 și au informații actualizate despre starea de reabilitare termică, despre asociațiile de proprietari, despre lucrările planificate și despre apartamentele care se vând curent în zonă. Pentru cumpărători, asta înseamnă o filtrare rapidă a ofertelor reale: îți recomandăm doar apartamentele care se potrivesc bugetului și criteriilor tale, fără să-ți pierdem timpul cu opțiuni nepotrivite. Te ajutăm cu vizionări programate eficient, verificarea actelor, evaluare pentru bancă (dacă cumperi cu credit), negocierea prețului final și asistență notarială. Contactează-ne pentru o consultație gratuită și îți pregătim o listă personalizată cu apartamentele Micro 14 din portofoliul nostru.",
+        body: "Consultanții CAMIMOB cunosc blocurile din Micro 14 și au informații actualizate despre starea de reabilitare termică, despre asociațiile de proprietari, despre lucrările planificate și despre prețurile la care s-au încheiat efectiv tranzacțiile în zonă. Pentru cumpărători, asta înseamnă o filtrare rapidă: îți recomandăm doar apartamentele care se potrivesc bugetului și criteriilor tale. Dacă ai copii, te ajutăm să verifici circumscripția școlară a blocului înainte să semnezi — într-un cartier cu mai multe unități școlare bune, strada contează. Te asistăm la vizionări, la verificarea actelor, la evaluarea pentru bancă, la negociere și la notar. Contactează-ne pentru o consultație gratuită și o listă personalizată cu apartamentele din Micro 14 aflate acum în portofoliul nostru.",
       },
     ],
     faq: [
       {
-        q: "Sunt blocurile din Micro 14 reabilitate termic?",
-        a: "Multe da, în special cele care au intrat în programele municipale de reabilitare. Procentul exact variază de la o parte a cartierului la alta — întreabă-ne explicit despre blocul care te interesează.",
+        q: "Ce școli sunt în Micro 14?",
+        a: "Școala Gimnazială „Sfântul Apostol Andrei” (fosta Nr. 12) este în inima cartierului, cu clase de tip Step by Step. Liceul cu Program Sportiv „Iolanda Balaș Soter”, pe Aleea Școlilor, acoperă primar, gimnazial și liceal sportiv. Grădinița „Cei Șapte Pitici” este pe Aleea Bujorului. În proximitate, spre Bazalt, se află Liceul Tehnologic „Meserii și Servicii”.",
       },
       {
-        q: "Cât este chiria medie în Micro 14?",
-        a: "Garsoniere: 200-260 EUR/lună. 2 camere: 220-320 EUR/lună. 3 camere: 280-380 EUR/lună. Variațiile depind de mobilier, etaj și starea apartamentului.",
+        q: "Ce linii de autobuz pleacă din Micro 14?",
+        a: "Micro 14 este capăt de linie pentru liniile Trans Bus 5, 5B, 7, 7B, 8, 12, 12B, 13, 13B, 28 și 122. Linia 8 acoperă Spitalul Județean, Broșteni, Dorobanți și gara într-un singur traseu; liniile 12, 12B, 13 și 13B merg la Gara CFR.",
+      },
+      {
+        q: "Cât de aproape este Parcul Crâng de Micro 14?",
+        a: "La câteva minute de mers pe jos sau o stație de autobuz prin Bulevardul Stadionului. Deși aparține tehnic zonei vecine, Parcul Crâng este principala zonă de promenadă folosită de locuitorii din Micro 14.",
       },
       {
         q: "Există parcare în Micro 14?",
-        a: "Parcare de reședință organizată de primărie, cu locuri alocate proprietarilor de apartamente. Nu este garaj propriu, ci loc de parcare în spațiul comun. Pentru un loc de parcare propriu, va trebui să verifici dacă blocul are garaje individuale sau locuri închiriabile.",
+        a: "Parcare de reședință organizată de primărie, cu locuri alocate proprietarilor de apartamente — nu garaj propriu, ci loc în spațiul comun. Pentru un loc propriu, verifică dacă blocul care te interesează are garaje individuale sau locuri închiriabile.",
       },
     ],
     filter: {
       propertyType: "APARTAMENT",
-      operationType: "VANZARE",
       zoneNormalized: "micro 14",
     },
     keepIndexableWhenEmpty: true,
   },
   {
-    slug: "apartamente-unirii-buzau",
-    title: "Apartamente în zona Unirii, Buzău | CAMIMOB",
+    slug: "apartamente-unirii-nord-buzau",
+    title: "Apartamente în zona Unirii Nord, Buzău | CAMIMOB",
     description:
-      "Apartamente de vânzare în zona Unirii, Buzău. Zonă semicentrală, acces rapid la Centru, prețuri echilibrate. Vezi ofertele CAMIMOB.",
-    h1: "Apartamente în zona Unirii, Buzău",
-    breadcrumbLabel: "Apartamente Unirii",
+      "Apartamente de vânzare și de închiriat în zona Unirii Nord, Buzău. Școala „George Emil Palade” și Școala Nr. 11 în zonă, bulevard recent reamenajat, Parcul Tineretului aproape. Oferte CAMIMOB.",
+    h1: "Apartamente în zona Unirii Nord, Buzău",
+    breadcrumbLabel: "Apartamente Unirii Nord",
     intro:
-      "Zona Unirii este una dintre cele mai apreciate zone semicentrale din Buzău, datorită combinației rare dintre apropierea de Centru, accesibilitate ca preț și o infrastructură urbană matură. Pe această pagină găsești ofertele active CAMIMOB pentru apartamente în zona Unirii — garsoniere, 2 camere, 3 camere — în blocuri de locuințe situate strategic între nodul central și cartierele rezidențiale.",
+      "Unirii Nord este axată de-a lungul principalei artere rutiere modernizate a Buzăului — bulevardul care merge spre ieșirea către Râmnicu Sărat și Focșani — și cuprinde atât ansambluri rezidențiale de blocuri, cât și zone comerciale majore. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Unirii Nord, de vânzare și de închiriat. Este zona care combină cel mai bine accesul rapid la ieșirea din oraș, școli puternice și un bulevard recent reamenajat complet.",
     sections: [
       {
-        heading: "Despre zona Unirii din Buzău",
-        body: "Zona Unirii este denumită după Bulevardul Unirii, una dintre arterele principale ale Buzăului, care conectează nodurile importante ale orașului. Este o zonă semicentrală cu o densitate ridicată de blocuri de locuințe, magazine, instituții publice, restaurante și servicii. Pentru cumpărători, atractivitatea zonei vine din mai multe direcții: este suficient de aproape de Centrul administrativ și comercial al orașului încât toate facilitățile importante (instituții publice, bănci, supermarketuri, școli, spitale) sunt accesibile pe jos sau cu transport în comun în maxim 10-15 minute; este suficient de departe de zona pietonală centrală încât prețurile rămân semnificativ mai accesibile decât în Centru; și are o ofertă diversificată de apartamente, de la blocuri din anii '70 până la unele construcții mai noi.",
+        heading: "Despre zona Unirii Nord",
+        body: "Unirii Nord se desfășoară de-a lungul Bulevardului Unirii, în porțiunea care urcă spre ieșirea din oraș către Râmnicu Sărat și Focșani. Este principala axă rutieră modernizată a Buzăului, ceea ce îi dă un caracter dublu: ansambluri rezidențiale de blocuri pe de o parte, zone comerciale majore pe de alta. Pentru cumpărători, asta înseamnă că tot ce ai nevoie zilnic — supermarketuri, farmacii, bănci, servicii — este la câteva minute, fără să plătești prima de preț a Centrului. Apartamentele sunt predominant în blocuri P+4 și P+10 din anii '70-'80, cu plan decomandat sau semidecomandat, cu suprafețe între 28 mp (garsoniere) și 80 mp (3 camere confort 1); multe blocuri au intrat în programe de reabilitare termică. Spre nord, la ieșirea din oraș, s-a dezvoltat și ansamblul rezidențial Orizont, cu construcții mai noi.",
       },
       {
-        heading: "Tipologia apartamentelor din zona Unirii",
-        body: "Apartamentele disponibile în zona Unirii sunt predominant în blocuri de tip P+4 sau P+10, construite în anii '70-'80, cu plan decomandat sau semidecomandat. Predomină apartamentele cu 2 și 3 camere (un raport care reflectă profilul familial al cumpărătorilor zonei), însă există și o ofertă constantă de garsoniere — multe dintre acestea folosite ca prima locuință de tineri sau ca investiții pentru închiriere. Suprafețele utile variază între 28 mp (garsoniere) și 80 mp (3 camere confort 1). Multe blocuri au fost incluse în programe de reabilitare termică, ceea ce a îmbunătățit eficiența energetică. Există și câteva blocuri mai noi, post-2010, cu finisaje moderne, dar acestea reprezintă un procent mic din oferta totală.",
+        heading: "Școli și grădinițe în zonă",
+        body: "Unirii Nord este una dintre zonele cele mai bine acoperite școlar din Buzău. Școala Gimnazială „George Emil Palade” (fosta Școală Nr. 15) este principala unitate din zonă, localizată la granița dintre cartierul Unirii și zona Crâng, și deservește o mare parte din copiii de pe Unirii Nord. Puțin mai la sud-est, pe strada Teilor, se află Școala Gimnazială Nr. 11 — cea mai mare școală gimnazială ca număr de elevi din județ, a cărei circumscripție acoperă o parte importantă a blocurilor de pe Unirii Nord, inclusiv blocurile 27, 28 și 29. Grădinița cu Program Prelungit Nr. 8, pe Bulevardul Unirii nr. 10, este modernizată și foarte căutată de părinții din zonă datorită programului extins. Grădinița cu Program Prelungit Nr. 1 se află în ansamblul rezidențial Orizont, la ieșirea din oraș spre nord. Important de reținut: circumscripția școlară diferă de la un bloc la altul pe aceeași porțiune de bulevard — verifică-o înainte să cumperi.",
       },
       {
-        heading: "Cui i se potrivește zona Unirii",
-        body: "Zona Unirii este atractivă pentru o gamă largă de cumpărători. Pentru tinerii profesioniști care lucrează în Centru sau în zonele administrative, este alegerea practică — acces rapid la birou, posibilitatea de a merge pe jos sau cu bicicleta. Pentru familii cu copii, zona oferă acces la mai multe școli și grădinițe, plus apropierea de zonele de servicii medicale și administrative. Pentru investitori, este o zonă cu cerere constantă pentru chirii, datorită combinației de centralitate moderată cu prețuri rezonabile — chiriile sunt mai mari decât în cartierele Micro, dar și prețurile de achiziție sunt mai mari. Yield-ul brut anual din chirii este de 6-8% — sub Micro 3 sau Broșteni ca procentaj, dar cu avantajul aprecierii constante a valorii în timp.",
+        heading: "Parcuri și spații verzi",
+        body: "Unirii Nord nu are un parc istoric de mari dimensiuni în interiorul ei, dar excelează la alte capitole. Spațiile verzi de aliniament de pe Bulevardul Unirii au fost recent reamenajate complet: rulouri de gazon, sisteme de irigații automatizate, flori și arbuști decorativi pe toată lungimea bulevardului — ceea ce schimbă sensibil aspectul și confortul zonei, mai ales vara. Parcul Tineretului este situat relativ aproape, în zona adiacentă dinspre Broșteni și est, și reprezintă principala zonă pentru alergat, plimbări cu bicicleta, skateboarding și relaxare lângă lac. Printre blocurile din cartier există mai multe părculețe dotate cu echipamente noi pentru copii. Pe scurt: nu ai pădure la fereastră ca în Crâng, dar ai bulevard verde îngrijit și un parc mare de agrement la distanță mică.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Fiind principala axă nord-sud a orașului, Unirii Nord beneficiază de un flux excelent de autobuze Trans Bus Buzău. Linia 1 tranzitează zona către partea comercială din nord și Patinoar. Linia 2 face legătura Sărata Monteoru / Gura Sărății – Autogara Marghiloman, iar linia 3 traseul Dedeman – Centrul de Recoltare. Linia 22 pleacă din Gara CFR, trece prin Unirii Nord și continuă spre Fulga. În plus, toate liniile metropolitane din nord — 23, 24, 25, 26, 27 și 28 — pornesc din zona Gării sau a Centrului și urcă pe Bulevardul Unirii Nord către Mărăcineni, Săpoca și Valea Slănicului. Stațiile cheie din această porțiune sunt Unirii Nord, Prutului, XXL / Penny și Orizont. Pentru cine face naveta dinspre comunele din nordul județului, Unirii Nord este practic prima oprire urbană — cel mai scurt drum posibil.",
       },
       {
         heading: "Sfaturi și recomandări CAMIMOB",
-        body: "Zona Unirii are particularitatea că prețul pe metru pătrat variază destul de mult de la un bloc la altul, în funcție de poziție (mai aproape sau mai departe de bulevardul propriu-zis), de starea blocului și de calitatea ferestrelor și ușilor de la stradă. Apartamentele cu vedere spre o stradă liniștită sunt cu 5-10% mai scumpe decât cele cu vedere spre bulevard sau spre intersecții. Pentru cumpărători sensibili la zgomot, recomandăm vizionări la ore diferite ale zilei — un apartament care pare liniștit duminica dimineața poate fi expus traficului luni la ora 8. Cere documentația completă a asociației de proprietari și verifică actele cu un avocat sau cu un consultant CAMIMOB înainte de antecontract. Suntem la dispoziția ta pentru o consultație gratuită și pentru o listă personalizată de oferte din zona Unirii.",
+        body: "Pe Unirii Nord, prețul pe metru pătrat variază destul de mult de la un bloc la altul, în funcție de poziția față de bulevardul propriu-zis, de starea blocului și de calitatea tâmplăriei spre stradă. Apartamentele cu vedere spre o stradă liniștită sunt mai scumpe decât cele cu vedere spre bulevard sau spre intersecții — și diferența este justificată: pe o arteră cu acest trafic, zgomotul este factorul care îți strică cel mai repede confortul. Pentru cumpărători sensibili la zgomot, recomandăm insistent vizionări la ore diferite: un apartament care pare liniștit duminică dimineață poate fi expus traficului luni la ora 8. Verifică geamurile și, dacă e cazul, calculează costul înlocuirii cu tâmplărie fonoizolantă. Cere documentația completă a asociației de proprietari și verifică circumscripția școlară a blocului. Suntem la dispoziția ta pentru o consultație gratuită și o listă personalizată de oferte din Unirii Nord.",
       },
     ],
     faq: [
       {
-        q: "Cât este prețul mediu pe metru pătrat în zona Unirii?",
-        a: "În jur de 950-1.250 EUR/mp utili, în funcție de bloc, etaj, an de construcție și starea apartamentului. Cu 8-12% mai puțin decât Centru, dar peste media cartierelor Micro.",
+        q: "Ce școli sunt în zona Unirii Nord?",
+        a: "Școala Gimnazială „George Emil Palade” (fosta Nr. 15) este principala unitate din zonă, la granița cu Crâng. Școala Gimnazială Nr. 11, pe strada Teilor, este cea mai mare din județ ca număr de elevi și acoperă prin circumscripție o parte importantă a blocurilor de pe Unirii Nord, inclusiv blocurile 27, 28 și 29. Grădinițe: GPP Nr. 8 pe Bd. Unirii nr. 10 și GPP Nr. 1 în ansamblul Orizont.",
       },
       {
-        q: "Există școli și magazine în zona Unirii?",
-        a: "Da, infrastructura este matură: mai multe școli generale, grădinițe, supermarketuri, farmacii, bănci, restaurante. Practic, tot ce ai nevoie zilnic este la 5-10 minute pe jos.",
+        q: "Ce linii de autobuz trec prin Unirii Nord?",
+        a: "Liniile Trans Bus 1, 2, 3 și 22, plus toate liniile metropolitane din nord (23–28), care urcă pe bulevard spre Mărăcineni, Săpoca și Valea Slănicului. Stațiile cheie sunt Unirii Nord, Prutului, XXL / Penny și Orizont.",
       },
       {
-        q: "Cât durează cu mașina din zona Unirii până în Centru?",
-        a: "În afara orelor de vârf, 5 minute. În orele de vârf (8-9 dimineața, 17-18 seara), poate ajunge la 10-15 minute datorită traficului de pe bulevard.",
+        q: "Există spații verzi pe Unirii Nord?",
+        a: "Da. Aliniamentul verde de pe Bulevardul Unirii a fost reamenajat complet, cu gazon, irigații automatizate, flori și arbuști decorativi pe toată lungimea. Parcul Tineretului, cu lac, piste de biciclete și zonă de skateboarding, este relativ aproape, dinspre Broșteni și est. Printre blocuri există mai multe locuri de joacă modernizate.",
+      },
+      {
+        q: "Cât de zgomotos este Bulevardul Unirii Nord?",
+        a: "Fiind principala axă nord-sud a orașului, traficul este consistent în orele de vârf. Apartamentele cu vedere spre străzile laterale sunt semnificativ mai liniștite decât cele spre bulevard. Recomandăm vizionări la ore diferite ale zilei înainte de decizie.",
       },
     ],
     filter: {
       propertyType: "APARTAMENT",
-      operationType: "VANZARE",
-      zoneNormalized: "unirii",
+      zoneNormalized: "unirii nord",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "apartamente-unirii-sud-buzau",
+    title: "Apartamente în zona Unirii Sud, Buzău | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în zona Unirii Sud, Buzău. Școala „Nicu Constantinescu” în zonă, lângă BIG, Kaufland Sud și Lidl, acces rapid spre Ploiești. Oferte CAMIMOB.",
+    h1: "Apartamente în zona Unirii Sud, Buzău",
+    breadcrumbLabel: "Apartamente Unirii Sud",
+    intro:
+      "Unirii Sud se întinde din zona centrală — intersecția cu strada Frăsinet și Episcopiei — trece pe lângă BIG și ajunge până la ieșirea spre Ploiești, la Bariera Ploiești și Calea Eroilor. Este o zonă comercială foarte activă și un nod important de legătură între sudul județului și restul orașului. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Unirii Sud, de vânzare și de închiriat.",
+    sections: [
+      {
+        heading: "Despre zona Unirii Sud",
+        body: "Unirii Sud are un profil clar: comerț și conectivitate. Porțiunea de bulevard dintre zona centrală și Bariera Ploiești concentrează o densitate mare de magazine, servicii și centre comerciale, de la BIG în partea dinspre centru până la Kaufland Sud și Lidl spre Calea Eroilor. Pentru viața de zi cu zi, asta înseamnă că nu ai nevoie de mașină pentru nimic din ce cumperi săptămânal. Zona este și principalul nod de legătură cu sudul județului și cu platforma industrială din sud, ceea ce o face foarte practică pentru cine lucrează acolo sau face naveta dinspre comunele din sud. Apartamentele sunt predominant în blocuri clasice de-a lungul bulevardului și pe străzile adiacente, cu tipologii de la garsoniere la 3 camere. Prețurile rămân sub nivelul Centrului, iar lichiditatea la revânzare este bună datorită cererii constante.",
+      },
+      {
+        heading: "Școli și grădinițe în zonă",
+        body: "Școala Gimnazială „Nicu Constantinescu” (fosta Școală Nr. 5), situată foarte aproape de bulevard, pe strada Școlii, este unitatea de referință care deservește copiii din blocurile de pe Unirii Sud. Grădinița cu Program Normal Nr. 6 funcționează chiar sub structura administrativă a Școlii „Nicu Constantinescu” și se află în aceeași zonă, ceea ce simplifică tranziția de la grădiniță la clasa pregătitoare. Spre extremitatea sudică, pe Calea Eroilor, se află Liceul Tehnologic „Dimitrie Filipescu”, cu profil tehnic. Pe străzile adiacente care fac legătura cu zona centrală sau cu cartierul vecin Dorobanți se ajunge extrem de rapid la Colegiul Național „Mihai Eminescu” și la Școala Gimnazială Nr. 11 — deci ai la dispoziție atât varianta de cartier, cât și unitățile de top ale orașului, fără navetă lungă.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "La fel ca zona de Nord, Unirii Sud nu are un parc istoric masiv în interiorul densității de blocuri, dar mizează pe alternative de promenadă. Aliniamentul verde de pe Bulevardul Unirii Sud a fost modernizat cu gazon, copaci tineri și rețele de irigații, oferind un traseu liniștit pentru plimbări scurte chiar pe marginea bulevardului. În spatele marilor linii de blocuri există părculețe rezidențiale cu locuri de joacă pentru copii și mici scuaruri cu bănci reabilitate. Pentru o ieșire mai consistentă, Parcul Marghiloman — deși aparține tehnic zonei de est, spre Săgeata — este relativ aproape pentru locuitorii din partea estică a bulevardului, ușor accesibil pentru plimbări în natură sau pentru vizitarea Vilei Albatros.",
+      },
+      {
+        heading: "Transport în comun și acces comercial",
+        body: "Unirii Sud are o conectivitate excelentă cu platforma industrială din sud, cu marile centre comerciale și cu ieșirea spre București și Ploiești. Linia 1 este o rută circulară majoră: C.I.T. Buzău – BIG – ACR – RAM – Piața Centrală – Gară – Dorobanți – Kaufland Sud; practic acoperă într-un singur traseu comerțul, piața, gara și cartierele din nord-est. Linia 2 tranzitează Unirii spre Autogara Marghiloman, venind dinspre Sărata Monteoru și Gura Sărății. Linia 10 face traseul Bazalt – Crâng – Kaufland Sud – Lidl – ACR – Piața Centrală – Gară. Linia 22 pleacă din Gara CFR și urcă pe toată axa Unirii Sud – Unirii Nord spre Fulga. Se adaugă liniile care coboară spre Calea Eroilor, zona industrială și localitățile din sud, cum ar fi cele către Lipia, Merei sau Costești. Stațiile principale din zonă: BIG, Kaufland Sud, Lidl / Calea Eroilor și ACR, la intersecția cu Bulevardul Stadionului.",
+      },
+      {
+        heading: "Sfaturi și recomandări CAMIMOB",
+        body: "Unirii Sud are avantajul comerțului la câțiva pași, dar exact asta e și compromisul: traficul pe bulevard, inclusiv cel greu care tranzitează spre sud, este consistent. Diferența de confort între un apartament cu vedere spre bulevard și unul spre o stradă laterală sau spre curtea interioară a blocurilor este mare — și se reflectă în preț. Pentru cumpărători sensibili la zgomot, recomandăm vizionări la ore diferite și verificarea atentă a tâmplăriei. Verifică și etajul în raport cu spațiile comerciale: un apartament deasupra unui magazin sau a unei unități de alimentație publică poate avea probleme cu ventilația, mirosurile sau orarul de aprovizionare. Cere documentația asociației de proprietari și, dacă ai copii, confirmă circumscripția școlară. Consultanții CAMIMOB cunosc blocurile din zonă și îți spun deschis care sunt pozițiile bune și care nu. Contactează-ne pentru o consultație gratuită.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce școli sunt în zona Unirii Sud?",
+        a: "Școala Gimnazială „Nicu Constantinescu” (fosta Nr. 5), pe strada Școlii, foarte aproape de bulevard, este unitatea de referință. Grădinița cu Program Normal Nr. 6 funcționează sub aceeași structură administrativă. Spre Calea Eroilor se află Liceul Tehnologic „Dimitrie Filipescu”. Pe străzile adiacente se ajunge rapid la Colegiul Național „Mihai Eminescu” și la Școala Gimnazială Nr. 11.",
+      },
+      {
+        q: "Ce magazine și centre comerciale sunt pe Unirii Sud?",
+        a: "Zona este una dintre cele mai active comercial din Buzău: BIG în partea dinspre centru, Kaufland Sud și Lidl spre Calea Eroilor, plus numeroase magazine și servicii de-a lungul bulevardului. Stațiile de autobuz din zonă poartă chiar numele acestor repere: BIG, Kaufland Sud, Lidl / Calea Eroilor, ACR.",
+      },
+      {
+        q: "Ce linii de autobuz trec prin Unirii Sud?",
+        a: "Linia 1 (rută circulară: C.I.T. Buzău – BIG – ACR – RAM – Piața Centrală – Gară – Dorobanți – Kaufland Sud), linia 2 spre Autogara Marghiloman, linia 10 (Bazalt – Crâng – Kaufland Sud – Lidl – ACR – Piața Centrală – Gară) și linia 22 spre Fulga, plus liniile care coboară spre Calea Eroilor, zona industrială și localitățile din sud (Lipia, Merei, Costești).",
+      },
+      {
+        q: "Care este diferența între Unirii Nord și Unirii Sud?",
+        a: "Unirii Nord urcă spre ieșirea către Râmnicu Sărat și Focșani, are bulevardul recent reamenajat cu aliniament verde și este deservită de liniile metropolitane din nord. Unirii Sud coboară spre Bariera Ploiești și Calea Eroilor, este mult mai densă comercial (BIG, Kaufland Sud, Lidl) și dă acces direct la platforma industrială din sud și la localitățile din sudul județului.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "unirii sud",
     },
     keepIndexableWhenEmpty: true,
   },

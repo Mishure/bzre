@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SeoLandingPage from "@/components/seo/SeoLandingPage";
 import { buildSeoPageMetadata, getSeoPageBySlug } from "@/lib/seoPages";
 
-const SLUG = "apartamente-unirii-buzau";
+const SLUG = "apartamente-unirii-sud-buzau";
 
 export const revalidate = 3600;
 

@@ -7,6 +7,20 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@heroicons/react'],
   },
+  async redirects() {
+    return [
+      {
+        // /apartamente-unirii-buzau was split into Unirii Nord and Unirii Sud.
+        // It is an indexed URL, so it must not 404. Sud is the target because
+        // the old page filtered on zone ~ "unirii", and every listing that
+        // ever matched it was in Unirii Sud — that is the content visitors
+        // arriving from search actually saw.
+        source: '/apartamente-unirii-buzau',
+        destination: '/apartamente-unirii-sud-buzau',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig
