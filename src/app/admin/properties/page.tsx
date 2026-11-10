@@ -24,9 +24,30 @@ interface SearchParams {
   page?: string;
 }
 
+const PAGE_SIZE = 20;
+
+/**
+ * Builds a link to another page of the listing while keeping whatever
+ * filters are currently applied — otherwise paging would silently reset
+ * the search/status/type filters.
+ */
+function pageHref(params: SearchParams, page: number): string {
+  const qs = new URLSearchParams();
+  if (params.search) qs.set('search', params.search);
+  if (params.status) qs.set('status', params.status);
+  if (params.type) qs.set('type', params.type);
+  if (params.operation) qs.set('operation', params.operation);
+  if (page > 1) qs.set('page', String(page));
+  const query = qs.toString();
+  return query ? `/admin/properties?${query}` : '/admin/properties';
+}
+
 async function getProperties(searchParams: SearchParams) {
-  const page = parseInt(searchParams.page || '1');
-  const limit = 20;
+  // `page` comes straight from the URL — clamp it so a hand-typed ?page=0
+  // or ?page=abc cannot turn into a negative or NaN `skip`.
+  const parsed = parseInt(searchParams.page || '1', 10);
+  const page = Number.isNaN(parsed) || parsed < 1 ? 1 : parsed;
+  const limit = PAGE_SIZE;
   const skip = (page - 1) * limit;
 
   const where: any = {};
@@ -301,36 +322,65 @@ export default async function AdminProperties({
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-            <div className="flex-1 flex justify-between sm:hidden">
-              <a
-                href="#"
-                className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-              >
-                Previous
-              </a>
-              <a
-                href="#"
-                className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-              >
-                Next
-              </a>
-            </div>
-            <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-              <div>
-                <p className="text-sm text-gray-700">
-                  Showing <span className="font-medium">{(currentPage - 1) * 20 + 1}</span> to{' '}
-                  <span className="font-medium">
-                    {Math.min(currentPage * 20, totalCount)}
-                  </span>{' '}
-                  of <span className="font-medium">{totalCount}</span> results
-                </p>
-              </div>
-              <div>
-                <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
-                  {/* Pagination buttons would go here */}
-                </nav>
-              </div>
+          <div className="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm text-gray-700">
+                Afișate{' '}
+                <span className="font-medium">{(currentPage - 1) * PAGE_SIZE + 1}</span>
+                –
+                <span className="font-medium">
+                  {Math.min(currentPage * PAGE_SIZE, totalCount)}
+                </span>{' '}
+                din <span className="font-medium">{totalCount}</span>
+              </p>
+
+              <nav className="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Paginare">
+                {currentPage > 1 ? (
+                  <Link
+                    href={pageHref(params, currentPage - 1)}
+                    className="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                  >
+                    Anterior
+                  </Link>
+                ) : (
+                  <span className="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-gray-50 text-sm font-medium text-gray-400 cursor-not-allowed">
+                    Anterior
+                  </span>
+                )}
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) =>
+                  p === currentPage ? (
+                    <span
+                      key={p}
+                      aria-current="page"
+                      className="relative inline-flex items-center px-4 py-2 border border-primary-600 bg-primary-50 text-sm font-medium text-primary-700"
+                    >
+                      {p}
+                    </span>
+                  ) : (
+                    <Link
+                      key={p}
+                      href={pageHref(params, p)}
+                      className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    >
+                      {p}
+                    </Link>
+                  )
+                )}
+
+                {currentPage < totalPages ? (
+                  <Link
+                    href={pageHref(params, currentPage + 1)}
+                    className="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                  >
+                    Următor
+                  </Link>
+                ) : (
+                  <span className="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-gray-50 text-sm font-medium text-gray-400 cursor-not-allowed">
+                    Următor
+                  </span>
+                )}
+              </nav>
             </div>
           </div>
         )}

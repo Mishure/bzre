@@ -89,26 +89,17 @@ const ZONE_MAPPINGS: Record<string, string> = {
   'micro3': 'Micro 3',
   'm3': 'Micro 3',
   
-  'micro 4': 'Micro 4',
-  'micro4': 'Micro 4',
-  'm4': 'Micro 4',
-  
   'micro 5': 'Micro 5',
   'micro5': 'Micro 5',
   'm5': 'Micro 5',
-  
-  'micro 6': 'Micro 6',
-  'micro6': 'Micro 6',
-  'm6': 'Micro 6',
-  
+
   'micro 14': 'Micro 14',
   'micro14': 'Micro 14',
   'm14': 'Micro 14',
-  
-  'micro 21': 'Micro 21',
-  'micro21': 'Micro 21',
-  'm21': 'Micro 21',
-  
+
+  // No Micro 4, Micro 6 or Micro 21 — they don't exist in Buzău. Mapping
+  // them would turn a search into a filter that can never match anything.
+
   // Other zones
   'centru': 'Centru',
   'center': 'Centru',

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   title: "BESTINVEST CAMIMOB - Agentie Imobiliara Buzau",
   description: "Agentie imobiliara moderna din Buzau. Oferte de calitate pentru apartamente, case, terenuri si spatii comerciale. Tranzactii sigure. Gaseste-ti casa visurilor cu cei mai buni agenti imobiliari din Buzau.",
-  keywords: "agentii imobiliare Buzau, anunturi imobiliare Buzau, proprietati Buzau, apartamente de vanzare Buzau, apartamente de inchiriat Buzau, case de vanzare Buzau, terenuri de vanzare Buzau, spatii comerciale Buzau, imobiliare Buzau centru, imobiliare Buzau Micro 3, imobiliare Buzau Micro 4, garsoniere Buzau, apartamente 2 camere Buzau, apartamente 3 camere Buzau, case Buzau, agentie imobiliara profesionista Buzau, evaluare proprietate Buzau, consultanta imobiliara Buzau, BESTINVEST CAMIMOB, CAMIMOB, agent imobiliar Buzau, tranzactii imobiliare Buzau, imobile Buzau",
+  keywords: "agentii imobiliare Buzau, anunturi imobiliare Buzau, proprietati Buzau, apartamente de vanzare Buzau, apartamente de inchiriat Buzau, case de vanzare Buzau, terenuri de vanzare Buzau, spatii comerciale Buzau, imobiliare Buzau centru, imobiliare Buzau Micro 3, imobiliare Buzau Micro 5, garsoniere Buzau, apartamente 2 camere Buzau, apartamente 3 camere Buzau, case Buzau, agentie imobiliara profesionista Buzau, evaluare proprietate Buzau, consultanta imobiliara Buzau, BESTINVEST CAMIMOB, CAMIMOB, agent imobiliar Buzau, tranzactii imobiliare Buzau, imobile Buzau",
   authors: [{ name: "BESTINVEST CAMIMOB" }],
   manifest: '/manifest.webmanifest',
   openGraph: {

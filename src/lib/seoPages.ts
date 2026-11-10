@@ -95,7 +95,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
     h1: "Apartamente de vânzare în Buzău",
     breadcrumbLabel: "Apartamente de vânzare",
     intro:
-      "Cauți un apartament de vânzare în Buzău? Pe această pagină găsești ofertele active CAMIMOB pentru apartamente din toate cartierele orașului — de la garsoniere accesibile, până la apartamente spațioase cu 3 sau 4 camere, în Centru, Micro 3, Micro 4, Broșteni sau zona Unirii. Toate proprietățile sunt verificate de echipa noastră, cu acte la zi și prețuri stabilite în concordanță cu piața locală. Te ajutăm de la prima vizionare până la semnarea actelor la notar.",
+      "Cauți un apartament de vânzare în Buzău? Pe această pagină găsești ofertele active CAMIMOB pentru apartamente din toate cartierele orașului — de la garsoniere accesibile, până la apartamente spațioase cu 3 sau 4 camere, în Centru, Micro 3, Broșteni sau zona Unirii. Toate proprietățile sunt verificate de echipa noastră, cu acte la zi și prețuri stabilite în concordanță cu piața locală. Te ajutăm de la prima vizionare până la semnarea actelor la notar.",
     sections: [
       {
         heading: "Piața apartamentelor din Buzău: ce trebuie să știi",
@@ -103,7 +103,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         heading: "Tipuri de apartamente și zone populare",
-        body: "Oferta de apartamente acoperă toate categoriile: garsoniere (cca. 25-35 mp), apartamente cu 2 camere (45-60 mp), 3 camere (60-80 mp) și apartamente mai mari de 4 camere sau duplexuri. Confortul variază de la confort 1 decomandat (cele mai căutate), la semidecomandat și nedecomandat. Cele mai active zone sunt: Centru (preț per metru pătrat ridicat, dar acces imediat la magazine, școli, instituții), Micro 3 și Micro 4 (densitate mare, mijloace de transport, școli și grădinițe), Broșteni (mix rezidențial cu blocuri mai vechi și case), Unirii (zonă semicentrală, cu acces bun la centru), precum și cartierele Dorobanți și Bulevardul București. Fiecare zonă are propriul profil de cumpărător — Centru atrage tineri profesioniști și investitori în chirii, Micro 3 și Micro 4 atrag familii cu copii, iar Broșteni rămâne o opțiune echilibrată ca preț.",
+        body: "Oferta de apartamente acoperă toate categoriile: garsoniere (cca. 25-35 mp), apartamente cu 2 camere (45-60 mp), 3 camere (60-80 mp) și apartamente mai mari de 4 camere sau duplexuri. Confortul variază de la confort 1 decomandat (cele mai căutate), la semidecomandat și nedecomandat. Cele mai active zone sunt: Centru (preț per metru pătrat ridicat, dar acces imediat la magazine, școli, instituții), Micro 3 (densitate mare, mijloace de transport, școli și grădinițe), Broșteni (mix rezidențial cu blocuri mai vechi și case), Unirii (zonă semicentrală, cu acces bun la centru), precum și cartierele Dorobanți și Bulevardul București. Fiecare zonă are propriul profil de cumpărător — Centru atrage tineri profesioniști și investitori în chirii, Micro 3 atrage familii cu copii, iar Broșteni rămâne o opțiune echilibrată ca preț.",
       },
       {
         heading: "La ce să fii atent înainte să cumperi un apartament în Buzău",
@@ -134,7 +134,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
     slug: "apartamente-2-camere-buzau",
     title: "Apartamente 2 camere de vânzare în Buzău | CAMIMOB",
     description:
-      "Apartamente cu 2 camere de vânzare în Buzău. Garsoniere transformate, decomandate sau semidecomandate, în Centru, Micro 3, Micro 4 sau Broșteni. Vezi ofertele CAMIMOB.",
+      "Apartamente cu 2 camere de vânzare în Buzău. Garsoniere transformate, decomandate sau semidecomandate, în Centru, Micro 3 sau Broșteni. Vezi ofertele CAMIMOB.",
     h1: "Apartamente 2 camere de vânzare în Buzău",
     breadcrumbLabel: "Apartamente 2 camere",
     intro:
@@ -146,7 +146,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         heading: "Diferențe între blocurile vechi și noi",
-        body: "Blocurile construite înainte de 1990 (cele mai multe din Micro 3, Micro 4, Broșteni, Centru) au structura tipică din panouri prefabricate, cu un layout decomandat sau semidecomandat. Avantajul principal: prețul mai mic. Dezavantaje: instalațiile pot necesita modernizare (electrică, sanitară, termică), iar izolația originală este insuficientă — caută blocuri cu reabilitare termică finalizată. Blocurile noi (post-2010, în special pe Bulevardul București sau în zonele de extindere) oferă confort modern, izolație de fabrică, parcare proprie și uneori facilități suplimentare (lift, interfon video). Diferența de preț poate fi de 30-50% între un apartament vechi și unul nou la aceeași suprafață. Decizia ține de buget și de timpul/banii pe care ești dispus să-i investești în renovare.",
+        body: "Blocurile construite înainte de 1990 (cele mai multe din Micro 3, Broșteni, Centru) au structura tipică din panouri prefabricate, cu un layout decomandat sau semidecomandat. Avantajul principal: prețul mai mic. Dezavantaje: instalațiile pot necesita modernizare (electrică, sanitară, termică), iar izolația originală este insuficientă — caută blocuri cu reabilitare termică finalizată. Blocurile noi (post-2010, în special pe Bulevardul București sau în zonele de extindere) oferă confort modern, izolație de fabrică, parcare proprie și uneori facilități suplimentare (lift, interfon video). Diferența de preț poate fi de 30-50% între un apartament vechi și unul nou la aceeași suprafață. Decizia ține de buget și de timpul/banii pe care ești dispus să-i investești în renovare.",
       },
       {
         heading: "Sfaturi pentru cumpărarea unui apartament 2 camere",
@@ -177,7 +177,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
     slug: "apartamente-3-camere-buzau",
     title: "Apartamente 3 camere de vânzare în Buzău | CAMIMOB",
     description:
-      "Apartamente cu 3 camere de vânzare în Buzău: ideal pentru familii. Confort 1 decomandate, în Centru, Micro 3, Micro 4 sau Broșteni. Vezi oferta CAMIMOB.",
+      "Apartamente cu 3 camere de vânzare în Buzău: ideal pentru familii. Confort 1 decomandate, în Centru, Micro 3 sau Broșteni. Vezi oferta CAMIMOB.",
     h1: "Apartamente 3 camere de vânzare în Buzău",
     breadcrumbLabel: "Apartamente 3 camere",
     intro:
@@ -193,7 +193,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         heading: "Buget și finanțare",
-        body: "La momentul actual în Buzău, un apartament cu 3 camere pornește de la cca. 55.000 EUR (semidecomandat, confort inferior, etaj sau bloc nereabilitat) și ajunge până la 100.000+ EUR pentru apartamente noi sau extensiv renovate în zone centrale. Mediana pieței este în jur de 70.000-85.000 EUR pentru un decomandat confort 1 în Micro 3, Micro 4 sau Broșteni. Pentru credit ipotecar, băncile cer un avans minim de 15% (sau 5% în programul Noua Casă, cu garanție de stat). Rata lunară pentru un credit de 60.000 EUR pe 25 de ani este aproximativ 300-400 EUR la dobânzile actuale, ceea ce face apartamentul cu 3 camere accesibil pentru un cuplu cu două salarii medii din Buzău.",
+        body: "La momentul actual în Buzău, un apartament cu 3 camere pornește de la cca. 55.000 EUR (semidecomandat, confort inferior, etaj sau bloc nereabilitat) și ajunge până la 100.000+ EUR pentru apartamente noi sau extensiv renovate în zone centrale. Mediana pieței este în jur de 70.000-85.000 EUR pentru un decomandat confort 1 în Micro 3 sau Broșteni. Pentru credit ipotecar, băncile cer un avans minim de 15% (sau 5% în programul Noua Casă, cu garanție de stat). Rata lunară pentru un credit de 60.000 EUR pe 25 de ani este aproximativ 300-400 EUR la dobânzile actuale, ceea ce face apartamentul cu 3 camere accesibil pentru un cuplu cu două salarii medii din Buzău.",
       },
       {
         heading: "De ce să lucrezi cu CAMIMOB",
@@ -211,7 +211,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         q: "Care e cea mai bună zonă din Buzău pentru un apartament cu 3 camere și familie?",
-        a: "Depinde de prioritate: pentru școli și grădinițe — Micro 3 și Micro 4; pentru centralitate și locuri de muncă — Centru și Unirii; pentru raport calitate-preț — Broșteni și Dorobanți; pentru blocuri noi cu parcare — zonele de extindere către Bulevardul București.",
+        a: "Depinde de prioritate: pentru școli și grădinițe — Micro 3; pentru centralitate și locuri de muncă — Centru și Unirii; pentru raport calitate-preț — Broșteni și Dorobanți; pentru blocuri noi cu parcare — zonele de extindere către Bulevardul București.",
       },
     ],
     filter: { propertyType: "APARTAMENT", operationType: "VANZARE", rooms: 3 },
@@ -232,7 +232,7 @@ export const SEO_PAGES: SeoPageConfig[] = [
       },
       {
         heading: "Tipologii de garsoniere",
-        body: "Garsonierele din Buzău se împart în trei tipologii. Garsoniera clasică confort 1 (28-35 mp) — o cameră generoasă care funcționează ca living și dormitor, baie completă cu cadă, bucătărie separată mică. Garsoniera dublă (40-45 mp) — o variantă mai rară, cu un decomandat parțial, o nișă pentru pat separată de zona de zi. Studio nou (25-32 mp în blocuri post-2010) — open space modern cu bucătărie integrată, baie cu duș. Cele clasice sunt cele mai multe în Micro 3, Micro 4 și Broșteni. Studio-urile noi se găsesc preponderent pe Bulevardul București și zonele de extindere. Decizia depinde de preferința între ieftin/clasic vs. modern/preț mai mare.",
+        body: "Garsonierele din Buzău se împart în trei tipologii. Garsoniera clasică confort 1 (28-35 mp) — o cameră generoasă care funcționează ca living și dormitor, baie completă cu cadă, bucătărie separată mică. Garsoniera dublă (40-45 mp) — o variantă mai rară, cu un decomandat parțial, o nișă pentru pat separată de zona de zi. Studio nou (25-32 mp în blocuri post-2010) — open space modern cu bucătărie integrată, baie cu duș. Cele clasice sunt cele mai multe în Micro 3 și Broșteni. Studio-urile noi se găsesc preponderent pe Bulevardul București și zonele de extindere. Decizia depinde de preferința între ieftin/clasic vs. modern/preț mai mare.",
       },
       {
         heading: "Preț, randament, finanțare",
