@@ -303,6 +303,49 @@ export const SEO_PAGES: SeoPageConfig[] = [
     filter: { propertyType: "APARTAMENT", operationType: "VANZARE", rooms: 1 },
   },
   {
+    slug: "garsoniere-de-inchiriat-buzau",
+    title: "Garsoniere de închiriat în Buzău | CAMIMOB",
+    description:
+      "Garsoniere de închiriat în Buzău: 26–36 mp, mobilate sau nemobilate, în Broșteni, Orizont și zonele semicentrale. Contracte corecte, proprietari verificați. CAMIMOB.",
+    h1: "Garsoniere de închiriat în Buzău",
+    breadcrumbLabel: "Garsoniere de închiriat",
+    intro:
+      "Garsoniera este cea mai căutată formă de închiriere din Buzău: costul lunar cel mai mic, utilități reduse și suficient spațiu pentru o persoană sau un cuplu. Pe această pagină găsești garsonierele disponibile acum în portofoliul CAMIMOB — suprafețe între 26 și 36 mp, în zone precum Broșteni și Orizont. Fiecare ofertă este verificată: proprietar real, dispus să semneze contract, cu chirie stabilită corect față de piața locală.",
+    sections: [
+      {
+        heading: "Cine închiriază garsoniere în Buzău",
+        body: "Cererea pentru garsoniere de închiriat vine din patru direcții destul de clare. Tineri angajați la primul loc de muncă, pentru care o garsonieră este pasul firesc după ce pleacă de la părinți — costul lunar total (chirie plus întreținere) rămâne gestionabil cu un salariu de început. Elevi și studenți care învață în Buzău sau fac naveta către centrele universitare apropiate. Navetiști care lucrează în Buzău câteva zile pe săptămână și preferă o garsonieră ieftină în loc de drum zilnic. Și persoane singure, inclusiv după o separare sau la pensionare, care fac downsize dintr-un apartament mai mare. Pentru fiecare profil contează altceva: pentru tineri și studenți, apropierea de centru și de transportul în comun; pentru navetiști, accesul rapid la ieșirile din oraș; pentru persoanele în vârstă, liniștea și magazinele de proximitate.",
+      },
+      {
+        heading: "Ce suprafață și ce dotări să aștepți",
+        body: "Garsonierele din Buzău se încadrează în general între 26 și 36 mp utili. Sub 30 mp sunt garsonierele clasice din blocurile anilor '70-'80: o cameră care funcționează ca living și dormitor, bucătărie separată mică, baie cu cadă sau duș. Peste 32 mp apar variantele mai confortabile, uneori cu o nișă separată pentru pat sau cu balcon închis în termopan. Gradul de mobilare face cea mai mare diferență de preț: o garsonieră mobilată complet, cu mașină de spălat, frigider și plită funcționale, se închiriază cu 20-30% mai scump decât una nemobilată, dar te scutește de o investiție inițială de câteva mii de lei. Întreabă explicit ce rămâne în apartament și cere să fie trecut în procesul-verbal — „mobilat” înseamnă lucruri foarte diferite pentru proprietari diferiți.",
+      },
+      {
+        heading: "Costul real lunar, nu doar chiria",
+        body: "În portofoliul nostru actual, garsonierele de închiriat se situează între 1.400 și 2.300 lei pe lună. Capătul de jos corespunde garsonierelor nemobilate sau parțial mobilate din cartiere semicentrale; capătul de sus, celor recent renovate și complet utilate, în zone mai căutate. Dar chiria este doar o parte din cost. La ea se adaugă întreținerea (care într-un bloc nereabilitat termic poate urca semnificativ în lunile de iarnă), curentul electric, internetul și, la unele blocuri, un fond de reparații. Înainte să te decizi, cere proprietarului facturile din ianuarie sau februarie ale anului precedent — o garsonieră cu chirie mică într-un bloc neizolat poate ieși mai scumpă pe total decât una cu chirie mai mare într-un bloc reabilitat. Mai pune în calcul garanția, de regulă echivalentul unei chirii, plătită la semnare.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB",
+        body: "Garsonierele se închiriază repede, uneori în câteva zile, iar anunțurile false sau cu preț momeală sunt frecvente exact în acest segment. Lucrăm în Buzău de ani de zile și verificăm fiecare ofertă înainte să o publicăm: proprietarul este cine spune că este, apartamentul există la prețul anunțat, iar actele permit încheierea unui contract valabil. Îți organizăm vizionările grupat, ca să vezi mai multe garsoniere într-o singură deplasare, redactăm contractul și procesul-verbal de predare-primire cu inventar, și notăm indexul contoarelor în ziua mutării — cele trei lucruri care previn aproape toate disputele de la final. Dacă ești proprietar și vrei să îți închiriezi garsoniera, selectăm chiriași cu capacitate de plată verificată și rămânem punct de contact pe durata contractului. Contactează-ne pentru o listă personalizată.",
+      },
+    ],
+    faq: [
+      {
+        q: "Cât costă o garsonieră de închiriat în Buzău?",
+        a: "În portofoliul nostru actual, între 1.400 și 2.300 lei pe lună, în funcție de suprafață, zonă și gradul de mobilare. Întreținerea, curentul și internetul se plătesc separat, iar la semnare se adaugă de regulă o garanție egală cu o chirie.",
+      },
+      {
+        q: "Se poate închiria o garsonieră nemobilată?",
+        a: "Da, există ambele variante. Nemobilat este mai ieftin lunar, dar presupune o investiție inițială în mobilier și electrocasnice. Dacă stai mai puțin de un an, mobilat iese aproape sigur mai avantajos pe total.",
+      },
+      {
+        q: "Ce documente îmi trebuie ca chiriaș?",
+        a: "În mod normal doar actul de identitate și o dovadă a venitului (adeverință de salariu sau extras de cont). Unii proprietari cer și un garant. Contractul se încheie în scris, iar proprietarul are obligația să își declare venitul din chirie.",
+      },
+    ],
+    filter: { propertyType: "APARTAMENT", operationType: "INCHIRIERE", rooms: 1 },
+  },
+  {
     slug: "case-de-vanzare-buzau",
     title: "Case de vânzare în Buzău | CAMIMOB",
     description:
@@ -484,6 +527,54 @@ export const SEO_PAGES: SeoPageConfig[] = [
       propertyType: "APARTAMENT",
       operationType: "VANZARE",
       zoneNormalized: "unirii",
+    },
+  },
+  {
+    // No operationType: the Crâng stock is currently all rentals, but the
+    // page should pick up sales too as soon as any appear.
+    slug: "apartamente-crang-buzau",
+    title: "Apartamente în zona Crâng, Buzău | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în zona Crâng, Buzău — lângă Parcul Crâng, cea mai mare zonă verde a orașului. Vezi ofertele active CAMIMOB.",
+    h1: "Apartamente în zona Crâng, Buzău",
+    breadcrumbLabel: "Apartamente zona Crâng",
+    intro:
+      "Zona Crâng este, pentru mulți buzoieni, cel mai plăcut loc de locuit din oraș — și motivul este la câțiva pași: Parcul Crâng, cea mai mare zonă verde a Buzăului. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în zona Crâng, de vânzare și de închiriat. Dacă pui preț pe liniște, aer curat și pe posibilitatea de a ajunge în parc pe jos în câteva minute, aceasta este zona pe care merită să o urmărești.",
+    sections: [
+      {
+        heading: "Ce face zona Crâng diferită",
+        body: "Majoritatea cartierelor Buzăului se definesc prin tipul de blocuri sau prin distanța față de centru. Crângul se definește prin parc. Parcul Crâng este cea mai extinsă zonă verde a orașului, o pădure-parc cu alei, copaci maturi și spațiu real de plimbare — nu un petic de iarbă între blocuri. Pentru cine locuiește în apropiere, asta schimbă viața de zi cu zi: alergare dimineața fără să urci în mașină, plimbat copilul sau câinele în câteva minute, aer sensibil mai bun decât pe arterele aglomerate, și verdeață la fereastră în loc de beton. Vara, diferența de temperatură față de zonele dens construite se simte. Este genul de avantaj care nu apare în tabelul cu suprafețe și prețuri, dar care contează cel mai mult după ce te muți.",
+      },
+      {
+        heading: "Cui i se potrivește",
+        body: "Zona Crâng atrage în primul rând familii cu copii mici, pentru care accesul la un spațiu verde sigur, fără trafic, înseamnă mai mult decât un metru pătrat în plus în apartament. Apoi, persoane active — alergători, cicliști, oameni care își petrec dimineața sau serile în parc. Și cumpărători ori chiriași mai în vârstă, care caută liniște și aer bun fără să iasă din oraș. Nu este zona pentru cine vrea să fie în mijlocul agitației comerciale sau are nevoie să ajungă pe jos la instituțiile din centru în două minute. Dacă prioritatea ta este centralitatea absolută, uită-te mai bine la Centru sau la zona Unirii. Dacă prioritatea este calitatea vieții de zi cu zi, Crângul este greu de egalat în Buzău.",
+      },
+      {
+        heading: "Ce ofertă există în zonă",
+        body: "Crângul este o zonă cu stoc limitat: numărul de apartamente este mic în comparație cu cartierele Micro sau cu Broșteni, pur și simplu pentru că suprafața construită din apropierea parcului este restrânsă. Consecința practică este că ofertele apar rar și se ocupă repede, mai ales cele de închiriere. Apartamentele disponibile sunt predominant cu una sau două camere, cu suprafețe moderate, în blocuri de locuințe clasice. Dacă zona te interesează serios, cel mai eficient nu este să reîncarci paginile de anunțuri, ci să ne lași criteriile tale — te contactăm în momentul în care intră o ofertă în Crâng, de multe ori înainte să apară public. Numărul de oferte afișat mai sus este în timp real: dacă vezi zero, înseamnă că stocul este momentan epuizat, nu că zona nu este acoperită de noi.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în zona Crâng",
+        body: "Într-o zonă cu puține apartamente și cerere constantă, avantajul real este informația timpurie. Consultanții CAMIMOB cunoscem blocurile din apropierea parcului, proprietarii care închiriază recurent și prețurile la care s-au încheiat efectiv tranzacțiile — nu doar cele cerute în anunțuri. Te ajutăm cu verificarea actelor și a stării apartamentului, cu negocierea, cu redactarea contractului (la închiriere, inclusiv procesul-verbal de predare cu inventar) și cu asistența la notar în cazul unei achiziții. Dacă ești proprietar de apartament în Crâng și vrei să vinzi sau să închiriezi, spune-ne: avem deja o listă de clienți care așteaptă exact această zonă. Contactează-ne pentru o consultație gratuită.",
+      },
+    ],
+    faq: [
+      {
+        q: "Cât de aproape de Parcul Crâng sunt apartamentele din zonă?",
+        a: "Depinde de bloc, dar în general la câteva minute de mers pe jos. Tocmai această proximitate definește zona și explică de ce ofertele se ocupă rapid. Pentru fiecare apartament în discuție îți spunem exact distanța până la intrarea în parc.",
+      },
+      {
+        q: "De ce sunt atât de puține oferte în zona Crâng?",
+        a: "Pentru că suprafața construită din apropierea parcului este limitată, deci numărul total de apartamente este mic. Nu este o problemă de acoperire din partea noastră — este pur și simplu un cartier cu stoc restrâns și rotație redusă.",
+      },
+      {
+        q: "Pot fi anunțat când apare o ofertă în Crâng?",
+        a: "Da, și pentru această zonă este cea mai bună strategie. Lasă-ne criteriile tale prin formularul de contact și te sunăm când intră o proprietate potrivită, de multe ori înainte de publicarea anunțului.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "crang",
     },
   },
 ];

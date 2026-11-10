@@ -28,8 +28,10 @@ const seoLandingLinks = [
   { slug: 'apartamente-2-camere-buzau', label: 'Apartamente 2 camere Buzău' },
   { slug: 'apartamente-3-camere-buzau', label: 'Apartamente 3 camere Buzău' },
   { slug: 'garsoniere-buzau', label: 'Garsoniere de vânzare Buzău' },
+  { slug: 'garsoniere-de-inchiriat-buzau', label: 'Garsoniere de închiriat Buzău' },
   { slug: 'case-de-vanzare-buzau', label: 'Case de vânzare în Buzău' },
   { slug: 'apartamente-brosteni-buzau', label: 'Apartamente cartier Broșteni' },
+  { slug: 'apartamente-crang-buzau', label: 'Apartamente zona Crâng' },
   { slug: 'apartamente-micro-14-buzau', label: 'Apartamente Micro 14' },
   { slug: 'apartamente-unirii-buzau', label: 'Apartamente zona Unirii' },
 ];
