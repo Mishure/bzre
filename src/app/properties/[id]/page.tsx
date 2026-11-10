@@ -10,8 +10,11 @@ export const revalidate = 600;
 async function getProperty(idStr: string) {
   const id = parseInt(idStr, 10);
   if (Number.isNaN(id)) return null;
+  // Must match the `status: 'ACTIVE'` filter in layout.tsx — otherwise a sold
+  // or inactive listing renders full content under the "Proprietate negăsită"
+  // title and stays indexable.
   return prisma.property.findUnique({
-    where: { id },
+    where: { id, status: "ACTIVE" },
     include: { images: { orderBy: { order: "asc" } } },
   });
 }

@@ -1,24 +1,13 @@
 import type { Metadata } from "next";
 import SeoLandingPage from "@/components/seo/SeoLandingPage";
-import { getSeoPageBySlug } from "@/lib/seoPages";
+import { buildSeoPageMetadata, getSeoPageBySlug } from "@/lib/seoPages";
 
 const SLUG = "apartamente-2-camere-buzau";
 
 export const revalidate = 3600;
 
-export function generateMetadata(): Metadata {
-  const config = getSeoPageBySlug(SLUG)!;
-  return {
-    title: config.title,
-    description: config.description,
-    alternates: { canonical: `/${config.slug}` },
-    openGraph: {
-      title: config.title,
-      description: config.description,
-      url: `https://www.camimob.ro/${config.slug}`,
-      type: "website",
-    },
-  };
+export function generateMetadata(): Promise<Metadata> {
+  return buildSeoPageMetadata(SLUG);
 }
 
 export default function Page() {

@@ -1,11 +1,21 @@
 import { MetadataRoute } from 'next';
 import { prisma } from '@/lib/prisma';
-import { SEO_PAGES } from '@/lib/seoPages';
+import { SEO_PAGES, countSeoProperties } from '@/lib/seoPages';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.camimob.ro';
 
-  const seoLandingPages: MetadataRoute.Sitemap = SEO_PAGES.map((p) => ({
+  // Landing pages with zero active offers are served as `noindex` (see
+  // lib/seoPages.ts), so they must not be advertised in the sitemap either.
+  // A `null` count means the database was unreachable — keep the URL in that
+  // case rather than silently shrinking the sitemap.
+  const seoCounts = await Promise.all(
+    SEO_PAGES.map((p) => countSeoProperties(p.filter))
+  );
+
+  const seoLandingPages: MetadataRoute.Sitemap = SEO_PAGES.filter(
+    (_, i) => seoCounts[i] !== 0
+  ).map((p) => ({
     url: `${baseUrl}/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: 'daily' as const,

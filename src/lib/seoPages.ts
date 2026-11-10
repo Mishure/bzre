@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { withRetry } from "@/lib/db-retry";
 import type { Property } from "@/types/property";
+
+const BASE_URL = "https://www.camimob.ro";
 
 export type SeoFilter = {
   propertyType?: "APARTAMENT" | "CASA" | "TEREN" | "SPATIU_COMERCIAL";
@@ -41,11 +45,15 @@ export async function fetchSeoProperties(
   if (filter.rooms !== undefined) where.rooms = filter.rooms;
   else if (filter.roomsGte !== undefined) where.rooms = { gte: filter.roomsGte };
 
-  const rows = await prisma.property.findMany({
-    where,
-    include: { images: { where: { isPrimary: true }, take: 1 } },
-    orderBy: { createdAt: "desc" },
-  });
+  // Retried: these pages are prerendered at build time, and a Neon cold start
+  // on the first query would otherwise fail the whole deploy.
+  const rows = await withRetry(async () =>
+    prisma.property.findMany({
+      where,
+      include: { images: { where: { isPrimary: true }, take: 1 } },
+      orderBy: { createdAt: "desc" },
+    })
+  );
 
   const mapped: Property[] = rows.map((p) => ({
     id: p.id,
@@ -439,4 +447,52 @@ export const SEO_PAGES: SeoPageConfig[] = [
 
 export function getSeoPageBySlug(slug: string): SeoPageConfig | undefined {
   return SEO_PAGES.find((p) => p.slug === slug);
+}
+
+/**
+ * Counts the active offers a landing page would list.
+ *
+ * Returns `null` when the database is unreachable, so callers can treat the
+ * count as unknown instead of wrongly concluding the page is empty.
+ */
+export async function countSeoProperties(
+  filter: SeoFilter
+): Promise<number | null> {
+  try {
+    const rows = await fetchSeoProperties(filter);
+    return rows.length;
+  } catch (error) {
+    console.error("Error counting properties for SEO page:", error);
+    return null;
+  }
+}
+
+/**
+ * Shared metadata for the SEO landing pages.
+ *
+ * A landing page with zero matching offers is nothing but templated copy —
+ * Google reports exactly those as "crawled, currently not indexed". We mark
+ * them `noindex, follow` so they stay out of the index (and out of the
+ * sitemap, see app/sitemap.ts) until the zone or category has real stock,
+ * at which point they become indexable again on their own.
+ */
+export async function buildSeoPageMetadata(slug: string): Promise<Metadata> {
+  const config = getSeoPageBySlug(slug)!;
+  const count = await countSeoProperties(config.filter);
+  const isEmpty = count === 0;
+
+  return {
+    title: config.title,
+    description: config.description,
+    alternates: { canonical: `/${config.slug}` },
+    robots: isEmpty
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
+    openGraph: {
+      title: config.title,
+      description: config.description,
+      url: `${BASE_URL}/${config.slug}`,
+      type: "website",
+    },
+  };
 }
