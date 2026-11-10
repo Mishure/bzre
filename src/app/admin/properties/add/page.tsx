@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowLeftIcon, PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import toast, { Toaster } from 'react-hot-toast';
 import { generateSeoName } from '@/lib/seoName';
+import { BUZAU_ZONES } from '@/lib/zones';
 
 export default function AddPropertyPage() {
   const router = useRouter();
@@ -34,14 +35,6 @@ export default function AddPropertyPage() {
     status: 'ACTIVE',
     featured: false
   });
-
-  const zones = [
-    'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6', 'Micro 14', 'Micro 21',
-    'Unirii', 'Dorobanti', 'Dorobanti 1', 'Dorobanti 2', 'Bdul Bucuresti',
-    'Victoriei', 'Nord', 'Sud', 'Est', 'Vest', 'Brosteni', 'Dragaica', 
-    'Crang', 'Posta', 'Marghiloman', 'Spiru Haret', 'Balcescu', 'Episcopiei',
-    'Gara', 'Marginal', 'Zona Industriala'
-  ];
 
   const comfortOptions = ['I', 'II', 'III', 'Lux'];
   const positionOptions = ['Decomandat', 'Semidecomandat', 'Nedecomandat', 'Circular'];
@@ -252,7 +245,7 @@ export default function AddPropertyPage() {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               >
                 <option value="">Selectează zona</option>
-                {zones.map(zone => (
+                {BUZAU_ZONES.map(zone => (
                   <option key={zone} value={zone}>{zone}</option>
                 ))}
               </select>

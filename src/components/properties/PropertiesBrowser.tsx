@@ -21,6 +21,7 @@ const DynamicPropertyMap = dynamic(() => import('@/components/map/PropertyMap').
 });
 
 import { Property } from '@/types/property';
+import { BUZAU_ZONES } from '@/lib/zones';
 
 interface FilterState {
   search: string;
@@ -45,12 +46,6 @@ const propertyTypes = [
 const operations = [
   { id: 'VANZARE', name: 'Vânzare' },
   { id: 'INCHIRIERE', name: 'Închiriere' },
-];
-
-const zones = [
-  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6',
-  'Unirii', 'Dorobanti', 'Bdul Bucuresti', 'Victoriei',
-  'Nord', 'Sud', 'Est', 'Vest', 'Marginal', 'Zona Industriala'
 ];
 
 function filtersFromParams(searchParams: URLSearchParams): FilterState {
@@ -358,7 +353,7 @@ export default function PropertiesBrowser({
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
                   <option value="">Toate zonele</option>
-                  {zones.map(zone => (
+                  {BUZAU_ZONES.map(zone => (
                     <option key={zone} value={zone}>{zone}</option>
                   ))}
                 </select>

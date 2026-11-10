@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { MagnifyingGlassIcon, MapPinIcon, CurrencyEuroIcon, HomeIcon, BuildingOfficeIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import { parseSearchQuery, buildSearchParams } from '@/lib/searchParser';
+import { BUZAU_ZONES } from '@/lib/zones';
 
 const propertyTypes = [
   { id: 'APARTAMENT', name: 'Apartamente', icon: BuildingOfficeIcon },
@@ -16,11 +17,6 @@ const propertyTypes = [
 const operations = [
   { id: 'VANZARE', name: 'Vânzare' },
   { id: 'INCHIRIERE', name: 'Închiriere' },
-];
-
-const zones = [
-  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6', 'Unirii', 'Dorobanti', 'Bdul Bucuresti',
-  'Victoriei', 'Nord', 'Sud', 'Est', 'Vest', 'Marginal', 'Zona Industriala'
 ];
 
 // Linkuri interne către paginile SEO (landing pages). Sursa de adevăr a
@@ -147,7 +143,7 @@ export default function HomePage() {
                   onChange={(e) => setSearchFilters(prev => ({ ...prev, zone: e.target.value }))}
                 >
                   <option value="">Toate zonele</option>
-                  {zones.map((zone) => (
+                  {BUZAU_ZONES.map((zone) => (
                     <option key={zone} value={zone}>{zone}</option>
                   ))}
                 </select>

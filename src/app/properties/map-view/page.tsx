@@ -16,6 +16,7 @@ import {
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import dynamic from 'next/dynamic';
 import { parseSearchQuery } from '@/lib/searchParser';
+import { BUZAU_ZONES } from '@/lib/zones';
 
 const DynamicPropertyMap = dynamic(() => import('@/components/map/WorkingMap'), {
   ssr: false,
@@ -54,12 +55,6 @@ const propertyTypes = [
 const operations = [
   { id: 'VANZARE', name: 'Vânzare' },
   { id: 'INCHIRIERE', name: 'Închiriere' },
-];
-
-const zones = [
-  'Centru', 'Micro 3', 'Micro 4', 'Micro 5', 'Micro 6', 
-  'Unirii', 'Dorobanti', 'Bdul Bucuresti', 'Victoriei', 
-  'Nord', 'Sud', 'Est', 'Vest', 'Marginal', 'Zona Industriala'
 ];
 
 function MapViewContent() {
@@ -404,7 +399,7 @@ function MapViewContent() {
                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
                   <option value="">Toate zonele</option>
-                  {zones.map(zone => (
+                  {BUZAU_ZONES.map(zone => (
                     <option key={zone} value={zone}>{zone}</option>
                   ))}
                 </select>
