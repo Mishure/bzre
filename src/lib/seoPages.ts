@@ -802,6 +802,284 @@ export const SEO_PAGES: SeoPageConfig[] = [
     },
     keepIndexableWhenEmpty: true,
   },
+  {
+    slug: "apartamente-dorobanti-1-buzau",
+    title: "Apartamente în Dorobanți 1, Buzău | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în Dorobanți 1, Buzău. Școala Nr. 11 — cea mai mare din județ — în apropiere, Parcul Marghiloman la câteva minute, gara pe jos. Oferte CAMIMOB.",
+    h1: "Apartamente în cartierul Dorobanți 1, Buzău",
+    breadcrumbLabel: "Apartamente Dorobanți 1",
+    intro:
+      "Dorobanți 1 este prima secțiune a marii zone rezidențiale din estul Buzăului, situată mai aproape de Bulevardul Unirii și de zona centrală decât „fratele” său, Dorobanți 2. Este o zonă compactă, cu densitate mare de blocuri și o infrastructură comercială de proximitate excelentă. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Dorobanți 1, de vânzare și de închiriat.",
+    sections: [
+      {
+        heading: "Despre cartierul Dorobanți 1",
+        body: "Dorobanți 1 este partea cartierului Dorobanți aflată cel mai aproape de centru și de Bulevardul Unirii, delimitată parțial de strada Dorobanți față de Dorobanți 2. Este compact și dens construit, ceea ce are un efect direct asupra vieții de zi cu zi: infrastructura comercială de proximitate este foarte bine dezvoltată, cu magazine, farmacii și servicii la câțiva pași de orice bloc. Poziția este principalul atu — ești suficient de aproape de centru și de Gara CFR ca să te deplasezi pe jos, dar într-un cartier rezidențial cu prețuri sub nivelul zonei centrale. Apartamentele sunt predominant în blocuri clasice, cu tipologii de la garsoniere la 3 camere.",
+      },
+      {
+        heading: "Școli și grădinițe în zonă",
+        body: "Școala Gimnazială Nr. 11 Buzău, pe strada Teilor, este școala de referință la care sunt arondați majoritatea copiilor din Dorobanți 1. Deși se află tehnic la granița dintre Unirii și Dorobanți, este unitatea de care aparține cartierul — și este cea mai mare școală din județ ca număr de elevi, ceea ce aduce cu sine o ofertă largă de clase, profesori și activități extrașcolare. Liceul Tehnologic „Henri Coandă”, pe strada Horticolei, se află în imediata vecinătate a cartierului și acoperă profilurile tehnice. Pentru preșcolari, Grădinița cu Program Prelungit Nr. 4 deservește cu succes și această zonă. Recomandarea noastră rămâne aceeași ca în tot cartierul Dorobanți: verifică circumscripția exactă a blocului care te interesează, pentru că granița dintre Unirii, Dorobanți 1 și Dorobanți 2 trece prin zonă.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "Dorobanți 1 dispune de mai multe mini-parcuri interioare între blocuri, cu locuri de joacă modernizate recent — leagăne, tobogane și covor elastic de protecție — plus zone cu bănci pentru pensionari. Sunt spații pe care le folosești efectiv zilnic, nu doar în weekend. Pentru ieșiri mai consistente, Parcul Marghiloman rămâne principala destinație: parc istoric cu Vila Albatros și lacul cu nuferi, la doar câteva minute de mers pe jos spre sud-est. Parcul Tineretului este accesibil rapid mergând spre nord, prin Broșteni, și oferă facilități pentru sport și agrement. Practic, ai un parc istoric pentru plimbări și unul sportiv pentru activitate, ambele fără mașină.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Fiind situat mai aproape de arterele centrale și de Gara CFR, Dorobanți 1 are un acces extrem de rapid la transportul public Trans Bus Buzău. Linia 1 (C.I.T. – BIG – RAM – Gară – Dorobanți 1 – Kaufland Sud) oprește chiar în inima cartierului și oferă legătura directă cu ambele extremități comerciale ale orașului. Liniile 6 și 6B fac traseul Gara CFR – Dorobanți – localitățile limitrofe din est. Linia 8 (Gară – Dorobanți 1 – Broșteni – Spiru Haret – Micro 14) este traseul ideal pentru a traversa orașul direct către Spitalul Județean sau Micro 14. Liniile 11 și 11B leagă Gara CFR de Dorobanți și Broșteni, continuând spre Vadu Pașii. Stațiile de referință sunt Dorobanți 1, Liceul Henri Coandă, Teilor și Gara, aceasta din urmă aflată la distanță de mers pe jos.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Dorobanți 1",
+        body: "Dorobanți 1 este un cartier în care poziția exactă a blocului schimbă mult valoarea: distanța până la Gara CFR, apropierea de strada Dorobanți sau de Bulevardul Unirii, circumscripția școlară, expunerea la zgomot. Consultanții CAMIMOB cunosc blocurile din zonă și îți spun deschis ce justifică prețul cerut. Verificăm actele, starea apartamentului și documentația asociației de proprietari, organizăm vizionările eficient și te asistăm la negociere, la evaluarea pentru bancă și la notar. Dacă ești proprietar în Dorobanți 1 și vrei să vinzi sau să închiriezi, zona are cerere constantă — spune-ne și îți facem o evaluare realistă.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce școli sunt în Dorobanți 1?",
+        a: "Școala Gimnazială Nr. 11, pe strada Teilor, este școala de referință la care sunt arondați majoritatea copiilor din cartier și cea mai mare din județ ca număr de elevi. Liceul Tehnologic „Henri Coandă” este pe strada Horticolei, în imediata vecinătate. Grădinița cu Program Prelungit Nr. 4 deservește și această zonă.",
+      },
+      {
+        q: "Care este diferența între Dorobanți 1 și Dorobanți 2?",
+        a: "Dorobanți 1 este secțiunea mai apropiată de centru și de Bulevardul Unirii, mai compactă și mai densă, cu acces pe jos la Gara CFR. Dorobanți 2 continuă spre est, este mai liniștit, învecinat cu Broșteni și cu zona industrială de est. Cele două sunt delimitate parțial de strada Dorobanți.",
+      },
+      {
+        q: "Ce linii de autobuz opresc în Dorobanți 1?",
+        a: "Liniile Trans Bus 1, 6, 6B, 8, 11 și 11B. Linia 1 oprește chiar în inima cartierului și leagă zona de BIG și Kaufland Sud; linia 8 traversează orașul spre Spitalul Județean și Micro 14. Stațiile de referință: Dorobanți 1, Liceul Henri Coandă, Teilor și Gara.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "dorobanti 1",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    // Deliberately type-agnostic, unlike the other zone pages: the Dorobanți 2
+    // stock is a house, an apartment and a plot of land. An APARTAMENT filter
+    // would hide two of three, and the plot would appear nowhere on the site —
+    // there is no land category page.
+    slug: "imobiliare-dorobanti-2-buzau",
+    title: "Imobiliare în Dorobanți 2, Buzău: apartamente, case, terenuri | CAMIMOB",
+    description:
+      "Apartamente, case și terenuri de vânzare în Dorobanți 2, Buzău. Zonă liniștită din estul orașului, lângă Parcul Marghiloman, Școala Nr. 7 în apropiere. Oferte CAMIMOB.",
+    h1: "Imobiliare în cartierul Dorobanți 2, Buzău",
+    breadcrumbLabel: "Imobiliare Dorobanți 2",
+    intro:
+      "Dorobanți 2 este o zonă rezidențială liniștită și bine conturată din partea de est a Buzăului, aflată în continuarea cartierului Dorobanți 1 — cele două sunt delimitate parțial de strada Dorobanți — și învecinată cu cartierul Broșteni și cu zona industrială de est. Pe această pagină găsești tot ce avem activ în Dorobanți 2: apartamente, case și terenuri. Este unul dintre cartierele în care stocul nostru este mixt, așa că pagina le listează pe toate, nu doar apartamentele.",
+    sections: [
+      {
+        heading: "Despre cartierul Dorobanți 2",
+        body: "Dorobanți 2 continuă cartierul Dorobanți spre est, dincolo de strada Dorobanți, și se învecinează cu Broșteni și cu zona industrială de est. Caracterul lui este clar: liniștit și bine conturat, fără traficul de tranzit care afectează arterele mari. Pentru cumpărători, asta înseamnă un cartier în care se locuiește, nu prin care se trece. Fiind mai departe de centru decât Dorobanți 1, prețurile sunt în general mai accesibile, iar oferta este mai variată ca tipologie — aici găsești atât apartamente în blocuri, cât și case cu curte și terenuri construibile, o combinație rară în interiorul orașului. Vecinătatea cu zona industrială de est este un avantaj practic pentru cine lucrează acolo.",
+      },
+      {
+        heading: "Școli și grădinițe în zonă",
+        body: "Școala Gimnazială Nr. 7 este unitatea școlară principală de care aparțin majoritatea copiilor din Dorobanți 2. Deși administrativ este poziționată la granița dintre Broșteni și Dorobanți, pe strada Privighetorilor, este școala la care sunt arondați copiii din cartier. Grădinița cu Program Prelungit Nr. 4 se află în imediata vecinătate și este foarte accesibilă pentru părinții din zonă. Pentru nivelul liceal, Liceul Tehnologic „Henri Coandă”, situat puțin mai la sud-est, pe strada Horticolei, deservește zona de est cu profiluri tehnice și profesionale. Ca în tot cartierul Dorobanți, verifică circumscripția exactă a adresei care te interesează înainte să semnezi — granițele administrative trec prin zonă.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "Dorobanți 2 beneficiază de mai multe alveole verzi și locuri de joacă între blocuri, modernizate de municipalitate cu mobilier urban nou și cu zone de relaxare izolate de traficul principal — exact genul de spațiu care face diferența când ai copii mici. Cel mai important punct de atracție verde din vecinătate este Parcul Marghiloman, la doar câteva minute de mers pe jos spre sud: un spațiu istoric superb, cu alei largi, Lacul cu nuferi și Centrul Cultural din Vila Albatros. Parcul Tineretului, situat puțin mai la nord, în dreptul cartierului Broșteni, este ușor accesibil pentru cei care caută activități sportive, piste de biciclete sau role. Două parcuri mari, în două direcții, ambele pe jos.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Dorobanți 2 este excelent conectat atât cu Gara CFR, cât și cu zona comercială din sud și cu marile bulevarde centrale, prin stațiile de pe strada Dorobanți și strada Horticolei. Linia 1 (C.I.T. – BIG – RAM – Gară – Dorobanți – Kaufland Sud) este o linie circulară vitală, care leagă cartierul direct de marile zone comerciale și de centru. Liniile 5 și 5B pornesc din Micro 14 și tranzitează strada Horticolei spre Podul Marghiloman. Liniile 6 și 6B fac traseul Gara CFR – axa Dorobanți – localitățile limitrofe. Linia 8 (Gară – Dorobanți – Broșteni – Spiru Haret – Micro 14) asigură o diagonală completă prin oraș, de la est la vest. Stațiile de referință din apropiere sunt Dorobanți 2, Broșteni (intersecție), Horticolei și Complex Dorobanți.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Dorobanți 2",
+        body: "Fiind un cartier cu tipologii mixte — blocuri, case cu curte, terenuri — Dorobanți 2 cere o evaluare diferită pentru fiecare tip de proprietate. Pentru un apartament verificăm blocul, asociația și reabilitarea termică. Pentru o casă, actele cadastrale, fundația, acoperișul, instalațiile și utilitățile. Pentru un teren, regimul juridic, intabularea, suprafața reală față de cea din acte, posibilitatea de a construi conform PUZ-ului și racordurile disponibile. Consultanții CAMIMOB acoperă toate trei și îți spun deschis ce riscuri are fiecare opțiune. Contactează-ne pentru o consultație gratuită și o listă personalizată cu ce avem acum în Dorobanți 2.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce tipuri de proprietăți găsesc în Dorobanți 2?",
+        a: "Zona are stoc mixt: apartamente în blocuri, case cu curte și terenuri. De aceea această pagină le listează pe toate, în loc să filtreze doar apartamentele — este unul dintre puținele cartiere din interiorul orașului unde găsești toate trei tipologiile.",
+      },
+      {
+        q: "Ce școli sunt în Dorobanți 2?",
+        a: "Școala Gimnazială Nr. 7, pe strada Privighetorilor, la granița cu Broșteni, este unitatea de care aparțin majoritatea copiilor din cartier. Grădinița cu Program Prelungit Nr. 4 este în imediata vecinătate. Liceul Tehnologic „Henri Coandă”, pe strada Horticolei, acoperă nivelul liceal tehnic.",
+      },
+      {
+        q: "Cât de aproape este Parcul Marghiloman?",
+        a: "La câteva minute de mers pe jos spre sud. Este cel mai important punct verde din vecinătate, cu alei largi, Lacul cu nuferi și Centrul Cultural din Vila Albatros. Parcul Tineretului este accesibil spre nord, în dreptul Broștenilor.",
+      },
+      {
+        q: "Ce linii de autobuz trec prin Dorobanți 2?",
+        a: "Liniile Trans Bus 1, 5, 5B, 6, 6B și 8, prin stațiile de pe strada Dorobanți și strada Horticolei. Linia 1 este circulară și leagă cartierul de BIG și Kaufland Sud; linia 8 traversează orașul de la est la vest. Stații: Dorobanți 2, Broșteni (intersecție), Horticolei, Complex Dorobanți.",
+      },
+    ],
+    filter: {
+      zoneNormalized: "dorobanti 2",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    // Filtered on CASA, not APARTAMENT: the agency describes 23 August as a
+    // district made up exclusively of courtyard homes, and "casă de vânzare"
+    // is the query that matches it. The one apartment carrying this zone is
+    // already covered by garsoniere-buzau.
+    slug: "case-23-august-buzau",
+    title: "Case de vânzare în zona 23 August, Buzău | CAMIMOB",
+    description:
+      "Case de vânzare în cartierul 23 August, Buzău. Cartier istoric de locuințe la curte în nord-vestul orașului, lângă Șoseaua Nordului și Transilvaniei. Oferte CAMIMOB.",
+    h1: "Case de vânzare în zona 23 August, Buzău",
+    breadcrumbLabel: "Case 23 August",
+    intro:
+      "23 August este un cartier istoric de case din partea de nord-vest a Buzăului, situat în spatele fabricii Romcarbon și delimitat parțial de Șoseaua Nordului, strada Transilvaniei și zona Bazalt / Fabrica de Bere. Este o zonă rezidențială liniștită, formată exclusiv din locuințe la curte, cu o dinamică total diferită de cea a nodului rutier ACR. Pe această pagină găsești casele active din portofoliul CAMIMOB în zona 23 August.",
+    sections: [
+      {
+        heading: "Un cartier de case, nu de blocuri",
+        body: "Ceea ce definește 23 August este că nu are blocuri. Este un țesut stradal de locuințe la curte, construit și consolidat în timp, în partea de nord-vest a orașului, în spatele fabricii Romcarbon. Delimitarea este dată parțial de Șoseaua Nordului, de strada Transilvaniei și de zona Bazalt / Fabrica de Bere. Dinamica este complet diferită de cea a nodului rutier ACR din apropiere: aici traficul este local, nu de tranzit, iar seara cartierul este liniștit. Pentru cumpărători, profilul este clar — cauți o casă cu curte, în oraș, la un preț mult mai mic decât în zonele rezidențiale de prestigiu, și accepți în schimb că nu ai comerț și servicii la fiecare colț. Este una dintre puținele zone din Buzău unde poți cumpăra o locuință la curte fără să ieși din oraș.",
+      },
+      {
+        heading: "Școli și grădinițe în zonă",
+        body: "Școala Gimnazială „Căpitan Aviator Mircea T. Bădulescu” — structura fostei Școli Nr. 16, respectiv unitățile din zona adiacentă a străzii Transilvaniei — este unitatea de învățământ gimnazial de stat cea mai apropiată, spre care gravitează copiii din acest cartier de case. Pentru preșcolari, Grădinița cu Program Normal Nr. 10, situată în zona adiacentă spre Bazalt și Fabrica de Bere, deservește direct familiile din nord-vestul orașului. Fiind un cartier de case, distanțele până la școală sunt mai mari decât într-un ansamblu de blocuri — merită să verifici concret traseul de la adresa care te interesează, mai ales dacă ai copii mici care ar urma să îl facă pe jos.",
+      },
+      {
+        heading: "Spații verzi și promenadă",
+        body: "Fiind un cartier exclusiv de case, zona nu are un parc public de mari dimensiuni în interiorul țesutului său stradal — localnicii beneficiază de curțile proprii și de zonele verzi din fața proprietăților, ceea ce este, de fapt, exact motivul pentru care cineva cumpără aici. Pentru promenadă, opțiunea majoră rămâne Parcul Crâng, accesibil în aproximativ 15-20 de minute de mers pe jos sau printr-o scurtă deplasare spre sud, fie peste calea ferată prin zona de trecere, fie ocolind prin Bulevardul Stadionului. Dacă îți place să alergi sau să mergi cu bicicleta, merită să testezi traseul înainte de a cumpăra, ca să vezi care variantă ți se potrivește.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Cartierul de case este deservit de stațiile perimetrice amplasate pe marile artere care îl înconjoară — în special stațiile Romcarbon și Bazalt de pe Șoseaua Nordului, sau cele de pe strada Transilvaniei. Linia 10 (Bazalt – Romcarbon – Crâng – Kaufland Sud – Gară) este linia principală pentru locuitorii din cartier: are stație chiar la Romcarbon / Șoseaua Nordului și leagă zona direct de centru și de gară. Linia 3 (Dedeman – Transilvaniei – Piața Centrală – Centrul de Recoltare) este utilă pentru cei care locuiesc mai aproape de ieșirea spre strada Transilvaniei. Liniile 5 și 5B fac traseul Micro 14 – Stadion – Romcarbon / Șoseaua Nordului – Horticolei. Traseul metropolitan 23 (Horticolei – Romcarbon / Bazalt – Vernești – Nișcov – Mierea – Grăjdana) tranzitează marginea cartierului în drumul spre comunele din nord-vest. Fiind stații perimetrice, distanța pe jos până la autobuz variază mult în funcție de stradă — verifică-o pentru adresa concretă.",
+      },
+      {
+        heading: "Ce verifici la o casă în 23 August",
+        body: "La o casă, lista de verificări este mult mai lungă decât la un apartament, iar într-un cartier istoric cu fond construit vechi devine esențială. Cere actele cadastrale și extrasul de carte funciară și confirmă că terenul și construcția sunt corect intabulate, fără diferențe între suprafața reală și cea din acte. Verifică fundația și structura — igrasie, fisuri, dale lăsate. Întreabă când a fost refăcut ultima dată acoperișul; o înlocuire completă costă mult. Cere evaluarea unui specialist pentru instalația electrică, obligatoriu la casele vechi. Confirmă racordurile la apă, canalizare, gaz și curent, inclusiv dacă e nevoie de trifazic. Uită-te la starea străzii și la iluminatul public. Și întreabă despre apa freatică și riscul de inundații, relevant în zonele joase. Consultanții CAMIMOB îți pun la dispoziție o rețea de specialiști — avocați, evaluatori autorizați, ingineri constructori — pentru o verificare tehnică înainte de antecontract.",
+      },
+    ],
+    faq: [
+      {
+        q: "Zona 23 August are blocuri?",
+        a: "Nu. Este un cartier istoric format exclusiv din locuințe la curte, în nord-vestul orașului, în spatele fabricii Romcarbon. Blocurile apar doar pe arterele perimetrice care îl delimitează.",
+      },
+      {
+        q: "Ce școli sunt aproape de 23 August?",
+        a: "Școala Gimnazială „Căpitan Aviator Mircea T. Bădulescu” — structura fostei Școli Nr. 16, respectiv unitățile din zona adiacentă a străzii Transilvaniei — este cea mai apropiată unitate gimnazială de stat. Pentru preșcolari, Grădinița cu Program Normal Nr. 10, spre Bazalt și Fabrica de Bere.",
+      },
+      {
+        q: "Cât durează până în Parcul Crâng?",
+        a: "Aproximativ 15-20 de minute de mers pe jos, fie peste calea ferată prin zona de trecere, fie ocolind prin Bulevardul Stadionului. Parcul Crâng este principala opțiune de promenadă pentru locuitorii cartierului.",
+      },
+      {
+        q: "Ce linii de autobuz deservesc zona?",
+        a: "Stații perimetrice pe arterele din jur: linia 10 (Bazalt – Romcarbon – Crâng – Kaufland Sud – Gară) este principala, cu stație la Romcarbon / Șoseaua Nordului. Se adaugă linia 3 prin Transilvaniei, liniile 5 și 5B, și traseul metropolitan 23 spre Vernești, Nișcov, Mierea și Grăjdana.",
+      },
+    ],
+    filter: {
+      propertyType: "CASA",
+      zoneNormalized: "23 august",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "apartamente-orizont-buzau",
+    title: "Apartamente în Cartierul Orizont, Buzău | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în Cartierul Orizont, Buzău. Cel mai modern ansamblu rezidențial al orașului, grădiniță nouă în incintă, stația Orizont la intrare. Oferte CAMIMOB.",
+    h1: "Apartamente în Cartierul Orizont, Buzău",
+    breadcrumbLabel: "Apartamente Orizont",
+    intro:
+      "Cartierul Orizont este cel mai modern ansamblu rezidențial nou al Buzăului — vile și blocuri cu regim mic de înălțime — situat la ieșirea din oraș spre nord, în direcția Râmnicu Sărat și Focșani, în prelungirea zonei Unirii Nord. Fiind un cartier tânăr, dezvoltat de la zero, infrastructura este modernă, dar depinde parțial de facilitățile din zona imediat învecinată. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Orizont, de vânzare și de închiriat.",
+    sections: [
+      {
+        heading: "Un cartier construit de la zero",
+        body: "Orizont este diferit de orice altă zonă din Buzău prin simplul fapt că a fost proiectat, nu acumulat în timp. Ansamblul este format din vile și blocuri cu regim mic de înălțime, cu trotuare largi, spații verzi proprii și o organizare care ține cont de pietoni — lucruri care într-un cartier construit în anii '70 lipsesc din start. Poziția este la ieșirea nordică a orașului, în direcția Râmnicu Sărat și Focșani, în prelungirea Unirii Nord. Pentru cumpărători, profilul este clar: finisaje și instalații noi, costuri de întreținere mici, vecini în general familii tinere, dar și dependență parțială de facilitățile din Unirii Nord pentru ce nu există încă în incintă. Este alegerea celor care preferă un apartament nou, bine izolat, într-un cartier curat, în loc de metri pătrați în plus într-un bloc vechi.",
+      },
+      {
+        heading: "Școli și grădinițe",
+        body: "Grădinița cu Program Prelungit Nr. 1 este o unitate de învățământ preșcolar de stat, modernă, construită recent chiar în incinta Cartierului Orizont, special pentru a deservi familiile tinere de aici. Este un avantaj rar pentru un ansamblu nou: de obicei grădinița vine mult după blocuri. Pentru nivelul gimnazial, Școala Gimnazială „George Emil Palade” — fosta Școală Nr. 15 — este unitatea la care sunt arondați copiii din cartier, situată la câteva minute distanță, spre Unirii Nord. Școala Gimnazială Nr. 11, puțin mai la sud-est, pe strada Teilor, este o altă opțiune majoră folosită de părinții din cartier și cea mai mare școală din județ. Pe scurt: grădinița este în incintă, școala la câteva minute.",
+      },
+      {
+        heading: "Spații verzi și promenadă",
+        body: "Cartierul a fost proiectat cu spații verzi proprii, trotuare largi și locuri de joacă moderne amenajate special pentru copiii rezidenților, ferite de traficul greu de pe drumul european — un detaliu important, având în vedere poziția la ieșirea din oraș. Pentru promenadă, de-a lungul bulevardului principal reabilitat există aliniamentul verde amenajat recent pe Șoseaua Nordului. Pentru o ieșire mai consistentă, Parcul Tineretului se află la o distanță relativ scurtă cu mașina sau bicicleta, coborând spre Broșteni, și oferă acces la lac, piste de role și terenuri de sport. Cartierul nu are un parc mare în interior, dar are ceea ce contează cel mai mult pentru familii cu copii mici: spațiu de joacă sigur, la câțiva metri de casă.",
+      },
+      {
+        heading: "Transport în comun",
+        body: "Orizont are avantajul de a fi situat chiar pe axa principală de transport nord-sud a orașului. Transportul este asigurat de stația principală Orizont, situată la intrarea în cartier, deservită de Trans Bus Buzău. Linia 1 (C.I.T. – BIG – RAM – Gara CFR – Dorobanți – Kaufland Sud) ajunge până în zona comercială din nord, chiar în proximitatea cartierului. Linia 2 (Sărata Monteoru / Gura Sărății – Autogara Marghiloman) tranzitează stația Orizont. Linia 22 (Gara CFR – Orizont – Fulga) asigură legătura directă între cartier și Gara CFR prin Bulevardul Unirii. Cel mai important: toate liniile metropolitane din nord — 23, 24, 25, 26, 27 și 28 — opresc obligatoriu în stația Orizont în drumul spre Mărăcineni, Săpoca sau Cernătești, ceea ce îți dă o frecvență excelentă a curselor către centrul orașului, în special spre stația RAM. Practic, chiar dacă ești la marginea orașului, ai mai multe autobuze pe oră decât în unele cartiere centrale.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Orizont",
+        body: "Într-un cartier nou, întrebările care contează sunt altele decât într-un bloc vechi: stadiul lucrărilor și al recepției, actele de proprietate și intabularea, ce intră exact în prețul anunțat, cum este organizată administrarea ansamblului și care sunt costurile lunare reale, dacă locul de parcare este inclus sau se cumpără separat, ce garanții oferă dezvoltatorul. Consultanții CAMIMOB verifică aceste aspecte înainte să-ți recomandăm o ofertă, și te asistăm la negociere, la evaluarea pentru bancă și la notar. Dacă ești proprietar în Orizont și vrei să vinzi sau să închiriezi, cartierul are cerere constantă din partea familiilor tinere — contactează-ne pentru o evaluare realistă.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce fel de locuințe are Cartierul Orizont?",
+        a: "Vile și blocuri cu regim mic de înălțime — este cel mai modern ansamblu rezidențial nou al Buzăului, dezvoltat de la zero, cu trotuare largi, spații verzi proprii și locuri de joacă proiectate pentru rezidenți.",
+      },
+      {
+        q: "Există grădiniță în Cartierul Orizont?",
+        a: "Da. Grădinița cu Program Prelungit Nr. 1 este o unitate de stat modernă, construită recent chiar în incinta cartierului. Pentru gimnaziu, copiii sunt arondați la Școala „George Emil Palade” (fosta Nr. 15), la câteva minute spre Unirii Nord; o altă opțiune folosită este Școala Nr. 11, pe strada Teilor.",
+      },
+      {
+        q: "Cum ajung din Orizont în centru?",
+        a: "Stația principală Orizont, la intrarea în cartier, este deservită de liniile 1, 2 și 22, plus toate liniile metropolitane din nord (23–28), care opresc obligatoriu aici. Frecvența este excelentă, iar linia 22 duce direct la Gara CFR prin Bulevardul Unirii.",
+      },
+      {
+        q: "Cartierul Orizont are toate facilitățile?",
+        a: "Infrastructura internă este modernă — grădiniță în incintă, spații verzi, locuri de joacă, trotuare largi — dar pentru comerț și servicii cartierul depinde parțial de zona imediat învecinată, Unirii Nord, aflată la câteva minute.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "orizont",
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "apartamente-micro-5-buzau",
+    title: "Apartamente în Micro 5, Buzău | CAMIMOB",
+    description:
+      "Apartamente de vânzare și de închiriat în Micro 5, Buzău. Capăt de linie Trans Bus, lângă centrele comerciale din sud și la câteva minute de Parcul Marghiloman. Oferte CAMIMOB.",
+    h1: "Apartamente în cartierul Micro 5, Buzău",
+    breadcrumbLabel: "Apartamente Micro 5",
+    intro:
+      "Micro 5 este o zonă rezidențială importantă din partea de sud-est a Buzăului, poziționată între cartierul Dorobanți, Bulevardul Unirii Sud și calea ferată, foarte aproape de marile centre comerciale din sudul orașului. Are chiar propriul capăt de linie în rețeaua Trans Bus. Pe această pagină găsești apartamentele active din portofoliul CAMIMOB în Micro 5, de vânzare și de închiriat.",
+    sections: [
+      {
+        heading: "Despre cartierul Micro 5",
+        body: "Micro 5 ocupă o poziție bine delimitată în sud-estul orașului: între cartierul Dorobanți, Bulevardul Unirii Sud și calea ferată. Proximitatea marilor centre comerciale din sudul Buzăului este avantajul cel mai evident — cumpărăturile săptămânale se fac fără drum lung și, de multe ori, fără mașină. Cartierul este dezvoltat sistematic, cu blocuri organizate în ansambluri și spații verzi interioare între ele. Apartamentele sunt predominant clasice, decomandate sau semidecomandate, cu tipologii de la garsoniere la 3 camere, la prețuri sub nivelul zonei centrale. Fiind delimitat de calea ferată, cartierul are o parte care nu este traversată de trafic de tranzit, ceea ce îl face mai liniștit decât sugerează apropierea de bulevard.",
+      },
+      {
+        heading: "Școli și grădinițe în zonă",
+        body: "Școala Gimnazială „Nicu Constantinescu” — fosta Școală Nr. 5 — este unitatea școlară principală la care sunt arondați copiii din Micro 5. Deși se află spre zona Unirii Sud, este școala de care aparține cartierul. Grădinița cu Program Normal Nr. 6 deservește preșcolarii din zonă, funcționând în proximitate și sub aceeași structură administrativă ca școala, ceea ce simplifică tranziția către clasa pregătitoare. Pentru nivelul liceal, Liceul Tehnologic „Henri Coandă”, situat la nord-est de cartier, pe strada Horticolei, este o opțiune accesibilă cu profiluri tehnologice. Ca întotdeauna, verifică circumscripția exactă a blocului care te interesează înainte de a semna.",
+      },
+      {
+        heading: "Parcuri și spații verzi",
+        body: "Cartierul dispune de zone verzi interioare și de spații de joacă destinate copiilor, reamenajate printre blocuri cu mobilier urban modern — părculețul din Micro 5 este punctul de referință pentru viața de zi cu zi a familiilor din zonă. Pentru ieșiri mai consistente, Parcul Marghiloman este cel mai mare parc din vecinătate, la câteva minute de mers spre est: un spațiu excelent pentru plimbări în jurul lacului cu nuferi și al Vilei Albatros, cu alei largi și un cadru istoric pe care puține parcuri din țară îl au. Combinația dintre loc de joacă sub fereastră și parc istoric la câteva minute este foarte practică pentru o familie cu copii.",
+      },
+      {
+        heading: "Transport în comun: capăt de linie",
+        body: "Micro 5 este un nod de tranzit esențial în rețeaua Trans Bus Buzău, având chiar o stație terminus importantă care îi poartă numele. Asta înseamnă autobuze care pleacă de la început de traseu — cu loc pe scaun și frecvență bună. Liniile 5 și 5B fac traseul Capăt Micro 5 – Spiru Haret – Micro 14, oferind o legătură directă și rapidă între sud-estul și vestul orașului. Linia 8 (Gară – Dorobanți – Broșteni – Spiru Haret – Stadion – Micro 14) tranzitează stațiile de la marginea cartierului și dă acces către Spitalul Județean. Linia 1 (C.I.T. – BIG – RAM – Gară – Dorobanți – Kaufland Sud) oprește în stațiile adiacente de pe strada Dorobanți, legând cartierul de marile zone comerciale. Liniile 6 și 6B fac traseul Gara CFR – Dorobanți – Micro 5 și continuă pe rute județene.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB în Micro 5",
+        body: "În Micro 5, doi factori schimbă sensibil valoarea unui apartament: distanța față de calea ferată și poziția față de Bulevardul Unirii Sud. Ambele influențează nivelul de zgomot, iar diferența se simte mai mult decât te-ai aștepta. Recomandăm vizionări la ore diferite ale zilei și o verificare atentă a tâmplăriei. Consultanții CAMIMOB cunosc blocurile din zonă, starea lor de reabilitare termică și prețurile la care s-au încheiat efectiv tranzacțiile. Verificăm actele, documentația asociației de proprietari și circumscripția școlară, și te asistăm la negociere, la evaluarea pentru bancă și la notar. Contactează-ne pentru o consultație gratuită și o listă personalizată cu ofertele din Micro 5.",
+      },
+    ],
+    faq: [
+      {
+        q: "Ce școli sunt arondate cartierului Micro 5?",
+        a: "Școala Gimnazială „Nicu Constantinescu” (fosta Nr. 5), spre zona Unirii Sud, este unitatea principală la care sunt arondați copiii din Micro 5. Grădinița cu Program Normal Nr. 6 funcționează în proximitate, sub aceeași structură administrativă. Liceul Tehnologic „Henri Coandă”, pe strada Horticolei, la nord-est, acoperă nivelul liceal tehnologic.",
+      },
+      {
+        q: "Ce linii de autobuz pleacă din Micro 5?",
+        a: "Micro 5 are propriul capăt de linie. Liniile 5 și 5B pornesc de aici spre Spiru Haret și Micro 14. Liniile 6 și 6B fac legătura Gara CFR – Dorobanți – Micro 5 și continuă pe rute județene. Linia 8 tranzitează stațiile de la marginea cartierului, cu acces la Spitalul Județean, iar linia 1 oprește în stațiile adiacente de pe strada Dorobanți.",
+      },
+      {
+        q: "Cât de aproape sunt centrele comerciale?",
+        a: "Foarte aproape — Micro 5 este poziționat lângă marile centre comerciale din sudul orașului, iar linia 1 leagă cartierul direct de BIG și Kaufland Sud. Este unul dintre principalele avantaje practice ale zonei.",
+      },
+      {
+        q: "Este Micro 5 un cartier zgomotos?",
+        a: "Depinde mult de poziția blocului. Cartierul este delimitat de Bulevardul Unirii Sud și de calea ferată, iar apartamentele apropiate de acestea sunt mai expuse. Partea interioară a cartierului, netraversată de trafic de tranzit, este liniștită. Recomandăm vizionări la ore diferite ale zilei.",
+      },
+    ],
+    filter: {
+      propertyType: "APARTAMENT",
+      zoneNormalized: "micro 5",
+    },
+    keepIndexableWhenEmpty: true,
+  },
 ];
 
 export function getSeoPageBySlug(slug: string): SeoPageConfig | undefined {
