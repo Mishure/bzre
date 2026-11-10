@@ -46,6 +46,7 @@ const seoLandingLinks = [
   { slug: 'case-dorobanti-2-buzau', label: 'Case Dorobanți 2' },
   { slug: 'case-orizont-buzau', label: 'Case și vile Cartierul Orizont' },
   { slug: 'case-maracineni-buzau', label: 'Case în Mărăcineni' },
+  { slug: 'terenuri-maracineni-buzau', label: 'Terenuri în Mărăcineni' },
   { slug: 'case-merei-buzau', label: 'Case în Merei' },
   { slug: 'case-pietroasele-buzau', label: 'Case în Pietroasele' },
   { slug: 'case-magura-buzau', label: 'Case în Măgura' },

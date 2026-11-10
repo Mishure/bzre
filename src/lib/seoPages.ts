@@ -1300,9 +1300,72 @@ export const SEO_PAGES: SeoPageConfig[] = [
         q: "Ce trebuie verificat în plus la o casă de comună?",
         a: "Intabularea terenului și a construcției, categoria de folosință și regimul intravilan, utilitățile (apă la rețea sau puț, canalizare sau fosă, gaz la poartă sau nu), drumul de acces și servitutea legală, plus nivelul apei freatice și riscul de inundații. Utilitățile sunt cheltuiala cel mai frecvent subestimată.",
       },
+      {
+        q: "Aveți și terenuri de vânzare în Mărăcineni?",
+        a: "Da, terenurile din comuna Mărăcineni, inclusiv din Potoceni, au pagina lor dedicată. Dacă vrei să îți construiești casa în loc să cumperi una existentă, acolo găsești loturile active.",
+      },
     ],
     filter: {
       propertyType: "CASA",
+      placeNormalizedAny: ["maracineni", "potoceni"],
+    },
+    keepIndexableWhenEmpty: true,
+  },
+  {
+    slug: "terenuri-maracineni-buzau",
+    title: "Terenuri de vânzare în Mărăcineni, Buzău | CAMIMOB",
+    description:
+      "Terenuri de vânzare în comuna Mărăcineni, județul Buzău, inclusiv satul Potoceni. Prima comună la nord de oraș, cea mai scurtă navetă din județ. Oferte CAMIMOB.",
+    h1: "Terenuri de vânzare în Mărăcineni, Buzău",
+    breadcrumbLabel: "Terenuri Mărăcineni",
+    intro:
+      "Mărăcineni este prima comună la nord de Buzău, pe direcția Râmnicu Sărat, și cea mai căutată de buzoienii care vor să își construiască o casă fără să se îndepărteze de oraș. Pe această pagină găsești terenurile active din portofoliul CAMIMOB din comuna Mărăcineni, inclusiv din satul Potoceni. Dacă îți construiești prima casă, aici este zona cu cel mai bun raport între distanță, preț și posibilitatea reală de a construi.",
+    sections: [
+      {
+        heading: "De ce Mărăcineni este cea mai căutată comună pentru construcție",
+        body: "Motivul este unul singur și greu de combătut: este cea mai apropiată comună de Buzău pe direcția nordică, iar naveta se măsoară în minute. Pentru cine vrea să își construiască o casă dar lucrează în oraș, asta înseamnă că nu îți schimbi viața de zi cu zi — doar locuința. Obții un lot de câteva ori mai mare decât ce ai primi în interiorul municipiului la un buget comparabil, într-o comună cu infrastructură consolidată și cu transport în comun care funcționează. Satul Potoceni face parte din comună și are caracter rezidențial, cu loturi generoase. Exact din cauza acestei cereri, prețul pe metru pătrat în Mărăcineni este cel mai ridicat dintre comunele limitrofe Buzăului — dar rămâne o fracțiune din prețul unui teren echivalent în oraș, iar diferența o investești în construcție.",
+      },
+      {
+        heading: "Intravilan sau extravilan: verifică înainte de orice",
+        body: "Este prima întrebare, înaintea prețului și a suprafeței. Dacă intenția ta este să construiești o casă, terenul trebuie să fie obligatoriu intravilan. Terenul extravilan are de regulă categoria de folosință agricolă, iar construcția cere mai întâi scoaterea din circuitul agricol și schimbarea categoriei de folosință — o procedură care durează, costă și nu este garantată. Diferența de preț pe metru pătrat între cele două este de câteva ori, și tocmai de aici apar anunțurile care prezintă un extravilan ieftin ca pe o oportunitate de construcție. Cere din start extrasul de carte funciară și certificatul de urbanism: certificatul îți spune concret procentul de ocupare a terenului, coeficientul de utilizare, regimul maxim de înălțime și retragerile obligatorii — adică exact cât și cum poți construi pe lotul acela. Fără el, nu știi ce cumperi.",
+      },
+      {
+        heading: "Utilități și acces: cheltuiala cel mai des subestimată",
+        body: "Pentru un teren de construcție, costul racordării la utilități poate depăși diferența de preț față de un lot aparent mai scump cu branșamente la poartă. Întreabă concret, nu general: există racord la rețeaua de apă sau va trebui puț propriu? Canalizare la rețea sau fosă septică? La ce distanță este cea mai apropiată conductă de gaz? Branșamentul electric există, iar dacă da, ce putere suportă — ai nevoie de trifazic pentru ce intenționezi? Cere informații direct de la operatorii locali înainte să semnezi, nu după. La fel de important: drumul de acces. Trebuie să ai acces direct din drum public sau o servitute de trecere constituită legal și înscrisă în cartea funciară — nu o înțelegere verbală cu vecinul, care dispare odată cu vecinul. Verifică și starea drumului: asfaltat, pietruit sau de pământ, și cum arată iarna și după ploi.",
+      },
+      {
+        heading: "Verificări specifice pentru un teren în comună",
+        body: "Pe lângă regimul urbanistic și utilitățile, mai sunt câteva lucruri care în mediul rural cauzează cele mai multe blocaje. Intabularea: terenul trebuie înscris în cartea funciară, cu suprafața măsurată de un topograf, nu doar cu cea declarată — la terenurile moștenite, diferențele față de acte sunt frecvente și descoperite târziu. Succesiunea: dacă terenul vine din moștenire, verifică dacă este finalizată și dacă toți moștenitorii sunt de acord cu vânzarea. Regimul juridic: fără ipoteci, litigii sau servituți care te-ar împiedica să construiești unde vrei. Vecinătățile: ce se poate construi pe loturile alăturate, pentru că un lot liniștit astăzi poate avea o hală peste doi ani. Și, specific pentru zona Buzăului, nivelul apei freatice și riscul de inundații — informații care influențează direct tipul de fundație și costul ei.",
+      },
+      {
+        heading: "Cum te ajută CAMIMOB la achiziția unui teren în Mărăcineni",
+        body: "Greșelile la teren se descoperă cel mai târziu — de obicei abia la cererea autorizației de construire, când ai plătit deja. Verificăm, înainte să îți recomandăm un lot: extrasul de carte funciară actualizat, concordanța între suprafața măsurată și cea din acte, certificatul de urbanism și ce permite el efectiv, categoria de folosință și regimul intravilan, situația succesiunii, existența litigiilor sau servituților, accesul la drum public și situația reală a utilităților. Lucrăm cu avocați, topografi și evaluatori autorizați pentru cazurile care cer clarificări. Dacă ai un teren de vânzare în Mărăcineni sau Potoceni, contactează-ne: este comuna cu cea mai mare cerere din jurul Buzăului, iar loturile intravilane bine documentate se vând rapid.",
+      },
+    ],
+    faq: [
+      {
+        q: "Satul Potoceni face parte din comuna Mărăcineni?",
+        a: "Da, Potoceni aparține comunei Mărăcineni, iar terenurile din sat apar pe această pagină. Are caracter rezidențial, cu loturi generoase.",
+      },
+      {
+        q: "Pot construi o casă pe orice teren din Mărăcineni?",
+        a: "Nu. Terenul trebuie să fie intravilan, iar certificatul de urbanism îți spune concret ce și cât poți construi — procent de ocupare, coeficient de utilizare, regim de înălțime, retrageri obligatorii. Pe extravilan construcția cere mai întâi scoaterea din circuitul agricol, procedură care durează, costă și nu este garantată.",
+      },
+      {
+        q: "De ce sunt terenurile din Mărăcineni mai scumpe decât în alte comune?",
+        a: "Pentru că este cea mai apropiată comună de Buzău pe direcția nordică, iar naveta se măsoară în minute. Cererea este constant mai mare decât oferta. Prețul pe metru pătrat rămâne totuși o fracțiune din cel al unui teren echivalent în interiorul orașului.",
+      },
+      {
+        q: "Ce mă costă racordarea la utilități?",
+        a: "Depinde decisiv de distanța până la rețelele existente și de tipul utilității. Este cheltuiala cel mai frecvent subestimată și poate depăși diferența de preț față de un lot cu branșamente la poartă. Cere informații de la operatorii locali înainte de a semna.",
+      },
+      {
+        q: "Căutați și case în Mărăcineni?",
+        a: "Da, avem o pagină separată pentru casele de vânzare din comuna Mărăcineni, inclusiv din Potoceni. Dacă nu găsești acolo ce cauți, lasă-ne criteriile tale și te anunțăm când intră o ofertă.",
+      },
+    ],
+    filter: {
+      propertyType: "TEREN",
       placeNormalizedAny: ["maracineni", "potoceni"],
     },
     keepIndexableWhenEmpty: true,
