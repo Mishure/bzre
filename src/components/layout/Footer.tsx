@@ -111,7 +111,11 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <h3 className="text-lg font-semibold mb-4">Caută în Buzău</h3>
           <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-2 text-sm">
-            {SEO_PAGES.map((p) => (
+            {/* Property landing pages only — the service pages in SEO_PAGES
+                are already linked from the Servicii column above, and
+                "Cadastru și intabulare" does not belong under a heading
+                that promises places to search. */}
+            {SEO_PAGES.filter((p) => !p.service).map((p) => (
               <li key={p.slug}>
                 <Link
                   href={`/${p.slug}`}
