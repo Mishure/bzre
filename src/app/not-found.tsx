@@ -83,7 +83,7 @@ export default function NotFound() {
                 Contact
               </Link>
               <Link
-                href="/services/evaluation"
+                href="/servicii/evaluare-proprietate"
                 className="text-left px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
                 Evaluare proprietate

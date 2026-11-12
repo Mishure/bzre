@@ -41,7 +41,7 @@ export type SeoPageConfig = {
   filter?: SeoFilter;
   /**
    * Marks the page as a service rather than a property listing. Drives the
-   * Service JSON-LD and points the breadcrumb at /services instead of
+   * Service JSON-LD and points the breadcrumb at /servicii instead of
    * /properties.
    */
   service?: { name: string };

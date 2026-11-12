@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Servicii de consultanță imobiliară în Buzău oferite de BESTINVEST CAMIMOB pentru cumpărători, vânzători și investitori.',
   alternates: {
-    canonical: '/services/consulting',
+    canonical: '/servicii/consultanta-imobiliara',
   },
 };
 

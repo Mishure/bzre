@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Structura de comisioane BESTINVEST CAMIMOB pentru tranzacții imobiliare în Buzău.',
   alternates: {
-    canonical: '/services/commissions',
+    canonical: '/servicii/comisioane',
   },
 };
 

@@ -10,7 +10,7 @@ import {
   BoltIcon,
 } from '@heroicons/react/24/outline';
 
-// The "Servicii" item in the header menu points at /services, which had no
+// The "Servicii" item in the header menu points at /servicii, which had no
 // page and returned 404. This is the hub it was always meant to open, and it
 // doubles as the internal-link source for the two service landing pages.
 export const metadata: Metadata = {
@@ -18,41 +18,41 @@ export const metadata: Metadata = {
   description:
     'Serviciile BESTINVEST CAMIMOB în Buzău: intermediere tranzacții, evaluare, consultanță, consiliere juridică, cadastru și intabulare, certificat de performanță energetică.',
   alternates: {
-    canonical: '/services',
+    canonical: '/servicii',
   },
 };
 
 const services = [
   {
-    href: '/services/evaluation',
+    href: '/servicii/evaluare-proprietate',
     icon: ChartBarIcon,
     name: 'Evaluare proprietate',
     description:
       'Evaluare recunoscută de bănci și estimare realistă a prețului de piață pentru imobilul tău.',
   },
   {
-    href: '/services/consulting',
+    href: '/servicii/consultanta-imobiliara',
     icon: ChatBubbleLeftRightIcon,
     name: 'Consultanță imobiliară',
     description:
       'Îndrumare pe tot parcursul tranzacției, de la stabilirea bugetului până la predarea cheilor.',
   },
   {
-    href: '/services/legal',
+    href: '/servicii/consiliere-juridica',
     icon: ScaleIcon,
     name: 'Consiliere juridică',
     description:
       'Verificarea actelor și asistență juridică până la semnarea la notar.',
   },
   {
-    href: '/services/exclusivity',
+    href: '/servicii/exclusivitate',
     icon: StarIcon,
     name: 'Contract de exclusivitate',
     description:
       'Promovare dedicată și un singur punct de contact pentru vânzarea proprietății tale.',
   },
   {
-    href: '/services/commissions',
+    href: '/servicii/comisioane',
     icon: CurrencyEuroIcon,
     name: 'Comisioane',
     description:

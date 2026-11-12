@@ -71,37 +71,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     // Services pages
     {
-      url: `${baseUrl}/services`,
+      url: `${baseUrl}/servicii`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/evaluation`,
+      url: `${baseUrl}/servicii/evaluare-proprietate`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/exclusivity`,
+      url: `${baseUrl}/servicii/exclusivitate`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/consulting`,
+      url: `${baseUrl}/servicii/consultanta-imobiliara`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/legal`,
+      url: `${baseUrl}/servicii/consiliere-juridica`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/commissions`,
+      url: `${baseUrl}/servicii/comisioane`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

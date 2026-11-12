@@ -15,7 +15,7 @@ export default async function SeoLandingPage({
     : [];
   const canonicalUrl = `${BASE_URL}/${config.slug}`;
   const parent = config.service
-    ? { name: "Servicii", item: `${BASE_URL}/services` }
+    ? { name: "Servicii", item: `${BASE_URL}/servicii` }
     : { name: "Proprietăți", item: `${BASE_URL}/properties` };
 
   const breadcrumbLd = {
@@ -103,7 +103,7 @@ export default async function SeoLandingPage({
               <li aria-hidden="true">/</li>
               <li>
                 <Link
-                  href={config.service ? "/services" : "/properties"}
+                  href={config.service ? "/servicii" : "/properties"}
                   className="hover:text-primary-600"
                 >
                   {parent.name}
@@ -219,7 +219,7 @@ export default async function SeoLandingPage({
                 Contactează-ne
               </Link>
               <Link
-                href={config.service ? "/services" : "/properties"}
+                href={config.service ? "/servicii" : "/properties"}
                 className="inline-block bg-white text-primary-700 border border-primary-300 px-6 py-3 rounded-lg hover:bg-primary-50 transition-colors font-medium"
               >
                 {config.service ? "Toate serviciile" : "Toate proprietățile"}

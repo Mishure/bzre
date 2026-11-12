@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Evaluare gratuită și profesionistă a proprietății tale în Buzău cu BESTINVEST CAMIMOB - apartamente, case, terenuri și spații comerciale.',
   alternates: {
-    canonical: '/services/evaluation',
+    canonical: '/servicii/evaluare-proprietate',
   },
 };
 

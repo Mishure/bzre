@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Asistență juridică pentru tranzacții imobiliare în Buzău oferită de BESTINVEST CAMIMOB - acte, contracte și verificări.',
   alternates: {
-    canonical: '/services/legal',
+    canonical: '/servicii/consiliere-juridica',
   },
 };
 

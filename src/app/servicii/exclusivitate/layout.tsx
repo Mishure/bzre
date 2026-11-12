@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Avantajele contractului de exclusivitate cu BESTINVEST CAMIMOB pentru vânzarea proprietății tale în Buzău.',
   alternates: {
-    canonical: '/services/exclusivity',
+    canonical: '/servicii/exclusivitate',
   },
 };
 

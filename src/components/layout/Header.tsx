@@ -14,12 +14,12 @@ const navigation = [
     { name: 'Terenuri', href: '/properties?type=TEREN' },
     { name: 'Spatii comerciale', href: '/properties?type=SPATIU_COMERCIAL' },
   ]},
-  { name: 'Servicii', href: '/services', submenu: [
-    { name: 'Evaluare proprietate', href: '/services/evaluation' },
-    { name: 'Consultanta', href: '/services/consulting' },
-    { name: 'Consiliere juridica', href: '/services/legal' },
-    { name: 'Exclusivitate', href: '/services/exclusivity' },
-    { name: 'Comisioane', href: '/services/commissions' },
+  { name: 'Servicii', href: '/servicii', submenu: [
+    { name: 'Evaluare proprietate', href: '/servicii/evaluare-proprietate' },
+    { name: 'Consultanta', href: '/servicii/consultanta-imobiliara' },
+    { name: 'Consiliere juridica', href: '/servicii/consiliere-juridica' },
+    { name: 'Exclusivitate', href: '/servicii/exclusivitate' },
+    { name: 'Comisioane', href: '/servicii/comisioane' },
     { name: 'Cadastru si intabulare', href: '/cadastru-si-intabulare-buzau' },
     { name: 'Certificat energetic', href: '/certificat-energetic-buzau' },
   ]},

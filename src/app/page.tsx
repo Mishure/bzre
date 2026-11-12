@@ -338,7 +338,7 @@ export default function HomePage() {
               Listează proprietatea
             </Link>
             <Link
-              href="/services/evaluation"
+              href="/servicii/evaluare-proprietate"
               className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Evaluare gratuită

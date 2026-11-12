@@ -53,7 +53,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services/evaluation" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link href="/servicii/evaluare-proprietate" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Evaluare proprietate
                 </Link>
               </li>
@@ -70,17 +70,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Servicii</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/consulting" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link href="/servicii/consultanta-imobiliara" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Consultanță imobiliară
                 </Link>
               </li>
               <li>
-                <Link href="/services/legal" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link href="/servicii/consiliere-juridica" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Consiliere juridică
                 </Link>
               </li>
               <li>
-                <Link href="/services/exclusivity" className="text-gray-300 hover:text-primary-400 transition-colors">
+                <Link href="/servicii/exclusivitate" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Administrare proprietăți
                 </Link>
               </li>

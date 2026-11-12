@@ -29,6 +29,37 @@ const nextConfig = {
         destination: '/apartamente-dorobanti-2-buzau',
         permanent: true,
       },
+
+      // The services subtree was renamed from English to Romanian to match
+      // the rest of the site. The five child URLs were indexed, so each one
+      // redirects permanently to its new path. Note /api/services is the
+      // lead-capture API route and is deliberately NOT renamed.
+      { source: '/services', destination: '/servicii', permanent: true },
+      {
+        source: '/services/evaluation',
+        destination: '/servicii/evaluare-proprietate',
+        permanent: true,
+      },
+      {
+        source: '/services/consulting',
+        destination: '/servicii/consultanta-imobiliara',
+        permanent: true,
+      },
+      {
+        source: '/services/legal',
+        destination: '/servicii/consiliere-juridica',
+        permanent: true,
+      },
+      {
+        source: '/services/exclusivity',
+        destination: '/servicii/exclusivitate',
+        permanent: true,
+      },
+      {
+        source: '/services/commissions',
+        destination: '/servicii/comisioane',
+        permanent: true,
+      },
     ];
   },
 }
