@@ -13,13 +13,18 @@ type ImportResult = {
   error?: string
 }
 
+type SkippedItem = { url: string; reason: string; propertyId?: number }
+type FailedItem = { url: string; error: string }
+
 export default function ImportStoriaPage() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const [urls, setUrls] = useState('')
   const [isImporting, setIsImporting] = useState(false)
   const [results, setResults] = useState<ImportResult[]>([])
-  const [importStats, setImportStats] = useState({ imported: 0, failed: 0 })
+  const [skipped, setSkipped] = useState<SkippedItem[]>([])
+  const [failures, setFailures] = useState<FailedItem[]>([])
+  const [importStats, setImportStats] = useState({ imported: 0, skipped: 0, failed: 0 })
 
   if (status === 'loading') {
     return (
@@ -48,7 +53,9 @@ export default function ImportStoriaPage() {
 
     setIsImporting(true)
     setResults([])
-    setImportStats({ imported: 0, failed: 0 })
+    setSkipped([])
+    setFailures([])
+    setImportStats({ imported: 0, skipped: 0, failed: 0 })
 
     try {
       const response = await fetch('/api/import-storia', {
@@ -63,8 +70,11 @@ export default function ImportStoriaPage() {
 
       if (data.success) {
         setResults(data.results || [])
+        setSkipped(data.skippedDetails || [])
+        setFailures(data.errors || [])
         setImportStats({
           imported: data.imported,
+          skipped: data.skipped || 0,
           failed: data.failed,
         })
 
@@ -72,8 +82,21 @@ export default function ImportStoriaPage() {
           toast.success(`✅ ${data.imported} proprietăți importate cu succes!`)
         }
 
+        // Skipped is an expected outcome, not an error — show the reason.
+        if (data.skipped > 0) {
+          const first = data.skippedDetails?.[0]?.reason
+          toast(
+            `⏭️ ${data.skipped} sărite (deja importate)${first ? `: ${first}` : ''}`,
+            { duration: 6000 }
+          )
+        }
+
         if (data.failed > 0) {
-          toast.error(`❌ ${data.failed} proprietăți au eșuat`)
+          const first = data.errors?.[0]?.error
+          toast.error(
+            `❌ ${data.failed} au eșuat${first ? `: ${first}` : ''}`,
+            { duration: 8000 }
+          )
         }
       } else {
         toast.error(data.error || 'Eroare la import')
@@ -156,22 +179,66 @@ export default function ImportStoriaPage() {
         </div>
       </div>
 
-      {/* Results */}
-      {results.length > 0 && (
+      {/* Results — shown whenever the import produced any outcome. It used to
+          render only when something was imported, so a run that only skipped
+          duplicates showed a red toast and an otherwise empty page. */}
+      {(results.length > 0 || skipped.length > 0 || failures.length > 0) && (
         <div className="bg-white shadow rounded-lg p-6">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Rezultate Import</h2>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="bg-green-50 p-4 rounded-lg">
-              <p className="text-sm text-gray-600">Importate cu succes</p>
+              <p className="text-sm text-gray-600">Importate</p>
               <p className="text-3xl font-bold text-green-600">{importStats.imported}</p>
+            </div>
+            <div className="bg-amber-50 p-4 rounded-lg">
+              <p className="text-sm text-gray-600">Sărite (deja existente)</p>
+              <p className="text-3xl font-bold text-amber-600">{importStats.skipped}</p>
             </div>
             <div className="bg-red-50 p-4 rounded-lg">
               <p className="text-sm text-gray-600">Eșuate</p>
               <p className="text-3xl font-bold text-red-600">{importStats.failed}</p>
             </div>
           </div>
+
+          {/* Skipped — expected outcome, with the reason spelled out */}
+          {skipped.length > 0 && (
+            <div className="space-y-3 mb-6">
+              {skipped.map((item, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-lg border-2 bg-amber-50 border-amber-200"
+                >
+                  <p className="font-medium text-amber-900">⏭️ Sărită — {item.reason}</p>
+                  <p className="text-sm text-gray-600 mt-1 break-all">{item.url}</p>
+                  {item.propertyId && (
+                    <a
+                      href={`/admin/properties/${item.propertyId}/edit`}
+                      className="text-sm text-primary-600 underline hover:text-primary-700 mt-1 inline-block"
+                    >
+                      Deschide proprietatea existentă
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Genuine failures, with the actual error message */}
+          {failures.length > 0 && (
+            <div className="space-y-3 mb-6">
+              {failures.map((item, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-lg border-2 bg-red-50 border-red-200"
+                >
+                  <p className="font-medium text-red-900">❌ {item.error}</p>
+                  <p className="text-sm text-gray-600 mt-1 break-all">{item.url}</p>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Detailed Results */}
           <div className="space-y-3">

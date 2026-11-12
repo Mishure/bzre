@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { prisma } from '@/lib/prisma'
-import { scrapeStoriaProperty, closeBrowser } from '@/lib/storia-scraper'
+import { scrapeStoriaProperty } from '@/lib/storia-scraper'
 import { downloadAndUploadMultipleImages } from '@/lib/blob-storage'
 import { generateSeoName } from '@/lib/seoName'
 
@@ -40,6 +40,10 @@ export async function POST(request: NextRequest) {
 
     const results = []
     const errors = []
+    // An already-imported URL is not a failure. It used to be pushed onto
+    // `errors`, so re-importing a property reported "1 import a eșuat" with no
+    // explanation. Tracked separately and reported as skipped.
+    const skipped = []
 
     for (const url of urls) {
       try {
@@ -77,9 +81,9 @@ export async function POST(request: NextRequest) {
         })
 
         if (existingProperty) {
-          errors.push({
+          skipped.push({
             url,
-            error: 'Property already exists',
+            reason: `Proprietatea există deja: #${existingProperty.id} — ${existingProperty.name}`,
             propertyId: existingProperty.id
           })
           continue
@@ -170,20 +174,18 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Close browser after all scraping is done
-    await closeBrowser()
-
     return NextResponse.json({
       success: true,
       imported: results.length,
+      skipped: skipped.length,
       failed: errors.length,
       results,
+      skippedDetails: skipped.length > 0 ? skipped : undefined,
       errors: errors.length > 0 ? errors : undefined,
     })
 
   } catch (error) {
     console.error('Error in import-storia API:', error)
-    await closeBrowser()
 
     return NextResponse.json(
       {
