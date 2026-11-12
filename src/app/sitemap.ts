@@ -11,7 +11,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // database was unreachable rather than empty, and the per-neighbourhood
   // pages flagged `keepIndexableWhenEmpty`.
   const seoCounts = await Promise.all(
-    SEO_PAGES.map((p) => countSeoProperties(p.filter))
+    SEO_PAGES.map((p) =>
+      p.filter ? countSeoProperties(p.filter) : Promise.resolve(null)
+    )
   );
 
   const seoLandingPages: MetadataRoute.Sitemap = SEO_PAGES.filter(
@@ -68,6 +70,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.3,
     },
     // Services pages
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/services/evaluation`,
       lastModified: new Date(),

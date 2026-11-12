@@ -20,6 +20,8 @@ const navigation = [
     { name: 'Consiliere juridica', href: '/services/legal' },
     { name: 'Exclusivitate', href: '/services/exclusivity' },
     { name: 'Comisioane', href: '/services/commissions' },
+    { name: 'Cadastru si intabulare', href: '/cadastru-si-intabulare-buzau' },
+    { name: 'Certificat energetic', href: '/certificat-energetic-buzau' },
   ]},
   { name: 'Despre noi', href: '/about' },
   { name: 'Contact', href: '/contact', icon: PhoneIcon },

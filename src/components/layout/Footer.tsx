@@ -85,6 +85,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/cadastru-si-intabulare-buzau" className="text-gray-300 hover:text-primary-400 transition-colors">
+                  Cadastru și intabulare
+                </Link>
+              </li>
+              <li>
+                <Link href="/certificat-energetic-buzau" className="text-gray-300 hover:text-primary-400 transition-colors">
+                  Certificat energetic (CPE)
+                </Link>
+              </li>
+              <li>
                 <Link href="/listeaza-proprietate" className="text-gray-300 hover:text-primary-400 transition-colors">
                   Listează-ți proprietatea
                 </Link>

@@ -9,8 +9,14 @@ export default async function SeoLandingPage({
 }: {
   config: SeoPageConfig;
 }) {
-  const properties = await fetchSeoProperties(config.filter);
+  // Service pages carry no filter and list no offers.
+  const properties = config.filter
+    ? await fetchSeoProperties(config.filter)
+    : [];
   const canonicalUrl = `${BASE_URL}/${config.slug}`;
+  const parent = config.service
+    ? { name: "Servicii", item: `${BASE_URL}/services` }
+    : { name: "Proprietăți", item: `${BASE_URL}/properties` };
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -25,8 +31,8 @@ export default async function SeoLandingPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: "Proprietăți",
-        item: `${BASE_URL}/properties`,
+        name: parent.name,
+        item: parent.item,
       },
       {
         "@type": "ListItem",
@@ -36,6 +42,27 @@ export default async function SeoLandingPage({
       },
     ],
   };
+
+  const serviceLd = config.service
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: config.service.name,
+        description: config.description,
+        url: canonicalUrl,
+        serviceType: config.service.name,
+        areaServed: {
+          "@type": "AdministrativeArea",
+          name: "Județul Buzău",
+        },
+        provider: {
+          "@type": "RealEstateAgent",
+          name: "BESTINVEST CAMIMOB",
+          url: BASE_URL,
+          areaServed: "Buzău",
+        },
+      }
+    : null;
 
   const faqLd = {
     "@context": "https://schema.org",
@@ -57,6 +84,12 @@ export default async function SeoLandingPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
+      {serviceLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
+        />
+      )}
 
       <div className="bg-gray-50 min-h-screen">
         <div className="container mx-auto px-4 py-8">
@@ -69,8 +102,11 @@ export default async function SeoLandingPage({
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <Link href="/properties" className="hover:text-primary-600">
-                  Proprietăți
+                <Link
+                  href={config.service ? "/services" : "/properties"}
+                  className="hover:text-primary-600"
+                >
+                  {parent.name}
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
@@ -89,6 +125,7 @@ export default async function SeoLandingPage({
             </p>
           </header>
 
+          {config.filter && (
           <section
             aria-label="Oferte"
             className="mb-12 bg-white rounded-xl p-6 shadow-sm"
@@ -129,6 +166,7 @@ export default async function SeoLandingPage({
               </div>
             )}
           </section>
+          )}
 
           <article className="bg-white rounded-xl p-6 md:p-8 shadow-sm mb-8 prose prose-lg max-w-none">
             {config.sections.map((section, idx) => (
@@ -164,12 +202,14 @@ export default async function SeoLandingPage({
 
           <section className="bg-primary-50 border border-primary-200 rounded-xl p-6 md:p-8 text-center">
             <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              Caută în continuare împreună cu CAMIMOB
+              {config.service
+                ? "Cere o ofertă pentru acest serviciu"
+                : "Caută în continuare împreună cu CAMIMOB"}
             </h2>
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Spune-ne ce cauți și un consultant CAMIMOB îți pregătește o
-              listă personalizată cu cele mai potrivite oferte din portofoliul
-              nostru.
+              {config.service
+                ? "Spune-ne ce imobil ai și pentru ce ai nevoie de document, iar un specialist CAMIMOB îți comunică lista exactă de acte, termenul de execuție și costul total, fără surprize."
+                : "Spune-ne ce cauți și un consultant CAMIMOB îți pregătește o listă personalizată cu cele mai potrivite oferte din portofoliul nostru."}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
@@ -179,10 +219,10 @@ export default async function SeoLandingPage({
                 Contactează-ne
               </Link>
               <Link
-                href="/properties"
+                href={config.service ? "/services" : "/properties"}
                 className="inline-block bg-white text-primary-700 border border-primary-300 px-6 py-3 rounded-lg hover:bg-primary-50 transition-colors font-medium"
               >
-                Toate proprietățile
+                {config.service ? "Toate serviciile" : "Toate proprietățile"}
               </Link>
             </div>
           </section>

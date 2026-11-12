@@ -34,7 +34,17 @@ export type SeoPageConfig = {
   intro: string;
   sections: SeoSection[];
   faq: { q: string; a: string }[];
-  filter: SeoFilter;
+  /**
+   * Absent on service pages — they advertise a service, not a stock of
+   * listings, so there is nothing to query and no offers section to render.
+   */
+  filter?: SeoFilter;
+  /**
+   * Marks the page as a service rather than a property listing. Drives the
+   * Service JSON-LD and points the breadcrumb at /services instead of
+   * /properties.
+   */
+  service?: { name: string };
   breadcrumbLabel: string;
   /**
    * Keep the page indexable and in the sitemap even with zero offers.
@@ -118,6 +128,132 @@ export async function fetchSeoProperties(
 }
 
 export const SEO_PAGES: SeoPageConfig[] = [
+  {
+    slug: "cadastru-si-intabulare-buzau",
+    title: "Cadastru și intabulare în Buzău — carte funciară | CAMIMOB",
+    description:
+      "Cadastru și intabulare în Buzău și județ: măsurători, documentație cadastrală și înscriere în cartea funciară. Deschidere carte funciară, dezmembrări, alipiri. CAMIMOB.",
+    h1: "Cadastru și intabulare în Buzău",
+    breadcrumbLabel: "Cadastru și intabulare",
+    service: { name: "Cadastru și intabulare" },
+    intro:
+      "Executăm lucrări de cadastru și intabulare în Buzău și în județ: măsurători la teren, întocmirea documentației cadastrale și înscrierea proprietății în cartea funciară, până la obținerea extrasului de carte funciară. Fie că deschizi prima carte funciară pentru un imobil moștenit, fie că ai nevoie de intabulare ca să poți vinde sau să iei un credit, ne ocupăm de tot procesul — de la ridicarea topografică până la depunerea și urmărirea dosarului la OCPI.",
+    sections: [
+      {
+        heading: "Ce înseamnă cadastru și ce înseamnă intabulare",
+        body: "Sunt doi pași diferiți ai aceluiași proces, iar confuzia dintre ei este cea mai frecventă neînțelegere în discuțiile cu clienții. Cadastrul este partea tehnică: un specialist autorizat vine la fața locului, măsoară imobilul, identifică limitele reale ale terenului și întocmește documentația cadastrală — plan de amplasament, plan de încadrare în zonă, memoriu tehnic. Rezultatul este un număr cadastral atribuit imobilului. Intabularea este partea juridică: înscrierea dreptului tău de proprietate în cartea funciară, pe baza documentației cadastrale și a actului de proprietate. Rezultatul este cartea funciară deschisă și extrasul de carte funciară, documentul care dovedește oficial că imobilul este al tău. Un imobil poate avea număr cadastral fără să fie intabulat, dar nu poate fi intabulat fără cadastru. Pentru orice tranzacție ai nevoie de ambele.",
+      },
+      {
+        heading: "Când ai nevoie obligatoriu de cadastru și intabulare",
+        body: "În practică, situațiile sunt destul de puține și destul de clare. La vânzare: notarul nu poate autentifica un contract fără extras de carte funciară, deci dacă imobilul nu este intabulat, tranzacția se blochează înainte să înceapă. La credit ipotecar: banca cere obligatoriu intabularea, pentru că ipoteca se înscrie în cartea funciară. La succesiune și moștenire: foarte multe imobile din mediul rural și o parte din cele urbane nu au niciodată deschisă carte funciară, iar moștenitorii descoperă asta exact când vor să vândă. La dezmembrare sau alipire: dacă vrei să împarți un teren în două loturi sau să unești două parcele, ai nevoie de documentație cadastrală nouă. La construcții: pentru autorizația de construire și pentru recepția la terminarea lucrărilor, construcția trebuie înscrisă în cartea funciară. Și la orice situație în care suprafața reală diferă de cea din acte — o problemă care apare mai des decât te-ai aștepta la terenurile moștenite.",
+      },
+      {
+        heading: "Ce documente îți trebuie",
+        body: "Lista exactă depinde de situația imobilului, dar punctul de plecare este aproape întotdeauna același: actul de proprietate (contract de vânzare-cumpărare, certificat de moștenitor, titlu de proprietate, act de donație sau sentință judecătorească), actul de identitate al proprietarilor, certificatul fiscal eliberat de primărie și, pentru apartamente, documentele care atestă situația blocului. Pentru construcții se adaugă autorizația de construire și procesul-verbal de recepție. Pentru terenuri din mediul rural pot fi necesare documente suplimentare de la primărie sau extrase din registrul agricol. Dacă proprietatea vine din moștenire și succesiunea nu este finalizată, aceasta trebuie rezolvată întâi — nu se poate intabula pe numele unui moștenitor până când succesiunea nu este dezbătută. Spune-ne situația concretă și îți dăm lista exactă, completă, de la început; nimic nu lungește un dosar mai mult decât descoperirea unui act lipsă la jumătatea drumului.",
+      },
+      {
+        heading: "Cum se desfășoară lucrarea, pas cu pas",
+        body: "Procesul standard are cinci etape. Prima: discuția inițială și verificarea actelor, în care stabilim dacă dosarul este complet și dacă există situații care cer rezolvate înainte — succesiuni nefinalizate, construcții fără autorizație, diferențe de suprafață. A doua: măsurătorile la teren, făcute de un specialist autorizat, cu identificarea limitelor și, dacă este nevoie, cu prezența vecinilor pentru confirmarea hotarelor. A treia: întocmirea documentației cadastrale — plan de amplasament și delimitare, plan de încadrare, memoriu tehnic. A patra: depunerea dosarului la Oficiul de Cadastru și Publicitate Imobiliară și urmărirea lui până la soluționare, inclusiv răspunsul la eventualele completări cerute. A cincea: predarea documentelor finale — numărul cadastral, cartea funciară deschisă și extrasul de carte funciară. Te ținem la curent la fiecare etapă; nu trebuie să suni tu ca să afli unde a ajuns dosarul.",
+      },
+      {
+        heading: "Situații speciale care cer atenție",
+        body: "Unele dosare nu sunt de rutină, iar experiența contează. Diferențe între suprafața măsurată și cea din acte: foarte frecvent la terenurile moștenite, se rezolvă prin procedura de actualizare a suprafeței, uneori cu acordul vecinilor. Construcții ridicate fără autorizație: nu pot fi intabulate direct și trebuie intrate în legalitate, o procedură care implică primăria. Imobile cu mai mulți coproprietari, în care este nevoie de acordul tuturor. Litigii de hotar cu vecinii, care blochează înscrierea până la rezolvare. Terenuri agricole pe care vrei să construiești, ce cer schimbarea categoriei de folosință. Apartamente în blocuri la care documentația originală lipsește. Pe fiecare dintre aceste situații am lucrat și îți spunem deschis, de la prima discuție, dacă se poate rezolva, cât durează realist și ce costă — nu îți promitem termene care nu se pot respecta.",
+      },
+      {
+        heading: "De ce să lucrezi cu CAMIMOB",
+        body: "Suntem agenție imobiliară în Buzău, deci vedem cadastrul și intabularea din perspectiva pentru care ai nevoie de ele: tranzacția. Asta schimbă modul în care lucrăm. Dacă intabulezi ca să vinzi, știm exact ce va cere notarul și pregătim dosarul în consecință, nu cu surprize la final. Dacă intabulezi pentru un credit, știm ce verifică banca. Dacă ești în mijlocul unei vânzări și descoperi că imobilul nu are carte funciară, putem coordona cele două procese în paralel, ca să nu pierzi cumpărătorul. Lucrăm cu specialiști autorizați ANCPI și, pentru cazurile cu probleme juridice, cu avocați. Primești de la început lista completă de acte, un termen realist și costul total — nu un preț de pornire la care se adaugă lucruri pe drum. Contactează-ne și spune-ne ce imobil ai; îți răspundem cu o estimare concretă.",
+      },
+    ],
+    faq: [
+      {
+        q: "Care este diferența dintre cadastru și intabulare?",
+        a: "Cadastrul este partea tehnică — măsurătorile și documentația care atribuie imobilului un număr cadastral. Intabularea este partea juridică — înscrierea dreptului de proprietate în cartea funciară, care produce extrasul de carte funciară. Un imobil nu poate fi intabulat fără cadastru, iar pentru orice tranzacție ai nevoie de ambele.",
+      },
+      {
+        q: "Pot vinde un apartament sau o casă fără intabulare?",
+        a: "Nu. Notarul nu poate autentifica un contract de vânzare-cumpărare fără extras de carte funciară, deci tranzacția se blochează înainte să înceapă. Dacă ești deja în discuții cu un cumpărător, putem derula intabularea în paralel cu pregătirea vânzării.",
+      },
+      {
+        q: "Ce fac dacă suprafața reală diferă de cea din acte?",
+        a: "Este o situație frecventă, mai ales la terenurile moștenite, și se rezolvă prin procedura de actualizare a suprafeței în cartea funciară, pe baza măsurătorilor noi. În unele cazuri este nevoie și de acordul vecinilor pentru confirmarea hotarelor. Nu este un obstacol, dar trebuie rezolvată înainte de vânzare.",
+      },
+      {
+        q: "Cât durează obținerea cărții funciare?",
+        a: "Durata depinde de complexitatea dosarului și de termenele de soluționare la OCPI. Un dosar complet și fără probleme juridice se rezolvă semnificativ mai repede decât unul cu succesiune nefinalizată, construcție neautorizată sau diferențe de suprafață. După ce vedem actele, îți dăm un termen realist pentru situația ta concretă, nu o medie generală.",
+      },
+      {
+        q: "Am nevoie de cadastru pentru o construcție nouă?",
+        a: "Da. Construcția trebuie înscrisă în cartea funciară, iar acest lucru este necesar atât pentru recepția la terminarea lucrărilor, cât și pentru orice tranzacție ulterioară sau credit ipotecar. Documentația cadastrală se întocmește după finalizarea construcției, pe baza autorizației și a procesului-verbal de recepție.",
+      },
+      {
+        q: "Lucrați și în comunele din județul Buzău?",
+        a: "Da, executăm lucrări de cadastru și intabulare în tot județul. Imobilele din mediul rural sunt, de fapt, cele care au cel mai frecvent nevoie: multe nu au niciodată deschisă carte funciară, iar proprietarii descoperă asta când vor să vândă sau la succesiune.",
+      },
+    ],
+  },
+  {
+    slug: "certificat-energetic-buzau",
+    title: "Certificat energetic (CPE) în Buzău | CAMIMOB",
+    description:
+      "Certificat de performanță energetică (CPE) în Buzău, emis de auditor atestat. Necesar la vânzare, închiriere, recepția construcțiilor noi și pentru PNRR sau Casa Verde. CAMIMOB.",
+    h1: "Certificat de performanță energetică (CPE) în Buzău",
+    breadcrumbLabel: "Certificat energetic",
+    service: { name: "Certificat de performanță energetică" },
+    intro:
+      "Întocmim certificate de performanță energetică (CPE) și proiectele tehnice aferente, pentru imobile din Buzău și județ. Certificatul energetic este documentul care încadrează clădirea într-o clasă de la A la G și estimează consumul ei anual de energie. Îți trebuie la vânzare, la închiriere, la recepția unei construcții noi și la accesarea programelor de finanțare pentru renovare. Îl emitem prin auditor energetic atestat, cu deplasare la imobil și termen comunicat de la început.",
+    sections: [
+      {
+        heading: "Când îți trebuie certificat energetic",
+        body: "Sunt patru situații în care documentul este necesar, iar trei dintre ele îi iau pe proprietari pe nepregătite. La vânzarea unui imobil — apartament, casă sau spațiu comercial — vânzătorul are obligația să pună certificatul la dispoziția cumpărătorului, iar notarul îl cere la autentificare. La închiriere, proprietarul trebuie să îl prezinte chiriașului; este obligația cel mai frecvent ignorată din toate. La recepția la terminarea lucrărilor pentru clădiri noi, certificatul face parte din documentația obligatorie, fără el recepția nu se poate finaliza. Și la renovarea majoră a unei clădiri sau la accesarea programelor de finanțare — PNRR, Casa Verde, Fondul pentru Modernizare — unde certificatul este cerut în dosar, de regulă atât înainte, pentru a stabili situația de pornire, cât și după lucrări, pentru a demonstra îmbunătățirea. Dacă vinzi printr-o agenție, cere certificatul din start: lipsa lui amână semnarea exact în momentul în care toate părțile sunt gata.",
+      },
+      {
+        heading: "Ce conține și ce îți spune efectiv",
+        body: "Certificatul încadrează clădirea într-o clasă energetică de la A, cea mai performantă, la G, cea mai slabă, pe baza consumului anual estimat de energie pentru încălzire, apă caldă, ventilație, climatizare și iluminat, raportat la suprafață. Dar partea cu adevărat utilă nu este litera — este secțiunea de recomandări, care arată concret unde pierzi energie și ce intervenții ar aduce cea mai mare îmbunătățire: izolarea termică a pereților, înlocuirea tâmplăriei, izolarea terasei sau a podului, modernizarea instalației de încălzire. Pentru un cumpărător, clasa energetică este un indicator direct al facturilor pe care le va plăti iarna — un apartament de clasă D sau E într-un bloc nereabilitat costă substanțial mai mult la întreținere decât unul de clasă B. Pentru un proprietar care vinde, un certificat bun este un argument de negociere real, nu doar o formalitate bifată.",
+      },
+      {
+        heading: "Cum se emite și de ce ai nevoie",
+        body: "Certificatul se emite exclusiv de un auditor energetic atestat, pe baza unei evaluări care include deplasarea la imobil. Nu se poate face corect doar pe hârtie. Auditorul verifică și consemnează: suprafețele și geometria clădirii, tipul și grosimea elementelor de construcție — pereți, terasă, planșee, tâmplărie — tipul de izolație existentă, sistemul de încălzire și de preparare a apei calde, instalația de ventilație și climatizare, orientarea clădirii și poziția apartamentului în bloc. Pentru pregătirea vizitei ajută să ai la îndemână actul de proprietate, documentația tehnică sau planurile dacă există, autorizația de construire pentru clădirile noi și informații despre eventualele lucrări de reabilitare deja efectuate, inclusiv anul în care s-au făcut. Dacă nu ai planurile, nu este un obstacol — auditorul face relevee la fața locului, dar evaluarea durează mai mult.",
+      },
+      {
+        heading: "Valabilitate și greșeli frecvente",
+        body: "Certificatul de performanță energetică este valabil 10 ani de la data emiterii, cu o excepție importantă: dacă în acest interval execuți lucrări care schimbă performanța energetică a clădirii — izolație termică, înlocuirea tâmplăriei, schimbarea sistemului de încălzire — certificatul vechi nu mai reflectă realitatea și trebuie refăcut. Este și în interesul tău: după reabilitare, clasa energetică se îmbunătățește, iar un certificat actualizat devine un argument la vânzare. Greșelile frecvente pe care le vedem: proprietari care lasă certificatul pe ultima zi înainte de notariat și descoperă că nu se emite instant; proprietari care închiriază fără certificat, ignorând obligația legală; și documente obținute de la emitenți care nu se deplasează la imobil, ceea ce produce un certificat formal dar nereprezentativ, fără partea de recomandări care îi dă valoare reală.",
+      },
+      {
+        heading: "Proiecte tehnice pentru renovare și finanțare",
+        body: "Pe lângă certificat, întocmim și proiectele tehnice aferente, necesare atunci când treci de la diagnostic la lucrări. Dacă accesezi un program de finanțare pentru eficiență energetică, dosarul cere de regulă mai mult decât certificatul: o documentație tehnică a intervențiilor propuse, soluțiile constructive, cuantificarea îmbunătățirii energetice estimate și, în multe cazuri, un audit energetic mai detaliat decât certificatul standard. Aici contează ca documentele să fie coerente între ele și corelate cu cerințele specifice ale programului — un dosar respins pentru inconsistență între certificat și proiect te costă o rundă întreagă de finanțare. Spune-ne pentru ce program depui și ce intenționezi să execuți, iar noi pregătim documentația în forma cerută.",
+      },
+      {
+        heading: "De ce să lucrezi cu CAMIMOB",
+        body: "Fiind agenție imobiliară, vedem certificatul energetic din perspectiva momentului în care îți trebuie: semnarea la notar, publicarea unui anunț de închiriere, depunerea unui dosar de finanțare. Asta înseamnă că te întrebăm de la început pentru ce ai nevoie de el și îți spunem exact ce termen putem respecta, ca să nu amâni o tranzacție. Lucrăm cu auditori energetici atestați, cu deplasare la imobil, nu cu certificate emise pe hârtie. Dacă vinzi sau închiriezi printr-o agenție, putem integra certificatul în pachetul de documente al tranzacției. Și dacă pregătești o reabilitare cu finanțare, coordonăm certificatul cu proiectul tehnic, astfel încât documentele să fie consistente între ele. Contactează-ne și spune-ne ce imobil ai și pentru ce ai nevoie de document; îți comunicăm lista de acte, termenul și costul total de la prima discuție.",
+      },
+    ],
+    faq: [
+      {
+        q: "Cât este valabil certificatul energetic?",
+        a: "10 ani de la data emiterii. Excepția: dacă în acest interval execuți lucrări care schimbă performanța energetică a clădirii — izolație, tâmplărie nouă, alt sistem de încălzire — certificatul nu mai reflectă realitatea și trebuie refăcut. După reabilitare este oricum în interesul tău să îl refaci, pentru că clasa se îmbunătățește.",
+      },
+      {
+        q: "Este obligatoriu certificatul energetic la închiriere?",
+        a: "Da. Proprietarul are obligația să îl pună la dispoziția chiriașului. Este obligația cel mai frecvent ignorată dintre toate situațiile în care documentul este cerut.",
+      },
+      {
+        q: "Am nevoie de certificat energetic pentru PNRR sau Casa Verde?",
+        a: "Da, certificatul face parte din dosar, de regulă atât înainte de lucrări, pentru a stabili situația de pornire, cât și după, pentru a demonstra îmbunătățirea obținută. În plus, aceste programe cer de obicei și o documentație tehnică a intervențiilor propuse, pe care o întocmim tot noi, corelată cu certificatul.",
+      },
+      {
+        q: "Se poate emite certificatul fără deplasare la imobil?",
+        a: "Nu se poate emite corect. Auditorul trebuie să verifice la fața locului geometria clădirii, elementele de construcție, izolația, sistemul de încălzire și instalațiile. Un certificat emis doar pe baza unor date transmise este formal, dar nereprezentativ, și îți lipsește exact partea utilă — recomandările de îmbunătățire.",
+      },
+      {
+        q: "Ce documente trebuie să pregătesc?",
+        a: "Actul de proprietate, documentația tehnică sau planurile dacă există, autorizația de construire pentru clădirile noi, și informații despre lucrările de reabilitare efectuate anterior, inclusiv anul. Dacă nu ai planurile nu este un obstacol — auditorul face relevee la fața locului, dar evaluarea durează mai mult.",
+      },
+      {
+        q: "Cât contează clasa energetică la vânzare?",
+        a: "Direct, pentru că este un indicator al facturilor pe care le va plăti cumpărătorul. Un apartament de clasă D sau E într-un bloc nereabilitat costă substanțial mai mult la întreținere iarna decât unul de clasă B. Un certificat bun este un argument de negociere real.",
+      },
+    ],
+  },
   {
     slug: "apartamente-de-vanzare-buzau",
     title: "Apartamente de vânzare în Buzău | CAMIMOB",
@@ -1549,7 +1685,11 @@ export async function countSeoProperties(
  */
 export async function buildSeoPageMetadata(slug: string): Promise<Metadata> {
   const config = getSeoPageBySlug(slug)!;
-  const count = await countSeoProperties(config.filter);
+  // Service pages have no filter, so there is no stock to be empty of —
+  // `null` keeps them indexable, same as an unreachable database would.
+  const count = config.filter
+    ? await countSeoProperties(config.filter)
+    : null;
   const isEmpty = count === 0 && !config.keepIndexableWhenEmpty;
 
   return {
